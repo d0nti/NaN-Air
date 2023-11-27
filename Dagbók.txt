@@ -7,4 +7,13 @@ Við byrjuðum á því að búa til docs skjal þar sem við skráðum niður a
 Anton tók að sér að búa til Git manual
 Við hin reyndum að byrja á því að hanna hugbúnaðinn
 
+Samantekt:
+Við gerðum verkefni úthlutun og hún var svona:
+Hera : kröfur
+Andrea : Git
+Dagur : Drekinn
+Marvin : Class diagram/dagbók
+Viggo : Sameina kröfur fyrir class diagram (Hjálpandi Marvin/Wingman)
+Anton : Skýrsluskrifari og er að reyna að deila með núll.
+
 
