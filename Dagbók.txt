@@ -1,7 +1,0 @@
-Dagbók
-
-27. nóv
-Í dag kynntums við hvort öðru
-Við byrjuðum á því að búa til docs skjal þar sem við skráðum niður allar kröfur, við stefnum á að klára A B og C en ef það gengur ekki þá getum við alltaf tekið úr B og C
-Anton tók að sér að búa til Git manual
-Við hin reyndum að byrja á því að hanna hugbúnaðinn
