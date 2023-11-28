@@ -17,3 +17,12 @@ Viggo : Sameina kröfur fyrir class diagram (Hjálpandi Marvin/Wingman)
 Anton : Skýrsluskrifari og er að reyna að deila með núll.
 
 
+28. nóv
+Morgunfærsla:
+Fara yfir hvað við vorum búin með í gær og halda áfram með það,
+Hera: kröfur
+Andrea: Git
+Marvin: Class diagram/dagbók
+Viggó: Sameina kröfur fyrir class diagram
+Anton: notendahópagreining
+
