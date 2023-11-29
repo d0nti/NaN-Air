@@ -1,0 +1,47 @@
+    ______
+        _\ _~-\___
+=  = ==(____AA____D
+            \_____\___________________,-~~~~~~~`-.._
+            /     o O o o o o O O o o o o o o O o  |\_
+            `~-.__ NaN-Air ___..----..                  )
+                    `---~~\___________/------------```````
+                    =  ===(_________D
+
+1. 
+------------------------------
+    NaN - Air Booking System 
+------------------------------
+    1. Register Voyage
+    2. Register Employee
+    3. Register Destination
+    4. Change Inforrmation
+    5. Display List
+------------------------------
+User input: 3
+
+
+2.
+------------------------------
+    Register Destination
+------------------------------
+    Fill out the following information:
+
+    Country:
+    Airport:
+    Flight Time:
+    Distance from Iceland:
+    Contact Name:
+    Contact Phone Number:
+
+    Press enter to continue...
+------------------------------
+User inputs information and presses enter.
+
+
+3.
+------------------------------
+    Register Destination
+------------------------------
+    A new destination has been 
+    added to the system.
+------------------------------
