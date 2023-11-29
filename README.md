@@ -3,4 +3,6 @@ Gott væri að setja inn Comment ef eitthverju mikilvægu er breytt, svo allir v
 
 #! Setti inn User-Group-Template í main Branch (Anton)
 
+#! Setti inn GitHub Manual í main (Andrea)
+
 # NaN-Air
