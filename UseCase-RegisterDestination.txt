@@ -11,16 +11,27 @@
 ------------------------------
     NaN - Air Booking System 
 ------------------------------
+    1. Registration
+    2. Change Inforrmation
+    3. Display List
+------------------------------
+User input: 1
+
+
+2.
+------------------------------
+        Registration
+------------------------------
     1. Register Voyage
     2. Register Employee
     3. Register Destination
-    4. Change Inforrmation
-    5. Display List
+    4. Register Aircraft
+    5. Go Back
 ------------------------------
 User input: 3
 
 
-2.
+3.
 ------------------------------
     Register Destination
 ------------------------------
@@ -34,14 +45,17 @@ User input: 3
     Contact Phone Number:
 
     Press enter to continue...
+    Press Q and enter to cancel...
 ------------------------------
 User inputs information and presses enter.
 
 
-3.
+4.
 ------------------------------
     Register Destination
 ------------------------------
     A new destination has been 
     added to the system.
+    
+    Press enter to continue...
 ------------------------------
