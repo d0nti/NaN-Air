@@ -27,4 +27,14 @@
     3. Destinations
     4. Aircrafts
 ------------------------------
-User input: 
+User input: 1
+
+
+2. 
+------------------------------
+       NaN - Air Voyages
+------------------------------
+    1. Register Voyage
+    2. Pick Staff for Voyage
+    3. List All Voyages
+    4. 
