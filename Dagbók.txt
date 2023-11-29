@@ -34,4 +34,13 @@ Viggó: Class diagram.
 Anton: Class diagram.
 
 
+29. nóv
+morgunfærsla
+í dag fórum við á stuttan fyrirlestur um class diagram hjá kennara.
+verkefnaskipting:
+Hera: use cases
+Andrea: gera happy path og wireframe
+Marvin: gera skýrslu
+Viggó: gera skýrslu
+Anton: wireframe
 
