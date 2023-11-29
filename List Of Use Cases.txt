@@ -1,0 +1,11 @@
+
+
+Use Cases:
+
+Register Destination
+Register Voyage
+Register Employee
+Change Employee Information
+Change Destination Information
+Change Voyage Information
+Display List of Flight Attendants Working on a Specific Date
