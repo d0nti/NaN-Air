@@ -34,5 +34,14 @@ User Input: 3
     NaN - Air Destinations
 ------------------------------
     1. List Destinations
-    2. Add Destination
+    2. Register Destination
     3. Search
+    4. Go Back
+------------------------------
+User Input: 3
+
+3. 
+------------------------------
+    NaN - Air Destinations
+          Search
+------------------------------
