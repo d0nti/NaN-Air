@@ -15,3 +15,6 @@ Use Cases:
 11. Copy Voyages
 12. Repeat Voyages
 13. Make a Printable Overview for an Employee (week)
+
+
+Má endilega bæta við :-)
