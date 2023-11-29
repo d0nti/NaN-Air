@@ -26,3 +26,12 @@ Marvin: Class diagram/dagbók
 Viggó: Sameina kröfur fyrir class diagram
 Anton: notendahópagreining
 
+Samantekt: 
+Andrea Hélt áfram með git leiðbeiningarnar.
+Hera: hélt áfram með kröfurnar.
+Marvin: kláraði happy path.
+Viggó: Class diagram.
+Anton: Class diagram.
+
+
+
