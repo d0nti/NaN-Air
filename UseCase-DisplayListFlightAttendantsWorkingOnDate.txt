@@ -13,45 +13,43 @@
 ------------------------------
     1. Registration
     2. Change Inforrmation
-    3. Display List
-------------------------------
-User input: 1
-
-
-2.
-------------------------------
-        Registration
-------------------------------
-    1. Register Voyage
-    2. Register Employee
-    3. Register Destination
-    4. Register Aircraft
+    5. Display List
 ------------------------------
 User input: 3
 
 
+2. 
+------------------------------
+        Display List
+------------------------------
+    1. Display Voyages
+    2. Display Employees
+    3. Display Destinations
+------------------------------
+User input: 2
+
+
 3.
 ------------------------------
-    Register Destination
+        Display Employees
 ------------------------------
-    Fill out the following information:
-
-    Country:
-    Airport:
-    Flight Time:
-    Distance from Iceland:
-    Contact Name:
-    Contact Phone Number:
-
-    Press enter to continue...
+1. All Employees
+2. Pilots
+3. Copilots
+4. Captains
+5. Flight Attendants
+6. Head of Service
+7. Go Back
 ------------------------------
-User inputs information and presses enter.
+User input: 5
 
 
 4.
 ------------------------------
-    Register Destination
+    Display Flight Attendants
 ------------------------------
-    A new destination has been 
-    added to the system.
+010199-1239   Sigríður Björnsdóttir
+020577-1239   Þórhildur Jónsdóttir
+060788-1239   Svavar Þórðarson
 ------------------------------
+Press 
