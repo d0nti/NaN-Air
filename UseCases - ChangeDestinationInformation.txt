@@ -29,6 +29,7 @@
 ------------------------------
 User Input: 3
 
+
 2. 
 ------------------------------
     NaN - Air Destinations
@@ -38,10 +39,74 @@ User Input: 3
     3. Search
     4. Go Back
 ------------------------------
-User Input: 3
+User Input: 1
+
 
 3. 
 ------------------------------
     NaN - Air Destinations
-          Search
+          List
 ------------------------------
+    1. Nuuk
+    2. Kulusuk
+    3. Þórshöfn
+    4. Tingwall
+    5. Longyearbyen
+    6. Go Back
+
+    Pick a destination to 
+    view more information
+------------------------------
+User Input: 2
+
+
+4. 
+-----------------------------------------------------
+            NaN - Air Destinations
+                    Kulusuk
+-----------------------------------------------------
+    1. Name: Kulusuk
+    2. Country: Greenland
+    3. Airport: Kulusuk Airport
+    4. Flight Time: 2 hours
+    5. Distance from Iceland: 840 km
+    6. Contact Name: Nick Cage
+    7. Contact Phone Number: +299 98 18 18
+
+    To edit; press the number of the field and enter
+    Enter Q and enter to Go Back
+-----------------------------------------------------
+User Input: 7
+
+
+5. 
+-----------------------------------------------------
+            NaN - Air Destinations
+                    Kulusuk
+-----------------------------------------------------
+Contact Phone Number: +299 98 18 18
+
+Update Number:
+
+Press enter to confirm
+Press Q and enter to go back
+-----------------------------------------------------
+User Input: +12345678
+
+
+6.
+-----------------------------------------------------
+            NaN - Air Destinations
+                    Kulusuk
+-----------------------------------------------------
+    1. Name: Kulusuk
+    2. Country: Greenland
+    3. Airport: Kulusuk Airport
+    4. Flight Time: 2 hours
+    5. Distance from Iceland: 840 km
+    6. Contact Name: Nick Cage
+    7. Contact Phone Number: +12345678
+
+    To edit; press the number of the field and enter
+    Enter Q and enter to Go Back
+-----------------------------------------------------
