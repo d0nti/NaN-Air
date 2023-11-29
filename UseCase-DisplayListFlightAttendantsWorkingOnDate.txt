@@ -53,7 +53,10 @@ User input: 5
 020577-1239   Þórhildur Jónsdóttir
 060788-1239   Svavar Þórðarson
 ------------------------------
-Press C to categorize
+Press C and enter to categorize
+------------------------------
+User input: c
+
 
 5. 
 ----------------------------------
@@ -64,6 +67,7 @@ Categorize Flight Attendants by:
 ------------------------------
 User input: 1
 
+
 6. 
 ------------------------------
     Who is working on date
@@ -71,6 +75,7 @@ User input: 1
 Enter date: 
 ------------------------------
 User input: 01/01/2024
+
 
 7. 
 -----------------------------------------
