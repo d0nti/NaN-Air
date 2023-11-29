@@ -26,6 +26,7 @@ User input: 1
     2. Register Employee
     3. Register Destination
     4. Register Aircraft
+    5. Go Back
 ------------------------------
 User input: 3
 
@@ -44,6 +45,7 @@ User input: 3
     Contact Phone Number:
 
     Press enter to continue...
+    Press Q and enter to cancel...
 ------------------------------
 User inputs information and presses enter.
 
@@ -54,4 +56,6 @@ User inputs information and presses enter.
 ------------------------------
     A new destination has been 
     added to the system.
+    
+    Press enter to continue...
 ------------------------------
