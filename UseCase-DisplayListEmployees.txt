@@ -1,0 +1,64 @@
+
+    ______
+        _\ _~-\___
+=  = ==(____AA____D
+            \_____\___________________,-~~~~~~~`-.._
+            /     o O o o o o O O o o o o o o O o  |\_
+            `~-.__ NaN-Air ___..----..                  )
+                    `---~~\___________/------------```````
+                    =  ===(_________D
+
+
+            )           )                  (    (     
+        ( /(        ( /(           (      )\ ) )\ )  
+        )\())    )  )\())          )\    (()/((()/(  
+        ((_)\  ( /( ((_)\   ___  ((((_)(   /(_))/(_)) 
+        _((_) )(_)) _((_) |___|  )\ _ )\ (_)) (_))   
+        | \| |((_)_ | \| |        (_)_\(_)|_ _|| _ \  
+        | .` |/ _` || .` |         / _ \   | | |   /  
+        |_|\_|\__,_||_|\_|        /_/ \_\ |___||_|_\ 
+
+
+1. 
+------------------------------
+    NaN - Air Booking System 
+------------------------------
+    1. Voyages
+    2. Employees
+    3. Destinations
+    4. Aircrafts
+------------------------------
+User input: 2
+
+
+2. 
+----------------------------
+    NaN - Air Employees
+----------------------------
+    1. List All/Edit Employees
+    2. List All/Edit Pilots
+    3. List All/Edit Flight Attendants
+    4. List All/Edit Heads of Service
+    5. Register New Employee
+    6. Shift Plan
+    7. Search
+    9. Go Back
+----------------------------
+User input: 2
+
+
+3.
+------------------------------------------------------
+                NaN - Air Employees
+                 List of Pilots
+------------------------------------------------------
+Employee Id| Pilot name             | Pilot Licence                | Pilot Rank |   Phone   |      Email        |
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+0101       | Brjánn Leifsson        | Airline Transport Pilot      |   Captain  |  777-7770 | brjann@nanair.is  |
+0102       | Stína jakobsdóttir     | Airline Transport Pilot      |  Co-pilot  |  888-1100 |  stina@nanair.is  |
+0103       | Geir Ólafsson          | Multi-Crew Pilot             |  Co-pilot  |  666-5555 |  Geiro@nanair.is  |
+0104       | Hjalti Freyr Óskarsson | Certified Flight Instructor  |   Captain  |  666-4440 | hjalti@nanair.is  |
+
+    To edit a pilot input employee id
+    Press Q and enter to go back
+-------------------------------------------------------
