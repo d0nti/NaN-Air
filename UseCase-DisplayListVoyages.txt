@@ -55,6 +55,7 @@ User Input: 1
             NaN - Air Voyages
              Current Voyages 
 ------------------------------------------
+Current date: 30/11/2023
 __________________________________________________________________________________________
 Flight | Departure Time | Departure Location |     ETA      | Arrival location | Remarks |
 NA101  |    12:00       |     Reykjavík      |    13:25     |    Þórshöfn      |         |
