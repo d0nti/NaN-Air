@@ -41,19 +41,35 @@ User input: 4
     5. List Aircrafts
     6. Go Back  
 ------------------------------
-User input: 1
+User input: 5
 
 
 3. 
 ------------------------------
-       NaN - Register Aircraft
+       NaN - Aircrafts
 ------------------------------
-Enter name of Aircraft: 
-Fokker 415
-Enter Registration number:
-FH-138
-Enter Miles flown:
-500.000 Miles
+    1. Boeing 747-PepsiMax
+    2. Boeing 747-Binary
+    3. Boeing 747-ASCII
+    4. Boeing 757-GylfiErBestur
+    5. Go Back
 
-    Press C to confirm
-    Press Q to go back
+Enter number to view details
+------------------------------
+User Input: 1
+
+
+4. 
+------------------------------
+       NaN - Aircrafts
+------------------------------
+Boeing 747-PepsiMax
+
+Licensed Pilots:
+    1. Brjánn Leifsson
+    2. Þorsteinn Þorri Sigurðsson
+
+Enter number to view Pilot details
+Enter Q to go back
+------------------------------
+
