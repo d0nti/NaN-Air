@@ -99,7 +99,7 @@ User Input: 1
 ------------------------------
 Select:
     1. Destination: Kulusuk
-    2. Dates: None
+    2. Dates and Time: None
     3. Aircraft: None
 ------------------------------
 User Input: 2
@@ -109,9 +109,62 @@ User Input: 2
 ------------------------------
        NaN - Air Voyages
 ------------------------------
+Departure:
+    Enter Date: 
+    Enter Time:
+Arrival:
+    Enter Date: 
+    Enter Time:
+------------------------------
+User Input: 01.01.2024
+User Input: 12:00
+User Input: 01.01.2024
+User Input: 18:00
+
+------------------------------
+       NaN - Air Voyages
+------------------------------
+Departure:
+    Enter Date: 01.01.2024
+    Enter Time: 12:00
+Arrival:
+    Enter Date: 01.01.2024
+    Enter Time: 18:00
+
+Enter Save to save
+------------------------------
+User Input: Save
+
+------------------------------
+       NaN - Air Voyages
+------------------------------
 Select:
-    1. Departure Date: None
-    2. Arrival Date: None
-    3. Go Back
+    1. Destination: Kulusuk
+    2. Dates and Time: 01.01.2024 12:00 - 01.01.2024 18:00
+    3. Aircraft: None
+------------------------------
+User Input: 3
+
+------------------------------
+       NaN - Air Voyages
+------------------------------
+Select:
+    1. Boeing 747-A
+    2. Boeing 747-B
+    3. Boeing 737-A
+    4. Boeing 737-B
+    5. Boeing 737-C
 ------------------------------
 User Input: 1
+
+------------------------------
+       NaN - Air Voyages
+------------------------------
+Select:
+    1. Destination: Kulusuk
+    2. Dates and Time: 01.01.2024 12:00 - 01.01.2024 18:00
+    3. Aircraft: Boeing 747-A
+
+Enter Save to save 
+------------------------------
+User Input: Save
