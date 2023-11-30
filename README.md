@@ -5,4 +5,6 @@ Gott væri að setja inn Comment ef eitthverju mikilvægu er breytt, svo allir v
 
 #! Setti inn GitHub Manual í main (Andrea)
 
+#! Setti öll UseCasein í eina möppu til að skipuleggja :) (Andrea)
+
 # NaN-Air
