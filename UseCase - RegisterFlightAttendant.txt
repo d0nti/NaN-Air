@@ -35,12 +35,12 @@ User Input: 2
 ----------------------------
     NaN - Air Employees
 ----------------------------
-    1. List All Employees
-    2. List All Pilots
-    3. List All Copilots
-    4. List All Captains
-    5. List All Flight Attendants
-    6. List All Heads of Service
+    1. List All/Edit Employees
+    2. List All/Edit Pilots
+    3. List All/Edit Copilots
+    4. List All/Edit Captains
+    5. List All/Edit Flight Attendants
+    6. List All/Edit Heads of Service
     7. Register New Employee
     8. Shift Plan
     9. Search
