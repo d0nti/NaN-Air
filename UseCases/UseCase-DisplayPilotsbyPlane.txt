@@ -70,6 +70,7 @@ Licensed Pilots:
     2. Þorsteinn Þorri Sigurðsson
 
 Enter number to view Pilot details
+Enter Status to view Aircraft Status
 Enter Q to go back
 ------------------------------
 
