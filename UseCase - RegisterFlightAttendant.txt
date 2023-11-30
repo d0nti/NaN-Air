@@ -68,15 +68,13 @@ User Input: 2
     Brynja Káradóttir
     2. Enter Personal id: 
     080899-1239
-    3. Enter Rank:
-    Flight Attendant
-    4. Enter Adress:
+    3. Enter Adress:
     Hlíðarvegur 90, 105 Reykjavík, Iceland
-    5. Enter Phone:
+    4. Enter Phone:
     777-1239
-    6. Enter Email:
+    5. Enter Email:
     brynjakaradottir@nanair.is
-    7. Enter home number:
+    8. Enter home number:
     555-1239
     
     Press C to confirm
