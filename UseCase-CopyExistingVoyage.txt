@@ -24,7 +24,7 @@
 ------------------------------
     1. Voyages
     2. Employees
-    3. Destinations
+    3. Flight Routes
     4. Aircrafts
 ------------------------------
 User input: 1
@@ -35,6 +35,32 @@ User input: 1
        NaN - Air Voyages
 ------------------------------
     1. Register Voyage
-    2. Pick Staff for Voyage
-    3. Register seats
-    4. List all voyages 
+    2. List All Voyages
+    3. Search for Voyage
+    4. Man Registered Voyage
+------------------------------
+User input: 1
+
+
+3. 
+------------------------------
+       NaN - Air Voyages
+------------------------------
+    1. New Voyage
+    2. Copy Existing Voyage
+    3. Make a Recurring Voyage
+------------------------------
+User input: 2
+
+
+4. 
+------------------------------
+       NaN - Air Voyages
+------------------------------
+    1. 
+------------------------------
+User input: 4
+
+
+
+

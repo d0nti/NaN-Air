@@ -44,3 +44,16 @@ Marvin: gera skýrslu
 Viggó: gera skýrslu
 Anton: wireframe
 
+Samatekt: 
+Við komum sáum og sigruðum, héldum áfram með verkefnin okkar og stóðum okkur konunglega.
+
+30. nóv
+Við erum að halda áfram með kröfulista, Use cases og wireframes og erum komin langleiðina með þetta.
+
+Verkefnaskipting
+Hera: kröfulisti og use cases
+Andrea: wireframe
+Marvin Use cases og wireframe
+Viggó: Skýrsla
+Anton: Use cases og wirewrame
+
