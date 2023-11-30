@@ -1,0 +1,95 @@
+
+    ______
+        _\ _~-\___
+=  = ==(____AA____D
+            \_____\___________________,-~~~~~~~`-.._
+            /     o O o o o o O O o o o o o o O o  |\_
+            `~-.__ NaN-Air ___..----..                  )
+                    `---~~\___________/------------```````
+                    =  ===(_________D
+
+
+            )           )                  (    (     
+        ( /(        ( /(           (      )\ ) )\ )  
+        )\())    )  )\())          )\    (()/((()/(  
+        ((_)\  ( /( ((_)\   ___  ((((_)(   /(_))/(_)) 
+        _((_) )(_)) _((_) |___|  )\ _ )\ (_)) (_))   
+        | \| |((_)_ | \| |        (_)_\(_)|_ _|| _ \  
+        | .` |/ _` || .` |         / _ \   | | |   /  
+        |_|\_|\__,_||_|\_|        /_/ \_\ |___||_|_\ 
+
+1. 
+------------------------------
+    NaN - Air Booking System 
+------------------------------
+    1. Voyages
+    2. Employees
+    3. Flight Routes
+    4. Aircrafts
+------------------------------
+User input: 1
+
+
+2. 
+------------------------------
+       NaN - Air Voyages
+------------------------------
+    1. Register Voyage
+    2. List All Voyages
+    3. Search for Voyage
+    4. Man Registered Voyage
+------------------------------
+User input: 4
+
+
+3. 
+------------------------------
+       NaN - Air Voyages
+------------------------------
+    1. Kulusuk - 03.01.2024
+    2. Nuuk - 04.01.2024
+    3. Þórshöfn - 05.01.2024
+------------------------------
+User input: 1
+
+
+4. 
+------------------------------
+       NaN - Air Voyages
+------------------------------
+    Kulusuk - 03.01.2024
+
+    1. Captain: None
+    2. Co-Pilot: None
+    3. Flight Attendants: None
+    4. Head of Service: None
+------------------------------
+User Input: 1
+
+
+5. 
+------------------------------
+       NaN - Air Voyages
+------------------------------
+List of All Available Captains:
+    1. Aron Þór Arnarsson
+    2. Berglind Rós Þorsteinsdóttir
+    3. Bjarni Þór Jónsson
+    4. Mikael Máni Ingólfsson
+    5. Sigríður Þóra Jónsdóttir
+    6. Þórdís Þóra Þorsteinsdóttir
+------------------------------
+User Input: 1
+
+
+6. 
+------------------------------
+       NaN - Air Voyages
+------------------------------
+    Kulusuk - 03.01.2024
+
+    1. Captain: Aron Þór Arnarsson
+    2. Co-Pilot: None
+    3. Flight Attendants: None
+    4. Head of Service: None
+------------------------------
