@@ -47,8 +47,6 @@ User input: 1
 ------------------------------
        NaN - Register Aircraft
 ------------------------------
-(Press "q" and hit enter to quit)
-
 Enter name of Aircraft: 
 Fokker 415
 Enter Registration number:
@@ -56,3 +54,5 @@ FH-138
 Enter Miles flown:
 500.000 Miles
 
+    Press C to confirm
+    Press Q to go back

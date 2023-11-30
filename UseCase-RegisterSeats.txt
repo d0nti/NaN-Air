@@ -60,7 +60,9 @@ User input: 1
        NaN - Assign Seats
 ------------------------------
 Assign Seat: B5 
-(Press "q" and enter to quit)
+    
+    Press C to confirm
+    Press Q to go back
 
 Seat -B5- has been assigned
 
@@ -91,7 +93,9 @@ Seat -B5- has been assigned
        NaN - Assign Seats
 ------------------------------
 Assign Seat: 
-(Press "q" and enter to quit)
+
+    Press C to confirm
+    Press Q to go back
 
 
 |||||||||||||||||||||||||||||||
