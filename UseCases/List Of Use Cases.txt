@@ -1,6 +1,7 @@
 
-Use Cases:
+Kröfulisti:
 
+A kröfur ✅
 1. User can register a voyage ✅ UseCase - CreateNewVoyage
 2. User can add staffing information about the voyage ✅ UseCase - ManRegisteredVoyage
 3. User must be able to copy a work trip registration for the same destination and at the same time over multiple days ✅ UseCase - CopyExistingVoyage
@@ -8,9 +9,9 @@ Use Cases:
 5. User can register an employee ✅ UseCase - RegisterFlightAttendant
 6. The system should be able to display a list of all employees ✅ UseCase - DisplayListEmployees
 7. User can register a pilot ✅ UseCase - RegisterFlightAttendant
-8. The system can display a list of all pilots ✅ UseCase - DisplayListAllPilots
+8. The system can display a list of all pilots ✅ UseCase - DislplayListAllPilotswithLicense
 9. User can register a flight attendant ✅ UseCase - RegisterFlightAttendant
-10. The system should be able to display all flight attendants ✅ UseCase - DislplayListAllPilots
+10. The system should be able to display all flight attendants ✅ UseCase - DislplayListAllPilotswithLicense
 11. The system should be able to display information about a specific employee ✅ UseCase - ChangeEmployeeInfo
 12. User should be able to change information about an employee ✅ UseCase - ChangeEmployeeInfo
 13. User can register a destination ✅ UseCase - RegisterDestination
@@ -21,12 +22,14 @@ Use Cases:
 18. The system should be able to display a printable summary that shows all voyages of an employee for a specific week ✅ UseCase - DisplayWorkWeek
 
 
-1. The system should be able to keep track of which pilots are allowed to fly which aircraft 
+
+B kröfur
+1. The system should be able to keep track of which pilots are allowed to fly which aircraft ✅ UseCase - DisplayListAllPilotswithLicense
 2. User can enter the number of sold seats for each flight ✅ UseCase - RegisterSeats
 3. The system should be able to assign a flight number to each flight 
 4. User can register a plane ✅ UseCase - RegisterPlanes
-5. User can register what license a pilot has for what plane 
-6. The system should be able to display a list of all pilots that have a license for a specific plane type 
+5. User can register what license a pilot has for what plane ✅ UseCase - DisplayListAllPilotswithLicense
+6. The system should be able to display a list of all pilots that have a license for a specific plane type - ✅ UseCase - DisplayListAllPilotswithLicense
 7. The system should be able to display a list of all pilots by plane type 
 8. User can change the name of a contact that is registered for a destination ✅ UseCase - ChangeDestinationInformation
 9. User can change the emergency phone number that is registered for a destination ✅ UseCase - ChangeDestinationInformation

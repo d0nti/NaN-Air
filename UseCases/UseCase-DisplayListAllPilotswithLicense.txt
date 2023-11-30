@@ -44,13 +44,13 @@ User input: 2
     7. Search
     9. Go Back
 ----------------------------
-User input: 5
+User input: 2
 
 
 3.
 ------------------------------------------------------
                 NaN - Air Employees
-                 Flight Attendants
+                    Pilots
 ------------------------------------------------------
     1.  020285-1239   Ásdís Jónsdóttir
     2.  030498-1239   Bergur Jónsson
@@ -78,9 +78,10 @@ User Input: C and enter
 Categorize by:
     1. Working on date
     2. Not working on date
-    3. Go back
+    3. By license
+    4. Go back
 ------------------------------------------------------
-User input: 1
+User input: 3
 
 
 5. 
@@ -88,21 +89,21 @@ User input: 1
                 NaN - Air Employees
                  Flight Attendants
 ------------------------------------------------------
-Working on date:
+Enter license:
 
-    Enter date:
 ------------------------------------------------------
-User input: 01/01/2024
+User input: 1239
 
 
 6.
 -----------------------------------------
- Flight Attendants working on 01/01/2024
+        NaN - Air Employees
+      Pilots with license 1239
 -----------------------------------------
 010199-1239   Sigríður Björnsdóttir
 020577-1239   Þórhildur Jónsdóttir
 
-Choose a Flight Attendant to view more information
+Choose a Pilot to view more information
 Press C and enter to categorize the list
 Press Q and enter to go back
 -----------------------------------------

@@ -112,7 +112,7 @@ User Input: C
 5. 
 ------------------------------------------------------
                 NaN - Air Employees
-                Empolyee registered!
+                Employee registered!
 ------------------------------------------------------
 Would you like to add another employee?
 Or go back to the main menu?
