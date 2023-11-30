@@ -42,8 +42,10 @@ User Input: 2
     5. List All Flight Attendants
     6. List All Heads of Service
     7. Register New Employee
+    8. Edit Employee
     8. Shift Plan
-    9. Search
+    9. Go Back
+    10. Search
 ----------------------------
 User Input: 7
 
@@ -53,25 +55,25 @@ User Input: 7
                 NaN - Air Employees
               Register Flight Attendant
 ------------------------------------------------------
-    1. Enter Name:
-    2. Enter Personal id:
+    1. Enter Name: 
+    Brynja Káradóttir
+    2. Enter Personal id: 
+    080899-1239
     3. Enter Rank:
+    Flight Attendant
     4. Enter Adress:
+    Hlíðarvegur 90, 105 Reykjavík, Iceland
     5. Enter Phone:
+    777-1239
     6. Enter Email:
+    brynjakaradottir@nanair.is
     7. Enter home number:
+    555-1239
     
     Press C to confirm
     Press Q to go back
 -------------------------------------------------------
-User Input: 
-Brynja Káradóttir
-080899-1239
-Flight Attendant
-Hlíðarvegur 90, 105 Reykjavík, Iceland
-777-1239
-brynjakaradottir@nanair.is
-555-1239
+
 
 4. 
 ------------------------------------------------------
