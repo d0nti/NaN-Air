@@ -42,10 +42,8 @@ User Input: 2
     5. List All Flight Attendants
     6. List All Heads of Service
     7. Register New Employee
-    8. Edit Employee
     8. Shift Plan
-    9. Go Back
-    10. Search
+    9. Search
 ----------------------------
 User Input: 7
 
