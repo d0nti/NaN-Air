@@ -1,5 +1,4 @@
 
-
 Use Cases:
 
 1. Register Destination

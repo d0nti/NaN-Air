@@ -43,7 +43,7 @@ User Input: 3
 3.
 ------------------------------------------
             NaN - Air Voyages
-             Choose list
+              Choose list
 ------------------------------------------
     1. Current Voyages
     2. Past Voyages 
