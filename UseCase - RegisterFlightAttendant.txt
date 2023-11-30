@@ -45,36 +45,42 @@ User Input: 2
     8. Shift Plan
     9. Search
 ----------------------------
-User Input: 5
+User Input: 7
 
 
 3.
 ------------------------------------------------------
                 NaN - Air Employees
-                 Flight Attendants
+              Register Flight Attendant
 ------------------------------------------------------
-    1.  020285-1239   Ásdís Jónsdóttir
-    2.  030498-1239   Bergur Jónsson
-    3.  090178-1239   Björn Þórðarson
-    4.  080899-1239   Brynja Káradóttir
-    5.  121200-1239   David Smith
-    6.  100984-1239   Elizabeth Gunnarsdóttir
-    7.  010199-1239   Sigríður Björnsdóttir
-    8.  060788-1239   Svavar Þórðarson
-    9.  020577-1239   Þórhildur Jónsdóttir
-    10. 120286-1239   Örlygur Snæbjörnsson
-
-    Choose a Flight Attendant to view more information
-    Press C and enter to categorize the list
+    1. Enter Name:
+    2. Enter Personal id:
+    3. Enter Rank:
+    4. Enter Adress:
+    5. Enter Phone:
+    6. Enter Email:
+    7. Enter home number:
+    
+    Press C to confirm
+    Press Q to go back
 -------------------------------------------------------
-User Input: 4
-
+User Input: 
+Brynja Káradóttir
+080899-1239
+Flight Attendant
+Hlíðarvegur 90, 105 Reykjavík, Iceland
+777-1239
+brynjakaradottir@nanair.is
+555-1239
 
 4. 
 ------------------------------------------------------
                 NaN - Air Employees
-                 Brynja Káradóttir
+                 Confirm information
 ------------------------------------------------------
+    Please confirm that the following 
+    information is correct:
+
     1. Name: Brynja Káradóttir
     2. Personal ID: 080899-1239
     3. Rank: Flight Attendant
@@ -83,63 +89,23 @@ User Input: 4
     6. Email: brynjakaradottir@nanair.is
     7. Home Number: 555-1239
 
-    Press E to edit this Employee
+    Press C to confirm
+    Press E to edit
     Press Q to go back
 ------------------------------------------------------
-User Input: E
+User Input: C
 
 
 5. 
 ------------------------------------------------------
                 NaN - Air Employees
-                 Brynja Káradóttir
+                Empolyee registered!
 ------------------------------------------------------
-Edit:
-    1. Name: Brynja Káradóttir
-    2. Personal ID: 080899-1239
-    3. Rank: Flight Attendant
-    4. Address: Hlíðarvegur 90, 105 Reykjavík, Iceland
-    5. Phone Number: 777-1239
-    6. Email: brynjakaradottir@nanair.is
-    7. Home Number: 555-1239
+Would you like to add another employee?
+Or go back to the main menu?
 
-    Press the number of the field you want to edit
-    Press Q to go back
+Press A to add another employee 
+Press Q to go back to the main menu
+    
 ------------------------------------------------------
-User Input: 5
-
-
-6. 
-------------------------------------------------------
-                NaN - Air Employees
-                 Brynja Káradóttir
-------------------------------------------------------
-Edit:
-    Enter new Phone Number:
-
-    Press enter to confirm
-    Press Q to go back
-------------------------------------------------------
-User Input: 776-1244 and Enter
-
-
-7.
-------------------------------------------------------
-                NaN - Air Employees
-                 Brynja Káradóttir
-------------------------------------------------------
-    1. Name: Brynja Káradóttir
-    2. Personal ID: 080899-1239
-    3. Rank: Flight Attendant
-    4. Address: Hlíðarvegur 90, 105 Reykjavík, Iceland
-    5. Phone Number: 776-1244
-    6. Email: brynjakaradottir@nanair.is
-    7. Home Number: 555-1239
-
-    Press E to edit this Employee
-    Press Q to go back
-------------------------------------------------------
-
-
-
-
+User Input: Q
