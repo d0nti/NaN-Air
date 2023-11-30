@@ -1,0 +1,20 @@
+
+
+Use Cases:
+
+1. Register Destination
+2. Register Voyage
+3. Register Employee
+4. Change Employee Information
+5. Change Destination Information
+6. Change Voyage Information
+7. Display List of Employees (Flight Attendants) Working on a Specific Date
+8. Display List of Voyages
+9. Display List of Destinations
+10. Register Staff for Voyage
+11. Copy Voyages
+12. Repeat Voyages
+13. Make a Printable Overview for an Employee (week)
+
+
+Má endilega bæta við :-)

@@ -1,3 +1,4 @@
+
     ______
         _\ _~-\___
 =  = ==(____AA____D
@@ -42,6 +43,7 @@ User input: 2
     6. List All Heads of Service
     7. Register New Employee
     8. Shift Plan
+    8. Go Back
     9. Search
 ----------------------------
 User input: 5
