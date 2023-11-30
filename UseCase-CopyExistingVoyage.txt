@@ -57,10 +57,86 @@ User input: 2
 ------------------------------
        NaN - Air Voyages
 ------------------------------
-    1. 
-------------------------------
-User input: 4
+    1. Kulusuk 01.01.2024
+    2. Nuuk 01.01.2024
+    3. Þórshöfn 03.03.2024
 
+    Enter Voyage Number to View Details
+------------------------------
+User input: 1
+
+
+5. 
+------------------------------
+       NaN - Air Voyages
+       Kulusuk 01.01.2024
+------------------------------
+Time:
+    1. Departure: 01.01.2024 12:00
+    2. Arrival: 01.01.2024 14:00
+
+Crew:
+    3. Captain: Þórður Jónsson
+    4. Copilot: Jón Þórðarson
+    5. Flight Attendant: Guðrún Guðmundsdóttir
+    6. Flight Attendant: Jóna Jónsdóttir
+    7. Head of Service: Sigurður Sigurðarson
+
+Aircraft:
+    8. Boeing 747-8
+
+Location:
+    9. Kulusuk
+
+    Enter E to edit
+    Enter Copy to copy entire voyage
+    Enter Copy Crew to copy crew
+    Enter Copy Aircraft to copy aircraft
+    Enter Copy Location to copy location
+------------------------------
+User input: Copy
+
+6. 
+------------------------------
+       NaN - Air Voyages
+       Kulusuk 01.01.2024
+------------------------------
+Voyage has been copied.
+
+Enter date to paste voyage:
+
+------------------------------
+01.02.2024
+
+
+7. 
+-----------------------------------------------
+                NaN - Air Voyages             /
+                Kulusuk 02.02.2024            /
+-----------------------------------------------
+Time:
+    1. Departure: 01.01.2024 12:00
+    2. Arrival: 01.01.2024 14:00
+
+Crew:
+    3. Captain: Þórður Jónsson
+    4. Copilot: Jón Þórðarson
+    5. Flight Attendant: Guðrún Guðmundsdóttir
+    6. Flight Attendant: Jóna Jónsdóttir
+    7. Head of Service: Sigurður Sigurðarson
+
+Aircraft:
+    8. Boeing 747-8
+
+Location:
+    9. Kulusuk
+
+    Enter E to edit
+    Enter Copy to copy entire voyage
+    Enter Copy Crew to copy crew
+    Enter Copy Aircraft to copy aircraft
+    Enter Copy Location to copy location
+-----------------------------------------------
 
 
 
