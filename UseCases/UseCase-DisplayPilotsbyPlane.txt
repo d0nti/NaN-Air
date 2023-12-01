@@ -55,8 +55,36 @@ User input: 5
     5. Go Back
 
 Enter number to view details
+Enter M to view complete list of 
+all 
 ------------------------------
-User Input: 1
+User Input: M
+
+
+4. 
+------------------------------
+       NaN - Aircrafts
+------------------------------
+    1. Boeing 747-PepsiMax
+        Brjánn Leifsson
+        Þorsteinn Þorri Sigurðsson
+    2. Boeing 747-Binary
+        Arnaldur Þór Þórsson
+        Bergþóra Þórhallsdóttir
+    3. Boeing 747-ASCII
+        Magnús Magnússon
+        Jón Jónssson
+        Bergur Bjarnason
+    4. Boeing 757-GylfiErBestur
+        Svava Þóra Þórisdóttir
+        Þórunn Þórhallsdóttir
+    5. Go Back
+
+Enter number to view details
+Enter M to view complete list of 
+all 
+------------------------------
+User input: 1
 
 
 4. 
