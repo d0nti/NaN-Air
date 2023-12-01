@@ -61,7 +61,7 @@ samantekt:
 Við komumst langleiðina með wire frame og use cases og héldum góðum takti í skýrslunni. þetta er allt að smella saman
 
 1. des
-markið í klára alla skýrsluna.
+markmið í dag er að klára alla skýrsluna.
 
 verkefnaskipting:
 Við vorum öll að klára að setja í skýrsluna og finishing touches á þau verkefni sem við vorum með gær
