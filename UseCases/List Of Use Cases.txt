@@ -26,11 +26,11 @@ A kröfur ✅
 B kröfur
 1. The system should be able to keep track of which pilots are allowed to fly which aircraft ✅ UseCase - DisplayListAllPilotswithLicense
 2. User can enter the number of sold seats for each flight ✅ UseCase - RegisterSeats
-3. The system should be able to assign a flight number to each flight ❗
+3. The system should be able to assign a flight number to each flight ✅ UseCase - GenerateFlightNumber
 4. User can register a plane ✅ UseCase - RegisterPlanes
 5. User can register what license a pilot has for what plane ✅ UseCase - DisplayListAllPilotswithLicense
 6. The system should be able to display a list of all pilots that have a license for a specific plane type - ✅ UseCase - DisplayListAllPilotswithLicense
 7. The system should be able to display a list of all pilots by plane type ✅ UseCase - DisplayPilotsbyPlane
 8. User can change the name of a contact that is registered for a destination ✅ UseCase - ChangeDestinationInformation
 9. User can change the emergency phone number that is registered for a destination ✅ UseCase - ChangeDestinationInformation
-10. The system should be able to display a list of all planes that are registered at the company and show their status at a specific date and time ❗
+10. The system should be able to display a list of all planes that are registered at the company and show their status at a specific date and time ✅ UseCase - DisplayAircraftListandStatus
