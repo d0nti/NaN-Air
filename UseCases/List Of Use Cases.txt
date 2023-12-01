@@ -5,20 +5,20 @@ A kröfur ✅
 1. User can register a voyage ✅ UseCase - CreateNewVoyage
 2. User can add staffing information about the voyage ✅ UseCase - ManRegisteredVoyage
 3. User must be able to copy a work trip registration for the same destination and at the same time over multiple days ✅ UseCase - CopyExistingVoyage
-4. User must be able to copy the registration of a voyage for the same destination and at the same time as an event that occurs at regular intervals
+4. User must be able to copy the registration of a voyage for the same destination and at the same time as an event that occurs at regular intervals ✅ UseCase - CopyExistingVoyage
 5. User can register an employee ✅ UseCase - RegisterFlightAttendant
 6. The system should be able to display a list of all employees ✅ UseCase - DisplayListEmployees
 7. User can register a pilot ✅ UseCase - RegisterFlightAttendant
 8. The system can display a list of all pilots ✅ UseCase - DislplayListAllPilotswithLicense
 9. User can register a flight attendant ✅ UseCase - RegisterFlightAttendant
-10. The system should be able to display all flight attendants ✅ UseCase - DislplayListAllPilotswithLicense
+10. The system should be able to display all flight attendants ✅ UseCase - DisplayListEmployees
 11. The system should be able to display information about a specific employee ✅ UseCase - ChangeEmployeeInfo
 12. User should be able to change information about an employee ✅ UseCase - ChangeEmployeeInfo
 13. User can register a destination ✅ UseCase - RegisterDestination
 14. The system should be able to display a list of all destinations ✅ UseCase - ChangeDestinationInformation
 15. The system should be able to display a list of all voyages ✅ UseCase - DisplayListVoyages
-16. The system should be able to display a list of all employees who are not working a specific day ✅ UseCase - DisplayListFlighAttendantsWorkingonDate
-17. The system should be able to display a list of all employees who are working a specific day ✅ UseCase - DisplayListFlighAttendantsWorkingonDate
+16. The system should be able to display a list of all employees who are not working a specific day ✅ UseCase - DisplayListFlightAttendantsWorkingonDate
+17. The system should be able to display a list of all employees who are working a specific day ✅ UseCase - DisplayListFlightAttendantsWorkingonDate
 18. The system should be able to display a printable summary that shows all voyages of an employee for a specific week ✅ UseCase - DisplayWorkWeek
 
 
@@ -28,9 +28,77 @@ B kröfur
 2. User can enter the number of sold seats for each flight ✅ UseCase - RegisterSeats
 3. The system should be able to assign a flight number to each flight ✅ UseCase - GenerateFlightNumber
 4. User can register a plane ✅ UseCase - RegisterPlanes
-5. User can register what license a pilot has for what plane ✅ UseCase - DisplayListAllPilotswithLicense
+5. User can register what license a pilot has for what plane ✅ UseCase - RegisterPilotLicense
 6. The system should be able to display a list of all pilots that have a license for a specific plane type - ✅ UseCase - DisplayListAllPilotswithLicense
 7. The system should be able to display a list of all pilots by plane type ✅ UseCase - DisplayPilotsbyPlane
 8. User can change the name of a contact that is registered for a destination ✅ UseCase - ChangeDestinationInformation
 9. User can change the emergency phone number that is registered for a destination ✅ UseCase - ChangeDestinationInformation
 10. The system should be able to display a list of all planes that are registered at the company and show their status at a specific date and time ✅ UseCase - DisplayAircraftListandStatus
+
+
+
+
+UseCases in Wireframes (Happy Paths):
+1. ChangeEmployeeInfo
+    - 11. The system should be able to display information about a specific employee ✅ UseCase
+    - 12. User should be able to change information about an employee
+
+2. CreateNewVoyage
+    - 1. User can register a voyage
+
+3. DisplayAircraftListandStatus
+    - 10. The system should be able to display a list of all planes that are registered at the company and show their status at a specific date and time
+
+4. RegisterFlightAttendant
+    - 5. User can register an employee
+    - 7. User can register a pilot
+    - 9. User can register a flight attendant
+
+5. CopyExistingVoyage
+    - 3. User must be able to copy a work trip registration for the same destination and at the same time over multiple days
+    - 4. User must be able to copy the registration of a voyage for the same destination and at the same time as an event that occurs at regular intervals
+
+6. DisplayListAllPilotswithLicense
+    - 8. The system can display a list of all pilots
+    - 1. The system should be able to keep track of which pilots are allowed to fly which aircraft
+    - 6. The system should be able to display a list of all pilots that have a license for a specific plane type
+
+7. DisplayListEmployees
+    - 6. The system should be able to display a list of all employees
+    - 10. The system should be able to display all flight attendants
+
+8. DisplayListFlighAttendantsWorkingonDate
+    - 16. The system should be able to display a list of all employees who are not working a specific day
+    - 17. The system should be able to display a list of all employees who are working a specific day
+
+9. DisplayListVoyages
+    - 15. The system should be able to display a list of all voyages
+
+10. DisplayPilotsbyPlane
+    - 7. The system should be able to display a list of all pilots by plane type
+
+11. DisplayWorkWeek
+    - 18. The system should be able to display a printable summary that shows all voyages of an employee for a specific week
+
+12. GenerateFlightNumber
+    - 3. The system should be able to assign a flight number to each flight
+
+13. ManRegisteredVoyage
+    - 2. User can add staffing information about the voyage
+
+14. RegisterDestination
+    - 13. User can register a destination
+
+15. RegisterPilotLicense
+    - 5. User can register what license a pilot has for what plane
+
+16. RegisterPlanes
+    - 4. User can register a plane
+
+17. RegisterSeats
+    - 2. User can enter the number of sold seats for each flight
+
+18. ChangeDestinationInformation
+    - 14. The system should be able to display a list of all destinations
+    - 8. User can change the name of a contact that is registered for a destination
+    - 9. User can change the emergency phone number that is registered for a destination
