@@ -72,8 +72,8 @@ User Input: M
         Arnaldur Þór Þórsson
         Bergþóra Þórhallsdóttir
     3. Boeing 747-ASCII
-        Magnús Magnússon
         Jón Jónssson
+        Magnús Magnússon
         Bergur Bjarnason
     4. Boeing 757-GylfiErBestur
         Svava Þóra Þórisdóttir

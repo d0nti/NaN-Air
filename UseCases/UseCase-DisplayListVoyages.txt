@@ -37,25 +37,37 @@ User Input: 1
     1. Register Voyage
     2. Pick Staff for Voyage
     3. List All Voyages
+    4. Go Back
 ------------------------------
 User Input: 3
 
 3.
 ------------------------------------------
             NaN - Air Voyages
-              Choose list
 ------------------------------------------
-    1. Current Voyages
-    2. Past Voyages 
+List All Voyages:
+    1. By Date
+    2. By Week
 ------------------------------------------
 User Input: 1
+
 
 4. 
 ------------------------------------------
             NaN - Air Voyages
+                By Date
+------------------------------------------
+    Enter Date:
+------------------------------------------
+User Input: 30/11/2023
+
+
+5. 
+------------------------------------------
+            NaN - Air Voyages
              Current Voyages 
 ------------------------------------------
-Current date: 30/11/2023
+Date: 30/11/2023
 __________________________________________________________________________________________
 Flight | Departure Time | Departure Location |     ETA      | Arrival location | Remarks |
 NA101  |    12:00       |     Reykjavík      |    13:25     |    Þórshöfn      |         |
@@ -66,8 +78,7 @@ NA404  |    19:30       |    longyearbyen    |    22:30     |    Reykjavík     
 
 Press U to update
 Press C to choose another list
-Press Q to go back to the main menu
-
+Press Q to go back
 ------------------------------------------
 User Input: Q
 
