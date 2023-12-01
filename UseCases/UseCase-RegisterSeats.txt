@@ -59,7 +59,7 @@ User input: 1
 ------------------------------
        NaN - Assign Seats
 ------------------------------
-Assign number of seats sold:
+Assign number of seats sold: 69
     
     Press Q to go back
 
