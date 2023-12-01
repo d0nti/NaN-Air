@@ -36,70 +36,29 @@ User input: 4
 ------------------------------
     1. Register Aircraft
     2. De-Register Aircraft
-    3. Aircraft Status
+    3. Aircraft List and Status
     4. Aircraft Maintenance
-    5. List Aircrafts
-    6. Go Back  
+    5. Go Back  
 ------------------------------
-User input: 5
+User input: 3
 
 
 3. 
 ------------------------------
        NaN - Aircrafts
 ------------------------------
+01.01.2024
     1. Boeing 747-PepsiMax
+        Status: In Maintenance
     2. Boeing 747-Binary
+        Status: In Flight
     3. Boeing 747-ASCII
+        Status: Free
     4. Boeing 757-GylfiErBestur
+        Status: In Flight
     5. Go Back
 
-Enter number to view details
+Enter number to view details and edit
+Enter Date to change date
 ------------------------------
 User Input: 1
-
-
-4. 
-------------------------------
-       NaN - Aircrafts
-------------------------------
-Boeing 747-PepsiMax
-
-Licensed Pilots:
-    1. Brjánn Leifsson
-    2. Þorsteinn Þorri Sigurðsson
-
-Enter number to view Pilot details
-Enter Status to view Aircraft Status
-Enter Q to go back
-------------------------------
-User Input: Status
-
-
-5. 
-------------------------------
-       NaN - Aircrafts
-    Boeing 747-PepsiMax
-------------------------------
-30.11.2024
-    Status: Ready
-
-Enter Update to update status
-Enter Date to change date
-Enter Q to go back
-------------------------------
-User Input: 05.12.2024
-
-
-6. 
-------------------------------
-       NaN - Aircrafts
-    Boeing 747-PepsiMax
-------------------------------
-05.12.2024
-    Status: Maintenance
-
-Enter Update to update status
-Enter Date to change date
-Enter Q to go back
-------------------------------
