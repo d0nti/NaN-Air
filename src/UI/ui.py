@@ -1,7 +1,6 @@
 from Logic.logic import EmployeeLogic
 from Model.employee import Employee
 from UI.voyages import Voyages
-from Logic.UILogicWrapper import LogicDataWrapper
 
 
 BOOKING_SYSTEM = "Booking System"
@@ -59,6 +58,7 @@ AIRPLANE_MENU = (
 class MainMenu:
     def __init__(self):
         self.employee_logic = EmployeeLogic(Employee)
+        self.voyages = Voyages()
 
     def menu_output(self):
         print(HEADER)
@@ -69,8 +69,8 @@ class MainMenu:
         while True:
             command = input("User Input: ").lower()
             if command == "1" or command == "1.":
-                self.voyages_menu_output()
-                self.input_prompt_voyages()
+                self.voyages.voyages_menu_output() # PRENTAR MENU
+                self.voyages.input_prompt_voyages() # LES INPUT
             elif command == "2" or command == "2.":
                 pass
             elif command == "3" or command == "3.":

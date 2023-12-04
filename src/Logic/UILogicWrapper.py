@@ -1,9 +1,9 @@
 from Logic.logic import EmployeeLogic
-from Data.LogicDataWrapper import LogicDataWrapper
+from Data.LogicDataWrapper import Data_Wrapper
 
 class Logic_Wrapper:
     def __init__(self):
-        self.data_wrapper = LogicDataWrapper()
+        self.data_wrapper = Data_Wrapper()
         self.employee_logic = EmployeeLogic(self.data_wrapper)
 
     def create_employee(self, employee):

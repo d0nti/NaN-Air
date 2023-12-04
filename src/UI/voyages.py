@@ -11,6 +11,7 @@ class Voyages:
         self.voyages_menu_output()
         
     def voyages_menu_output(self):
+        # PRENTAR MENU-IÐ .  <---- PUNKTUR
         print(HEADER_VOYAGES)
         print("1. Register Voyage")
         print("2. Edit Voyage")
@@ -21,6 +22,7 @@ class Voyages:
         print("q. Quit")
 
     def input_prompt_voyages(self):
+        # LES INPUT . <---- PUNKTUR
         while True:
             command = input("User Input: ")
             command = command.lower()

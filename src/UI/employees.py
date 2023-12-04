@@ -6,6 +6,16 @@ HEADER_EMPLOYEES = (
     + "------------------------------"
 )
 
+HEADER_INPUT_2 =(
+    "------------------------------"
+    + "\n"
+    + "  NaN Air - Employee List"
+    + "\n"
+    + "------------------------------"
+)
+
+
+
 class Employees:
     def __init__(self):
         self.employees_menu_output()
@@ -47,3 +57,19 @@ class Employees:
                 pass
             else:
                 print("Invalid input! Please try again.")
+
+
+    def input_2(self):
+        print(HEADER_INPUT_2)
+        while True:
+            command = input("User Input: ")
+            command = command.lower()
+            if command == "q" or command == "q.":
+                print("Bye Bye!")
+                break
+            elif command == "b" or command == "b.":
+                break
+            elif command == "1" or command == "1.":
+                pass
+            elif command == "2" or command == "2.":
+                pass

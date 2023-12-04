@@ -1,6 +1,5 @@
 from Data.data import EmployeeData
 
-
 class Data_Wrapper:
     def __init__(self):
         self.employee_data = EmployeeData()
@@ -9,4 +8,4 @@ class Data_Wrapper:
         return self.employee_data.read_all_employees()
 
     def create_customer(self, employee):
-        return self.employee_data.create_employee(employee)
+        return self.employee_data.create_employee(employee) 

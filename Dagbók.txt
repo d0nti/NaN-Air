@@ -79,3 +79,6 @@ Marvin: Data
 Viggó: Alls staðar
 Anton: Logic
 
+Samantekt:
+Í dag náðum við að byrja á UI smá og við náðum að gera data þannig að hægt er að birta alla employees sem listi 
+svo er líka hægt að búa til employees.
