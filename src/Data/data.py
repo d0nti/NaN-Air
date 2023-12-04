@@ -24,7 +24,7 @@ class EmployeeData:
             writer.writerow({"name": employee_data[0], "ssid": employee_data[1], "job title": employee_data[2], "license": employee_data[3], "address": employee_data[4], "phone_number": employee_data[5], "e_mail_address": employee_data[6], "home_phone": employee_data[7]})
 
     def update_employee(self, employee):
-        pass 
+        pass
 
 
 
