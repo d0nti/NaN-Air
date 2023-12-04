@@ -72,3 +72,10 @@ Við vorum öll að klára að setja í skýrsluna og finishing touches á þau 
 Smá vandræði með git hér og þar en þá kom GitHub manual sér vel.
 Byrjuðum á að skipta niður hvaða layer hver fær og komum okkur af stað í forritun.
 
+Verkefnaskipting í dag.
+Hera: UI
+Andrea: UI
+Marvin: Data
+Viggó: Alls staðar
+Anton: Logic
+
