@@ -11,4 +11,4 @@ class Logic_Wrapper:
         return self.employee_logic.create_employee(employee)
 
     def get_all_employees(self):
-        return self.employee_logic.get_all_employees()
+        return self.employee_logic.get_all_employees() 
