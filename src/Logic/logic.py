@@ -1,5 +1,5 @@
 from Data.data import EmployeeData
-from src.Models import employees
+from Models import employees
 
 class EmployeeLogic:
     def __init__(self, data_connection):
