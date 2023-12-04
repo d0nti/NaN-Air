@@ -67,3 +67,8 @@ verkefnaskipting:
 Við vorum öll að klára að setja í skýrsluna og finishing touches á þau verkefni sem við vorum með gær
 
 
+4. des
+Í dag byrjuðum við að setja upp forritunarumhverfið okkar. það er mjög fallegt.
+Smá vandræði með git hér og þar en þá kom GitHub manual sér vel.
+Byrjuðum á að skipta niður hvaða layer hver fær og komum okkur af stað í forritun.
+
