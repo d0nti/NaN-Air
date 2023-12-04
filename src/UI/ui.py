@@ -1,4 +1,4 @@
-from Logic import EmployeeLogic
+from Logic.logic import EmployeeLogic
 
 
 class MainMenu:

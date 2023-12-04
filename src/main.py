@@ -1,13 +1,10 @@
-from UI import MainMenu
-from Logic import EmployeeLogic
-from Data import EmployeeData
+from UI.ui import MainMenu
 
 
 
 
-
-
-
+ui = MainMenu()
+ui.menu_output()
 
 
 
