@@ -1,5 +1,5 @@
 from Data.data import EmployeeData
-from Models import employees
+from Data.LogicDataWrapper import Data_Wrapper
 
 class EmployeeLogic:
     def __init__(self, data_connection):

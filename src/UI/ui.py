@@ -1,9 +1,9 @@
 from Logic.logic import EmployeeLogic
-
+from Model.employee import Employee
 
 class MainMenu:
     def __init__(self):
-        self.employee_logic = EmployeeLogic()
+        self.employee_logic = EmployeeLogic(Employee)
 
     def menu_output(self):
         print("------------------------------")
