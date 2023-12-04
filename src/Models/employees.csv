@@ -1,5 +1,5 @@
-name, ssid, job_title, address, phone_number, e-mail_address, home_phone
-Brjánn, 000000-0001, pilot, menntavegur 1, +123-456-7890, brjann@nan.is, 
+name, ssid, job_title, license, address, phone_number, e-mail_address, home_phone
+Brjánn, 000000-0001, pilot, A-1, menntavegur 1, +123-456-7890, brjann@nan.is,
 
 
 
