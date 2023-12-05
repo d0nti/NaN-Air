@@ -1,11 +1,7 @@
 from Data.data import EmployeeData
 
-<<<<<<< Updated upstream
-class Data_Wrapper:
-=======
 
 class Logic_Data_Wrapper:
->>>>>>> Stashed changes
     def __init__(self):
         self.employee_data = EmployeeData()
 

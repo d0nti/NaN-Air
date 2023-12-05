@@ -1,10 +1,7 @@
 from Logic.logic import EmployeeLogic
 from Model.employee import Employee
 from UI.voyages import Voyages
-<<<<<<< Updated upstream
-=======
 from UI.employees import Employees
->>>>>>> Stashed changes
 
 
 BOOKING_SYSTEM = "Booking System"
@@ -63,10 +60,7 @@ class MainMenu:
     def __init__(self):
         self.employee_logic = EmployeeLogic(Employee)
         self.voyages = Voyages()
-<<<<<<< Updated upstream
-=======
         self.employees = Employees()
->>>>>>> Stashed changes
 
     def menu_output(self):
         print(HEADER)
@@ -77,13 +71,8 @@ class MainMenu:
         while True:
             command = input("User Input: ").lower()
             if command == "1" or command == "1.":
-<<<<<<< Updated upstream
                 self.voyages.voyages_menu_output() # PRENTAR MENU
                 self.voyages.input_prompt_voyages() # LES INPUT
-=======
-                self.voyages.voyages_menu_output()
-                self.voyages.input_prompt_voyages()
->>>>>>> Stashed changes
             elif command == "2" or command == "2.":
                 self.employees.employees_menu_output()
                 self.employees.input_prompt_employees()

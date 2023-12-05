@@ -59,22 +59,6 @@ class Employees:
                 print("Invalid input! Please try again.")
 
 
-<<<<<<< Updated upstream
-    def input_2(self):
-        print(HEADER_INPUT_2)
-        while True:
-            command = input("User Input: ")
-            command = command.lower()
-            if command == "q" or command == "q.":
-                print("Bye Bye!")
-                break
-            elif command == "b" or command == "b.":
-                break
-            elif command == "1" or command == "1.":
-                pass
-            elif command == "2" or command == "2.":
-                pass
-=======
     def register_employee(self):
+        print(HEADER_INPUT_2)
         pass
->>>>>>> Stashed changes
