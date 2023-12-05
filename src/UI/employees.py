@@ -81,14 +81,8 @@ class Employees:
             command = command.lower()
 
             if command == "q" or command == "q.":
-<<<<<<< HEAD
                 print(QUIT_MESSAGE)
-                break           
-=======
-                print("Bye Bye!")
                 break
->>>>>>> ab56521959d1dce8c34d6bc5dac82aabd659a929
-
             elif command == "b" or command == "b.":
                 break
 
@@ -105,6 +99,7 @@ class Employees:
                 print(INVALID_INPUT)
 
     def list_employees(self):
+        print(HEADER_EMPLOYEES.format("Employee list"))
         employees = self.logic_wrapper.get_all_employees()
 
         if employees:
@@ -119,51 +114,40 @@ class Employees:
                 "E-mail Address",
             ]
 
-            for employee in employees:
-                table.add_row(
-                    [
-                        employee.get("name"),
-                        employee.get("ssid"),
-                        employee.get("job_title"),
-                        employee.get("license"),
-                        employee.get("address"),
-                        employee.get("phone_number"),
-                        employee.get("e-mail_address"),
-                    ]
-                )
+        for employee in employees:
+            table.add_row(
+                [
+                    employee.get("name"),
+                    employee.get("ssid"),
+                    employee.get("job_title"),
+                    employee.get("license"),
+                    employee.get("address"),
+                    employee.get("phone_number"),
+                    employee.get("e-mail_address"),
+                ]
+            )
 
             print(table)
         else:
             print("No employees found.")
 
-    # def list_employees(self):
-    #     print(HEADER_EMPLOYEES.format("Employee list"))
-    #     all_employees = self.logic_wrapper.get_all_employees() # ÞETTA VIRKAR !! YAAAAY!!
-    #     if all_employees:
-    #         for employee in all_employees:
+        print("1. Search")
+        print("2. Sort by:")
+        command = input("User Input: ")
 
-    #             print(employee.get("name"), employee.get("ssid"), employee.get("job_title"),
-    #                   employee.get("license"), employee.get("address"), employee.get("phone_number"),
-    #                   employee.get("e-mail_address"), employee.get("home_phone"), sep=", ")
+        if command == "2" or command == "2.":
+            print("1. Captains")
+            print("2. Co-Pilots")
+            print("3. Flight Attendants")
+            print("4. Heads of Service")
 
-    #     else:
-    #         print("No employees found.")
+            self.get_sorted_list((input("User Input: ")))
 
-    #     print("1. Search")
-    #     print("2. Sort by:")
-    #     command = input("User Input: ")
-
-    #     if command == "2" or command == "2.":
-    #         print("1. Captains")
-    #         print("2. Co-Pilots")
-    #         print("3. Flight Attendants")
-    #         print("4. Heads of Service")
-
-    #         self.get_sorted_list((input("User Input: ")))
-
-    #     elif command == "1" or command == "1.":
-    #         search_output = self.logic_wrapper.search(input("")) # implementa search hér - sjá logic.py
-    #         print(search_output)
+        elif command == "1" or command == "1.":
+            search_output = self.logic_wrapper.search(
+                input("")
+            )  # implementa search hér - sjá logic.py
+            print(search_output)
 
     def get_sorted_list(self, command):
         self.command = command
