@@ -1,4 +1,5 @@
 INVALID_INPUT = "Invalid input! Please try again."
+QUIT_MESSAGE = "Bye Bye!"
 
 from prettytable import PrettyTable
 
@@ -80,7 +81,7 @@ class Employees:
             command = command.lower()
 
             if command == "q" or command == "q.":
-                print("Bye Bye!")
+                print(QUIT_MESSAGE)
                 break           
 
             elif command == "b" or command == "b.":

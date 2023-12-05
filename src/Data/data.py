@@ -24,6 +24,7 @@ class EmployeeData:
             writer.writerow({"name": employee_data[0], "ssid": employee_data[1], "job title": employee_data[2], "license": employee_data[3], "address": employee_data[4], "phone_number": employee_data[5], "e_mail_address": employee_data[6], "home_phone": employee_data[7]})
 
 #þetta á að virka!!!!!!!!!!!!! þetta skal virka plis
+#þarf bara að importa pandas og þá á þetta að virka vonandi
 '''
          #update the 
     def update_employee(self, employee_num, update_job_title, update_license, update_address, update_phone_number, update_e_mail_address, update_home_phone):
@@ -42,4 +43,36 @@ class EmployeeData:
          df.to_csv("employees.csv", index=False)
 '''
 
+class PlaneData:
+    def __init__(self):
+        self.file_name = "src/Files/airplanes.csv"
 
+    def get_all_airplanes(self):
+        with open(self.file_name, "r") as csv_file:
+            reader = csv.DictReader(csv_file)
+            airplanes_dict = [row for row in reader]
+            return airplanes_dict
+
+    def create_airplane(self, plane):
+        with open(self.file_name, "a", encoding="utf-8") as csv_file:
+            fieldnames = ["name", "type", "supplier", "seats"]
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+            employee_data = list(map(lambda key: plane[key], employee.keys()))
+            writer.writerow({"name": employee_data[0], "type": employee_data[1], "supplier": employee_data[2], "seats": employee_data[3]})
+'''
+         #update the 
+    def update_plane(self, plane_name, update_type, update_supplier, update_seats):
+         #reading the csv file
+         df = pd.read_csv("airplanes.csv")
+
+         #update the 
+         df.loc[airplane_name, 'job_title'] = update_job_title
+         df.loc[airplane_name, 'licence'] = update_license
+         df.loc[airplane_name, 'adress'] = update_address
+         df.loc[airplane_name, 'phone_number'] = update_phone_number
+         df.loc[airplane_name, 'e-mail_adress'] = update_e_mail_address
+         df.loc[airplane_name, 'home_phone'] = update_home_phone
+
+         #writing into the file
+         df.to_csv("employees.csv", index=False)
+'''

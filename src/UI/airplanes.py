@@ -1,11 +1,21 @@
-
+INVALID_INPUT = "Invalid input! Please try again."
+QUIT_MESSAGE = "Bye Bye!"
 HEADER_AIRPLANES= (
+      "------------------------------"
+    + "\n"
+    + "  NaN Air - {}"
+    + "\n"
+    + "------------------------------"
+)
+
+
+"""HEADER_AIRPLANES= (
       "------------------------------"
     + "\n"
     + "  NaN Air - Manage Airplanes"
     + "\n"
     + "------------------------------"
-)
+)"""
 
 
 class Airplanes:
@@ -13,7 +23,7 @@ class Airplanes:
         self.logic_wrapper = logic_wrapper
 
     def airplanes_menu_output(self):
-        print(HEADER_AIRPLANES)
+        print(HEADER_AIRPLANES.format("Manage Airplanes"))
         print("1. Register Airplane")
         print("2. Display Airplanes")
         print("3. Find Airplane")
@@ -27,7 +37,7 @@ class Airplanes:
             command = command.lower()
 
             if command == "q" or command == "q.":
-                print("Bye Bye!")
+                print(QUIT_MESSAGE)
                 break
 
             elif command == "b" or command == "b.":
@@ -46,4 +56,4 @@ class Airplanes:
                 pass
 
             else:
-                print("Invalid input! Please try again.")
+                print(INVALID_INPUT)
