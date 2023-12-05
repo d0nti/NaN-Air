@@ -12,33 +12,6 @@ HEADER_DESTINATIONS = (
 )
 
 
-
-"""HEADER_DESTINATIONS = (
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Manage Destinations"
-    + "\n"
-    + "------------------------------"
-)
-
-HEADER_INPUT_1 = (
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Destinations"
-    + "\n"
-    + "------------------------------"
-)
-
-
-HEADER_INPUT_2 = (
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Register Destination"
-    + "\n"
-    + "------------------------------"
-)"""
-
-
 class Destinations:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
@@ -65,7 +38,7 @@ class Destinations:
                 break
 
             elif command == "1" or command == "1.":
-                p
+                self.list_destinations()
 
             elif command == "2" or command == "2.":
                 pass
@@ -79,6 +52,7 @@ class Destinations:
 
     def list_destinations(self):
         print(HEADER_DESTINATIONS.format("Destinations"))
+        destinations = self.logic_wrapper.get_all_destinations()
 
     def register_destination(self):
         print(HEADER_DESTINATIONS.format("Register Destination"))

@@ -15,3 +15,5 @@ class UI_Logic_Wrapper:
     def search(self, filter):
         return self.employee_logic.search(filter)
     
+    def sort_by_captains(self):
+        return self.employee_logic.sort_by_captains()

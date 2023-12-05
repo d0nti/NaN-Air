@@ -8,16 +8,6 @@ HEADER_AIRPLANES= (
     + "------------------------------"
 )
 
-
-"""HEADER_AIRPLANES= (
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Manage Airplanes"
-    + "\n"
-    + "------------------------------"
-)"""
-
-
 class Airplanes:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper

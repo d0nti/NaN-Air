@@ -1,11 +1,9 @@
-import os
 import csv
-#import pandas as pd
+
 
 
 class EmployeeData:
     def __init__(self):
-        print(os.getcwd())
         self.file_name = "src/Files/employees.csv"
         
 
@@ -23,25 +21,8 @@ class EmployeeData:
             employee_data = list(map(lambda key: employee[key], employee.keys()))
             writer.writerow({"name": employee_data[0], "ssid": employee_data[1], "job title": employee_data[2], "license": employee_data[3], "address": employee_data[4], "phone_number": employee_data[5], "e_mail_address": employee_data[6], "home_phone": employee_data[7]})
 
-#þetta á að virka!!!!!!!!!!!!! þetta skal virka plis
-#þarf bara að importa pandas og þá á þetta að virka vonandi
-'''
-         #update the 
-    def update_employee(self, employee_num, update_job_title, update_license, update_address, update_phone_number, update_e_mail_address, update_home_phone):
-         #reading the csv file
-         df = pd.read_csv("employees.csv")
 
-         #update the 
-         df.loc[employee_num, 'job_title'] = update_job_title
-         df.loc[employee_num, 'licence'] = update_license
-         df.loc[employee_num, 'adress'] = update_address
-         df.loc[employee_num, 'phone_number'] = update_phone_number
-         df.loc[employee_num, 'e-mail_adress'] = update_e_mail_address
-         df.loc[employee_num, 'home_phone'] = update_home_phone
 
-         #writing into the file
-         df.to_csv("employees.csv", index=False)
-'''
 
 class PlaneData:
     def __init__(self):
@@ -57,22 +38,24 @@ class PlaneData:
         with open(self.file_name, "a", encoding="utf-8") as csv_file:
             fieldnames = ["name", "type", "supplier", "seats"]
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-            employee_data = list(map(lambda key: plane[key], employee.keys()))
+            employee_data = list(map(lambda key: plane[key], plane.keys()))
             writer.writerow({"name": employee_data[0], "type": employee_data[1], "supplier": employee_data[2], "seats": employee_data[3]})
-'''
-         #update the 
-    def update_plane(self, plane_name, update_type, update_supplier, update_seats):
-         #reading the csv file
-         df = pd.read_csv("airplanes.csv")
 
-         #update the 
-         df.loc[airplane_name, 'job_title'] = update_job_title
-         df.loc[airplane_name, 'licence'] = update_license
-         df.loc[airplane_name, 'adress'] = update_address
-         df.loc[airplane_name, 'phone_number'] = update_phone_number
-         df.loc[airplane_name, 'e-mail_adress'] = update_e_mail_address
-         df.loc[airplane_name, 'home_phone'] = update_home_phone
+class DestinationData:
+    def __init__(self):
+        self.file_name = "src/Files/Destinations.csv"
 
-         #writing into the file
-         df.to_csv("employees.csv", index=False)
-'''
+    def get_all_destinations(self):
+        with open(self.file_name, "r") as csv_file:
+            reader = csv.DictReader(csv_file)
+            destination_dict = [row for row in reader]
+            return destination_dict
+
+    def create_destination(self, destination):
+        with open(self.file_name, "a", encoding="utf-8") as csv_file:
+            fieldnames = ["name", "country", "airport", "flight_time", "distance_from_Iceland", "contact_name", "contact_phone_nr"]
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+            DestinationData = list(map(lambda key: destination[key], destination.keys()))
+            writer.writerow({"name": DestinationData[0], "country": DestinationData[1], "airport": DestinationData[2], "flight_time": DestinationData[3], "distance_from_Iceland": DestinationData[4], "contact_name": DestinationData[5], "contact_phone_nr": DestinationData[6]})
+
+      
