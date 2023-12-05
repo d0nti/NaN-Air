@@ -6,8 +6,7 @@ class EmployeeData:
     def __init__(self):
         print(os.getcwd())
         self.file_name = "src/Files/employees.csv"
-    
-
+        
 
     def get_all_employees(self):
         with open(self.file_name, "r") as csv_file:

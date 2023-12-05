@@ -1,3 +1,5 @@
+from Logic.UILogicWrapper import UI_Logic_Wrapper
+
 HEADER_EMPLOYEES = (
       "------------------------------"
     + "\n"
@@ -50,7 +52,7 @@ class Employees:
             elif command == "4" or command == "4.":
                 pass
             elif command == "5" or command == "5.":
-                self.register_employee(self)
+                self.register_employee()
             elif command == "6" or command == "6.":
                 pass
             elif command == "7" or command == "7.":
@@ -61,4 +63,5 @@ class Employees:
 
     def register_employee(self):
         print(HEADER_INPUT_2)
-        pass
+        UI_Logic_Wrapper.get_all_employees(UI_Logic_Wrapper)
+        

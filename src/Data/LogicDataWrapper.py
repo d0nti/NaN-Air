@@ -6,7 +6,7 @@ class Logic_Data_Wrapper:
         self.employee_data = EmployeeData()
 
     def get_all_customers(self):
-        return self.employee_data.read_all_employees()
+        return self.employee_data.get_all_employees()
 
     def create_customer(self, employee):
         return self.employee_data.create_employee(employee) 
