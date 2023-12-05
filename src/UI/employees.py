@@ -114,18 +114,18 @@ class Employees:
                 "E-mail Address",
             ]
 
-        for employee in employees:
-            table.add_row(
-                [
-                    employee.get("name"),
-                    employee.get("ssid"),
-                    employee.get("job_title"),
-                    employee.get("license"),
-                    employee.get("address"),
-                    employee.get("phone_number"),
-                    employee.get("e-mail_address"),
-                ]
-            )
+            for employee in employees:
+                table.add_row(
+                    [
+                        employee.get("name"),
+                        employee.get("ssid"),
+                        employee.get("job_title"),
+                        employee.get("license"),
+                        employee.get("address"),
+                        employee.get("phone_number"),
+                        employee.get("e-mail_address"),
+                    ]
+                )
 
             print(table)
         else:
