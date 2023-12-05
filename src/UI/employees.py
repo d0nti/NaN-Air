@@ -1,7 +1,11 @@
+from prettytable import PrettyTable
+
+
+
 INVALID_INPUT = "Invalid input! Please try again."
 QUIT_MESSAGE = "Bye Bye!"
 
-from prettytable import PrettyTable
+
 
 HEADER_EMPLOYEES = (
     "------------------------------"

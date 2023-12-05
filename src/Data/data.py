@@ -57,6 +57,22 @@ class PlaneData:
         with open(self.file_name, "a", encoding="utf-8") as csv_file:
             fieldnames = ["name", "type", "supplier", "seats"]
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-            employee_data = list(map(lambda key: plane[key], employee.keys()))
+            employee_data = list(map(lambda key: plane[key], plane.keys()))
             writer.writerow({"name": employee_data[0], "type": employee_data[1], "supplier": employee_data[2], "seats": employee_data[3]})
 
+class DestinationData:
+    def __init__(self):
+        self.file_name = "src/Files/Destinations.csv"
+
+    def get_all_destinations(self):
+        with open(self.file_name, "r") as csv_file:
+            reader = csv.DictReader(csv_file)
+            destination_dict = [row for row in reader]
+            return destination_dict
+
+    def create_destination(self, plane):
+        with open(self.file_name, "a", encoding="utf-8") as csv_file:
+            fieldnames = ["name", "type", "supplier", "seats"]
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+            employee_data = list(map(lambda key: plane[key], plane.keys()))
+            writer.writerow({"name": employee_data[0], "type": employee_data[1], "supplier": employee_data[2], "seats": employee_data[3]})
