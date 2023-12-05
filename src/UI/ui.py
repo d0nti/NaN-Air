@@ -1,8 +1,8 @@
-from Logic.logic import EmployeeLogic
-from Model.employee import Employee
 from UI.voyages import Voyages
 from UI.employees import Employees
 from UI.destinations import Destinations
+from UI.airplanes import Airplanes
+from Logic.UILogicWrapper import UI_Logic_Wrapper
 
 
 BOOKING_SYSTEM = "Booking System"
@@ -59,9 +59,11 @@ AIRPLANE_MENU = (
 
 class MainMenu:
     def __init__(self):
-        self.employee_logic = EmployeeLogic(Employee)
-        self.voyages = Voyages()
-        self.employees = Employees()
+        self.logic_wrapper = UI_Logic_Wrapper()
+        self.voyages = Voyages(self.logic_wrapper)
+        self.employees = Employees(self.logic_wrapper)
+        self.destinations = Destinations(self.logic_wrapper)
+        self.airplanes = Airplanes(self.logic_wrapper)
 
     def menu_output(self):
         print(HEADER)

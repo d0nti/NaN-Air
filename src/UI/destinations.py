@@ -27,8 +27,9 @@ HEADER_INPUT_2 = (
 
 
 class Destinations:
-    def __init__(self):
-        self.destinations_menu_output()
+    def __init__(self, logic_wrapper):
+        self.logic_wrapper = logic_wrapper
+        
         
     def destinations_menu_output(self):
         print(HEADER_DESTINATIONS)
