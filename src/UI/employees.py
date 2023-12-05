@@ -1,5 +1,5 @@
 HEADER_EMPLOYEES = (
-    "------------------------------"
+      "------------------------------"
     + "\n"
     + "  NaN Air - Manage Employees"
     + "\n"
@@ -50,7 +50,7 @@ class Employees:
             elif command == "4" or command == "4.":
                 pass
             elif command == "5" or command == "5.":
-                pass
+                self.register_employee(self)
             elif command == "6" or command == "6.":
                 pass
             elif command == "7" or command == "7.":
@@ -59,6 +59,7 @@ class Employees:
                 print("Invalid input! Please try again.")
 
 
+<<<<<<< Updated upstream
     def input_2(self):
         print(HEADER_INPUT_2)
         while True:
@@ -73,3 +74,7 @@ class Employees:
                 pass
             elif command == "2" or command == "2.":
                 pass
+=======
+    def register_employee(self):
+        pass
+>>>>>>> Stashed changes

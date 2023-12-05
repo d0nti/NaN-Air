@@ -1,5 +1,5 @@
 from Data.data import EmployeeData
-from Data.LogicDataWrapper import Data_Wrapper
+from Data.LogicDataWrapper import Logic_Data_Wrapper
 
 
 class EmployeeLogic:
