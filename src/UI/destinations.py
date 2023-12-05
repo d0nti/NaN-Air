@@ -65,7 +65,7 @@ class Destinations:
                 break
 
             elif command == "1" or command == "1.":
-                pass
+                self.list_destinations()
 
             elif command == "2" or command == "2.":
                 pass
@@ -79,7 +79,7 @@ class Destinations:
 
     def list_destinations(self):
         print(HEADER_DESTINATIONS.format("Destinations"))
-        
+        destinations = self.logic_wrapper.get_all_destinations()
 
     def register_destination(self):
         print(HEADER_DESTINATIONS.format("Register Destination"))

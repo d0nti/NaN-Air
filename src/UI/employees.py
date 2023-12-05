@@ -71,6 +71,7 @@ class Employees:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
 
+
     def employees_menu_output(self):
         print(HEADER_EMPLOYEES.format("Manage Employees"))
         print("1. Employees")
@@ -78,6 +79,7 @@ class Employees:
         print("3. Shift Plan")
         print("b. Back")
         print("q. Quit")
+
 
     def input_prompt_employees(self):
         while True:
@@ -101,6 +103,7 @@ class Employees:
 
             else:
                 print(INVALID_INPUT)
+
 
     def list_employees(self):
         print(HEADER_EMPLOYEES.format("Employee list"))
@@ -153,10 +156,14 @@ class Employees:
             )  # implementa search hér - sjá logic.py
             print(search_output)
 
+
     def get_sorted_list(self, command):
         self.command = command
 
-        if command == "1" or command == "1.":
+        if command == "q" or command == "q.":
+            pass
+        
+        elif command == "1" or command == "1.":
             # self.logic_wrapper.sort_by_captains()
             pass
 

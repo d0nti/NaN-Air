@@ -41,20 +41,6 @@ MAIN_MENU = (
     + "q. Quit"
 )
 
-
-"""AIRPLANE_MENU = (
-    "1. Register Aircraft"
-    + "\n"
-    + "2. "
-    + "\n"
-    + "3. Manage Destinations"
-    + "\n"
-    + "4. Manage Aircrafts"
-    + "\n"
-    + "q. Quit"
-)"""
-
-
 class MainMenu:
     def __init__(self):
         self.logic_wrapper = UI_Logic_Wrapper()
@@ -87,7 +73,7 @@ class MainMenu:
             elif command == "4" or command == "4.":
                 pass
 
-            elif command == "q":
+            elif command == "q" or command == "q.":
                 print(QUIT_MESSAGE)
                 break
 
