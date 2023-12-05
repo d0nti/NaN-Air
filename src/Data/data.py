@@ -59,20 +59,4 @@ class PlaneData:
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
             employee_data = list(map(lambda key: plane[key], employee.keys()))
             writer.writerow({"name": employee_data[0], "type": employee_data[1], "supplier": employee_data[2], "seats": employee_data[3]})
-'''
-         #update the 
-    def update_plane(self, plane_name, update_type, update_supplier, update_seats):
-         #reading the csv file
-         df = pd.read_csv("airplanes.csv")
 
-         #update the 
-         df.loc[airplane_name, 'job_title'] = update_job_title
-         df.loc[airplane_name, 'licence'] = update_license
-         df.loc[airplane_name, 'adress'] = update_address
-         df.loc[airplane_name, 'phone_number'] = update_phone_number
-         df.loc[airplane_name, 'e-mail_adress'] = update_e_mail_address
-         df.loc[airplane_name, 'home_phone'] = update_home_phone
-
-         #writing into the file
-         df.to_csv("employees.csv", index=False)
-'''
