@@ -8,8 +8,20 @@ class EmployeeData:
     def get_all_employees(self):
         with open(self.file_name, "r") as csv_file:
             reader = csv.DictReader(csv_file)
+
+
+
+
+
+
+
+
+    def get_all_employees(self):
+        with open(self.file_name, "r") as csv_file:
+            reader = csv.DictReader(csv_file)
             employees_dict = [row for row in reader]
             return employees_dict
+
 
     def create_employee(self, employee):
         with open(self.file_name, "a", encoding="utf-8") as csv_file:

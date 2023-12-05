@@ -1,7 +1,5 @@
 import csv
 
-
-
 class EmployeeData:
     def __init__(self):
         self.file_name = "src/Files/employees.csv"
