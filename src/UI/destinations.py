@@ -12,33 +12,6 @@ HEADER_DESTINATIONS = (
 )
 
 
-
-"""HEADER_DESTINATIONS = (
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Manage Destinations"
-    + "\n"
-    + "------------------------------"
-)
-
-HEADER_INPUT_1 = (
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Destinations"
-    + "\n"
-    + "------------------------------"
-)
-
-
-HEADER_INPUT_2 = (
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Register Destination"
-    + "\n"
-    + "------------------------------"
-)"""
-
-
 class Destinations:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
