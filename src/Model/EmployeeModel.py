@@ -18,7 +18,7 @@ class Pilot(Employee):
     def __init__(self, name):
         self.license = license
         super().__init__(name)
-    
+
 newEmployee = Employee("Jón", "2402922469")
 newEmployee1 = Employee("Jón1", "2402922469")
 
