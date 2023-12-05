@@ -8,7 +8,7 @@ HEADER_EMPLOYEES = (
     + "------------------------------"
 )
 
-HEADER_INPUT_2 =(
+HEADER_INPUT_1 =(
     "------------------------------"
     + "\n"
     + "  NaN Air - Employee List"
@@ -16,12 +16,27 @@ HEADER_INPUT_2 =(
     + "------------------------------"
 )
 
+HEADER_INPUT_2 =(
+    "------------------------------"
+    + "\n"
+    + "  NaN Air - Pilot List"
+    + "\n"
+    + "------------------------------"
+)
+
+HEADER_INPUT_3 =(
+    "------------------------------"
+    + "\n"
+    + "  NaN Air - Flight Attendant List"
+    + "\n"
+    + "------------------------------"
+)
 
 
 class Employees:
     def __init__(self):
         self.employees_menu_output()
-        
+
     def employees_menu_output(self):
         print(HEADER_EMPLOYEES)
         print("1. List All or Edit Employees")
@@ -38,30 +53,40 @@ class Employees:
         while True:
             command = input("User Input: ")
             command = command.lower()
+
             if command == "q" or command == "q.":
                 print("Bye Bye!")
                 break
+
             elif command == "b" or command == "b.":
                 break
+
             elif command == "1" or command == "1.":
                 pass
+
             elif command == "2" or command == "2.":
                 pass
+
             elif command == "3" or command == "3.":
                 pass
+
             elif command == "4" or command == "4.":
                 pass
+
             elif command == "5" or command == "5.":
-                self.register_employee()
+                self.list_employees()
+
             elif command == "6" or command == "6.":
                 pass
+
             elif command == "7" or command == "7.":
                 pass
+
             else:
                 print("Invalid input! Please try again.")
 
 
-    def register_employee(self):
+    def list_employees(self):
         print(HEADER_INPUT_2)
         UI_Logic_Wrapper.get_all_employees(UI_Logic_Wrapper)
         

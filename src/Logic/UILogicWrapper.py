@@ -3,7 +3,7 @@ from Data.LogicDataWrapper import Logic_Data_Wrapper
 
 class UI_Logic_Wrapper:
     def __init__(self):
-        self.employee_logic = EmployeeLogic()
+        self.employee_logic = EmployeeLogic(Logic_Data_Wrapper)
 
     def create_employee(self, employee):
         """Takes in a customer object and forwards it to the data layer"""

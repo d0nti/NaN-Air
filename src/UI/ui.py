@@ -2,6 +2,7 @@ from Logic.logic import EmployeeLogic
 from Model.employee import Employee
 from UI.voyages import Voyages
 from UI.employees import Employees
+from UI.destinations import Destinations
 
 
 BOOKING_SYSTEM = "Booking System"
@@ -70,19 +71,25 @@ class MainMenu:
         self.menu_output()
         while True:
             command = input("User Input: ").lower()
+
             if command == "1" or command == "1.":
                 self.voyages.voyages_menu_output() # PRENTAR MENU
                 self.voyages.input_prompt_voyages() # LES INPUT
+
             elif command == "2" or command == "2.":
-                self.employees.employees_menu_output()
-                self.employees.input_prompt_employees()
+                self.employees.employees_menu_output() # PRENTAR MENU
+                self.employees.input_prompt_employees() # LES INPUT
+
             elif command == "3" or command == "3.":
                 pass
+
             elif command == "4" or command == "4.":
                 pass
+
             elif command == "q":
                 print("Bye Bye!")
                 break
+
             else:
                 print("Invalid input! Please try again")
                 self.menu_output()  
