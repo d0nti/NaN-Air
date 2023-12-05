@@ -1,5 +1,3 @@
-name, ssid, job_title, license, address, phone_number, e-mail_address, home_phone
-Brjánn, 000000-0001, pilot, A-1, menntavegur 1, +123-456-7890, brjann@nanair.is,
-Stína, 000000-0002, flight attendant, , menntavegur 2, +098-765-4321, stina@nanair.is, +354-581-2345
-leifsi,00001,pilot,b-2,hr,21431341,john123@gmail.com,1231241
-Leifur Eiriks,12344566,Flight attendand,C-2,hr,1234532,gmail@gmail.is,123412
+name,ssid,job_title,license,address,phone_number,e-mail_address,home_phone
+Brjann,000000-0001,pilot,A-1,menntavegur 1,+123-456-7890,brjann@nanair.is,
+Stina,000000-0002,flight attendant,None,menntavegur 2,+098-765-4321,stina@nanair.is,+354-581-2345

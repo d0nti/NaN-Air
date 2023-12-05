@@ -12,6 +12,7 @@ MANAGE_DESTINATIONS = "Manage Destinations"
 MANAGE_VOYAGES = "Manage Voyages"
 DASH_SYMBOL = "-"
 LENGTH_SYMBOL = 30
+QUIT = "quit"
 
 
 HEADER = (
@@ -30,7 +31,24 @@ HEADER = (
 #     + "------------------------------
 # )
 
+
+
 MAIN_MENU = (
+
+    "1. {}"
+    + "\n"
+    + "2. {}"
+    + "\n"
+    + "3. {}"
+    + "\n"
+    + "4. {}"
+    + "\n"
+    + "q. {}"
+)
+
+
+
+"""MAIN_MENU = (
 
     "1. Manage Voyages"
     + "\n"
@@ -41,20 +59,20 @@ MAIN_MENU = (
     + "4. Manage Aircrafts"
     + "\n"
     + "q. Quit"
-)
+)"""
 
 
-AIRPLANE_MENU = (
+"""AIRPLANE_MENU = (
     "1. Register Aircraft"
     + "\n"
-    + "2. M"
+    + "2. "
     + "\n"
     + "3. Manage Destinations"
     + "\n"
     + "4. Manage Aircrafts"
     + "\n"
     + "q. Quit"
-)
+)"""
 
 
 class MainMenu:
@@ -66,7 +84,7 @@ class MainMenu:
         self.airplanes = Airplanes(self.logic_wrapper)
 
     def menu_output(self):
-        print(HEADER)
+        print(HEADER.format(location = BOOKING_SYSTEM))
         print(MAIN_MENU)
 
     def input_prompt_mainmenu(self):

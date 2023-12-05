@@ -8,4 +8,5 @@ class Logic_Data_Wrapper:
         return self.employee_data.get_all_employees()
 
     def register_employee(self, employee):
-        return self.employee_data.create_employee(employee) 
+        return self.employee_data.create_employee(employee)
+    
