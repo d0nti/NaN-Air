@@ -1,6 +1,18 @@
 from Logic.UILogicWrapper import UI_Logic_Wrapper
 
+INVALID_INPUT = "Invalid input! Please try again."
+
 HEADER_DESTINATIONS = (
+      "------------------------------"
+    + "\n"
+    + "  NaN Air - {}"
+    + "\n"
+    + "------------------------------"
+)
+
+
+
+"""HEADER_DESTINATIONS = (
       "------------------------------"
     + "\n"
     + "  NaN Air - Manage Destinations"
@@ -23,7 +35,7 @@ HEADER_INPUT_2 = (
     + "  NaN Air - Register Destination"
     + "\n"
     + "------------------------------"
-)
+)"""
 
 
 class Destinations:
@@ -32,7 +44,7 @@ class Destinations:
         
         
     def destinations_menu_output(self):
-        print(HEADER_DESTINATIONS)
+        print(HEADER_DESTINATIONS.format("Manage Destinations"))
         print("1. List Destinations")
         print("2. Register Destination")
         print("3. Search")
@@ -61,9 +73,12 @@ class Destinations:
                 pass
 
             else:
-                print("Invalid input! Please try again.")
+                print(INVALID_INPUT)
 
 
     def list_destinations(self):
-        print(HEADER_INPUT_1)
+        print(HEADER_DESTINATIONS.format("Destinations"))
+
+    def register_destination(self):
+        print(HEADER_DESTINATIONS.format("Register Destination"))
         

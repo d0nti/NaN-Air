@@ -1,5 +1,6 @@
 INVALID_INPUT = "Invalid input! Please try again."
 
+from prettytable import PrettyTable
 
 HEADER_EMPLOYEES = (
       "------------------------------"

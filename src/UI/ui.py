@@ -14,11 +14,13 @@ DASH_SYMBOL = "-"
 LENGTH_SYMBOL = 30
 QUIT = "quit"
 
+INVALID_INPUT = "Invalid input! Please try again."
+
 
 HEADER = (
     f"{DASH_SYMBOL * LENGTH_SYMBOL}"
     + "\n"
-    + "  NaN Air - {location}"
+    + "  NaN Air - {}"
     + "\n"
     + f"{DASH_SYMBOL * LENGTH_SYMBOL}"
 )
@@ -32,23 +34,7 @@ HEADER = (
 # )
 
 
-
 MAIN_MENU = (
-
-    "1. {}"
-    + "\n"
-    + "2. {}"
-    + "\n"
-    + "3. {}"
-    + "\n"
-    + "4. {}"
-    + "\n"
-    + "q. {}"
-)
-
-
-
-"""MAIN_MENU = (
 
     "1. Manage Voyages"
     + "\n"
@@ -59,7 +45,7 @@ MAIN_MENU = (
     + "4. Manage Aircrafts"
     + "\n"
     + "q. Quit"
-)"""
+)
 
 
 """AIRPLANE_MENU = (
@@ -84,7 +70,7 @@ class MainMenu:
         self.airplanes = Airplanes(self.logic_wrapper)
 
     def menu_output(self):
-        print(HEADER.format(location = BOOKING_SYSTEM))
+        print(HEADER.format("Booking System"))
         print(MAIN_MENU)
 
     def input_prompt_mainmenu(self):
@@ -101,7 +87,8 @@ class MainMenu:
                 self.employees.input_prompt_employees() # LES INPUT
 
             elif command == "3" or command == "3.":
-                pass
+                self.destinations.destinations_menu_output() # PRENTAR MENU
+                self.destinations.input_prompt_destinations() # LES INPUT
 
             elif command == "4" or command == "4.":
                 pass
