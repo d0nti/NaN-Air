@@ -6,7 +6,7 @@ from Logic.UILogicWrapper import UI_Logic_Wrapper
 
 
 DASH_SYMBOL = "-"
-LENGTH_SYMBOL = 30
+LENGTH_SYMBOL = 30 
 INVALID_INPUT = "Invalid input! Please try again."
 QUIT_MESSAGE = "Bye Bye!"
 

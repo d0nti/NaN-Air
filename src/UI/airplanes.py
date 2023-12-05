@@ -18,6 +18,7 @@ HEADER_AIRPLANES= (
 )"""
 
 
+
 class Airplanes:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper

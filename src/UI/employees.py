@@ -157,15 +157,19 @@ class Employees:
         self.command = command
 
         if command == "1" or command == "1.":
+            # self.logic_wrapper.sort_by_captains()
             pass
 
         elif command == "2" or command == "2.":
+            # self.logic_wrapper.sort_by_copilots()
             pass
 
         elif command == "3" or command == "3.":
+            # self.logic_wrapper.sort_by_flight_attendants()
             pass
 
         elif command == "4" or command == "4.":
+            # self.logic_wrapper.sort_by_heads_of_service()
             pass
 
         else:
