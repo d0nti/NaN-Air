@@ -1,6 +1,7 @@
 from Logic.UILogicWrapper import UI_Logic_Wrapper
 
 INVALID_INPUT = "Invalid input! Please try again."
+QUIT_MESSAGE = "Bye Bye!"
 
 HEADER_DESTINATIONS = (
       "------------------------------"
@@ -57,14 +58,14 @@ class Destinations:
             command = command.lower()
 
             if command == "q" or command == "q.":
-                print("Bye Bye!")
+                print(QUIT_MESSAGE)
                 break
 
             elif command == "b" or command == "b.":
                 break
 
             elif command == "1" or command == "1.":
-                pass
+                p
 
             elif command == "2" or command == "2.":
                 pass

@@ -5,16 +5,10 @@ from UI.airplanes import Airplanes
 from Logic.UILogicWrapper import UI_Logic_Wrapper
 
 
-BOOKING_SYSTEM = "Booking System"
-MANAGE_EMPLOYEES = "Manage Employees"
-MANAGE_AIRPLANES = "Manage Airplanes"
-MANAGE_DESTINATIONS = "Manage Destinations"
-MANAGE_VOYAGES = "Manage Voyages"
 DASH_SYMBOL = "-"
 LENGTH_SYMBOL = 30
-QUIT = "quit"
-
 INVALID_INPUT = "Invalid input! Please try again."
+QUIT_MESSAGE = "Bye Bye!"
 
 
 HEADER = (
@@ -94,7 +88,7 @@ class MainMenu:
                 pass
 
             elif command == "q":
-                print("Bye Bye!")
+                print(QUIT_MESSAGE)
                 break
 
             else:
