@@ -1,4 +1,4 @@
-from Logic.logic import EmployeeLogic
+from Logic.employeelogic import EmployeeLogic
 from Data.LogicDataWrapper import Logic_Data_Wrapper
 
 class UI_Logic_Wrapper:
@@ -17,3 +17,12 @@ class UI_Logic_Wrapper:
     
     def sort_by_captains(self):
         return self.employee_logic.sort_by_captains()
+    
+    def sort_by_co_pilots(self):
+        return self.employee_logic.sort_by_co_pilots()
+
+    def sort_by_flight_attendants(self):
+        return self.employee_logic.sort_by_flight_attendants()
+    
+    def sort_by_heads_of_service(self):
+        return self.employee_logic.sort_by_heads_of_service()

@@ -4,34 +4,25 @@ class UIConstants:
     MANAGE_AIRPLANES = "Manage Airplanes"
     MANAGE_DESTINATIONS = "Manage Destinations"
     MANAGE_VOYAGES = "Manage Voyages"
+    CAPTAINS = "Captains"
+    CO_PILOT = "Co-pilots"
+    FLIGHT_ATTENDANTS = "Flight Attendants"
+    HEADS_OF_SERVICE = "Heads of service"
 
+    REGISTER_AIRPLANE = "Register Airplane"
     DISPLAY_AIRPLANES = "Display Airplanes"
     FIND_AIRPLANE = "Find Airplane"
     PRINT_AIRPLANE_EFFICIENCY = "Print Airplane Efficiency"
-
-    DISPLAY_DESTINATIONS = "Display Destination"
-    REGISTER_NEW_DESTINATION = "Register New Destination"
     
-    DISPLAY_EMPLOYEES = "Display Employess"
-    REGISTER_NEW_EMPLOYEE = "Register New Employee"
+    EMPLOYEE = "Employee"
+    REGISTER_NEW_EMPLOYEES = "Register New Employee"
     SHIFT_PLAN = "Shift Plan"
-    EMPLOYEE_LIST = "Employee list"
-    EMPLOYEE_INFORMATION_MESSAGE = "Please Enter the Following Information:"
-    EMPLOYEE_INFORMATION = "Employee Name, Employee SSID, Job Title, Pilot License (If applicable), Home Address, Phone Number, E-mail Address, Home Phone Number (optional)"
-    NAME = "Name"
-    SSID = "SSID"
-    JOB_TITLE = "Job Title"
-    LICENSE = "License"
-    ADDRESS = "Address"
-    PHONE_NUMBER = "Phone Number"
-    E_MAIL_ADDRESS = "E-mail Address"
-    NO_EMPLOYEE_FOUND = "No employee found"
-    CAPTAINS = "Captainss"
-    CO_PILOTS = "Co-Pilots"
-    FLIGHT_ATTENDTANTS = "Flight Attendants"
-    HEADS_OF_SERVICE = "Heads of Service"
+    INFORMATION_MESSAGE = "Please Enter the Following Information"
 
-    
+    LIST_DESTINATIONS = "List Destinations"
+    REGISTER_DESTINATION = "Register Destination"
+
+
     REGISTER_NEW_VOYAGE = "Register New Voyage"
     EDIT_VOYAGE = "Edit Voyage"
     POPULATE_VOYAGE = "Populate Voyage"
@@ -43,10 +34,21 @@ class UIConstants:
     QUIT_MESSAGE = "Bye Bye!"
     DASH_SYMBOL = "-"
     LENGTH_SYMBOL = 30
-    QUIT = "Quit"
-    BACK = "Back"
+    QUIT = "quit"
+    BACK = "back"
     SEARCH = "Search"
-    SORT_BY = "Sort by"
+    SORT_BY = "Sort by: "
+
+    
+
+    NAME = "Name"
+    SSID = "SSID"
+    JOB_TITLE = "Job Title"
+    lICENSE = "License"
+    ADDRESS = "Address"
+    PHONE_NUMBER = "Phone Number"
+    E_MAIL_ADDRESS = "E-mail Address"
+
 
 
     HEADER = (
@@ -69,9 +71,4 @@ class UIConstants:
         + "\n"
         + "q. {}"
     )
-
-    
-
-print(UIConstants.SORT_BY)
-
 

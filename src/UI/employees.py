@@ -1,69 +1,5 @@
 from prettytable import PrettyTable
-from Utils.Constants import UIConstants
-
-INVALID_INPUT = "Invalid input! Please try again."
-QUIT_MESSAGE = "Bye Bye!"
-
-
-
-HEADER_EMPLOYEES = (
-    "------------------------------"
-    + "\n"
-    + "  NaN Air - {}"
-    + "\n"
-    + "------------------------------"
-)
-
-"""HEADER_EMPLOYEES = (
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Manage Employees"
-    + "\n"
-    + "------------------------------"
-)
-
-HEADER_INPUT_1 =(
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Employee List"
-    + "\n"
-    + "------------------------------"
-)
-
-HEADER_INPUT_2 =(
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Pilot List"
-    + "\n"
-    + "------------------------------"
-)
-
-HEADER_INPUT_3 =(
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Flight Attendant List"
-    + "\n"
-    + "------------------------------"
-)
-
-HEADER_INPUT_4 =(
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Heads of Service List"
-    + "\n"
-    + "------------------------------"
-)
-
-HEADER_INPUT_5 =(
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Register New Employee"
-    + "\n"
-    + "------------------------------"
-    + "Please Enter the Following Information:"
-    + "\n"
-    + "Employee Name, Employee SSID, Job Title, Pilot License (If applicable), Home Address, Phone Number, E-mail Address, Home Phone Number (optional)"
-)"""
+from UI.Utils.Constants import UIConstants
 
 
 class Employees:
@@ -73,13 +9,14 @@ class Employees:
 
     def employees_menu_output(self):
         print(UIConstants.HEADER.format(UIConstants.MANAGE_EMPLOYEES))
-        print("1. Employees")
-        print("2. Register New Employee")
-        print("3. Shift Plan")
-        print("b. Back")
-        print("q. Quit")
-        print(UIConstants.MAIN_MENU.format(UIConstants.DISPLAY_EMPLOYEES, UIConstants.REGISTER_NEW_EMPLOYEE, UIConstants.SHIFT_PLAN, UIConstants.BACK, UIConstants.QUIT)))
-
+        print(UIConstants.MENU_OPTION.format(UIConstants.DISPLAY_EMPLOYEES, UIConstants.REGISTER_NEW_EMPLOYEE, UIConstants.SHIFT_PLAN, UIConstants.BACK, UIConstants.QUIT))
+        
+        # print("1. Employees")
+        # print("2. Register New Employee")
+        # print("3. Shift Plan")
+        # print("b. Back")
+        # print("q. Quit")
+        
 
     def input_prompt_employees(self):
         while True:
@@ -87,7 +24,7 @@ class Employees:
             command = command.lower()
 
             if command == "q" or command == "q.":
-                print(QUIT_MESSAGE)
+                print(UIConstants.QUIT_MESSAGE)
                 break
             elif command == "b" or command == "b.":
                 break
@@ -96,54 +33,67 @@ class Employees:
                 self.list_employees()
 
             elif command == "2" or command == "2.":
-                pass  # eftir að implementa
+                self.register_new_employee()
 
             elif command == "3" or command == "3.":
                 pass  # eftir að implementa
 
             else:
-                print(INVALID_INPUT)
+                print(UIConstants.INVALID_INPUT)
 
 
     def list_employees(self):
-        print(HEADER_EMPLOYEES.format("Employee list"))
+        print(UIConstants.HEADER.format(UIConstants.DISPLAY_EMPLOYEES))
         employees = self.logic_wrapper.get_all_employees()
 
         if employees:
             table = PrettyTable()
             table.field_names = [
-                "Name",
-                "SSID",
-                "Job Title",
-                "Address",
-                "Phone Number",
-            ]
-
-            for employee in employees:
+            UIConstants.SSID,
+            UIConstants.NAME,
+            UIConstants.JOB_TITLE,
+            UIConstants.RANK,
+            UIConstants.ADDRESS,
+            UIConstants.PHONE_NUMBER]
+            
+            # table.field_names = [
+            #     "Name",
+            #     "SSID",
+            #     "Job Title",
+            #     "Phone Number",
+            #     "Address",
+            # ]
+            for employee in employees: # fix e
                 table.add_row(
                     [
                         employee.ssid,
                         employee.name,
                         employee.job_title,
+                        employee.rank,
                         employee.address,
-                        employee.phone_number,
+                        employee.phone_nr,
                     ]
                 )
 
 #nid,name,role,rank,licence,address,phone_nr,
+
             print(table)
         else:
-            print("No employees found.")
+            print(UIConstants.USER_NOT_FOUND)
+            print(UIConstants.TABLE_OPTION_MENU.format(UIConstants.SEARCH, UIConstants.SORT_BY, UIConstants.BACK, UIConstants.QUIT))
 
-        print("1. Search")
-        print("2. Sort by:")
+        # print("1. Search")
+        # print("2. Sort by:")
+        
         command = input("User Input: ")
 
         if command == "2" or command == "2.":
-            print("1. Captains")
-            print("2. Co-Pilots")
-            print("3. Flight Attendants")
-            print("4. Heads of Service")
+            print(UIConstants.SORT_BY_MENU.format(UIConstants.CAPTAINS, UIConstants.CO_PILOTS, UIConstants.FLIGHT_ATTENDTANTS, UIConstants.HEADS_OF_SERVICE, UIConstants.BACK, UIConstants.QUIT))
+           
+            # print("1. Captains")
+            # print("2. Co-Pilots")
+            # print("3. Flight Attendants")
+            # print("4. Heads of Service"),
 
             self.get_sorted_list((input("User Input: ")))
 
@@ -161,22 +111,163 @@ class Employees:
             pass
         
         elif command == "1" or command == "1.":
-            self.logic_wrapper.sort_by_captains()
-            pass
+            #print(*self.logic_wrapper.sort_by_captains())
+            captains = self.logic_wrapper.sort_by_captains()
+            
+            if captains:
+                table = PrettyTable()
+                
+#nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
+                table.field_names = [
+                    UIConstants.SSID,
+                    UIConstants.NAME,
+                    UIConstants.JOB_TITLE,
+                    UIConstants.RANK,
+                    UIConstants.LICENSE,
+                    UIConstants.PHONE_NUMBER,
+                    UIConstants.ADDRESS,
+                ]
 
+                for captain in captains:
+                    table.add_row(
+                        [
+                            captain.ssid,
+                            captain.name,
+                            captain.job_title,
+                            captain.rank,
+                            captain.license,
+                            captain.phone_nr,
+                            captain.address,
+                        ]
+                    )
+            print(table)
+        
         elif command == "2" or command == "2.":
-            # self.logic_wrapper.sort_by_copilots()
-            pass
+
+            copilots = self.logic_wrapper.sort_by_co_pilots()
+            
+            if copilots:
+                table = PrettyTable()
+            
+                
+                table.field_names = [
+                    UIConstants.SSID,
+                    UIConstants.NAME,
+                    UIConstants.JOB_TITLE,
+                    UIConstants.RANK,
+                    UIConstants.LICENSE,
+                    UIConstants.PHONE_NUMBER,
+                    UIConstants.ADDRESS,
+                ]
+
+                for copilot in copilots:
+                    table.add_row(
+                        [
+                            copilot.ssid,
+                            copilot.name,
+                            copilot.job_title,
+                            copilot.rank,
+                            copilot.license,
+                            copilot.phone_nr,
+                            copilot.address,
+                        ]
+                    )
+            print(table)
 
         elif command == "3" or command == "3.":
-            # self.logic_wrapper.sort_by_flight_attendants()
-            pass
+            flight_attendants = self.logic_wrapper.sort_by_flight_attendants()
+            
+            if flight_attendants:
+                table = PrettyTable()
+            
+                
+                table.field_names = [
+                    UIConstants.SSID,
+                    UIConstants.NAME,
+                    UIConstants.JOB_TITLE,
+                    UIConstants.RANK,
+                    UIConstants.PHONE_NUMBER,
+                    UIConstants.ADDRESS,
+                ]
+
+                for flight_attendant in flight_attendants:
+                    table.add_row(
+                        [
+                            flight_attendant.ssid,
+                            flight_attendant.name,
+                            flight_attendant.job_title,
+                            flight_attendant.rank,
+                            flight_attendant.phone_nr,
+                            flight_attendant.address,
+                        ]
+                    )
+            print(table)
+
 
         elif command == "4" or command == "4.":
-            # self.logic_wrapper.sort_by_heads_of_service()
+            heads_of_services = self.logic_wrapper.sort_by_heads_of_service()
+
+            if heads_of_services:
+                table = PrettyTable()
+
+
+                table.field_names = [
+                    UIConstants.SSID,
+                    UIConstants.NAME,
+                    UIConstants.JOB_TITLE,
+                    UIConstants.RANK,
+                    UIConstants.PHONE_NUMBER,
+                    UIConstants.ADDRESS,
+                ]
+                
+                for head_of_service in heads_of_services:
+                    table.add_row(
+                        [
+                            head_of_service.ssid,
+                            head_of_service.name,
+                            head_of_service.job_title,
+                            head_of_service.rank,
+                            head_of_service.phone_nr,
+                            head_of_service.address,
+                        ]
+                    )
+            print(table)
+            
+
+        else:
+            print(UIConstants.INVALID_INPUT)
+
+        pass
+
+
+
+    def register_new_employee(self):
+        """ This function prints a new menu for the user, which allows 
+            them to either create a new pilot or flight attendant.
+            This will generate a list of all the information that the
+            user wants to list for the new employee and sends it over
+            to the employeelogic.py file for verification.
+        """
+        print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_EMPLOYEE))   
+        print(UIConstants.TABLE_OPTION_MENU.format(UIConstants.REGISTER_NEW_PILOT, UIConstants.REGISTER_NEW_FLIGHT_ATTENDANT, UIConstants.BACK, UIConstants.QUIT))        
+        
+        
+        # print("Choose an employee to register")
+        # print("")
+        command = input("User input: ")
+        if command == "1" or command == "1.":
+            
+            print(command)
+            
+        elif command == "2" or command == "2.":
+            
+            print (command)
+            
+        elif command == "b" or command == "b.":
+            pass
+
+        elif command == "q" or command == "q.":
             pass
 
         else:
-            print(INVALID_INPUT)
-
-        pass
+            print("FUUUUUUUUUUU!!!!!") # MAKE ERROR MSG PLS

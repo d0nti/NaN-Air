@@ -1,41 +1,28 @@
-from dataclasses import dataclass
-
-
-@dataclass(order=True)
 class Employee:
-    name: str
-    ssid: int
-    job_title: str
-    address: str
-    phone_number: str
-    e_mail_address: str
-    #home_phone: str
-    
-    def __str__(self):
-        return f"{self.name} {self.ssid} {self.job_title} {self.address} {self.phone_number} {self.e_mail_address}"
+    def __init__(self, nid="", name="", role="", rank="", address="", phone_nr=""):
+        self.ssid = nid
+        self.name = name
+        self.job_title = role
+        self.rank = rank
+        self.address = address
+        self.phone_nr = phone_nr
 
-#nid,name,role,rank,licence,address,phone_nr,pref_nr,slot_param
 
-@dataclass(order=True)
+    def ___str__(self):
+        return f"{self.ssid} {self.name} {self.job_title} {self.rank} {self.address} {self.phone_nr}"
+
+
 class Pilot(Employee):
-    license: str
+    def __init__(self, nid="", name="", job_title="", rank="", address="", phone_nr="", license = "" ):
+        self.license = license
+        super().__init__(nid, name, job_title, rank, address, phone_nr)
+    
+    def ___str__(self):
+        return f"{self.ssid} {self.name} {self.job_title} {self.rank} {self.address} {self.phone_nr} {self.license}"
 
 
-@dataclass(order=True)
+
 class FlightAttendant(Employee):
-    pass
+    def __init__(self, nid="", name="", job_title="", rank="", address="", phone_nr=""):
+        super().__init__(nid, name, job_title, rank, address, phone_nr)
 
-
-@dataclass(order=True)
-class CoPilot(Pilot):
-    pass
-
-
-@dataclass(order=True)
-class Captain(Pilot):
-    pass
-
-
-@dataclass(order=True)
-class HeadOfService(FlightAttendant):
-    pass
