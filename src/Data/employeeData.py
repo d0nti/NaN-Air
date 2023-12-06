@@ -15,7 +15,23 @@ class EmployeeData:
                 line = line.split(",")
                 for y in line:
                     self.employee += self.Employee(y)
+                      
 
+    def create_employee(self, employee_dict):
+        with open(self.file_name, "w+") as employee_file:
+            employee_file.write("name,ssid,job_title,address,phone_number,e-mail_address,home_phone,license")
+
+            for employee in employee_dict.values():
+                name = employee.get_name()
+                ssid = employee.get_ssid()
+                job_title = employee.get_job_title()
+                adress = employee.get_adress()
+                phone_number = employee.get_phone_number()
+                email = employee.get_email()
+                home_phone = employee.get_home_phone()
+                license = employee.get_license()
+
+                employee_file.write("\n{},{},{},{},{},{},{},{}".format(name, ssid, job_title, adress, phone_number, email, home_phone, license,))
 
 
 
