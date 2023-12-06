@@ -1,49 +1,41 @@
+from dataclasses import dataclass
+
+
+@dataclass(order=True)
 class Employee:
-    def __init__(self, name = None, ssid = None, job_title = None,
-                 address = None, phone_number = None,
-                 e_mail_address = None, home_phone = None):
-        self.name = name
-        self.ssid = ssid
-        self.job_title = job_title
-        self.address = address
-        self.phone_number = phone_number
-        self.e_mail_address = e_mail_address
-        self.home_phone = home_phone
-
-
+    name: str
+    ssid: int
+    job_title: str
+    address: str
+    phone_number: str
+    e_mail_address: str
+    #home_phone: str or None
+    
     def __str__(self):
-        return f"name: {self.name}, SSID: {self.ssid}, Rank: {self.job_title},
-        Address: {self.address}, Phone Number: {self.phone_number},
-        E-mail Address: {self.e_mail_address}, Home Phone: {self.home_phone}"
+        return f"{self.name} {self.ssid} {self.job_title} {self.address} {self.phone_number} {self.e_mail_address}"
 
+#nid,name,role,rank,licence,address,phone_nr,pref_nr,slot_param
 
+@dataclass(order=True)
 class Pilot(Employee):
-    def __init__(self, name = None, ssid = None, job_title = None,
-                 address = None, phone_number = None,
-                 e_mail_address = None,home_phone = None, license = None):
-        super().__init__(name, ssid, job_title, address, phone_number,
-                         e_mail_address, home_phone)
-        self.license = license
-
-    def __str__(self):
-        return super().__str__() + f"{self.license}"
+    license: str
 
 
+@dataclass(order=True)
 class FlightAttendant(Employee):
-    def __init__(self, name = None, ssid = None, job_title = None,
-                 address = None, phone_number = None,
-                 e_mail_address = None, home_phone = None):
-        super().__init__(name, ssid, job_title, address, phone_number,
-                         e_mail_address, home_phone)
+    pass
 
 
+@dataclass(order=True)
+class CoPilot(Pilot):
+    pass
 
-"""
-newEmployee = Employee("Jón", "2402922469")
-newEmployee1 = Employee("Jón1", "2402922469")
 
-print(Employee.name)
+@dataclass(order=True)
+class Captain(Pilot):
+    pass
 
-employees = [newEmployee, newEmployee1]
 
-return employees"""
+@dataclass(order=True)
+class HeadOfService(FlightAttendant):
+    pass

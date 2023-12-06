@@ -1,4 +1,4 @@
-from prettytable import prettytable
+from prettytable import PrettyTable
 
 INVALID_INPUT = "Invalid input! Please try again."
 QUIT_MESSAGE = "Bye Bye!"
@@ -113,25 +113,22 @@ class Employees:
                 "Name",
                 "SSID",
                 "Job Title",
-                "License",
                 "Address",
                 "Phone Number",
-                "E-mail Address",
             ]
 
             for employee in employees:
                 table.add_row(
                     [
-                        employee.get("name"),
-                        employee.get("ssid"),
-                        employee.get("job_title"),
-                        employee.get("license"),
-                        employee.get("address"),
-                        employee.get("phone_number"),
-                        employee.get("e-mail_address"),
+                        employee.ssid,
+                        employee.name,
+                        employee.job_title,
+                        employee.address,
+                        employee.phone_number,
                     ]
                 )
 
+#nid,name,role,rank,licence,address,phone_nr,
             print(table)
         else:
             print("No employees found.")
@@ -162,7 +159,7 @@ class Employees:
             pass
         
         elif command == "1" or command == "1.":
-            # self.logic_wrapper.sort_by_captains()
+            self.logic_wrapper.sort_by_captains()
             pass
 
         elif command == "2" or command == "2.":

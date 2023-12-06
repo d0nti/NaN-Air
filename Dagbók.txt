@@ -83,7 +83,7 @@ Samantekt:
 Í dag náðum við að byrja á UI smá og við náðum að gera data þannig að hægt er að birta alla employees sem listi 
 svo er líka hægt að búa til employees.
 
-7.des
+5.des
 Við héldum áfram með forritun
 verkefnaskiptingin var eftirfarandi:
 Hera: UI
@@ -93,3 +93,13 @@ Viggo: hjálpaði öllum
 Anton: Logic/ui
 
 við náðum að komast lengra með UI
+
+
+6. des
+við vorum að samstilla okkur og ætlum að reyna klára employees og byggja okkur upp út frá því
+verkefnaskipting í dag:
+Hera: ui
+Andrea: Logic
+Marvin: Data
+Viggo: hjálpa öllum
+Anton: logic/ui
