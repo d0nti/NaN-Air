@@ -1,6 +1,6 @@
 import csv
 
-class PlaneData:
+class AirplaneData:
     def __init__(self):
         self.file_name = "src/Files/airplanes.csv"
 

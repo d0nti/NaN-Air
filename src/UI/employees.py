@@ -1,6 +1,4 @@
-from prettytable import PrettyTable
-
-
+from prettytable import Prettytable
 
 INVALID_INPUT = "Invalid input! Please try again."
 QUIT_MESSAGE = "Bye Bye!"
