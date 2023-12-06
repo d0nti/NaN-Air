@@ -9,7 +9,7 @@ class Employee:
     address: str
     phone_number: str
     e_mail_address: str
-    #home_phone: str or None
+    #home_phone: str
     
     def __str__(self):
         return f"{self.name} {self.ssid} {self.job_title} {self.address} {self.phone_number} {self.e_mail_address}"

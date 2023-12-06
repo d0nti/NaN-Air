@@ -1,4 +1,5 @@
 from prettytable import PrettyTable
+from Utils.Constants import UIConstants
 
 INVALID_INPUT = "Invalid input! Please try again."
 QUIT_MESSAGE = "Bye Bye!"
@@ -71,12 +72,13 @@ class Employees:
 
 
     def employees_menu_output(self):
-        print(HEADER_EMPLOYEES.format("Manage Employees"))
+        print(UIConstants.HEADER.format(UIConstants.MANAGE_EMPLOYEES))
         print("1. Employees")
         print("2. Register New Employee")
         print("3. Shift Plan")
         print("b. Back")
         print("q. Quit")
+        print(UIConstants.MAIN_MENU.format(UIConstants.DISPLAY_EMPLOYEES, UIConstants.REGISTER_NEW_EMPLOYEE, UIConstants.SHIFT_PLAN, UIConstants.BACK, UIConstants.QUIT)))
 
 
     def input_prompt_employees(self):

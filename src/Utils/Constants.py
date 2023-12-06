@@ -43,8 +43,8 @@ class UIConstants:
     QUIT_MESSAGE = "Bye Bye!"
     DASH_SYMBOL = "-"
     LENGTH_SYMBOL = 30
-    QUIT = "quit"
-    BACK = "back"
+    QUIT = "Quit"
+    BACK = "Back"
     SEARCH = "Search"
     SORT_BY = "Sort by"
 
@@ -71,3 +71,7 @@ class UIConstants:
     )
 
     
+
+print(UIConstants.SORT_BY)
+
+

@@ -2,7 +2,6 @@ from Model.EmployeeModel import Employee
 from Model.EmployeeModel import Pilot
 from Model.EmployeeModel import FlightAttendant
 
-
 import csv
 
 
@@ -10,6 +9,7 @@ import csv
 class EmployeeData:
     def __init__(self):
         self.file_name = "src/Files/crew.csv"
+        self.number_of_employees = 0
 
 #frá fyrirlestri
     def get_all_employees(self):
@@ -17,16 +17,39 @@ class EmployeeData:
         with open(self.file_name, newline="", encoding="utf-8") as csvfile: 
             reader = csv.DictReader(csvfile)
             for row in reader:
-                ret_list.append(Employee(row["nid"], row["name"], row["role"],
-                                         row["address"], row["licence"],
-                                         row["phone_nr"]))
+                self.number_of_employees += 1
+                if row["licence"] != "N/A":
+                    ret_list.append(Pilot(row["nid"], row["name"], row["role"],
+                                         row["rank"], row["address"],
+                                         row["licence"], row["phone_nr"]))
+                elif row["licence"] == "N/A":
+                    ret_list.append(FlightAttendant(row(["nid"], row["name"], row["role"],
+                                                    row["rank"], row["address"],
+                                                    row["phone_nr"])))
+
                 return ret_list
+
+    def sort_by_captains(self):
+        extra_sort = self.get_all_employees()
+        pilot_list = []
+
+        for employee in extra_sort:
+            if employee.get('rank') == "Pilot":
+                pilot_list.append(employee)
+
+        return pilot_list
+
+             
+
 
     def create_employee(self, employee):
         with open(self.file_name, "a") as csvfile:
             fieldnames = ["nid", "name", "role", "rank", "license", "address", "phone_nr"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({"nid": employee.nid, "name": employee.name, "role": employee.role, "rank": employee.rank, "license": employee.licence, "address": employee.address, "phone_nr": employee.phone_nr})
+            writer.writerow({"nid": employee.nid, "name": employee.name,
+                             "role": employee.role, "rank": employee.rank,
+                             "license": employee.licence, "address": employee.address,
+                             "phone_nr": employee.phone_nr})
 
 
 
