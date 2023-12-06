@@ -103,3 +103,7 @@ Andrea: Logic
 Marvin: Data
 Viggo: hjálpa öllum
 Anton: logic/ui
+
+Samantekt:
+í dag náðum við að klára að display upplýsingar um employees eftir filterum.
+Héldum áfram líka með UI og Logic
