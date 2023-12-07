@@ -2,6 +2,7 @@ from prettytable import PrettyTable
 from UI.Utils.Constants import UIConstants
 
 
+
 class Employees:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
@@ -16,7 +17,7 @@ class Employees:
         # print("3. Shift Plan")
         # print("b. Back")
         # print("q. Quit")
-        
+        # WHAT IS THIS^^?? IF NOT USEFUL, DELETE
 
     def input_prompt_employees(self):
         self.employees_menu_output()
@@ -64,7 +65,7 @@ class Employees:
             #     "Phone Number",
             #     "Address",
             # ]
-            for employee in employees: # fix e
+            for employee in employees: # 
                 table.add_row(
                     [
                         employee.ssid,
@@ -76,7 +77,6 @@ class Employees:
                     ]
                 )
 
-#nid,name,role,rank,licence,address,phone_nr,
 
             print(table)
         else:
@@ -85,7 +85,8 @@ class Employees:
 
         # print("1. Search")
         # print("2. Sort by:")
-        
+        # WHAT IS THIS^^?? IF NOT USEFUL, DELETE
+
         command = input("User Input: ")
 
         if command == "2" or command == "2.":
@@ -95,6 +96,8 @@ class Employees:
             # print("2. Co-Pilots")
             # print("3. Flight Attendants")
             # print("4. Heads of Service"),
+            # WHAT IS THIS^^?? IF NOT USEFUL, DELETE
+
 
             self.get_sorted_list((input("User Input: ")))
 
@@ -118,7 +121,6 @@ class Employees:
             if captains:
                 table = PrettyTable()
                 
-#nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
                 table.field_names = [
                     UIConstants.SSID,
                     UIConstants.NAME,
@@ -255,6 +257,8 @@ class Employees:
         
         # print("Choose an employee to register")
         # print("")
+        # WHAT IS THIS^^?? IF NOT USEFUL, DELETE
+
         command = input("User input: ")
         if command == "1" or command == "1.":
 
@@ -262,13 +266,14 @@ class Employees:
             print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
             pilot_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
             
-            all_pilot_information = []
-            for i in pilot_info_print:
-                print(f"{i}", end = " ")
-                pilot_information = input()
-                all_pilot_information.append(pilot_information)
+            all_employee_information = []
+            for i in pilot_info_print in range(len(pilot_info_print)-1):
+                print(f"{i}", end = "")
+                employye_information = input()
+                all_employee_information.append(employye_information)
 
-            self.logic_wrapper.register_pilot(all_pilot_information)
+
+            self.logic_wrapper.register_pilot(pilot_info)
             
         elif command == "2" or command == "2.":
 

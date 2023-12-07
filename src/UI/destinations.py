@@ -1,15 +1,5 @@
 from Logic.UILogicWrapper import UI_Logic_Wrapper
-
-INVALID_INPUT = "Invalid input! Please try again."
-QUIT_MESSAGE = "Bye Bye!"
-
-HEADER_DESTINATIONS = (
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - {}"
-    + "\n"
-    + "------------------------------"
-)
+from UI.Utils.Constants import UIConstants
 
 
 class Destinations:
@@ -18,12 +8,14 @@ class Destinations:
         
         
     def destinations_menu_output(self):
-        print(HEADER_DESTINATIONS.format("Manage Destinations"))
-        print("1. List Destinations")
-        print("2. Register Destination")
-        print("3. Search")
-        print("b. Back")
-        print("q. Quit")
+        print(UIConstants.HEADER.format(UIConstants.MANAGE_DESTINATIONS))
+        print(UIConstants.MENU_OPTION.format(UIConstants.DISPLAY_DESTINATIONS, UIConstants.REGISTER_NEW_DESTINATION, UIConstants.FIND_DESTINATION, UIConstants.BACK, UIConstants.QUIT))
+        
+        # print("1. Display Destinations")
+        # print("2. Register Destination")
+        # print("3. Find Destination")
+        # print("b. Back")
+        # print("q. Quit")
 
     def input_prompt_destinations(self):
         while True:
@@ -31,7 +23,7 @@ class Destinations:
             command = command.lower()
 
             if command == "q" or command == "q.":
-                print(QUIT_MESSAGE)
+                print(UIConstants.QUIT_MESSAGE)
                 break
 
             elif command == "b" or command == "b.":
@@ -41,19 +33,28 @@ class Destinations:
                 self.list_destinations()
 
             elif command == "2" or command == "2.":
+                self.register_destination()
                 pass
 
             elif command == "3" or command == "3.":
+                self.find_destination()
                 pass
 
             else:
-                print(INVALID_INPUT)
+                print(UIConstants.INVALID_INPUT)
 
 
     def list_destinations(self):
-        print(HEADER_DESTINATIONS.format("Destinations"))
+        print(UIConstants.HEADER.format(UIConstants.DISPLAY_DESTINATIONS))
+        
         destinations = self.logic_wrapper.get_all_destinations()
+        pass
 
     def register_destination(self):
-        print(HEADER_DESTINATIONS.format("Register Destination"))
-        
+        print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_DESTINATION))
+        pass
+
+    def find_destination(self):
+        print(UIConstants.HEADER.format(UIConstants.FIND_DESTINATION))
+        pass
+
