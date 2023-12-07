@@ -22,4 +22,4 @@ class DestinationData:
         with open(self.file_name, "a") as csvfile:
             fieldnames = ["name", "country", "airport", "flight_time", "distance_from_Iceland", "contact_name", "contact_phone_nr"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({"name": Destination.name, "country": Destination.country, "airport": destination.airport, "flight_time": destination.flight_time, "distance_from_Iceland": destination.distance_from_Iceland, "contact_name": destination.contact_name, "contact_phone_nr": destination.contact_phone_nr})
+            writer.writerow({"name": destination.name, "country": destination.country, "airport": destination.airport, "flight_time": destination.flight_time, "distance_from_Iceland": destination.distance_from_Iceland, "contact_name": destination.contact_name, "contact_phone_nr": destination.contact_phone_nr})

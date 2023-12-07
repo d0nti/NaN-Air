@@ -258,11 +258,15 @@ class Employees:
         if command == "1" or command == "1.":
             
             print(command)
+            pilot_info = input("blablabla")
+            self.logic_wrapper.register_pilot(pilot_info)
             
         elif command == "2" or command == "2.":
             
-            print (command)
-            
+            print(command)
+            flight_attendant_info = input("blablabla")
+            self.logic_wrapper.register_flight_attendant(flight_attendant_info)
+
         elif command == "b" or command == "b.":
             pass
 

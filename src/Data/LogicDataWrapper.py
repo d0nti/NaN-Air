@@ -9,11 +9,14 @@ class Logic_Data_Wrapper:
         self.destination_data = DestinationData()
         self.airplane_data = AirplaneData()
 
+    def register_pilot(self):
+        return self.employee_data.register_pilot()
+
+    def register_flight_attendant(self):
+        return self.employee_data.register_flight_attendant()
+
     def get_all_employees(self):
         return self.employee_data.get_all_employees()
-
-    def register_employee(self, employee):
-        return self.employee_data.create_employee(employee)
 
     def get_all_destinations(self):
         return self.destination_data.get_all_destinations()
@@ -29,9 +32,12 @@ class Logic_Data_Wrapper:
     
     def sort_by_heads_of_service(self):
         return self.employee_data.sort_by_heads_of_service()
-    
-    def create_pilot(self):
-        return self.employee_data.create_pilot()
 
-    def create_flight_attendant(self):
-        return self.employee_data.create_flight_attendant()
+
+#
+#       AIRPLANE FUNCTION CALLS FROM HERE DOWN
+#
+
+    def get_all_airplanes(self):
+        return self.airplane_data.get_all_airplanes()
+

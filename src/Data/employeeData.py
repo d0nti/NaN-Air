@@ -77,7 +77,7 @@ class EmployeeData:
 
 
 
-    def create_pilot(self, employee):
+    def register_pilot(self, employee):
         with open(self.file_name, "a") as csvfile:
             fieldnames = ["nid", "name", "role", "rank", "license","phone_nr", "address"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -87,7 +87,7 @@ class EmployeeData:
                              "phone_nr": employee.phone_nr})
             
 
-    def create_flight_attendant(self, employee):
+    def register_flight_attendant(self, employee):
         with open(self.file_name, "a") as csvfile:
             fieldnames = ["nid", "name", "role", "rank", "address", "phone_nr"]
             writer = csv.DictWriter(csvfile, fieldnames = fieldnames)

@@ -2,8 +2,11 @@ class EmployeeLogic:
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
 
-    def create_employee(self, employee):
-        self.data_wrapper.create_employee(employee)
+    def register_pilot(self, employee_info):
+        self.data_wrapper.register_pilot(employee_info)
+
+    def register_flight_attendant(self, employee_info):
+        self.data_wrapper.register_flight_attendant(employee_info)
 
     def get_all_employees(self):
         return self.data_wrapper.get_all_employees()
