@@ -3,6 +3,7 @@ from UI.employees import Employees
 from UI.destinations import Destinations
 from UI.airplanes import Airplanes
 from Logic.UILogicWrapper import UI_Logic_Wrapper
+import sys
 
 
 DASH_SYMBOL = "-"
@@ -53,30 +54,41 @@ class MainMenu:
         print(HEADER.format("Booking System"))
         print(MAIN_MENU)
         
+
+    
     def input_prompt_mainmenu(self):
-        self.menu_output()
+            
         while True:
-            command = input("User Input: ").lower()
+            
+            self.menu_output()
+            while True:
+                command = input("User Input: ").lower()
 
-            if command == "1" or command == "1.":
-                self.voyages.voyages_menu_output() # PRENTAR MENU
-                self.voyages.input_prompt_voyages() # LES INPUT
+                if command == "1" or command == "1.":
+                    self.voyages.voyages_menu_output() # PRENTAR MENU
+                    self.voyages.input_prompt_voyages() # LES INPUT
 
-            elif command == "2" or command == "2.":
-                self.employees.employees_menu_output() # PRENTAR MENU
-                self.employees.input_prompt_employees() # LES INPUT
+                elif command == "2" or command == "2.":
+                    self.employees.employees_menu_output() # PRENTAR MENU
+                    # self.employees.input_prompt_employees() # LES INPUT
+                    res = self.employees.input_prompt_employees()
+                    if res == "b":
+                        break
+                elif command == "3" or command == "3.":
+                    self.destinations.destinations_menu_output() # PRENTAR MENU
+                    self.destinations.input_prompt_destinations() # LES INPUT
 
-            elif command == "3" or command == "3.":
-                self.destinations.destinations_menu_output() # PRENTAR MENU
-                self.destinations.input_prompt_destinations() # LES INPUT
+                elif command == "4" or command == "4.":
+                    pass
 
-            elif command == "4" or command == "4.":
-                pass
+                elif command == "q" or command == "q.":
+                    
+                    print(QUIT_MESSAGE)
+                    sys.exit()
 
-            elif command == "q" or command == "q.":
-                print(QUIT_MESSAGE)
-                break
+                    
 
-            else:
-                print("Invalid input! Please try again")
-                self.menu_output()  
+                else:
+                    
+                    print("Invalid input! Please try again")
+                    self.menu_output()  

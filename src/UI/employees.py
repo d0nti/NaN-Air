@@ -1,5 +1,8 @@
 from prettytable import PrettyTable
 from UI.Utils.Constants import UIConstants
+from Model.EmployeeModel import Employee
+from Model.EmployeeModel import Pilot
+from Model.EmployeeModel import FlightAttendant
 
 
 class Employees:
@@ -7,11 +10,11 @@ class Employees:
         self.logic_wrapper = logic_wrapper
 
 
-    def employees_menu_output(self):
+    def employees_menu_output(self): # 
         print(UIConstants.HEADER.format(UIConstants.MANAGE_EMPLOYEES))
         print(UIConstants.MENU_OPTION.format(UIConstants.DISPLAY_EMPLOYEES, UIConstants.REGISTER_NEW_EMPLOYEE, UIConstants.SHIFT_PLAN, UIConstants.BACK, UIConstants.QUIT))
         
-        # print("1. Employees")
+        # print("1. Display Employees")
         # print("2. Register New Employee")
         # print("3. Shift Plan")
         # print("b. Back")
@@ -19,6 +22,7 @@ class Employees:
         
 
     def input_prompt_employees(self):
+        self.employees_menu_output()
         while True:
             command = input("User Input: ")
             command = command.lower()
@@ -27,8 +31,8 @@ class Employees:
                 print(UIConstants.QUIT_MESSAGE)
                 break
             elif command == "b" or command == "b.":
-                break
-
+                return "b"
+                # print("Going Back!")
             elif command == "1" or command == "1.":
                 self.list_employees()
 
@@ -256,7 +260,8 @@ class Employees:
         # print("")
         command = input("User input: ")
         if command == "1" or command == "1.":
-            
+
+            print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_PILOT))   
             print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
             pilot_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
             
@@ -265,11 +270,13 @@ class Employees:
                 print(f"{i}", end = " ")
                 pilot_information = input()
                 all_pilot_information.append(pilot_information)
+                ssid, name, role, rank, address, phone_nr, home_phone_nr, license = [all_pilot_information]
 
-            self.logic_wrapper.register_pilot(all_pilot_information)
+            self.logic_wrapper.register_pilot(Pilot(ssid, name, role, rank, address, phone_nr, home_phone_nr, license))
             
         elif command == "2" or command == "2.":
 
+            print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_FLIGHT_ATTENDANT))   
             print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
             flight_attendant_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
 
@@ -278,8 +285,9 @@ class Employees:
                 print(f"{i}", end = " ")
                 flight_attendant_information = input()
                 all_flight_attendangt_information.append(flight_attendant_information)
+            ssid, name, role, rank, address, phone_nr, home_phone_nr = [all_flight_attendangt_information]
             
-            self.logic_wrapper.register_flight_attendant(all_flight_attendangt_information)
+            self.logic_wrapper.register_flight_attendant(FlightAttendant(ssid, name, role, rank, address, phone_nr, home_phone_nr))
 
         elif command == "b" or command == "b.":
             pass

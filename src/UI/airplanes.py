@@ -1,29 +1,20 @@
 from UI.Utils.Constants import UIConstants
 
 
-INVALID_INPUT = "Invalid input! Please try again."
-QUIT_MESSAGE = "Bye Bye!"
-HEADER_AIRPLANES= (
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - {}"
-    + "\n"
-    + "------------------------------"
-)
-
 class Airplanes:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
 
     def airplanes_menu_output(self):
         print(UIConstants.HEADER.format(UIConstants.MANAGE_AIRPLANES))
-        print()
-        print("1. Register Airplane")
-        print("2. Display Airplanes")
-        print("3. Find Airplane")
-        print("4. Print Airplane Efficiency")
-        print("b. Back")
-        print("q. Quit")
+        print(UIConstants.SORT_BY_MENU.format(UIConstants.DISPLAY_AIRPLANES, UIConstants.REGISTER_NEW_AIRPLANE, UIConstants.FIND_AIRPLANE, UIConstants.PRINT_AIRPLANE_EFFICIENCY, UIConstants.BACK, UIConstants.QUIT))
+        
+        # print("1. Display Airplane")
+        # print("2. Register New Airplane")
+        # print("3. Find Airplane")
+        # print("4. Print Airplane Efficiency")
+        # print("b. Back")
+        # print("q. Quit")
 
     def input_prompt_airplanes(self):
         while True:
@@ -51,3 +42,21 @@ class Airplanes:
 
             else:
                 print(UIConstants.INVALID_INPUT)
+                
+
+    def list_airplanes(self):
+        print(UIConstants.HEADER.format(UIConstants.DISPLAY_AIRPLANES))
+        
+        pass
+    
+    def register_new_airplane(self):
+        print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_AIRPLANE))
+        pass
+
+    def find_airplane(self):
+        print(UIConstants.HEADER.format(UIConstants.FIND_AIRPLANE))
+        pass
+
+    def print_airplane_efficiency(self):
+        print(UIConstants.HEADER.format(UIConstants.PRINT_AIRPLANE_EFFICIENCY))
+        pass
