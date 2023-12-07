@@ -7,7 +7,7 @@ class Employees:
         self.logic_wrapper = logic_wrapper
 
 
-    def employees_menu_output(self):
+    def employees_menu_output(self): # 
         print(UIConstants.HEADER.format(UIConstants.MANAGE_EMPLOYEES))
         print(UIConstants.MENU_OPTION.format(UIConstants.DISPLAY_EMPLOYEES, UIConstants.REGISTER_NEW_EMPLOYEE, UIConstants.SHIFT_PLAN, UIConstants.BACK, UIConstants.QUIT))
         
@@ -19,6 +19,7 @@ class Employees:
         
 
     def input_prompt_employees(self):
+        self.employees_menu_output()
         while True:
             command = input("User Input: ")
             command = command.lower()
@@ -27,8 +28,8 @@ class Employees:
                 print(UIConstants.QUIT_MESSAGE)
                 break
             elif command == "b" or command == "b.":
-                break
-
+                return "b"
+                # print("Going Back!")
             elif command == "1" or command == "1.":
                 self.list_employees()
 
@@ -256,7 +257,8 @@ class Employees:
         # print("")
         command = input("User input: ")
         if command == "1" or command == "1.":
-            
+
+            print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_PILOT))   
             print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
             pilot_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
             
@@ -270,6 +272,7 @@ class Employees:
             
         elif command == "2" or command == "2.":
 
+            print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_FLIGHT_ATTENDANT))   
             print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
             flight_attendant_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
 
