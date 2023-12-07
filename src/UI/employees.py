@@ -1,5 +1,5 @@
 from prettytable import PrettyTable
-from UI.Utils.Constants import UIConstants
+from UI.Constants import UIConstants
 
 
 class Employees:
@@ -257,11 +257,15 @@ class Employees:
         command = input("User input: ")
         if command == "1" or command == "1.":
             
-            pilot_info = input(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
-            pilot_info_print = list(UIConstants.EMPLOYEE_INFORMATION)
+            pilot_info = print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
+            pilot_info_print = list(UIConstants.EMPLOYEE_INFORMATION.split(", "))
             
+            all_employee_information = []
             for i in pilot_info_print in range(len(pilot_info_print)-1):
-                print(input(i))
+                print(f"{i}", end = "")
+                employye_information = input()
+                all_employee_information.append(employye_information)
+
 
             self.logic_wrapper.register_pilot(pilot_info)
             
