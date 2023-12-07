@@ -257,7 +257,8 @@ class Employees:
         # print("")
         command = input("User input: ")
         if command == "1" or command == "1.":
-            
+
+            print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_PILOT))   
             print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
             pilot_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
             
@@ -271,6 +272,7 @@ class Employees:
             
         elif command == "2" or command == "2.":
 
+            print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_FLIGHT_ATTENDANT))   
             print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
             flight_attendant_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
 

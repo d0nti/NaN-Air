@@ -47,7 +47,7 @@ class UIConstants:
     INVALID_INPUT = "Invalid input! Please try again."
     QUIT_MESSAGE = "Bye Bye!"
     DASH_SYMBOL = "-"
-    LENGTH_SYMBOL = 40
+    LENGTH_SYMBOL = 43
     QUIT = "Quit"
     BACK = "Back"
     SEARCH = "Search"
