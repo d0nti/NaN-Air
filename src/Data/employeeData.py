@@ -1,7 +1,6 @@
 from Model.EmployeeModel import Employee
 from Model.EmployeeModel import Pilot
 from Model.EmployeeModel import FlightAttendant
-from Logic.employeelogic import EmployeeLogic
 
 import csv
 
@@ -100,31 +99,6 @@ class EmployeeData:
                              "address": employee.address, "phone_nr": employee.phone_nr})
 
 
-    def update_pilot (self, employee):
-        pilot = self.search(filter)  # Search for pilots matching the filter
-        #updates pilot information, should not be able to change nid and name of the pilot
-        with open(self.file_name, "w") as csvfile:
-            fieldnames = ["role", "rank", "license","phone_nr", "address"]
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({"role": employee.role, "rank": employee.rank,
-                            "license": employee.licence, "address": employee.address,
-                            "phone_nr": employee.phone_nr})
-        
 
 
 
-'''
-    def update_pilot_info(self, filter, new_info, employees):
-        pilots = self.search(filter)  # Search for pilots matching the filter
-        for pilot in pilots:
-            # Update the pilot's information with the new_info
-            pilot["role"] = new_info["role"]
-            pilot["rank"] = new_info["rank"]
-            pilot["license"] = new_info["license"]
-            pilot["phone_nr"] = new_info["phone_nr"]
-            pilot["address"] = new_info["address"]
-
-        # Save the updated information back to the data source
-        self.logic_data_wrapper.save_employees(employees)
-'''     
-    
