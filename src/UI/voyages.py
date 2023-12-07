@@ -1,10 +1,5 @@
-HEADER_VOYAGES = (
-      "------------------------------"
-    + "\n"
-    + "  NaN Air - Manage Voyages"
-    + "\n"
-    + "------------------------------"
-)
+from UI.Utils.Constants import UIConstants
+
 
 class Voyages:
     def __init__(self, logic_wrapper):
@@ -12,14 +7,16 @@ class Voyages:
 
     def voyages_menu_output(self):
         # PRENTAR MENU-IÐ .  <---- PUNKTUR
-        print(HEADER_VOYAGES)
-        print("1. Register Voyage")
-        print("2. Edit Voyage")
-        print("3. Populate Voyage")
-        print("4. Display Voyages")
-        print("5. Check Voyage Status")
-        print("b. Back")
-        print("q. Quit")
+        print(UIConstants.HEADER.format(UIConstants.MANAGE_VOYAGES))
+        print(UIConstants.FIVE_MENU_OPTION.format(UIConstants.DISPLAY_VOYAGES, UIConstants.REGISTER_NEW_VOYAGE, UIConstants.POPULATE_VOYAGE, UIConstants.CHECK_VOYAGE_STATUS, UIConstants.BACK, UIConstants.QUIT))
+
+        # print("1. Display Voyages")
+        # print("2. Register Voyages")
+        # print("3. Populate Voyage")
+        # print("4. Display Voyages")
+        # print("5. Check Voyage Status")
+        # print("b. Back")
+        # print("q. Quit")
 
     def input_prompt_voyages(self):
         # LES INPUT . <---- PUNKTUR
@@ -28,7 +25,7 @@ class Voyages:
             command = command.lower()
 
             if command == "q" or command == "q.":
-                print("Bye Bye!")
+                print(UIConstants.QUIT_MESSAGE)
                 break
 
             elif command == "b" or command == "b.":
@@ -50,4 +47,4 @@ class Voyages:
                 pass
 
             else:
-                print("Invalid input! Please try again.")
+                print(UIConstants.INVALID_INPUT)

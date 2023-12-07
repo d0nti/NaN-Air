@@ -6,11 +6,13 @@ class UIConstants:
     MANAGE_VOYAGES = "Manage Voyages"
 
     DISPLAY_AIRPLANES = "Display Airplanes"
+    REGISTER_NEW_AIRPLANE = "Register New Airplane"
     FIND_AIRPLANE = "Find Airplane"
     PRINT_AIRPLANE_EFFICIENCY = "Print Airplane Efficiency"
 
-    DISPLAY_DESTINATIONS = "Display Destination"
+    DISPLAY_DESTINATIONS = "Display Destinations"
     REGISTER_NEW_DESTINATION = "Register New Destination"
+    FIND_DESTINATION = "Find Destination"
     
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
@@ -111,31 +113,8 @@ class UIConstants:
         + "\n"
         + "q. {}"
     )
-    MENU_OPTION = (
-        "1. {}"
-        + "\n"
-        + "2. {}"
-        + "\n"
-        + "3. {}"
-        + "\n"
-        + "b. {}"
-        + "\n"
-        + "q. {}"
-        )
 
-    TABLE_OPTION_MENU = (
-
-        "1. {}"
-        + "\n"
-        + "2. {}"
-        + "\n"
-        + "b. {}"
-        + "\n"
-        + "q. {}"
-
-    )
-
-    SORT_BY_MENU = (
+    FIVE_MENU_OPTION = (
         "1. {}"
         + "\n"
         + "2. {}"
@@ -144,9 +123,14 @@ class UIConstants:
         + "\n"
         + "4. {}"
         + "\n"
+        + "5. {}"
+        + "\n"
         + "b. {}"
         + "\n"
         + "q. {}"
     )
+
+
+    
 
 

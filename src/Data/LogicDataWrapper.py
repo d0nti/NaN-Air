@@ -9,11 +9,11 @@ class Logic_Data_Wrapper:
         self.destination_data = DestinationData()
         self.airplane_data = AirplaneData()
 
-    def register_pilot(self):
-        return self.employee_data.register_pilot()
+    def register_pilot(self, employee_info):
+        return self.employee_data.register_pilot(employee_info)
 
-    def register_flight_attendant(self):
-        return self.employee_data.register_flight_attendant()
+    def register_flight_attendant(self, employee_info):
+        return self.employee_data.register_flight_attendant(employee_info)
 
     def get_all_employees(self):
         return self.employee_data.get_all_employees()

@@ -14,7 +14,7 @@ class Employees:
         print(UIConstants.HEADER.format(UIConstants.MANAGE_EMPLOYEES))
         print(UIConstants.MENU_OPTION.format(UIConstants.DISPLAY_EMPLOYEES, UIConstants.REGISTER_NEW_EMPLOYEE, UIConstants.SHIFT_PLAN, UIConstants.BACK, UIConstants.QUIT))
         
-        # print("1. Employees")
+        # print("1. Display Employees")
         # print("2. Register New Employee")
         # print("3. Shift Plan")
         # print("b. Back")
