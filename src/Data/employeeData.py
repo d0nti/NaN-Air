@@ -78,6 +78,9 @@ class EmployeeData:
 
 
     def register_pilot(self, employee):
+        """ Recieves a list containing information needed for registering a new pilot
+            and uses list indexing to assign each value to the correct place
+        """
         with open(self.file_name, "a") as csvfile:
             fieldnames = ["nid", "name", "role", "rank", "license","phone_nr", "address"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
