@@ -1,5 +1,5 @@
 from prettytable import PrettyTable
-from UI.Constants import UIConstants
+from UI.Utils.Constants import UIConstants
 
 
 class Employees:
