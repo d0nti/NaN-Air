@@ -1,24 +1,24 @@
-class EmployeeSsidLenError:
+class EmployeeSsidLenError(Exception):
     pass
-class SsidNumError:
+class SsidNumError(Exception):
     pass
-class EmployeeAgeError:
+class EmployeeAgeError(Exception):
     pass
-class EmployeeNameLongError:
+class EmployeeNameLongError(Exception):
     pass
-class EmployeeNameShortError:
+class EmployeeNameShortError(Exception):
     pass
-class EmployeeRoleError:
+class EmployeeRoleError(Exception):
     pass
-class EmployeeRankError:
+class EmployeeRankError(Exception):
     pass
-class EmployeeAddressError:
+class EmployeeAddressError(Exception):
     pass
-class EmployeePhoneNumberError:
+class EmployeePhoneNumberError(Exception):
     pass
-class EmployeeHomePhoneNumberError:
+class EmployeeHomePhoneNumberError(Exception):
     pass
-class PilotLicenseError:
+class PilotLicenseError(Exception):
     pass
 
 
@@ -34,7 +34,7 @@ class VerifyEmployee:
         """
         self.ssid = employee_info.ssid
         self.name = employee_info.name
-        self.role = employee_info.role
+        self.role = employee_info.job_title
         self.rank = employee_info.rank
         self.address = employee_info.address
         self.phone_nr = employee_info.phone_nr
@@ -46,11 +46,15 @@ class VerifyEmployee:
         """ Checks if ssid is of length 10, checks if ssid is only numbers,
             checks if pilot is older than 65 years or younger than 25,
         """
+        temp1 = list(self.ssid)
+        temp1 = temp1[4:6]
+        temp1 = str(temp1[0]) + str(temp1[-1])
+
         if len(self.ssid) != 10:
             raise SsidNumError
         elif not self.ssid.isdigit():
             raise SsidNumError
-        elif self.ssid.split()[4:5] < 58 or self.ssid.split()[4:5] > 98:
+        elif int(temp1) < 58 or int(temp1) > 98:
             raise EmployeeAgeError
         else:
             return True
@@ -129,5 +133,3 @@ class VerifyEmployee:
         self.PhoneNumber()
         self.HomePhoneNumber()
         self.License()
-
-

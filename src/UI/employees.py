@@ -270,9 +270,16 @@ class Employees:
                 print(f"{i}", end = " ")
                 pilot_information = input()
                 all_pilot_information.append(pilot_information)
-                ssid, name, role, rank, address, phone_nr, home_phone_nr, license = [all_pilot_information]
+                print(all_pilot_information)
 
-            self.logic_wrapper.register_pilot(Pilot(ssid, name, role, rank, address, phone_nr, home_phone_nr, license))
+            if len(all_pilot_information) == 7:
+                ssid, name, role, rank, address, phone_nr, license = [all_pilot_information[i] for i in range(0, (len(all_pilot_information)))]
+                self.logic_wrapper.register_pilot(Pilot(ssid, name, role, rank, address, phone_nr, license))
+            elif len(all_pilot_information) == 8:
+                ssid, name, role, rank, address, phone_nr, home_phone_nr, license = [all_pilot_information[i] for i in range(0, (len(all_pilot_information) - 1))]
+                self.logic_wrapper.register_pilot(Pilot(ssid, name, role, rank, address, phone_nr, home_phone_nr, license))
+            else:
+                pass # ERROR :)
             
         elif command == "2" or command == "2.":
 
@@ -280,14 +287,20 @@ class Employees:
             print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
             flight_attendant_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
 
-            all_flight_attendangt_information = []
+            all_flight_attendant_information = []
             for i in flight_attendant_info_print[0 : len(flight_attendant_info_print)]:
                 print(f"{i}", end = " ")
                 flight_attendant_information = input()
-                all_flight_attendangt_information.append(flight_attendant_information)
-            ssid, name, role, rank, address, phone_nr, home_phone_nr = [all_flight_attendangt_information]
-            
-            self.logic_wrapper.register_flight_attendant(FlightAttendant(ssid, name, role, rank, address, phone_nr, home_phone_nr))
+                all_flight_attendant_information.append(flight_attendant_information)
+
+            if len(all_flight_attendant_information) == 6:
+                ssid, name, role, rank, address, phone_nr = [all_pilot_information]
+                self.logic_wrapper.register_flight_attendant(FlightAttendant(ssid, name, role, rank, address, phone_nr))
+            elif len(all_flight_attendant_information) == 7:
+                ssid, name, role, rank, address, phone_nr, home_phone_nr = [all_pilot_information]
+                self.logic_wrapper.register_flight_attendant(FlightAttendant(ssid, name, role, rank, address, phone_nr, home_phone_nr))
+            else:
+                pass # ERROR :)
 
         elif command == "b" or command == "b.":
             pass
