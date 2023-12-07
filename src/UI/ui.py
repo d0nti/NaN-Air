@@ -4,7 +4,6 @@ from UI.destinations import Destinations
 from UI.airplanes import Airplanes
 from Logic.UILogicWrapper import UI_Logic_Wrapper
 import sys
-import sys
 
 
 DASH_SYMBOL = "-"
@@ -57,9 +56,6 @@ class MainMenu:
         
 
     
-        
-
-    
     def input_prompt_mainmenu(self):
             
         while True:
@@ -67,29 +63,11 @@ class MainMenu:
             self.menu_output()
             while True:
                 command = input("User Input: ").lower()
-            
-        while True:
-            
-            self.menu_output()
-            while True:
-                command = input("User Input: ").lower()
 
                 if command == "1" or command == "1.":
                     self.voyages.voyages_menu_output() # PRENTAR MENU
                     self.voyages.input_prompt_voyages() # LES INPUT
-                if command == "1" or command == "1.":
-                    self.voyages.voyages_menu_output() # PRENTAR MENU
-                    self.voyages.input_prompt_voyages() # LES INPUT
 
-                elif command == "2" or command == "2.":
-                    self.employees.employees_menu_output() # PRENTAR MENU
-                    # self.employees.input_prompt_employees() # LES INPUT
-                    res = self.employees.input_prompt_employees()
-                    if res == "b":
-                        break
-                elif command == "3" or command == "3.":
-                    self.destinations.destinations_menu_output() # PRENTAR MENU
-                    self.destinations.input_prompt_destinations() # LES INPUT
                 elif command == "2" or command == "2.":
                     self.employees.employees_menu_output() # PRENTAR MENU
                     # self.employees.input_prompt_employees() # LES INPUT
