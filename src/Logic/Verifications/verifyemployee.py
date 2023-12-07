@@ -26,7 +26,7 @@ MAX_EMP_NAME_LEN = 100
 MIN_EMP_NAME_LEN = 10
 
 
-class VerifyPilot:
+class VerifyEmployee:
     def __init__(self, employee_info):
         """ verification class with methods to verify every input from user when
             creating a new pilot employee.
@@ -39,7 +39,8 @@ class VerifyPilot:
         self.address = employee_info.address
         self.phone_nr = employee_info.phone_nr
         self.home_phone = employee_info.home_phone_nr
-        self.license = employee_info.license
+        if employee_info.license:
+            self.license = employee_info.license
 
     def Ssid(self):
         """ Checks if ssid is of length 10, checks if ssid is only numbers,

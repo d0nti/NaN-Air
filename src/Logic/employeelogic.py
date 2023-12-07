@@ -34,25 +34,10 @@ class EmployeeLogic:
         return filtered_employees
 
 
-    def verify_ssid(self):
-        if len(self) == 10:
-            if self[0:10].isdigit():
-                return f"Valid SSID {self}."
-            else:
-                return f"Invalid SSID {self}. Make sure the characters are digits"
-        else:
-            return f"Invalid SSID length {self}. Make sure the length is 10 characters" 
 
 
-    def verify_job_title(self):
-        if self == "Pilot" or self == "Copilot" or self == "Flight Attendant" or self == "Head of Service":
-            return f"Valid job title {self}."
-        else:
-            return f"Invalid job title {self}. Make sure the job title is one of the following: Pilot, CoPilot, Flight Attendant, Head of Service"
 
 
-    def verify_pilot_creation(self, list):
-        pass
 
         
 
