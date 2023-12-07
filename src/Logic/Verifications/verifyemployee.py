@@ -121,3 +121,13 @@ class VerifyEmployee:
         """
         pass
 
+    def CallFunctions(self):
+        self.Ssid()
+        self.Name()
+        self.Rank()
+        self.Address()
+        self.PhoneNumber()
+        self.HomePhoneNumber()
+        self.License()
+
+

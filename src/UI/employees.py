@@ -2,6 +2,7 @@ from prettytable import PrettyTable
 from UI.Utils.Constants import UIConstants
 
 
+
 class Employees:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
@@ -256,7 +257,7 @@ class Employees:
         # print("Choose an employee to register")
         # print("")
         # WHAT IS THIS^^?? IF NOT USEFUL, DELETE
-        
+
         command = input("User input: ")
         if command == "1" or command == "1.":
             

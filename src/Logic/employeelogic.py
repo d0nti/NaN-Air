@@ -1,9 +1,14 @@
+from Logic.Verifications.verifyemployee import VerifyEmployee
+
 class EmployeeLogic:
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
 
     def register_pilot(self, employee_info):
-        self.data_wrapper.register_pilot(employee_info)
+        temp = VerifyEmployee(employee_info)
+        temp.CallFunctions()
+        if temp:
+            self.data_wrapper.register_pilot(employee_info)
 
     def register_flight_attendant(self, employee_info):
         self.data_wrapper.register_flight_attendant(employee_info)
