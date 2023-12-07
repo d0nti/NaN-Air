@@ -257,13 +257,16 @@ class Employees:
         command = input("User input: ")
         if command == "1" or command == "1.":
             
-            print(command)
-            pilot_info = input("blablabla")
+            pilot_info = input(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
+            pilot_info_print = list(UIConstants.EMPLOYEE_INFORMATION)
+            
+            for i in pilot_info_print in range(len(pilot_info_print)-1):
+                print(input(i))
+
             self.logic_wrapper.register_pilot(pilot_info)
             
         elif command == "2" or command == "2.":
             
-            print(command)
             flight_attendant_info = input("blablabla")
             self.logic_wrapper.register_flight_attendant(flight_attendant_info)
 
@@ -274,4 +277,4 @@ class Employees:
             pass
 
         else:
-            print("FUUUUUUUUUUU!!!!!") # MAKE ERROR MSG PLS
+            print(UIConstants.INVALID_INPUT) # MAKE ERROR MSG PLS

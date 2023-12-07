@@ -1,0 +1,31 @@
+User
+manageEmployees()
+manageVoyages()
+manageAirplanes()
+
+Manage Employess
+registerEmployee()
+displayEmployess()
+findEmployee()
+editEmployeeDeitails()
+printEmployeeDetails()
+printEmployeeSchedule()
+
+Manage Voyages
+registerVoyage()
+editVoyage()
+populateVoyage()
+displayVoyages()
+checkVoyageStatus()
+
+Manage Airplanes
+registerAirplane()
+displayAirplanes()
+findAirplane()
+printAirplaneEfficiency()
+
+Manage Destinations
+registerDestination()
+editDestinationContact()
+displayDestinations()
+
