@@ -52,7 +52,7 @@ class MainMenu:
     def menu_output(self):
         print(HEADER.format("Booking System"))
         print(MAIN_MENU)
-
+        
     def input_prompt_mainmenu(self):
         self.menu_output()
         while True:
