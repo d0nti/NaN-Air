@@ -116,3 +116,6 @@ Andrea: voyages byrja á því
 Marvin: data, update employee
 Viggó: hjálpa okkur öllum
 Anton: ui þegar ýtt er á back þarf að sýna menu
+
+Samantekt: 
+náðum að laga back og quit funtionality og héldum áfram í öðrum verkefnum
