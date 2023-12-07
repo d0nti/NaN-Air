@@ -86,9 +86,10 @@ class MainMenu:
                     print(QUIT_MESSAGE)
                     sys.exit()
 
-                    
+                     
 
                 else:
                     
                     print("Invalid input! Please try again")
                     self.menu_output()  
+                    
