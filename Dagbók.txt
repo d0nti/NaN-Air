@@ -107,3 +107,12 @@ Anton: logic/ui
 Samantekt:
 í dag náðum við að klára að display upplýsingar um employees eftir filterum.
 Héldum áfram líka með UI og Logic
+
+7. des
+Í dag reyndum við að skipuleggja okkur aðeins betur
+verkefnaskipting: 
+Hera: ui þegar verið er að register employee þarf að koma upp hvaða upplýsingar eiga ða koma fram
+Andrea: voyages byrja á því
+Marvin: data, update employee
+Viggó: hjálpa okkur öllum
+Anton: ui þegar ýtt er á back þarf að sýna menu

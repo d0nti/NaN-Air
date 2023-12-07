@@ -1,5 +1,5 @@
 from prettytable import PrettyTable
-from UI.Constants import UIConstants
+from UI.Utils.Constants import UIConstants
 
 
 class Employees:
@@ -257,22 +257,29 @@ class Employees:
         command = input("User input: ")
         if command == "1" or command == "1.":
             
-            pilot_info = print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
-            pilot_info_print = list(UIConstants.EMPLOYEE_INFORMATION.split(", "))
+            print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
+            pilot_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
             
-            all_employee_information = []
-            for i in pilot_info_print in range(len(pilot_info_print)-1):
-                print(f"{i}", end = "")
-                employye_information = input()
-                all_employee_information.append(employye_information)
+            all_pilot_information = []
+            for i in pilot_info_print:
+                print(f"{i}", end = " ")
+                pilot_information = input()
+                all_pilot_information.append(pilot_information)
 
-
-            self.logic_wrapper.register_pilot(pilot_info)
+            self.logic_wrapper.register_pilot(all_pilot_information)
             
         elif command == "2" or command == "2.":
+
+            print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
+            flight_attendant_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
+
+            all_flight_attendangt_information = []
+            for i in flight_attendant_info_print[0 : len(flight_attendant_info_print)]:
+                print(f"{i}", end = " ")
+                flight_attendant_information = input()
+                all_flight_attendangt_information.append(flight_attendant_information)
             
-            flight_attendant_info = input("blablabla")
-            self.logic_wrapper.register_flight_attendant(flight_attendant_info)
+            self.logic_wrapper.register_flight_attendant(all_flight_attendangt_information)
 
         elif command == "b" or command == "b.":
             pass
