@@ -59,16 +59,16 @@ class MainMenu:
             command = input("User Input: ").lower()
 
             if command == "1" or command == "1.":
-                self.voyages.voyages_menu_output() # PRENTAR MENU
-                self.voyages.input_prompt_voyages() # LES INPUT
+                self.voyages.voyages_menu_output() # PRINTS MENU
+                self.voyages.input_prompt_voyages() # READS INPUT
 
             elif command == "2" or command == "2.":
-                self.employees.employees_menu_output() # PRENTAR MENU
-                self.employees.input_prompt_employees() # LES INPUT
+                self.employees.employees_menu_output() # PRINTS MENU
+                self.employees.input_prompt_employees() # READS INPUT
 
             elif command == "3" or command == "3.":
-                self.destinations.destinations_menu_output() # PRENTAR MENU
-                self.destinations.input_prompt_destinations() # LES INPUT
+                self.destinations.destinations_menu_output() # PRINTS MENU
+                self.destinations.input_prompt_destinations() # READS INPUT
 
             elif command == "4" or command == "4.":
                 pass

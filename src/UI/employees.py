@@ -16,7 +16,7 @@ class Employees:
         # print("3. Shift Plan")
         # print("b. Back")
         # print("q. Quit")
-        
+        # WHAT IS THIS^^?? IF NOT USEFUL, DELETE
 
     def input_prompt_employees(self):
         while True:
@@ -63,7 +63,7 @@ class Employees:
             #     "Phone Number",
             #     "Address",
             # ]
-            for employee in employees: # fix e
+            for employee in employees: # 
                 table.add_row(
                     [
                         employee.ssid,
@@ -75,7 +75,6 @@ class Employees:
                     ]
                 )
 
-#nid,name,role,rank,licence,address,phone_nr,
 
             print(table)
         else:
@@ -84,7 +83,8 @@ class Employees:
 
         # print("1. Search")
         # print("2. Sort by:")
-        
+        # WHAT IS THIS^^?? IF NOT USEFUL, DELETE
+
         command = input("User Input: ")
 
         if command == "2" or command == "2.":
@@ -94,6 +94,8 @@ class Employees:
             # print("2. Co-Pilots")
             # print("3. Flight Attendants")
             # print("4. Heads of Service"),
+            # WHAT IS THIS^^?? IF NOT USEFUL, DELETE
+
 
             self.get_sorted_list((input("User Input: ")))
 
@@ -117,7 +119,6 @@ class Employees:
             if captains:
                 table = PrettyTable()
                 
-#nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
                 table.field_names = [
                     UIConstants.SSID,
                     UIConstants.NAME,
@@ -254,6 +255,8 @@ class Employees:
         
         # print("Choose an employee to register")
         # print("")
+        # WHAT IS THIS^^?? IF NOT USEFUL, DELETE
+        
         command = input("User input: ")
         if command == "1" or command == "1.":
             
