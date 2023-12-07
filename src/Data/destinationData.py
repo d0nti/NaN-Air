@@ -1,20 +1,25 @@
+from Model.DestinationModel import Destination
+
 import csv
 
 class DestinationData:
     def __init__(self):
-        self.file_name = "src/Files/Destinations.csv"
+        self.file_name = "src/Files/destinations.csv"
 
+#frá fyrirlestri
     def get_all_destinations(self):
-        with open(self.file_name, "r") as csv_file:
-            reader = csv.DictReader(csv_file)
-            destination_dict = [row for row in reader]
-            return destination_dict
+        ret_list = []
+        with open(self.file_name, newline="", encoding="utf-8") as csvfile: 
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                self.number_of_employees += 1
+                ret_list.append(Destination(row["name"], row["country"], row["airport"], row["flight_time"], row["distance_from_Iceland"], row["contact_name"], row["contact_phone_nr"]))
+            
+            return ret_list
+
 
     def create_destination(self, destination):
-        with open(self.file_name, "a", encoding="utf-8") as csv_file:
+        with open(self.file_name, "a") as csvfile:
             fieldnames = ["name", "country", "airport", "flight_time", "distance_from_Iceland", "contact_name", "contact_phone_nr"]
-            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-            DestinationData = list(map(lambda key: destination[key], destination.keys()))
-            writer.writerow({"name": DestinationData[0], "country": DestinationData[1], "airport": DestinationData[2], "flight_time": DestinationData[3], "distance_from_Iceland": DestinationData[4], "contact_name": DestinationData[5], "contact_phone_nr": DestinationData[6]})
-
-      
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writerow({"name": destination.name, "country": destination.country, "airport": destination.airport, "flight_time": destination.flight_time, "distance_from_Iceland": destination.distance_from_Iceland, "contact_name": destination.contact_name, "contact_phone_nr": destination.contact_phone_nr})

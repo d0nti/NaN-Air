@@ -29,11 +29,9 @@ MAIN_MENU = (
     + "q. {}"
 )
 
-
-print(HEADER.format(location = "Booking System"))
-
-print(MAIN_MENU.format(MANAGE_VOYAGES, MANAGE_EMPLOYEES, MANAGE_DESTINATIONS, MANAGE_AIRPLANES, QUIT))
+class UIConstants:
+    MAIN_MENU = "This is the Main {} menu!!!"
 
 
-
+print(UIConstants.MAIN_MENU.format("AAAAAAAA"))
 

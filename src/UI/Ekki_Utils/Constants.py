@@ -4,14 +4,24 @@ class UIConstants:
     MANAGE_AIRPLANES = "Manage Airplanes"
     MANAGE_DESTINATIONS = "Manage Destinations"
     MANAGE_VOYAGES = "Manage Voyages"
+    CAPTAINS = "Captains"
+    CO_PILOT = "Co-pilots"
+    FLIGHT_ATTENDANTS = "Flight Attendants"
+    HEADS_OF_SERVICE = "Heads of service"
 
+    REGISTER_AIRPLANE = "Register Airplane"
     DISPLAY_AIRPLANES = "Display Airplanes"
     FIND_AIRPLANE = "Find Airplane"
     PRINT_AIRPLANE_EFFICIENCY = "Print Airplane Efficiency"
     
-
+    EMPLOYEE = "Employee"
     REGISTER_NEW_EMPLOYEES = "Register New Employee"
-    
+    SHIFT_PLAN = "Shift Plan"
+    INFORMATION_MESSAGE = "Please Enter the Following Information"
+
+    LIST_DESTINATIONS = "List Destinations"
+    REGISTER_DESTINATION = "Register Destination"
+
 
     REGISTER_NEW_VOYAGE = "Register New Voyage"
     EDIT_VOYAGE = "Edit Voyage"
@@ -20,14 +30,25 @@ class UIConstants:
     CHECK_VOYAGE_STATUS = "Check Voyage Status"
 
     
-    
-    
     INVALID_INPUT = "Invalid input! Please try again."
     QUIT_MESSAGE = "Bye Bye!"
     DASH_SYMBOL = "-"
     LENGTH_SYMBOL = 30
     QUIT = "quit"
     BACK = "back"
+    SEARCH = "Search"
+    SORT_BY = "Sort by: "
+
+    
+
+    NAME = "Name"
+    SSID = "SSID"
+    JOB_TITLE = "Job Title"
+    lICENSE = "License"
+    ADDRESS = "Address"
+    PHONE_NUMBER = "Phone Number"
+    E_MAIL_ADDRESS = "E-mail Address"
+
 
 
     HEADER = (

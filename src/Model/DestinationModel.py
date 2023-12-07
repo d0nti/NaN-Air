@@ -1,16 +1,13 @@
-
-class Destinations:
-    def __init__(self, number = None, country = None, airport_name = None, flight_time = None, distance_from_iceland = None, contact_name = None, contact_phone_number = None):
-        self.number = number
+class Destination:
+    def __init__(self, destination_number = None, country = None, airport_call_sign = None, flight_time = None, distance_from_iceland = None, contact_name = None, contact_phone_number = None):
+        self.destination_number = destination_number
         self.country = country
-        self.airport_name = airport_name
+        self.airport_call_sign = airport_call_sign
         self.flight_time = flight_time
         self.distance_from_iceland = distance_from_iceland
         self.contact_name = contact_name
         self.contact_phone_number = contact_phone_number
 
 
-    def __str__(self):
-        return f": {self.name}, SSID: {self.ssid}, Rank: {self.job_title},
-        License: {self.license}, Address: {self.address}, Phone Number: {self.phone_number},
-        E-mail Address: {self.e_mail_address}, Home Phone: {self.home_phone}"
+    def ___str__(self):
+        return f"{self.destination_number} {self.country} {self.airport_call_sign} {self.flight_time} {self.distance_from_iceland}"

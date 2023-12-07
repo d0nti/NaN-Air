@@ -1,3 +1,6 @@
+from UI.Utils.Constants import UIConstants
+
+
 INVALID_INPUT = "Invalid input! Please try again."
 QUIT_MESSAGE = "Bye Bye!"
 HEADER_AIRPLANES= (
@@ -13,7 +16,8 @@ class Airplanes:
         self.logic_wrapper = logic_wrapper
 
     def airplanes_menu_output(self):
-        print(HEADER_AIRPLANES.format("Manage Airplanes"))
+        print(UIConstants.HEADER.format(UIConstants.MANAGE_AIRPLANES))
+        print()
         print("1. Register Airplane")
         print("2. Display Airplanes")
         print("3. Find Airplane")
@@ -27,7 +31,7 @@ class Airplanes:
             command = command.lower()
 
             if command == "q" or command == "q.":
-                print(QUIT_MESSAGE)
+                print(UIConstants.QUIT_MESSAGE)
                 break
 
             elif command == "b" or command == "b.":
@@ -46,4 +50,4 @@ class Airplanes:
                 pass
 
             else:
-                print(INVALID_INPUT)
+                print(UIConstants.INVALID_INPUT)

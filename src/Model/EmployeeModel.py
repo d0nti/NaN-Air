@@ -1,49 +1,29 @@
 class Employee:
-    def __init__(self, name = None, ssid = None, job_title = None,
-                 address = None, phone_number = None,
-                 e_mail_address = None, home_phone = None):
+    def __init__(self, nid= None, name= None, role= None, rank= None, address= None, phone_nr= None, home_phone_nr = None):
+        self.ssid = nid
         self.name = name
-        self.ssid = ssid
-        self.job_title = job_title
+        self.job_title = role
+        self.rank = rank
         self.address = address
-        self.phone_number = phone_number
-        self.e_mail_address = e_mail_address
-        self.home_phone = home_phone
+        self.phone_nr = phone_nr
+        self.home_phone_nr = home_phone_nr # NOT YET IMPLEMENTED IN DATA
 
 
-    def __str__(self):
-        return f"name: {self.name}, SSID: {self.ssid}, Rank: {self.job_title},
-        Address: {self.address}, Phone Number: {self.phone_number},
-        E-mail Address: {self.e_mail_address}, Home Phone: {self.home_phone}"
+    def ___str__(self):
+        return f"{self.ssid} {self.name} {self.job_title} {self.rank} {self.address} {self.phone_nr}"
 
 
 class Pilot(Employee):
-    def __init__(self, name = None, ssid = None, job_title = None,
-                 address = None, phone_number = None,
-                 e_mail_address = None,home_phone = None, license = None):
-        super().__init__(name, ssid, job_title, address, phone_number,
-                         e_mail_address, home_phone)
+    def __init__(self, nid= None, name= None, job_title= None, rank= None, address= None, phone_nr= None, home_phone_nr = None, license =  None ):
         self.license = license
+        super().__init__(nid, name, job_title, rank, address, phone_nr, home_phone_nr)
+    
+    def ___str__(self):
+        return f"{self.ssid} {self.name} {self.job_title} {self.rank} {self.address} {self.phone_nr} {self.license}"
 
-    def __str__(self):
-        return super().__str__() + f"{self.license}"
 
 
 class FlightAttendant(Employee):
-    def __init__(self, name = None, ssid = None, job_title = None,
-                 address = None, phone_number = None,
-                 e_mail_address = None, home_phone = None):
-        super().__init__(name, ssid, job_title, address, phone_number,
-                         e_mail_address, home_phone)
+    def __init__(self, nid= None, name= None, job_title= None, rank= None, address= None, phone_nr= None, home_phone_nr = None):
+        super().__init__(nid, name, job_title, rank, address, phone_nr, home_phone_nr)
 
-
-
-"""
-newEmployee = Employee("Jón", "2402922469")
-newEmployee1 = Employee("Jón1", "2402922469")
-
-print(Employee.name)
-
-employees = [newEmployee, newEmployee1]
-
-return employees"""
