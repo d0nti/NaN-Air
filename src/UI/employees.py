@@ -1,5 +1,8 @@
 from prettytable import PrettyTable
 from UI.Utils.Constants import UIConstants
+from Model.EmployeeModel import Employee
+from Model.EmployeeModel import Pilot
+from Model.EmployeeModel import FlightAttendant
 
 
 class Employees:
@@ -266,8 +269,9 @@ class Employees:
                 print(f"{i}", end = " ")
                 pilot_information = input()
                 all_pilot_information.append(pilot_information)
+                ssid, name, role, rank, address, phone_nr, home_phone_nr, license = [all_pilot_information]
 
-            self.logic_wrapper.register_pilot(all_pilot_information)
+            self.logic_wrapper.register_pilot(Pilot(ssid, name, role, rank, address, phone_nr, home_phone_nr, license))
             
         elif command == "2" or command == "2.":
 
@@ -280,8 +284,9 @@ class Employees:
                 print(f"{i}", end = " ")
                 flight_attendant_information = input()
                 all_flight_attendangt_information.append(flight_attendant_information)
+            ssid, name, role, rank, address, phone_nr, home_phone_nr = [all_flight_attendangt_information]
             
-            self.logic_wrapper.register_flight_attendant(all_flight_attendangt_information)
+            self.logic_wrapper.register_flight_attendant(FlightAttendant(ssid, name, role, rank, address, phone_nr, home_phone_nr))
 
         elif command == "b" or command == "b.":
             pass
