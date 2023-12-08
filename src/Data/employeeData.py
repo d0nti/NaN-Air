@@ -91,7 +91,7 @@ class EmployeeData:
             
 
     def register_flight_attendant(self, employee):
-        with open(self.file_name, "a") as csvfile:
+        with open(self.file_name, "a", encoding="utf-8") as csvfile:
             fieldnames = ["nid", "name", "role", "rank", "address", "phone_nr"]
             writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
             writer.writerow({"nid": employee.nid, "name": employee.name,

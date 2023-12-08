@@ -22,7 +22,7 @@ class UIConstants:
     EMPLOYEE_LIST = "Employee list"
     EMPLOYEE_INFORMATION_MESSAGE = "Please Enter the Following Information in the following order:"
     EMPLOYEE_INFORMATION = "Employee Name, Employee SSID, Job Title, Pilot License (If applicable), Home Address, Phone Number, E-mail Address, Home Phone Number (optional), License"          
-    REGISTER_EMPLOYEE_INFO = "SSID, Name, Role, Rank, Address, Phonenumber, Home Phone Number(optional)"
+    REGISTER_EMPLOYEE_INFO = "SSID, Name, Rank, Address, Phonenumber, Home Phone Number(optional), License"
     NAME = "Name"
     SSID = "SSID"
     JOB_TITLE = "Job Title"
