@@ -1,5 +1,6 @@
 from Logic.UILogicWrapper import UI_Logic_Wrapper
 from UI.Utils.Constants import UIConstants
+from prettytable import PrettyTable
 
 
 class Destinations:
@@ -49,7 +50,22 @@ class Destinations:
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_DESTINATIONS))
 
         destinations = self.logic_wrapper.get_all_destinations()
-        pass
+        
+        
+        if destinations:
+            table = PrettyTable()
+            table.field_names = ["Destination ID", "Country", "Airport", "Flight Duration"] 
+            
+            for destination in destinations:
+                table.add_row([destination.destination_id, destination.country, destination.airport, destination.flight_duration])
+                
+            print(table)
+        
+        else:
+            print(UIConstants.NO_DESTINATIONS_REGISTERED)
+            
+        
+        
 
     def register_destination(self):
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_DESTINATION))
