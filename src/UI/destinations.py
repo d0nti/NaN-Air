@@ -9,7 +9,7 @@ class Destinations:
         
     def destinations_menu_output(self):
         print(UIConstants.HEADER.format(UIConstants.MANAGE_DESTINATIONS))
-        print(UIConstants.MENU_OPTION.format(UIConstants.DISPLAY_DESTINATIONS, UIConstants.REGISTER_NEW_DESTINATION, UIConstants.FIND_DESTINATION, UIConstants.BACK, UIConstants.QUIT))
+        print(UIConstants.THREE_MENU_OPTION.format(UIConstants.DISPLAY_DESTINATIONS, UIConstants.REGISTER_NEW_DESTINATION, UIConstants.FIND_DESTINATION, UIConstants.BACK, UIConstants.QUIT))
         
         # print("1. Display Destinations")
         # print("2. Register Destination")
@@ -47,7 +47,7 @@ class Destinations:
 
     def list_destinations(self):
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_DESTINATIONS))
-        
+
         destinations = self.logic_wrapper.get_all_destinations()
         pass
 
