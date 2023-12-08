@@ -12,7 +12,7 @@ class DestinationData:
         with open(self.file_name, newline="", encoding="utf-8") as csvfile: 
             reader = csv.DictReader(csvfile)
             for row in reader:
-                self.number_of_employees += 1
+                #self.number_of_employees += 1
                 ret_list.append(Destination(row["name"], row["country"], row["airport"], row["flight_time"], row["distance_from_Iceland"], row["contact_name"], row["contact_phone_nr"]))
             
             return ret_list

@@ -54,10 +54,10 @@ class Destinations:
         
         if destinations:
             table = PrettyTable()
-            table.field_names = ["Destination ID", "Country", "Airport", "Flight Duration"] 
+            table.field_names = ["Name", "Country", "Airport", "Flight Duration", "Distance from Iceland", "Contact Name", "Contact Phone Number"] 
             
             for destination in destinations:
-                table.add_row([destination.destination_id, destination.country, destination.airport, destination.flight_duration])
+                table.add_row([destination.name, destination.country, destination.airport_call_sign, destination.flight_time, destination.distance_from_iceland, destination.contact_name, destination.contact_phone_nr])
                 
             print(table)
         
