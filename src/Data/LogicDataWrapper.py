@@ -33,6 +33,9 @@ class Logic_Data_Wrapper:
     def sort_by_heads_of_service(self):
         return self.employee_data.sort_by_heads_of_service()
     
+    def search(self, filter):
+        return self.employee_data.search(filter)
+    
 
 #
 #       AIRPLANE FUNCTION CALLS FROM HERE DOWN

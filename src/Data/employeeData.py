@@ -92,13 +92,21 @@ class EmployeeData:
 
     def register_flight_attendant(self, employee):
         with open(self.file_name, "a", encoding="utf-8") as csvfile:
-            fieldnames = ["nid", "name", "role", "rank", "address", "phone_nr"]
+            fieldnames = ["nid", "name", "role", "rank", "license", "address", "phone_nr"]
             writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
             writer.writerow({"nid": employee.nid, "name": employee.name,
-                             "role": employee.role, "rank": employee.rank, 
+                             "role": employee.role, "rank": employee.rank, "license": "N/A",
                              "address": employee.address, "phone_nr": employee.phone_nr})
 
 
 
-
+    def search(self, filter):
+        ret_list = []
+        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if filter in row["name"] or filter in row["nid"] or filter in row["role"]:
+                    ret_list.append(row)
+        #returns the list of employees that match the search
+        return ret_list
 
