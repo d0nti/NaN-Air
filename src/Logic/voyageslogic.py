@@ -1,11 +1,12 @@
 from Model.VoyageModel import Voyage
 
+
 class VoyagesLogic:
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
         
     def register_voyage(self, voyage_info):
-        self.data_wrapper.register_voyage(voyage_info)
+        self.data_wrapper.register_new_voyage(voyage_info)
         
     def get_single_voyage_given_vid(self, vid):
         for voyage in Voyage.voyages:
@@ -17,7 +18,7 @@ class VoyagesLogic:
         return self.data_wrapper.get_all_voyages()
     
     def search_voyages(self, filter):
-        voyages = self.data_wrapper.get_all_voyages()
+        voyages = self.data_wrapper.get_all_voyages(filter)
         pass
     
     def copy_voyage(self, voyage_info):

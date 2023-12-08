@@ -2,6 +2,7 @@ from UI.Utils.Constants import UIConstants
 import sys
 from prettytable import PrettyTable
 from Model.VoyageModel import Voyage
+from Logic.UILogicWrapper import UI_Logic_Wrapper
 
 class Voyages:
     def __init__(self, logic_wrapper):
@@ -37,15 +38,14 @@ class Voyages:
                 self.list_all_voyages()
 
             elif command == "2" or command == "2.":
-                pass
+                self.register_new_voyage()
 
             elif command == "3" or command == "3.":
+                # self.populate_voyage()
                 pass
 
             elif command == "4" or command == "4.":
-                pass
-
-            elif command == "5" or command == "5.":
+                # self.check_voyage_status()
                 pass
 
             else:
@@ -65,3 +65,34 @@ class Voyages:
             print(table)
         else:
             print("No voyages found.")
+            
+    def register_new_voyage(self):
+        print("1. Register New Voyage")
+        print("2. Copy Existing Voyage")
+        print("3. Make Recurring Voyage")
+        print("b. Back")
+        print("q. Quit")
+        
+        command = input("User Input: ")
+        
+        if command == "1" or command == "1.":
+            voyage_info_print = UIConstants.REGISTER_VOYAGE_INFO.split(", ")
+            all_voyage_information = []
+            for voyage in voyage_info_print:
+                print(f"{voyage}: ", end=" ")
+                voyage_information = input()
+                all_voyage_information.append(voyage_information)
+            print(all_voyage_information)
+            
+            table = PrettyTable()
+            table.field_names = ["Voyage ID", "Destination", "Departure Time", "Departure Date", "Arrival Time", "Arrival Date", "Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]
+            
+            table.add_row(all_voyage_information)
+                
+            print(table)
+            
+    def populate_voyage(self):
+        pass
+    
+    def check_voyage_status(self):
+        pass

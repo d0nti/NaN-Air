@@ -19,7 +19,6 @@ class EmployeeHomePhoneNumberError(Exception):
 class PilotLicenseError(Exception):
     pass
 
-
 MAX_EMP_NAME_LEN = 100
 MIN_EMP_NAME_LEN = 10
 
@@ -49,22 +48,22 @@ class VerifyPilot:
         """ Checks if ssid is of length 10, checks if ssid is only numbers,
             checks if pilot is older than 65 years or younger than 25,
         """
-        temp1 = list(self.nid)
-        temp1 = temp1[4:6]
-        temp1 = str(temp1[0]) + str(temp1[-1])
+        temp1 = list(self.nid)                  # Transform nid to a list data type for later indexing
+        temp1 = temp1[4:6]                      # Takes the "age" numericals from ssid and assigns them to temp1 
+        temp1 = str(temp1[0]) + str(temp1[-1])  # Splices both numericals from the line above into a string and assigns them to temp1
 
-        temp2 = MAX_PILOT_BIRTH_YEAR[1:3]
-        temp2 = str(temp2[0]) + str(temp2[-1])
+        temp2 = MAX_PILOT_BIRTH_YEAR[1:3]       # Takes the numerical values needed from MAX_PILOT_BIRTH_YEAR and assigns them to temp2
+        temp2 = str(temp2[0]) + str(temp2[-1])  # Splices both numericals from the line above into a string and assigns them to temp2
 
-        temp3 = MIN_PILOT_BIRTH_YEAR[1:3]
-        temp3 = str(temp3[0]) + str(temp3[-1])
+        temp3 = MIN_PILOT_BIRTH_YEAR[1:3]       # Takes the numerical values needed from MIN_PILOT_BIRTH_YEAR and assigns them to temp3
+        temp3 = str(temp3[0]) + str(temp3[-1])  # Splices both numericals from the line above into a string and assigns them to temp3
 
 
-        if len(self.nid) != 10:
+        if len(self.nid) != 10:     # If ssid number is not 10 digits
             raise SsidNumError
-        elif not self.nid.isdigit():
+        elif not self.nid.isdigit():    # Else if all numbers in the ssid are not digits
             raise SsidNumError
-        elif int(temp1) < int(temp2) or int(temp1) > int(temp3):
+        elif int(temp1) > int(temp2) and int(temp1) < int(temp3):    # Else if age of pilot is more than the MAX age or if age of pilot is less than the MIN age 
             raise EmployeeAgeError
         else:
             return True
@@ -109,7 +108,7 @@ class VerifyPilot:
         
         temp = list(self.phone_nr)
         temp2 = ""
-        
+
         for i in range(1, len(temp)):
             temp2 += str(temp[i])
 
