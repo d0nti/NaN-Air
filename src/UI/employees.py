@@ -101,11 +101,25 @@ class Employees:
 
             self.get_sorted_list((input("User Input: ")))
 
+        
         elif command == "1" or command == "1.":
-            search_output = self.logic_wrapper.search(
-                input("")
-            )  # implementa search hér - sjá logic.py
-            print(search_output)
+            filter = input("Enter search filter (name, nid or job title): ")
+            filtered_employees = self.logic_wrapper.search(filter)
+            table = PrettyTable()
+
+            for employee in filtered_employees:
+                table.add_row(
+                    [
+                        employee.nid,
+                        employee.name,
+                        employee.role,
+                        employee.rank,
+                        employee.address,
+                        employee.phone_nr,
+                    ]
+                )
+
+            print (table)
 
 
     def get_sorted_list(self, command):
