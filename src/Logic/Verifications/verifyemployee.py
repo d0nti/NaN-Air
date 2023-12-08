@@ -10,8 +10,6 @@ class EmployeeNameShortError(Exception):
     pass
 class EmployeeRankError(Exception):
     pass
-class EmployeeRankError(Exception):
-    pass
 class EmployeeAddressError(Exception):
     pass
 class EmployeePhoneNumberError(Exception):
@@ -194,10 +192,8 @@ class VerifyFlightAttendant:
     def Rank(self):
         """ Verifies that a pilot's rank is either pilot or copilot
         """
-        if self.rank.lower() != "flight attendant" or self.rank.lower() != "flight service manager":
-            print(type(self.rank))
-            print(self.rank)
-            print(self.rank.lower())
+        
+        if self.rank.lower().strip() != "flight attendant" and self.rank.lower().strip() != "flight service manager":
             raise EmployeeRankError
         else:
             return True
@@ -220,11 +216,19 @@ class VerifyFlightAttendant:
         """ Checks that a phone number is 10 digits long
             and that all but the first item are digits
         """
-        if len(self.phone_nr) != 10:
+        
+        temp = list(self.phone_nr)
+        temp2 = ""
+        
+        for i in range(1, len(temp)):
+            temp2 += str(temp[i])
+
+
+        if len(self.phone_nr) != 11:
             raise EmployeePhoneNumberError
-        elif self.phone_nr.split()[0] != "+":
+        elif temp[0] != "+":
             raise EmployeePhoneNumberError
-        elif not self.phone_nr.split()[1:-1].isdigit():
+        elif not temp2.isdigit():
             raise EmployeePhoneNumberError
         else:
             return True
@@ -250,5 +254,6 @@ class VerifyFlightAttendant:
         self.Rank()
         self.Address()
         self.PhoneNumber()
-        self.HomePhoneNumber()
+        if self.home_phone != None:
+            self.HomePhoneNumber()
     
