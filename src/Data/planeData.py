@@ -1,4 +1,4 @@
-from Model.AirplaneModel import AirplaneCrust, AirplaneMeat
+from Model.AirplaneModel import Airplane
 from Model.DestinationModel import Destination
 
 import csv
@@ -19,13 +19,15 @@ class AirplaneData:
             and adds to the Airplane class.
         """
         ret_list = []
-        with open(self.plane_file_name, newline = "", encoding = "utf-8") as csv_file:
+        with open(self.plane_file_name, newline="", encoding="utf-8") as csv_file:
+            """ Er að reyna lesa inn headers og assign-a réttan sætis fjölda og manufacturer útfrá type id(plane insignia)-nu á sérverri flugvél
+            """
             csv_reader = csv.DictReader(csv_file)
             with open(self.legal_plane_file_name, newline="", encoding="utf-8") as file:
                 file_reader = csv.DictReader(file)
                 for item in csv_reader:
-                    for row in file_reader:
-                        ret_list.append(AirplaneCrust(item["plane_insignia"], row["plane_type_id"], row["manufacturer"], row["capacity"]))
+                    if item["plane_insignia"]:
+                        ret_list.append(Airplane(item["plane_insignia"]))
 
                 return ret_list
 

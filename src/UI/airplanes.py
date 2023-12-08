@@ -1,5 +1,5 @@
 from UI.Utils.Constants import UIConstants
-from Model.AirplaneModel import AirplaneCrust
+from Model.AirplaneModel import Airplane
 import sys
 from prettytable import PrettyTable
 
