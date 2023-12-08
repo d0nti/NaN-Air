@@ -2,6 +2,7 @@ from UI.Utils.Constants import UIConstants
 import sys
 from prettytable import PrettyTable
 from Model.VoyageModel import Voyage
+from Logic.UILogicWrapper import UI_Logic_Wrapper
 
 class Voyages:
     def __init__(self, logic_wrapper):
@@ -65,7 +66,6 @@ class Voyages:
             print(table)
         else:
             print("No voyages found.")
-<<<<<<< Updated upstream
             
     def register_new_voyage(self):
         print("1. Register New Voyage")
@@ -91,23 +91,3 @@ class Voyages:
             table.add_row(all_voyage_information)
                 
             print(table)
-=======
-        
-    def register_new_voyage(self):
-        vid = input("Voyage ID: ")
-        destination = input("Destination: ")
-        departuretime = input("Departure Time: ")
-        departuredate = input("Departure Date: ")
-        arrivaltime = input("Arrival Time: ")
-        arrivaldate = input("Arrival Date: ")
-        captain = input("Captain: ")
-        copilot = input("Copilot: ")
-        flight_service_manager = input("Flight Service Manager: ")
-        flight_attendant = input("Flight Attendant: ")
-        
-        voyage = Voyage(vid, destination, departuretime, departuredate, arrivaltime, arrivaldate, captain, copilot, flight_service_manager, flight_attendant)
-        
-        self.logic_wrapper.register_voyage(voyage)
-        
-        print("Voyage registered.")
->>>>>>> Stashed changes
