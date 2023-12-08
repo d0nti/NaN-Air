@@ -90,7 +90,10 @@ class MainMenu:
                 elif command == "4" or command == "4.":
                     
                     self.airplanes.airplanes_menu_output()
-
+                    back = self.airplanes.input_prompt_airplanes()
+                    if back == "b":
+                        break
+                    
                 elif command == "q" or command == "q.":
                     
                     print(QUIT_MESSAGE)

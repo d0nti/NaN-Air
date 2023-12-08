@@ -1,4 +1,7 @@
 from UI.Utils.Constants import UIConstants
+from Model.AirplaneModel import Airplane
+import sys
+from prettytable import PrettyTable
 
 
 class Airplanes:
@@ -15,6 +18,7 @@ class Airplanes:
         # print("4. Print Airplane Efficiency")
         # print("b. Back")
         # print("q. Quit")
+        print("Hér er ég")
 
     def input_prompt_airplanes(self):
         while True:
@@ -23,14 +27,17 @@ class Airplanes:
 
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
-                break
+                sys.exit()
 
             elif command == "b" or command == "b.":
-                break
+                return "b"
+                
 
             elif command == "1" or command == "1.":
-                pass
+                self.list_airplanes()
 
+                print("ARGH")
+            
             elif command == "2" or command == "2.":
                 pass
 
@@ -47,11 +54,37 @@ class Airplanes:
     def list_airplanes(self):
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_AIRPLANES))
         airplanes = self.logic_wrapper.get_all_airplanes()
-        pass
+
+        if airplanes:
+            table = PrettyTable()
+            table.field_names = [
+                UIConstants.NAME,
+                UIConstants.TYPE,
+                UIConstants.SUPPLIER,
+                UIConstants.SEATS,
+
+            ]
+        
+            for airplane in airplanes:
+                table.add_row(
+                    [
+                      airplane.name,
+                      airplane.type,
+                      airplane.supplier,
+                      airplane.seats, 
+
+                    ]
+
+                )
+
+            print(table)
+  
+        
+
+        
     
     def register_new_airplane(self):
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_AIRPLANE))
-
         pass
 
     def find_airplane(self):

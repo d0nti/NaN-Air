@@ -1,5 +1,6 @@
 from Logic.employeelogic import EmployeeLogic
 from Logic.destinationlogic import DestinationLogic
+from Logic.airplanelogic import AirplaneLogic
 from Data.LogicDataWrapper import Logic_Data_Wrapper
 from Logic.voyageslogic import VoyagesLogic
 
@@ -9,6 +10,7 @@ class UI_Logic_Wrapper:
         self.employee_logic = EmployeeLogic(logic_data_wrapper_instance)
         self.destinationlogic = DestinationLogic(logic_data_wrapper_instance)
         self.voyageslogic = VoyagesLogic(logic_data_wrapper_instance)
+        self.airplanelogic = AirplaneLogic(logic_data_wrapper_instance)
 
     def register_pilot(self, employee_info):
         return self.employee_logic.register_pilot(employee_info)
@@ -18,7 +20,10 @@ class UI_Logic_Wrapper:
 
     def get_all_employees(self):
         return self.employee_logic.get_all_employees()
-
+    
+    def get_all_airplanes(self):
+        return self.airplanelogic.get_all_airplanes()
+        
     def search(self, filter):
         return self.employee_logic.search(filter)
     
