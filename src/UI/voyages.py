@@ -91,6 +91,8 @@ class Voyages:
                 
             print(table)
             
+            
+            
     def populate_voyage(self):
         pass
     

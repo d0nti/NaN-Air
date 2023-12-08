@@ -2,7 +2,6 @@ from Model.VoyageModel import Voyage
 
 import csv
 
-
 class VoyageData:
     def __init__(self):
         self.file_name = "src/Files/voyages.csv"
