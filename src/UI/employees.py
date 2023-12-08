@@ -152,6 +152,7 @@ class Employees:
 
             print(table)
 
+
     def get_sorted_list(self, command):
         self.command = command
 

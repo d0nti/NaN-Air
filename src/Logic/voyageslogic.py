@@ -1,3 +1,4 @@
+from Model.VoyageModel import Voyage
 
 class VoyagesLogic:
     def __init__(self, data_connection):
@@ -7,7 +8,10 @@ class VoyagesLogic:
         self.data_wrapper.register_voyage(voyage_info)
         
     def get_single_voyage_given_vid(self, vid):
-        pass
+        for voyage in Voyage.voyages:
+            if voyage.vid == vid:
+                return voyage
+        return None
         
     def get_all_voyages(self):
         return self.data_wrapper.get_all_voyages()
