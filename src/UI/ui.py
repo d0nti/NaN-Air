@@ -88,7 +88,8 @@ class MainMenu:
                         break
 
                 elif command == "4" or command == "4.":
-                    pass
+                    
+                    self.airplanes.airplanes_menu_output()
 
                 elif command == "q" or command == "q.":
                     
