@@ -20,6 +20,7 @@ class Voyages:
 
     def input_prompt_voyages(self):
         # LES INPUT . <---- PUNKTUR
+        self.voyages_menu_output()
         while True:
             command = input("User Input: ")
             command = command.lower()
@@ -29,7 +30,7 @@ class Voyages:
                 break
 
             elif command == "b" or command == "b.":
-                break
+                return "b"
 
             elif command == "1" or command == "1.":
                 pass

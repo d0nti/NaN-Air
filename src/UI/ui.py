@@ -67,16 +67,21 @@ class MainMenu:
                 if command == "1" or command == "1.":
                     self.voyages.voyages_menu_output() # PRENTAR MENU
                     self.voyages.input_prompt_voyages() # LES INPUT
+                    
+                    if back == "b":
+                        break
 
                 elif command == "2" or command == "2.":
                     self.employees.employees_menu_output() # PRENTAR MENU
                     # self.employees.input_prompt_employees() # LES INPUT
-                    res = self.employees.input_prompt_employees()
-                    if res == "b":
+                    back = self.employees.input_prompt_employees() # LES INPUT. SETT Í BREYTU TIL ÞESS AÐ GETA KALLAÐ Á HANA RÉTT TIL AÐ FARA TILBAKA 
+                    if back == "b":
                         break
                 elif command == "3" or command == "3.":
                     self.destinations.destinations_menu_output() # PRENTAR MENU
                     self.destinations.input_prompt_destinations() # LES INPUT
+                    if back == "b":
+                        break
 
                 elif command == "4" or command == "4.":
                     pass

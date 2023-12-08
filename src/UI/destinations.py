@@ -18,6 +18,7 @@ class Destinations:
         # print("q. Quit")
 
     def input_prompt_destinations(self):
+        self.destinations_menu_output()
         while True:
             command = input("User Input: ")
             command = command.lower()
@@ -27,7 +28,7 @@ class Destinations:
                 break
 
             elif command == "b" or command == "b.":
-                break
+                return "b"
 
             elif command == "1" or command == "1.":
                 self.list_destinations()
