@@ -1,56 +1,72 @@
-class EmployeeSsidLenError:
+class EmployeeSsidLenError(Exception):
     pass
-class SsidNumError:
+class SsidNumError(Exception):
     pass
-class EmployeeAgeError:
+class EmployeeAgeError(Exception):
     pass
-class EmployeeNameLongError:
+class EmployeeNameLongError(Exception):
     pass
-class EmployeeNameShortError:
+class EmployeeNameShortError(Exception):
     pass
-class EmployeeRoleError:
+class EmployeeRankError(Exception):
     pass
-class EmployeeRankError:
+class EmployeeRankError(Exception):
     pass
-class EmployeeAddressError:
+class EmployeeAddressError(Exception):
     pass
-class EmployeePhoneNumberError:
+class EmployeePhoneNumberError(Exception):
     pass
-class EmployeeHomePhoneNumberError:
+class EmployeeHomePhoneNumberError(Exception):
     pass
-class PilotLicenseError:
+class PilotLicenseError(Exception):
     pass
 
 
 MAX_EMP_NAME_LEN = 100
 MIN_EMP_NAME_LEN = 10
 
+MAX_PILOT_BIRTH_YEAR = "1958"
+MAX_PILOT_BIRTH_YEAR = list(MAX_PILOT_BIRTH_YEAR)
+MIN_PILOT_BIRTH_YEAR = "1998"
+MIN_PILOT_BIRTH_YEAR = list(MIN_PILOT_BIRTH_YEAR)
 
-class VerifyEmployee:
+
+
+class VerifyPilot:
     def __init__(self, employee_info):
         """ verification class with methods to verify every input from user when
             creating a new pilot employee.
             Meant to take in an employee class object.
         """
-        self.ssid = employee_info.ssid
+        self.nid = employee_info.nid
         self.name = employee_info.name
         self.role = employee_info.role
         self.rank = employee_info.rank
         self.address = employee_info.address
         self.phone_nr = employee_info.phone_nr
         self.home_phone = employee_info.home_phone_nr
-        if employee_info.license:
-            self.license = employee_info.license
+        self.license = employee_info.license
 
     def Ssid(self):
         """ Checks if ssid is of length 10, checks if ssid is only numbers,
             checks if pilot is older than 65 years or younger than 25,
         """
-        if len(self.ssid) != 10:
+        temp1 = list(self.nid)
+        temp1 = temp1[4:6]
+        temp1 = str(temp1[0]) + str(temp1[-1])
+
+        temp2 = MAX_PILOT_BIRTH_YEAR[1:3]
+        temp2 = str(temp2[0]) + str(temp2[-1])
+
+        temp3 = MIN_PILOT_BIRTH_YEAR[1:3]
+        temp3 = str(temp3[0]) + str(temp3[-1])
+
+
+        if len(self.nid) != 10:
             raise SsidNumError
-        elif not self.ssid.isdigit():
+        elif not self.nid.isdigit():
             raise SsidNumError
-        elif self.ssid.split()[4:5] < 58 or self.ssid.split()[4:5] > 98:
+        elif int(temp1) < int(temp2) or int(temp1) > int(temp3):
             raise EmployeeAgeError
         else:
             return True
@@ -70,7 +86,7 @@ class VerifyEmployee:
         """ Verifies that a pilot's rank is either pilot or copilot
         """
         if self.rank.lower() != "pilot" or self.rank.lower() != "copilot":
-            raise EmployeeRoleError
+            raise EmployeeRankError
         else:
             return True
 
@@ -131,3 +147,108 @@ class VerifyEmployee:
         self.License()
 
 
+
+class VerifyFlightAttendant:
+    def __init__(self, employee_info):
+        """ verification class with methods to verify every input from user when
+            creating a new flight attendant employee.
+            Meant to take in an employee class object.
+        """
+        self.nid = employee_info.nid
+        self.name = employee_info.name
+        self.role = employee_info.role
+        self.rank = employee_info.rank
+        self.address = employee_info.address
+        self.phone_nr = employee_info.phone_nr
+        self.home_phone = employee_info.home_phone_nr
+
+
+    def Ssid(self):
+        """ Checks if ssid is of length 10, checks if ssid is only numbers,
+            checks if pilot is older than 65 years or younger than 25,
+        """
+        temp1 = list(self.nid)
+        temp1 = temp1[4:6]
+        temp1 = str(temp1[0]) + str(temp1[-1])
+
+        if len(self.nid) != 10:
+            raise SsidNumError
+        elif not self.nid.isdigit():
+            raise SsidNumError
+        # elif int(temp1) < MAX_PILOT_BIRTH_YEAR[-3:-1] or int(temp1) > MIN_PILOT_BIRTH_YEAR[-3:-1]:
+        #     raise EmployeeAgeError
+        else:
+            return True
+
+    def Name(self):
+        """ Checks if a pilot's name is longer than MAX_EMP_NAME_LEN
+            or shorter than MIN_EMP_NAME_LEN
+        """
+        if len(self.name) > MAX_EMP_NAME_LEN:
+            raise EmployeeNameLongError
+        elif len(self.name) < MIN_EMP_NAME_LEN:
+            raise EmployeeNameShortError
+        else:
+            return True
+
+    def Rank(self):
+        """ Verifies that a pilot's rank is either pilot or copilot
+        """
+        if self.rank.lower() != "flight attendant" or self.rank.lower() != "flight service manager":
+            print(type(self.rank))
+            print(self.rank)
+            print(self.rank.lower())
+            raise EmployeeRankError
+        else:
+            return True
+
+    def Address(self):
+        """ Splits the address string into a list and verifies that the first 
+            item is not digits and that the last item is digits
+        """
+        temp = self.address.split(" ")
+        
+        if temp[0].isdigit():
+            raise EmployeeAddressError
+        elif not temp[-1].isdigit():
+            raise EmployeeAddressError
+        else:
+            return True
+
+
+    def PhoneNumber(self):
+        """ Checks that a phone number is 10 digits long
+            and that all but the first item are digits
+        """
+        if len(self.phone_nr) != 10:
+            raise EmployeePhoneNumberError
+        elif self.phone_nr.split()[0] != "+":
+            raise EmployeePhoneNumberError
+        elif not self.phone_nr.split()[1:-1].isdigit():
+            raise EmployeePhoneNumberError
+        else:
+            return True
+
+
+    def HomePhoneNumber(self):
+        """ Checks that a home phone number is 10 digits long
+            and that all but the first item are digits
+        """
+        if len(self.home_phone) != 10:
+            raise EmployeeHomePhoneNumberError
+        elif self.home_phone.split()[0] != "+":
+            raise EmployeeHomePhoneNumberError
+        elif not self.home_phone.split()[1:-1].isdigit():
+            raise EmployeeHomePhoneNumberError
+        else:
+            return True
+
+
+    def CallFunctions(self):
+        self.Ssid()
+        self.Name()
+        self.Rank()
+        self.Address()
+        self.PhoneNumber()
+        self.HomePhoneNumber()
+    
