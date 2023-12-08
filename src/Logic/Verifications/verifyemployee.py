@@ -55,11 +55,18 @@ class VerifyPilot:
         temp1 = temp1[4:6]
         temp1 = str(temp1[0]) + str(temp1[-1])
 
+        temp2 = MAX_PILOT_BIRTH_YEAR[1:3]
+        temp2 = str(temp2[0]) + str(temp2[-1])
+
+        temp3 = MIN_PILOT_BIRTH_YEAR[1:3]
+        temp3 = str(temp3[0]) + str(temp3[-1])
+
+
         if len(self.nid) != 10:
             raise SsidNumError
         elif not self.nid.isdigit():
             raise SsidNumError
-        elif int(temp1) < 58 or int(temp1) > 98:
+        elif int(temp1) < int(temp2) or int(temp1) > int(temp3):
             raise EmployeeAgeError
         else:
             return True
@@ -188,6 +195,7 @@ class VerifyFlightAttendant:
         """ Verifies that a pilot's rank is either pilot or copilot
         """
         if self.rank.lower() != "flight attendant" or self.rank.lower() != "flight service manager":
+            print(type(self.rank))
             print(self.rank)
             print(self.rank.lower())
             raise EmployeeRankError

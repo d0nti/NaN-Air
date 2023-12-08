@@ -276,8 +276,8 @@ class Employees:
                 ssid, name, rank, address, phone_nr, license = [all_pilot_information[i] for i in range(0, (len(all_pilot_information)))]
                 self.logic_wrapper.register_pilot(Pilot(ssid, name, "Pilot", rank, address, phone_nr, license))
             elif len(all_pilot_information) == 7:
-                ssid, name, rank, address, phone_nr, home_phone_nr, license = [all_pilot_information[i] for i in range(0, (len(all_pilot_information) - 1))]
-                self.logic_wrapper.register_pilot(Pilot(ssid, name, "Pilot",rank, address, phone_nr, home_phone_nr, license))
+                ssid, name, rank, address, phone_nr, home_phone_nr, license = [all_pilot_information[i] for i in range(0, (len(all_pilot_information)))]
+                self.logic_wrapper.register_pilot(Pilot(ssid, name, "Pilot", rank, address, phone_nr, home_phone_nr, license))
             else:
                 pass # ERROR :)
             
