@@ -1,6 +1,7 @@
 from Logic.UILogicWrapper import UI_Logic_Wrapper
 from UI.Utils.Constants import UIConstants
 from prettytable import PrettyTable
+import sys
 
 
 class Destinations:
@@ -19,14 +20,14 @@ class Destinations:
         # print("q. Quit")
 
     def input_prompt_destinations(self):
-        self.destinations_menu_output()
+        # self.destinations_menu_output()
         while True:
             command = input("User Input: ")
             command = command.lower()
 
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
-                break
+                sys.exit()
 
             elif command == "b" or command == "b.":
                 return "b"

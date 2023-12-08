@@ -1,4 +1,5 @@
 from Model.AirplaneModel import Airplane
+from Model.DestinationModel import Destination
 
 import csv
 
