@@ -1,5 +1,5 @@
 
-class EmployeeLogic:
+class DestinationLogic:
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
 
@@ -18,5 +18,8 @@ class EmployeeLogic:
                 filtered_employees.append(employee)
 
         return filtered_employees
+    
+    def get_all_destinations(self):
+        return self.data_wrapper.get_all_destinations()
 
         

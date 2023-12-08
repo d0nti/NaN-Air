@@ -63,8 +63,6 @@ class Destinations:
         
         else:
             print(UIConstants.NO_DESTINATIONS_REGISTERED)
-            
-        
         
 
     def register_destination(self):
