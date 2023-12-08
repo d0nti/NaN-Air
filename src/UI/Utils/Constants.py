@@ -15,6 +15,7 @@ class UIConstants:
     FIND_DESTINATION = "Find Destination"
     DESTINATIONS = ["Nuuk", "Kulusuk", "Thorshafn", "Tingwall", "Longyearbyen"]
     COUNTRY = ["Greenland", "Greenland", "Faroe Islands", "Shetland Islands", "Svalbard"]
+    
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
     REGISTER_NEW_FLIGHT_ATTENDANT = "Register New Flight Attendant"

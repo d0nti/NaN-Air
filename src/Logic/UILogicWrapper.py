@@ -3,8 +3,8 @@ from Data.LogicDataWrapper import Logic_Data_Wrapper
 
 class UI_Logic_Wrapper:
     def __init__(self):
-        logic_data_wrapper_instance = Logic_Data_Wrapper()
-        self.employee_logic = EmployeeLogic(logic_data_wrapper_instance)
+        self.logic_data_wrapper_instance = Logic_Data_Wrapper()
+        self.employee_logic = EmployeeLogic(self.logic_data_wrapper_instance)
 
     def register_pilot(self, employee_info):
         return self.employee_logic.register_pilot(employee_info)
@@ -29,3 +29,12 @@ class UI_Logic_Wrapper:
     
     def sort_by_heads_of_service(self):
         return self.employee_logic.sort_by_heads_of_service()
+    
+
+#
+#       AIRPLANE FUNCTION CALLS FROM HERE DOWN
+#
+    def get_all_airplanes(self):
+        return self.airplane_data.get_all_airplanes()
+
+    
