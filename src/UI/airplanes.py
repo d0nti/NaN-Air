@@ -46,11 +46,12 @@ class Airplanes:
 
     def list_airplanes(self):
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_AIRPLANES))
-        
+        airplanes = self.logic_wrapper.get_all_airplanes()
         pass
     
     def register_new_airplane(self):
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_AIRPLANE))
+        
         pass
 
     def find_airplane(self):
