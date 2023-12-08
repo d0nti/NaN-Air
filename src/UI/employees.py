@@ -12,7 +12,7 @@ class Employees:
 
     def employees_menu_output(self): # 
         print(UIConstants.HEADER.format(UIConstants.MANAGE_EMPLOYEES))
-        print(UIConstants.MENU_OPTION.format(UIConstants.DISPLAY_EMPLOYEES, UIConstants.REGISTER_NEW_EMPLOYEE, UIConstants.SHIFT_PLAN, UIConstants.BACK, UIConstants.QUIT))
+        print(UIConstants.THREE_MENU_OPTION.format(UIConstants.DISPLAY_EMPLOYEES, UIConstants.REGISTER_NEW_EMPLOYEE, UIConstants.SHIFT_PLAN, UIConstants.BACK, UIConstants.QUIT))
         
         # print("1. Display Employees")
         # print("2. Register New Employee")
@@ -84,7 +84,7 @@ class Employees:
             print(table)
         else:
             print(UIConstants.USER_NOT_FOUND)
-            print(UIConstants.TABLE_OPTION_MENU.format(UIConstants.SEARCH, UIConstants.SORT_BY, UIConstants.BACK, UIConstants.QUIT))
+            print(UIConstants.TWO_MENU_OPTION.format(UIConstants.SEARCH, UIConstants.SORT_BY, UIConstants.BACK, UIConstants.QUIT))
 
         # print("1. Search")
         # print("2. Sort by:")
@@ -92,7 +92,7 @@ class Employees:
         command = input("User Input: ")
 
         if command == "2" or command == "2.":
-            print(UIConstants.SORT_BY_MENU.format(UIConstants.CAPTAINS, UIConstants.CO_PILOTS, UIConstants.FLIGHT_ATTENDTANTS, UIConstants.HEADS_OF_SERVICE, UIConstants.BACK, UIConstants.QUIT))
+            print(UIConstants.FOUR_MENU_OPTION.format(UIConstants.CAPTAINS, UIConstants.CO_PILOTS, UIConstants.FLIGHT_ATTENDTANTS, UIConstants.HEADS_OF_SERVICE, UIConstants.BACK, UIConstants.QUIT))
            
             # print("1. Captains")
             # print("2. Co-Pilots")
@@ -253,7 +253,7 @@ class Employees:
             to the employeelogic.py file for verification.
         """
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_EMPLOYEE))   
-        print(UIConstants.TABLE_OPTION_MENU.format(UIConstants.REGISTER_NEW_PILOT, UIConstants.REGISTER_NEW_FLIGHT_ATTENDANT, UIConstants.BACK, UIConstants.QUIT))        
+        print(UIConstants.TWO_MENU_OPTION.format(UIConstants.REGISTER_NEW_PILOT, UIConstants.REGISTER_NEW_FLIGHT_ATTENDANT, UIConstants.BACK, UIConstants.QUIT))        
         
         
         # print("Choose an employee to register")

@@ -8,7 +8,7 @@ class Voyages:
     def voyages_menu_output(self):
         # PRENTAR MENU-IÐ .  <---- PUNKTUR
         print(UIConstants.HEADER.format(UIConstants.MANAGE_VOYAGES))
-        print(UIConstants.SORT_BY_MENU.format(UIConstants.DISPLAY_VOYAGES, UIConstants.REGISTER_NEW_VOYAGE, UIConstants.POPULATE_VOYAGE, UIConstants.CHECK_VOYAGE_STATUS, UIConstants.BACK, UIConstants.QUIT))
+        print(UIConstants.FOUR_MENU_OPTION.format(UIConstants.DISPLAY_VOYAGES, UIConstants.REGISTER_NEW_VOYAGE, UIConstants.POPULATE_VOYAGE, UIConstants.CHECK_VOYAGE_STATUS, UIConstants.BACK, UIConstants.QUIT))
 
         # print("1. Display Voyages")
         # print("2. Register Voyages")

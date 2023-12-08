@@ -78,7 +78,7 @@ class UIConstants:
         + "q. {}"
     )
 
-    MENU_OPTION = (
+    THREE_MENU_OPTION = (
         "1. {}"
         + "\n"
         + "2. {}"
@@ -90,7 +90,7 @@ class UIConstants:
         + "q. {}"
         )
 
-    TABLE_OPTION_MENU = (
+    TWO_MENU_OPTION = (
         "1. {}"
         + "\n"
         + "2. {}"
@@ -100,7 +100,7 @@ class UIConstants:
         + "q. {}"
     )
 
-    SORT_BY_MENU = (
+    FOUR_MENU_OPTION = (
         "1. {}"
         + "\n"
         + "2. {}"
@@ -114,7 +114,7 @@ class UIConstants:
         + "q. {}"
     )
 
-    FIVE_MENU_OPTION = (
+    FIVE_THREE_MENU_OPTION = (
         "1. {}"
         + "\n"
         + "2. {}"
