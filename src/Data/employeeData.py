@@ -11,7 +11,7 @@ class EmployeeData:
         self.file_name = "src/Files/crew.csv"
         self.number_of_employees = 0
 
-#frá fyrirlestri
+#from lecture on echo360
     def get_all_employees(self):
         ret_list = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile: 
