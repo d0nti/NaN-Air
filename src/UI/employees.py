@@ -3,6 +3,7 @@ from UI.Utils.Constants import UIConstants
 from Model.EmployeeModel import Employee
 from Model.EmployeeModel import Pilot
 from Model.EmployeeModel import FlightAttendant
+import sys
 
 
 class Employees:
@@ -28,14 +29,14 @@ class Employees:
         # print("q. Quit")
 
     def input_prompt_employees(self):
-        self.employees_menu_output()
+        # self.employees_menu_output()
         while True:
             command = input("User Input: ")
             command = command.lower()
 
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
-                break
+                sys.exit()
             elif command == "b" or command == "b.":
                 return "b"
                 # print("Going Back!")
@@ -58,14 +59,14 @@ class Employees:
         if employees:
             table = PrettyTable()
             table.field_names = [
-                UIConstants.SSID,
-                UIConstants.NAME,
-                UIConstants.JOB_TITLE,
-                UIConstants.RANK,
-                UIConstants.ADDRESS,
-                UIConstants.PHONE_NUMBER,
+            UIConstants.SSID,
+            UIConstants.NAME,
+            UIConstants.JOB_TITLE,
+            UIConstants.RANK,
+            UIConstants.ADDRESS,
+            UIConstants.PHONE_NUMBER
             ]
-
+            
             # table.field_names = [
             #     "Name",
             #     "SSID",
@@ -73,7 +74,7 @@ class Employees:
             #     "Phone Number",
             #     "Address",
             # ]
-            for employee in employees:  # fix e
+            for employee in employees: # fix e
                 table.add_row(
                     [
                         employee.nid,
@@ -150,6 +151,7 @@ class Employees:
                 )
 
             print(table)
+
 
     def get_sorted_list(self, command):
         self.command = command

@@ -1,5 +1,7 @@
 from UI.Utils.Constants import UIConstants
-
+import sys
+from prettytable import PrettyTable
+from Model.VoyageModel import Voyage
 
 class Voyages:
     def __init__(self, logic_wrapper):
@@ -19,23 +21,23 @@ class Voyages:
 
     def input_prompt_voyages(self):
         # LES INPUT . <---- PUNKTUR
-        self.voyages_menu_output()
+        # self.voyages_menu_output()
         while True:
             command = input("User Input: ")
             command = command.lower()
 
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
-                break
+                sys.exit()
 
             elif command == "b" or command == "b.":
                 return "b"
 
             elif command == "1" or command == "1.":
-                pass
+                self.list_all_voyages()
 
             elif command == "2" or command == "2.":
-                pass
+                self.register_new_voyage()
 
             elif command == "3" or command == "3.":
                 pass
@@ -48,3 +50,64 @@ class Voyages:
 
             else:
                 print(UIConstants.INVALID_INPUT)
+                
+                
+    def list_all_voyages(self):
+        voyages = self.logic_wrapper.get_all_voyages()
+        
+        if voyages:
+            table = PrettyTable()
+            table.field_names = ["Voyage ID", "Destination", "Departure Time", "Departure Date", "Arrival Time", "Arrival Date", "Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]
+        
+            for voyage in voyages:
+                table.add_row([voyage.vid, voyage.destination, voyage.departuretime, voyage.departuredate, voyage.arrivaltime, voyage.arrivaldate, voyage.captain, voyage.copilot, voyage.flight_service_manager, voyage.flight_attendant])  
+            
+            print(table)
+        else:
+            print("No voyages found.")
+<<<<<<< Updated upstream
+            
+    def register_new_voyage(self):
+        print("1. Register New Voyage")
+        print("2. Copy Existing Voyage")
+        print("3. Make Recurring Voyage")
+        print("b. Back")
+        print("q. Quit")
+        
+        command = input("User Input: ")
+        
+        if command == "1" or command == "1.":
+            voyage_info_print = UIConstants.REGISTER_VOYAGE_INFO.split(", ")
+            all_voyage_information = []
+            for voyage in voyage_info_print:
+                print(f"{voyage}: ", end=" ")
+                voyage_information = input()
+                all_voyage_information.append(voyage_information)
+            print(all_voyage_information)
+            
+            table = PrettyTable()
+            table.field_names = ["Voyage ID", "Destination", "Departure Time", "Departure Date", "Arrival Time", "Arrival Date", "Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]
+            
+            table.add_row(all_voyage_information)
+                
+            print(table)
+=======
+        
+    def register_new_voyage(self):
+        vid = input("Voyage ID: ")
+        destination = input("Destination: ")
+        departuretime = input("Departure Time: ")
+        departuredate = input("Departure Date: ")
+        arrivaltime = input("Arrival Time: ")
+        arrivaldate = input("Arrival Date: ")
+        captain = input("Captain: ")
+        copilot = input("Copilot: ")
+        flight_service_manager = input("Flight Service Manager: ")
+        flight_attendant = input("Flight Attendant: ")
+        
+        voyage = Voyage(vid, destination, departuretime, departuredate, arrivaltime, arrivaldate, captain, copilot, flight_service_manager, flight_attendant)
+        
+        self.logic_wrapper.register_voyage(voyage)
+        
+        print("Voyage registered.")
+>>>>>>> Stashed changes

@@ -99,14 +99,13 @@ class EmployeeData:
                              "address": employee.address, "phone_nr": employee.phone_nr})
 
 
-
     def search(self, filter):
+        #takes a input from ui and searches for it in the csv file
         ret_list = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                if filter in row["name"] or filter in row["nid"] or filter in row["role"]:
+                if filter in row["name"] or filter in row["nid"] or filter in row["role"]: #can use these param to search
                     ret_list.append(row)
         #returns the list of employees that match the search
         return ret_list
-
