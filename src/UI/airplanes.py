@@ -7,7 +7,7 @@ class Airplanes:
 
     def airplanes_menu_output(self):
         print(UIConstants.HEADER.format(UIConstants.MANAGE_AIRPLANES))
-        print(UIConstants.SORT_BY_MENU.format(UIConstants.DISPLAY_AIRPLANES, UIConstants.REGISTER_NEW_AIRPLANE, UIConstants.FIND_AIRPLANE, UIConstants.PRINT_AIRPLANE_EFFICIENCY, UIConstants.BACK, UIConstants.QUIT))
+        print(UIConstants.FOUR_MENU_OPTION.format(UIConstants.DISPLAY_AIRPLANES, UIConstants.REGISTER_NEW_AIRPLANE, UIConstants.FIND_AIRPLANE, UIConstants.PRINT_AIRPLANE_EFFICIENCY, UIConstants.BACK, UIConstants.QUIT))
         
         # print("1. Display Airplane")
         # print("2. Register New Airplane")
@@ -46,11 +46,12 @@ class Airplanes:
 
     def list_airplanes(self):
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_AIRPLANES))
-        
+        airplanes = self.logic_wrapper.get_all_airplanes()
         pass
     
     def register_new_airplane(self):
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_AIRPLANE))
+
         pass
 
     def find_airplane(self):
