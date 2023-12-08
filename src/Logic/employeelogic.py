@@ -6,13 +6,13 @@ class EmployeeLogic:
 
     def register_pilot(self, employee_info):
         temp = VerifyPilot(employee_info)
-        temp.CallFunctions()
+        temp.ValidatePilot()
         if temp:
             self.data_wrapper.register_pilot(employee_info)
 
     def register_flight_attendant(self, employee_info):
         temp = VerifyFlightAttendant(employee_info)
-        temp.CallFunctions()
+        temp.ValidateFlightAttendant()
         if temp:
             self.data_wrapper.register_flight_attendant(employee_info)
 
