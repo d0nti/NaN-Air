@@ -101,7 +101,6 @@ class EmployeeData:
 
 
     def search(self, filter):
-        #takes a input from ui and searches for it in the csv file
         ret_list = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
