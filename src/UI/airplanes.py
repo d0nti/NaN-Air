@@ -1,5 +1,5 @@
 from UI.Utils.Constants import UIConstants
-from Model.AirplaneModel import Airplane
+from Model.AirplaneModel import AirplaneCrust
 import sys
 from prettytable import PrettyTable
 
@@ -68,8 +68,8 @@ class Airplanes:
             for airplane in airplanes:
                 table.add_row(
                     [
-                      airplane.name,
-                      airplane.type,
+                      airplane.insignia,
+                      airplane.plane_type,
                       airplane.supplier,
                       airplane.seats, 
 

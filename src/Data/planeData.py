@@ -23,8 +23,9 @@ class AirplaneData:
             csv_reader = csv.DictReader(csv_file)
             with open(self.legal_plane_file_name, newline="", encoding="utf-8") as file:
                 file_reader = csv.DictReader(file)
-                for row,item in csv_reader,file_reader:
-                    ret_list.append(AirplaneCrust(row["plane_insignia"], item["plane_type_id"], item["manufacturer"], item["capacity"]))
+                for item in csv_reader:
+                    for row in file_reader:
+                        ret_list.append(AirplaneCrust(item["plane_insignia"], row["plane_type_id"], row["manufacturer"], row["capacity"]))
 
                 return ret_list
 
