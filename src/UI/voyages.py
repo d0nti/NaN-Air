@@ -1,4 +1,5 @@
 from UI.Utils.Constants import UIConstants
+import sys
 
 
 class Voyages:
@@ -26,7 +27,7 @@ class Voyages:
 
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
-                break
+                sys.exit()
 
             elif command == "b" or command == "b.":
                 return "b"

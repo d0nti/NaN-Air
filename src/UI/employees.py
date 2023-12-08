@@ -3,6 +3,7 @@ from UI.Utils.Constants import UIConstants
 from Model.EmployeeModel import Employee
 from Model.EmployeeModel import Pilot
 from Model.EmployeeModel import FlightAttendant
+import sys
 
 
 class Employees:
@@ -22,14 +23,14 @@ class Employees:
         
 
     def input_prompt_employees(self):
-        self.employees_menu_output()
+        # self.employees_menu_output()
         while True:
             command = input("User Input: ")
             command = command.lower()
 
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
-                break
+                sys.exit()
             elif command == "b" or command == "b.":
                 return "b"
                 # print("Going Back!")
@@ -58,7 +59,8 @@ class Employees:
             UIConstants.JOB_TITLE,
             UIConstants.RANK,
             UIConstants.ADDRESS,
-            UIConstants.PHONE_NUMBER]
+            UIConstants.PHONE_NUMBER
+            ]
             
             # table.field_names = [
             #     "Name",
@@ -67,6 +69,7 @@ class Employees:
             #     "Phone Number",
             #     "Address",
             # ]
+            
             for employee in employees: # fix e
                 table.add_row(
                     [
