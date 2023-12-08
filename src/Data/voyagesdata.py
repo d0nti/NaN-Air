@@ -20,4 +20,8 @@ class VoyageData:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({"vid": voyage.vid, "destination": voyage.destination, "departuretime": voyage.departuretime, "departuredate": voyage.departuredate, "arrivaltime": voyage.arrivaltime, "arrivaldate": voyage.arrivaldate, "captain": voyage.captain, "copilot": voyage.copilot, "flight_service_manager": voyage.flight_service_manager, "flight_attendant": voyage.flight_attendant})
             
-    
+    def register_new_voyage(self, voyage):
+        with open(self.file_name, "a") as csvfile:
+            fieldnames = ["vid", "destination", "departuretime", "departuredate", "arrivaltime", "arrivaldate", "captain", "copilot", "flight_service_manager", "flight_attendant"]
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writerow({"vid": voyage.vid, "destination": voyage.destination, "departuretime": voyage.departuretime, "departuredate": voyage.departuredate, "arrivaltime": voyage.arrivaltime, "arrivaldate": voyage.arrivaldate, "captain": voyage.captain, "copilot": voyage.copilot, "flight_service_manager": voyage.flight_service_manager, "flight_attendant": voyage.flight_attendant})
