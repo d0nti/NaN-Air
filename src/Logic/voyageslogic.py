@@ -18,7 +18,7 @@ class VoyagesLogic:
         return self.data_wrapper.get_all_voyages()
     
     def search_voyages(self, filter):
-        voyages = self.data_wrapper.get_all_voyages()
+        voyages = self.data_wrapper.get_all_voyages(filter)
         pass
     
     def copy_voyage(self, voyage_info):

@@ -41,12 +41,11 @@ class Voyages:
                 self.register_new_voyage()
 
             elif command == "3" or command == "3.":
+                # self.populate_voyage()
                 pass
 
             elif command == "4" or command == "4.":
-                pass
-
-            elif command == "5" or command == "5.":
+                # self.check_voyage_status()
                 pass
 
             else:
@@ -91,3 +90,9 @@ class Voyages:
             table.add_row(all_voyage_information)
                 
             print(table)
+            
+    def populate_voyage(self):
+        pass
+    
+    def check_voyage_status(self):
+        pass
