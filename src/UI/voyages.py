@@ -1,11 +1,7 @@
 from UI.Utils.Constants import UIConstants
-<<<<<<< Updated upstream
 import sys
-=======
 from prettytable import PrettyTable
 from Model.VoyageModel import Voyage
->>>>>>> Stashed changes
-
 
 class Voyages:
     def __init__(self, logic_wrapper):
