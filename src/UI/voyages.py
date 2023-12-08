@@ -65,33 +65,6 @@ class Voyages:
             print(table)
         else:
             print("No voyages found.")
-<<<<<<< Updated upstream
-            
-    def register_new_voyage(self):
-        print("1. Register New Voyage")
-        print("2. Copy Existing Voyage")
-        print("3. Make Recurring Voyage")
-        print("b. Back")
-        print("q. Quit")
-        
-        command = input("User Input: ")
-        
-        if command == "1" or command == "1.":
-            voyage_info_print = UIConstants.REGISTER_VOYAGE_INFO.split(", ")
-            all_voyage_information = []
-            for voyage in voyage_info_print:
-                print(f"{voyage}: ", end=" ")
-                voyage_information = input()
-                all_voyage_information.append(voyage_information)
-            print(all_voyage_information)
-            
-            table = PrettyTable()
-            table.field_names = ["Voyage ID", "Destination", "Departure Time", "Departure Date", "Arrival Time", "Arrival Date", "Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]
-            
-            table.add_row(all_voyage_information)
-                
-            print(table)
-=======
         
     def register_new_voyage(self):
         vid = input("Voyage ID: ")
@@ -110,4 +83,3 @@ class Voyages:
         self.logic_wrapper.register_voyage(voyage)
         
         print("Voyage registered.")
->>>>>>> Stashed changes

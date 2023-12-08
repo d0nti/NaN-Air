@@ -1,4 +1,4 @@
-from Model.AirplaneModel import Airplane
+from Model.AirplaneModel import AirplaneCrust, AirplaneMeat
 from Model.DestinationModel import Destination
 
 import csv
@@ -20,23 +20,15 @@ class AirplaneData:
         """
         ret_list = []
         with open(self.plane_file_name, newline = "", encoding = "utf-8") as csv_file:
-            reader = csv.DictReader(csv_file)
-            for row in reader:
-                ret_list.append(Airplane(row["plane_insignia"], row["plane_type_id"]))
-                self.get_all_airplanes_helper(ret_list)
-            return ret_list
+            csv_reader = csv.DictReader(csv_file)
+            with open(self.legal_plane_file_name, newline="", encoding="utf-8") as file:
+                file_reader = csv.DictReader(file)
+                for row,item in csv_reader,file_reader:
+                    ret_list.append(AirplaneCrust(row["plane_insignia"], item["plane_type_id"], item["manufacturer"], item["capacity"]))
 
-    def get_all_airplanes_helper(self, airplane_list):
-        """ Opens the file containing legal aircraft types and adds the missing information
-            needed to the list that the 'get_all_airplanes' function was creating.
-            This function is meant to be called inside of the other function above.
-        """
-        with open(self.legal_plane_file_name, newline = "", encoding = "utf-8") as csv_file:
-            reader = csv.DictReader(csv_file)
-            reader.split(",")
-            if airplane_list[-1].plane_type == reader[1]:
-                airplane_list[-1].supplier = reader[1]
-                airplane_list[-1].seats = reader[3]
+                return ret_list
+
+
 
                 
 

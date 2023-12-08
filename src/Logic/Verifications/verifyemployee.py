@@ -61,9 +61,9 @@ class VerifyPilot:
 
         if len(self.nid) != 10:     # If ssid number is not 10 digits
             raise SsidNumError
-        elif not self.nid.isdigit():    # Else if all numbers in the ssid are not digits
+        if not self.nid.isdigit():    # Else if all numbers in the ssid are not digits
             raise SsidNumError
-        elif int(temp1) > int(temp2) and int(temp1) < int(temp3):    # Else if age of pilot is more than the MAX age or if age of pilot is less than the MIN age 
+        if int(temp1) > int(temp2) and int(temp1) < int(temp3):    # Else if age of pilot is more than the MAX age or if age of pilot is less than the MIN age 
             raise EmployeeAgeError
         else:
             return True
