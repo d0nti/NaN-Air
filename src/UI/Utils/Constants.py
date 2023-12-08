@@ -13,7 +13,8 @@ class UIConstants:
     DISPLAY_DESTINATIONS = "Display Destinations"
     REGISTER_NEW_DESTINATION = "Register New Destination"
     FIND_DESTINATION = "Find Destination"
-    
+    DESTINATIONS = ["Nuuk", "Kulusuk", "Thorshafn", "Tingwall", "Longyearbyen"]
+    COUNTRY = ["Greenland", "Greenland", "Faroe Islands", "Shetland Islands", "Svalbard"]
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
     REGISTER_NEW_FLIGHT_ATTENDANT = "Register New Flight Attendant"
@@ -22,7 +23,7 @@ class UIConstants:
     EMPLOYEE_LIST = "Employee list"
     EMPLOYEE_INFORMATION_MESSAGE = "Please Enter the Following Information in the following order:"
     EMPLOYEE_INFORMATION = "Employee Name, Employee SSID, Job Title, Pilot License (If applicable), Home Address, Phone Number, E-mail Address, Home Phone Number (optional), License"          
-    REGISTER_EMPLOYEE_INFO = "SSID, Name, Role, Rank, Address, Phonenumber, Home Phone Number(optional)"
+    REGISTER_EMPLOYEE_INFO = "SSID, Name, Rank, Address, Phonenumber, Home Phone Number(optional), License"
     NAME = "Name"
     SSID = "SSID"
     JOB_TITLE = "Job Title"
@@ -78,7 +79,7 @@ class UIConstants:
         + "q. {}"
     )
 
-    MENU_OPTION = (
+    THREE_MENU_OPTION = (
         "1. {}"
         + "\n"
         + "2. {}"
@@ -90,7 +91,7 @@ class UIConstants:
         + "q. {}"
         )
 
-    TABLE_OPTION_MENU = (
+    TWO_MENU_OPTION = (
         "1. {}"
         + "\n"
         + "2. {}"
@@ -100,7 +101,7 @@ class UIConstants:
         + "q. {}"
     )
 
-    SORT_BY_MENU = (
+    FOUR_MENU_OPTION = (
         "1. {}"
         + "\n"
         + "2. {}"
