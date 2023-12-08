@@ -55,5 +55,3 @@ class DestinationData:
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
             DestinationData = list(map(lambda key: destination[key], destination.keys()))
             writer.writerow({"name": DestinationData[0], "country": DestinationData[1], "airport": DestinationData[2], "flight_time": DestinationData[3], "distance_from_Iceland": DestinationData[4], "contact_name": DestinationData[5], "contact_phone_nr": DestinationData[6]})
-
-      

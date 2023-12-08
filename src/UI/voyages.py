@@ -1,5 +1,10 @@
 from UI.Utils.Constants import UIConstants
+<<<<<<< Updated upstream
 import sys
+=======
+from prettytable import PrettyTable
+from Model.VoyageModel import Voyage
+>>>>>>> Stashed changes
 
 
 class Voyages:
@@ -33,7 +38,7 @@ class Voyages:
                 return "b"
 
             elif command == "1" or command == "1.":
-                pass
+                self.list_all_voyages()
 
             elif command == "2" or command == "2.":
                 pass
@@ -49,3 +54,18 @@ class Voyages:
 
             else:
                 print(UIConstants.INVALID_INPUT)
+                
+                
+    def list_all_voyages(self):
+        voyages = self.logic_wrapper.get_all_voyages()
+        
+        if voyages:
+            table = PrettyTable()
+            table.field_names = ["Voyage ID", "Destination", "Departure Time", "Departure Date", "Arrival Time", "Arrival Date", "Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]
+        
+            for voyage in voyages:
+                table.add_row([voyage.vid, voyage.destination, voyage.departuretime, voyage.departuredate, voyage.arrivaltime, voyage.arrivaldate, voyage.captain, voyage.copilot, voyage.flight_service_manager, voyage.flight_attendant])  
+            
+            print(table)
+        else:
+            print("No voyages found.")
