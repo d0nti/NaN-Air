@@ -119,3 +119,15 @@ Anton: ui þegar ýtt er á back þarf að sýna menu
 
 Samantekt: 
 náðum að laga back og quit funtionality og héldum áfram í öðrum verkefnum
+
+8.
+náðum að halda vel áfram í dag
+Verkefnaskipting:
+Hera: UI og fastar
+Andrea: Voyages
+Marvin: Search í data
+Viggó: logic ofl
+Anton: UI ofl
+
+samantekt: 
+Við náðum að koma search function í lag og voyages er komið langt áfram, hægt að displaya voyages
