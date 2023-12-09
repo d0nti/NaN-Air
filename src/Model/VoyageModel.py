@@ -10,8 +10,8 @@ class Voyage:
     departuredate: str
     arrivaltime: str
     arrivaldate: str
-    captain: Employee = "N/A"
-    copilot: Employee = "N/A"
-    flight_service_manager: Employee = "N/A"
-    flight_attendant: Employee = "N/A"
+    captain: Employee = None
+    copilot: Employee = None
+    flight_service_manager: Employee = None
+    flight_attendant: Employee = None
 

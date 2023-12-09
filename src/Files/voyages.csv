@@ -1,4 +1,5 @@
 vid,destination,departuretime,departuredate,arrivaltime,arrivaldate,captain,copilot,flight_service_manager,flight_attendant
-1234,Tokyo,00:00,01.02.2024,12:00,01.02.2024,N/A,N/A,N/A,N/A
-1324,London,12:00,03.02.2024,00:00,04.02.2024,N/A,N/A,N/A,N/A
-1098,Manchester,12:00,03.02.2024,00:00,04.02.2024,N/A,N/A,N/A,N/A
+1234,Tokyo,00:00,01.02.2024,12:00,01.02.2024,None,None,None,None
+1324,London,12:00,03.02.2024,00:00,04.02.2024,None,None,None,None
+1098,Manchester,12:00,03.02.2024,00:00,04.02.2024,None,None,None,None
+097634,Paris,13:00,02.03.2024,18:00,02.03.2024,None,None,None,None

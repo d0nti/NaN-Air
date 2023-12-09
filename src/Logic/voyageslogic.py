@@ -33,7 +33,7 @@ class VoyagesLogic:
     def staff_voyage(self, voyage_info):
         pass
     
-    def add_cap_to_voyage(self, voyage_info):
+    def add_captain_to_voyage(self, voyage_info):
         pass
     
     def add_copilot_to_voyage(self, voyage_info):
