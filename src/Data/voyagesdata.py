@@ -39,20 +39,20 @@ class VoyageData:
                 "captain",
                 "copilot",
                 "flight_service_manager",
-                "flight_attendant",
+                "flight_attendant"
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow(
                 {
-                    "vid": voyage.vid,
-                    "destination": voyage.destination,
-                    "departuretime": voyage.departuretime,
-                    "departuredate": voyage.departuredate,
-                    "arrivaltime": voyage.arrivaltime,
-                    "arrivaldate": voyage.arrivaldate,
-                    "captain": voyage.captain,
-                    "copilot": voyage.copilot,
-                    "flight_service_manager": voyage.flight_service_manager,
-                    "flight_attendant": voyage.flight_attendant,
+                    "vid": voyage[0],
+                    "destination": voyage[1],
+                    "departuretime": voyage[2],
+                    "departuredate": voyage[3],
+                    "arrivaltime": voyage[4],
+                    "arrivaldate": voyage[5],
+                    "captain": voyage[6],
+                    "copilot": voyage[7],
+                    "flight_service_manager": voyage[8],
+                    "flight_attendant": voyage[9]
                 }
             )

@@ -45,5 +45,5 @@ class UI_Logic_Wrapper:
     def get_all_voyages(self):
         return self.voyageslogic.get_all_voyages()
     
-    def register_voyage(self, voyage_info):
-        return self.voyageslogic.register_voyage(voyage_info)
+    def register_new_voyage(self, voyage_info):
+        return self.voyageslogic.register_new_voyage(voyage_info)

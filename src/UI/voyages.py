@@ -67,6 +67,8 @@ class Voyages:
             print("No voyages found.")
             
     def register_new_voyage(self):
+        voyages = self.logic_wrapper.get_all_voyages()
+        
         print("1. Register New Voyage")
         print("2. Copy Existing Voyage")
         print("3. Make Recurring Voyage")
@@ -77,12 +79,12 @@ class Voyages:
         
         if command == "1" or command == "1.":
             voyage_info_print = UIConstants.REGISTER_VOYAGE_INFO.split(", ")
+            
             all_voyage_information = []
             for voyage in voyage_info_print:
                 print(f"{voyage}: ", end=" ")
                 voyage_information = input()
                 all_voyage_information.append(voyage_information)
-            print(all_voyage_information)
             
             table = PrettyTable()
             table.field_names = ["Voyage ID", "Destination", "Departure Time", "Departure Date", "Arrival Time", "Arrival Date", "Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]
@@ -90,9 +92,11 @@ class Voyages:
             table.add_row(all_voyage_information)
                 
             print(table)
+                        
+            self.logic_wrapper.register_new_voyage(all_voyage_information)
             
-            
-            
+            print("New Voyage Registered.")
+        
     def populate_voyage(self):
         pass
     
