@@ -41,8 +41,7 @@ class Voyages:
                 self.register_new_voyage()
 
             elif command == "3" or command == "3.":
-                # self.populate_voyage()
-                pass
+                self.populate_voyage()
 
             elif command == "4" or command == "4.":
                 # self.check_voyage_status()
@@ -67,7 +66,7 @@ class Voyages:
             print("No voyages found.")
             
     def register_new_voyage(self):
-        voyages = self.logic_wrapper.get_all_voyages()
+        #voyages = self.logic_wrapper.get_all_voyages()
         
         print("1. Register New Voyage")
         print("2. Copy Existing Voyage")
@@ -98,7 +97,50 @@ class Voyages:
             print("New Voyage Registered.")
         
     def populate_voyage(self):
-        pass
-    
+        voyages = self.logic_wrapper.get_all_voyages()
+        for voyage in voyages:
+            if voyage.captain == "None":
+                sorted_captains = self.logic_wrapper.sort_by_captains()
+                table = PrettyTable()
+                table.field_names = ["NID", "Name", "Role", "Rank", "Address", "Phone Number", "License"]
+                for captain in sorted_captains:
+                    table.add_row([captain.nid, captain.name, captain.role, captain.rank, captain.address, captain.phone_nr, captain.license])
+                
+                print(voyage.vid, voyage.destination, voyage.departuretime, voyage.departuredate, voyage.arrivaltime, voyage.arrivaldate)
+                print("Available Captains: ")
+                print(table)
+            elif voyage.copilot == "None":
+                sorted_copilots = self.logic_wrapper.sort_by_co_pilots()
+                table = PrettyTable()
+                table.field_names = ["NID", "Name", "Role", "Rank", "Address", "Phone Number", "License"]
+                for copilot in sorted_copilots:
+                    table.add_row([copilot.nid, copilot.name, copilot.role, copilot.rank, copilot.address, copilot.phone_nr, copilot.license])
+                
+                print(voyage.vid, voyage.destination, voyage.departuretime, voyage.departuredate, voyage.arrivaltime, voyage.arrivaldate)
+                print("Available Copilots: ")
+                print(table)
+            elif voyage.flight_service_manager == "None":
+                sorted_heads_of_service = self.logic_wrapper.sort_by_heads_of_service()
+                table = PrettyTable()
+                table.field_names = ["NID", "Name", "Role", "Rank", "Address", "Phone Number"]
+                for head_of_service in sorted_heads_of_service:
+                    table.add_row([head_of_service.nid, head_of_service.name, head_of_service.role, head_of_service.rank, head_of_service.address, head_of_service.phone_nr])
+                
+                print(voyage.vid, voyage.destination, voyage.departuretime, voyage.departuredate, voyage.arrivaltime, voyage.arrivaldate)
+                print("Available Heads of Service: ")
+                print(table)
+            elif voyage.flight_attendant == "None":
+                sorted_flight_attendants = self.logic_wrapper.sort_by_flight_attendants()
+                table = PrettyTable()
+                table.field_names = ["NID", "Name", "Role", "Rank", "Address", "Phone Number"]
+                for flight_attendant in sorted_flight_attendants:
+                    table.add_row([flight_attendant.nid, flight_attendant.name, flight_attendant.role, flight_attendant.rank, flight_attendant.address, flight_attendant.phone_nr])
+                
+                print(voyage.vid, voyage.destination, voyage.departuretime, voyage.departuredate, voyage.arrivaltime, voyage.arrivaldate)
+                print("Available Flight Attendants: ")
+                print(table)
+            else:
+                print("All registered voyages are fully staffed.")
+                    
     def check_voyage_status(self):
         pass
