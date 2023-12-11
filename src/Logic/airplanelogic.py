@@ -8,3 +8,5 @@ class AirplaneLogic:
 
     def get_all_airplanes(self):
         return self.data_wrapper.get_all_airplanes()
+    
+    

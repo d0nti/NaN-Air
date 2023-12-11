@@ -23,7 +23,6 @@ class AirplaneData:
             file_reader = csv.DictReader(file)
             for item in file_reader:
                 ret_list.append(Airplane(item["plane_insignia"], item["plane_type_id"]))
-            
             self.get_all_airplanes_helper(ret_list)
             return ret_list
 
@@ -32,7 +31,6 @@ class AirplaneData:
         with open(self.legal_plane_file_name, newline="", encoding="utf-8") as csv_file:
             csv_reader = csv.DictReader(csv_file)
             rows = list(csv_reader)
-            print(rows)
 
             for i in range(len(ret_list)):
                 
@@ -51,15 +49,6 @@ class AirplaneData:
                     ret_list[i].supplier = rows[2].get("manufacturer")
                     ret_list[i].seats = rows[2].get("capacity")
 
-                else:
-                    print("wtf")
-
-
-#aircraft.csv
-#plane_insignia,plane_type_id,date_of_manufacture,last_maintenance
-#aircraft_type.csv
-#plane_type_id,manufacturer,model,capacity,empty_weight,max_takeoff_weight,unit_thrust,service_ceiling,length,height,wingspan
-
 
     def create_airplane(self, plane):
         with open(self.plane_file_name, "a", encoding="utf-8") as csvfile:
@@ -68,21 +57,3 @@ class AirplaneData:
             writer.writerow({"name": plane.name, "type": plane.type,
                              "supplier": plane.supplier, "seats": plane.seats,})
 
-
-            #frá fyrirlestri
-    def get_all_destinations(self):
-        ret_list = []
-        with open(self.plane_file_name, newline="", encoding="utf-8") as csvfile: 
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                self.number_of_employees += 1
-                ret_list.append(Destination(row["name"], row["country"], row["airport"], row["flight_time"], row["distance_from_Iceland"], row["contact_name"], row["contact_phone_nr"]))
-            
-            return ret_list
-
-
-    def create_destination(self, destination):
-        with open(self.plane_file_name, "a") as csvfile:
-            fieldnames = ["name", "country", "airport", "flight_time", "distance_from_Iceland", "contact_name", "contact_phone_nr"]
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({"name": Destination.name, "country": Destination.country, "airport": destination.airport, "flight_time": destination.flight_time, "distance_from_Iceland": destination.distance_from_Iceland, "contact_name": destination.contact_name, "contact_phone_nr": destination.contact_phone_nr})
