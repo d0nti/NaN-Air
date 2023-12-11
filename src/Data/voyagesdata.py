@@ -2,6 +2,7 @@ from Model.VoyageModel import Voyage
 
 import csv
 
+
 class VoyageData:
     def __init__(self):
         self.file_name = "src/Files/voyages.csv"
@@ -39,7 +40,7 @@ class VoyageData:
                 "captain",
                 "copilot",
                 "flight_service_manager",
-                "flight_attendant"
+                "flight_attendant",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow(
@@ -53,6 +54,22 @@ class VoyageData:
                     "captain": voyage[6],
                     "copilot": voyage[7],
                     "flight_service_manager": voyage[8],
-                    "flight_attendant": voyage[9]
+                    "flight_attendant": voyage[9],
                 }
             )
+
+    def search_voyages(self, filter):
+        ret_list = []
+        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if filter in row["vid"] or filter in row["destination"]:
+                    ret_list.append(row)
+        return ret_list
+    
+    def copy_voyage(self, voyage):
+        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if voyage == row["vid"]:
+                    self.register_new_voyage(row)

@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from Model.DestinationModel import Destination
 from Model.EmployeeModel import Employee
 
+
 @dataclass(frozen=False, order=True)
 class Voyage:
     vid: str
@@ -14,4 +15,3 @@ class Voyage:
     copilot: Employee = None
     flight_service_manager: Employee = None
     flight_attendant: Employee = None
-
