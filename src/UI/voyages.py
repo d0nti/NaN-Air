@@ -134,6 +134,13 @@ class Voyages:
             print("New Voyage Registered.")
         elif command == "2" or command == "2.":
             self.copy_existing_voyage()
+            
+        elif command == "b":
+            return "b"
+            
+        elif command == "q":
+            print(UIConstants.QUIT_MESSAGE)
+            sys.exit()
 
     def populate_voyage(self):
         voyages = self.logic_wrapper.get_all_voyages()
@@ -317,8 +324,15 @@ class Voyages:
 
     def copy_existing_voyage(self):
         
-        voyage = self.logic_wrapper.get_single_voyage_given_vid()
+        voyage = self.logic_wrapper.search_voyages(input("Enter Voyage ID or Destination: "))
         
+        if voyage:
+            self.logic_wrapper.register_new_voyage(voyage)
+            print("Voyage Copied.")
+        else:
+            print("No voyage found.")
+            
+        # Eftir að klára :-) :-(
 
     def make_recurring_voyage(self):
         pass

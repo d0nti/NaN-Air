@@ -73,3 +73,5 @@ class VoyageData:
             for row in reader:
                 if voyage == row["vid"]:
                     self.register_new_voyage(row)
+                    
+
