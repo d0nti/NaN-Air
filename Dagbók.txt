@@ -120,7 +120,7 @@ Anton: ui þegar ýtt er á back þarf að sýna menu
 Samantekt: 
 náðum að laga back og quit funtionality og héldum áfram í öðrum verkefnum
 
-8.
+8. des
 náðum að halda vel áfram í dag
 Verkefnaskipting:
 Hera: UI og fastar
@@ -131,3 +131,19 @@ Anton: UI ofl
 
 samantekt: 
 Við náðum að koma search function í lag og voyages er komið langt áfram, hægt að displaya voyages
+
+
+11. des
+Morgunfærsla:
+Verkefnið er mjög kerfjandi en skemmtilegt. Í dag er markmiðið að klára nokkra functionalities og halda áfram að vera dugleg.
+
+Verkefnaskipting:
+
+Hera: UI og fastar
+Andrea: Voyages
+Marvin: laga search og halda áfram að reyna klára update_employee
+Viggó: halda áfram með logic og hjálpa öðrum
+Anton: halda áfram með ui og laga b og q takka
+
+Samantekt:
+náðum að vera nokkuð dugleg í dag, Andrea komst langa leiðina með voyages og er þetta allt að koma hjá okkur.
