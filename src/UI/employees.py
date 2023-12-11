@@ -1,5 +1,6 @@
 from prettytable import PrettyTable
 from UI.Utils.Constants import UIConstants
+from Model.EmployeeModel import Employee
 from Model.EmployeeModel import Pilot
 from Model.EmployeeModel import FlightAttendant
 import sys
@@ -88,6 +89,16 @@ class Employees:
             # nid,name,role,rank,licence,address,phone_nr,
 
             print(table)
+            print(
+                    UIConstants.TWO_MENU_OPTION.format(
+                    UIConstants.SEARCH,
+                    UIConstants.SORT_BY,
+                    UIConstants.BACK,
+                    UIConstants.QUIT,
+                )
+            )
+
+            
         else:
             print(UIConstants.USER_NOT_FOUND)
             print(
@@ -150,6 +161,14 @@ class Employees:
                 )
 
             print(table)
+            print(
+                    UIConstants.TWO_MENU_OPTION.format(
+                    UIConstants.SEARCH,
+                    UIConstants.SORT_BY,
+                    UIConstants.BACK,
+                    UIConstants.QUIT,
+                )
+            )
 
 
     def get_sorted_list(self, command):
@@ -275,6 +294,8 @@ class Employees:
                         ]
                     )
             print(table)
+
+            print()
 
         else:
             print(UIConstants.INVALID_INPUT)
