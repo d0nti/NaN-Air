@@ -326,13 +326,13 @@ class Voyages:
         
         voyage = self.logic_wrapper.search_voyages(input("Enter Voyage ID or Destination: "))
         
-        if voyage:
-            self.logic_wrapper.register_new_voyage(voyage)
-            print("Voyage Copied.")
+        print(voyage)
+                        
+        if voyage != []:
+            self.logic_wrapper.copy_existing_voyage(voyage)
+            print("Voyage copied.")
         else:
-            print("No voyage found.")
-            
-        # Eftir að klára :-) :-(
+            print("Voyage not found.")
 
     def make_recurring_voyage(self):
         pass
