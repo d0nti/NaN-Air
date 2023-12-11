@@ -4,13 +4,13 @@ import csv
 
 class DestinationData:
     def __init__(self):
-        self.file_name = "src/Files/destinations.csv"
+        self.file_name = "NaN-Air/src/Files/Destinations.csv"
 
 #frá fyrirlestri
     def get_all_destinations(self):
         ret_list = []
-        with open(self.file_name, newline="", encoding="utf-8") as csvfile: 
-            reader = csv.DictReader(csvfile)
+        with open(self.file_name, newline="", encoding="utf-8") as csv_file: 
+            reader = csv.DictReader(csv_file)
             for row in reader:
                 #self.number_of_employees += 1
                 ret_list.append(Destination(row["name"], row["country"], row["airport"], row["flight_time"], row["distance_from_Iceland"], row["contact_name"], row["contact_phone_nr"]))
