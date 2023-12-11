@@ -63,7 +63,7 @@ class Destinations:
             print(table)
         
         else:
-            print(UIConstants.NO_DESTINATIONS_REGISTERED)
+            print(UIConstants.NO_DESTINATIONS_REGISTERED)  # Vantar fasta í constants
         
 
     def register_destination(self):
