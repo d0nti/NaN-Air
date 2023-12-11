@@ -22,7 +22,6 @@ class EmployeeData:
 
             return ret_list
 
-
     def sort_by_captains(self):
         ret_list = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
@@ -32,8 +31,7 @@ class EmployeeData:
                 if row["rank"] == "Captain":
                     ret_list.append(Pilot(row["nid"], row["name"], row["role"], row["rank"], row["address"], row["phone_nr"], row["license"]))
             return ret_list
-        
-        
+
     def sort_by_co_pilots(self):
         ret_list = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
@@ -81,12 +79,12 @@ class EmployeeData:
         """ Recieves a list containing information needed for registering a new pilot
             and uses list indexing to assign each value to the correct place
         """
-        with open(self.file_name, "a") as csvfile:
-            fieldnames = ["nid", "name", "role", "rank", "license","phone_nr", "address"]
+        with open(self.file_name, "a", encoding="utf-8") as csvfile:
+            fieldnames = ["nid", "name", "role", "rank", "license", "phone_nr", "address"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({"nid": employee.nid, "name": employee.name,
                              "role": employee.role, "rank": employee.rank,
-                             "license": employee.licence, "address": employee.address,
+                             "license": employee.license, "address": employee.address,
                              "phone_nr": employee.phone_nr})
             
 

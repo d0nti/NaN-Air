@@ -82,7 +82,7 @@ class VerifyPilot:
     def Rank(self):
         """ Verifies that a pilot's rank is either pilot or copilot
         """
-        if self.rank.lower() != "pilot" or self.rank.lower() != "copilot":
+        if self.rank.lower() != "captain" and self.rank.lower() != "copilot":
             raise EmployeeRankError
         else:
             return True
@@ -154,7 +154,7 @@ class VerifyPilot:
         self.Rank()
         self.Address()
         self.PhoneNumber()
-        if self.home_phone != None:
+        if self.home_phone != '':
             self.HomePhoneNumber()
         self.License()
 
@@ -274,6 +274,6 @@ class VerifyFlightAttendant:
         self.Rank()
         self.Address()
         self.PhoneNumber()
-        if self.home_phone != None:
+        if self.home_phone != '':
             self.HomePhoneNumber()
     
