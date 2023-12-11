@@ -13,9 +13,10 @@ class Employees:
     def employees_menu_output(self):  #
         print(UIConstants.HEADER.format(UIConstants.MANAGE_EMPLOYEES))
         print(
-            UIConstants.THREE_MENU_OPTION.format(
+            UIConstants.FOUR_MENU_OPTION.format(
                 UIConstants.DISPLAY_EMPLOYEES,
                 UIConstants.REGISTER_NEW_EMPLOYEE,
+                UIConstants.UPDATE_EMPLOYEE,
                 UIConstants.SHIFT_PLAN,
                 UIConstants.BACK,
                 UIConstants.QUIT,
@@ -24,7 +25,8 @@ class Employees:
 
         # print("1. Display Employees")
         # print("2. Register New Employee")
-        # print("3. Shift Plan")
+        # print("3. Update Employee")
+        # print("4. Shift Plan")
         # print("b. Back")
         # print("q. Quit")
 
@@ -47,6 +49,10 @@ class Employees:
                 self.register_new_employee()
 
             elif command == "3" or command == "3.":
+                
+                pass  # eftir að implementa
+            
+            elif command == "4" or command == "4.":
                 pass  # eftir að implementa
 
             else:
