@@ -16,7 +16,17 @@ class UIConstants:
     DISPLAY_DESTINATIONS = "Display Destinations"
     REGISTER_NEW_DESTINATION = "Register New Destination"
     FIND_DESTINATION = "Find Destination"
-    
+    DESTINATION_IINFO = "Country, Airport, Flight Time, Distance from Iceland, Contact Name, Contact Phone Number"
+    REGISTER_DESTINATION_MESSAGE = "A new destination has been added to the system"
+    COUNTRY = "Country"
+    AIRPORT = "Airport"
+    FLIGHT_DURATION = "Flight Duration"
+    DISTANCE_FROM_ICELAND = "Distance from Iceland"
+    CONTACT_NAME = "Contact Name"
+    CONTACT_PHONE_NUMBER = "Contact Phone Number"
+    NO_DESTINATIONS_REGISTERED = "No destinations registered"
+
+
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
     REGISTER_NEW_FLIGHT_ATTENDANT = "Register New Flight Attendant"
@@ -63,6 +73,10 @@ class UIConstants:
     SEARCH = "Search"
     SORT_BY = "Sort by:"
     USER_NOT_FOUND = "User Not Found!"
+    CONTINUE_MESSAGE = "Press enter to continue"
+    GO_BACK_INSTRUCTION = "Press Q and enter to go back"
+    
+
 
 
     HEADER = (
