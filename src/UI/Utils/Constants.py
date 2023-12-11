@@ -21,6 +21,7 @@ class UIConstants:
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
     REGISTER_NEW_FLIGHT_ATTENDANT = "Register New Flight Attendant"
     REGISTER_NEW_PILOT = "Register New Pilot"
+    UPDATE_EMPLOYEE = "Update Employee"
     SHIFT_PLAN = "Shift Plan"
     EMPLOYEE_LIST = "Employee list"
     EMPLOYEE_INFORMATION_MESSAGE = "Please Enter the Following Information in the following order:"
