@@ -90,12 +90,13 @@ class Employees:
             print(table)
         else:
             print(UIConstants.USER_NOT_FOUND)
-            print(
-                UIConstants.TWO_MENU_OPTION.format(
-                    UIConstants.SEARCH,
-                    UIConstants.SORT_BY,
-                    UIConstants.BACK,
-                    UIConstants.QUIT,
+        
+        print(
+            UIConstants.TWO_MENU_OPTION.format(
+            UIConstants.SEARCH,
+            UIConstants.SORT_BY,
+            UIConstants.BACK,
+            UIConstants.QUIT,
                 )
             )
 
