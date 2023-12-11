@@ -20,8 +20,8 @@ class VoyagesLogic:
     def search_voyages(self, filter):
         return self.data_wrapper.search_voyages(filter)
     
-    def copy_voyage(self, voyage_info):
-        return self.data_wrapper.copy_voyage(voyage_info)
+    def copy_existing_voyage(self, voyage_info):
+        return self.data_wrapper.copy_existing_voyage(voyage_info)
 
     def make_recurring_voyage(self, voyage_info):
         pass

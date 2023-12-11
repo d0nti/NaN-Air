@@ -55,5 +55,5 @@ class Logic_Data_Wrapper:
     def search_voyages(self, filter):
         return self.voyagedata.search_voyages(filter)
     
-    def copy_voyage(self, voyage_info):
-        return self.voyagedata.copy_voyage(voyage_info)
+    def copy_existing_voyage(self, voyage_info):
+        return self.voyagedata.copy_existing_voyage(voyage_info)

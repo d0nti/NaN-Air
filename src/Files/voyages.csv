@@ -3,5 +3,3 @@ vid,destination,departuretime,departuredate,arrivaltime,arrivaldate,captain,copi
 1324,London,12:00,03.02.2024,00:00,04.02.2024,None,None,None,None
 1098,Manchester,12:00,03.02.2024,00:00,04.02.2024,None,None,None,None
 097634,Paris,13:00,02.03.2024,18:00,02.03.2024,None,None,None,None
-NUUK1337,"Nuuk, Greenland",17:00,12/22/2023,20:00,12/22/2023,Brjánn Leifsson,Stína Erlendsdóttir,Hera Björk,Ryan Reynolds
-,,,,,,,,,

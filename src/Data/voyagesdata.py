@@ -66,12 +66,21 @@ class VoyageData:
                 if filter in row["vid"] or filter in row["destination"]:
                     ret_list.append(row)
         return ret_list
-    
-    def copy_voyage(self, voyage):
-        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
+
+    def copy_existing_voyage(self, search_value):
+        with open(self.file_name, newline="\n", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                if voyage == row["vid"]:
-                    self.register_new_voyage(row)
-                    
-
+                voyage_data = [
+                    row["vid"],
+                    row["destination"],
+                    row["departuretime"],
+                    row["departuredate"],
+                    row["arrivaltime"],
+                    row["arrivaldate"],
+                    row["captain"],
+                    row["copilot"],
+                    row["flight_service_manager"],
+                    row["flight_attendant"],
+                ]
+            self.register_new_voyage(voyage_data)
