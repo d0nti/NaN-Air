@@ -38,17 +38,22 @@ class Logic_Data_Wrapper:
     def search(self, filter):
         return self.employee_data.search(filter)
 
-#
-#       AIRPLANE FUNCTION CALLS FROM HERE DOWN
-#
+    #
+    #       AIRPLANE FUNCTION CALLS FROM HERE DOWN
+    #
 
     def get_all_airplanes(self):
         return self.airplane_data.get_all_airplanes()
 
-
-#       VOYAGES DATA FUNCTIONS
+    #       VOYAGES DATA FUNCTIONS
     def get_all_voyages(self):
         return self.voyagedata.get_all_voyages()
-    
+
     def register_new_voyage(self, voyage_info):
         return self.voyagedata.register_new_voyage(voyage_info)
+    
+    def search_voyages(self, filter):
+        return self.voyagedata.search_voyages(filter)
+    
+    def copy_voyage(self, voyage_info):
+        return self.voyagedata.copy_voyage(voyage_info)

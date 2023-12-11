@@ -1,5 +1,6 @@
 from prettytable import PrettyTable
 from UI.Utils.Constants import UIConstants
+from Model.EmployeeModel import Employee
 from Model.EmployeeModel import Pilot
 from Model.EmployeeModel import FlightAttendant
 import sys
@@ -12,9 +13,10 @@ class Employees:
     def employees_menu_output(self):  #
         print(UIConstants.HEADER.format(UIConstants.MANAGE_EMPLOYEES))
         print(
-            UIConstants.THREE_MENU_OPTION.format(
+            UIConstants.FOUR_MENU_OPTION.format(
                 UIConstants.DISPLAY_EMPLOYEES,
                 UIConstants.REGISTER_NEW_EMPLOYEE,
+                UIConstants.UPDATE_EMPLOYEE,
                 UIConstants.SHIFT_PLAN,
                 UIConstants.BACK,
                 UIConstants.QUIT,
@@ -23,7 +25,8 @@ class Employees:
 
         # print("1. Display Employees")
         # print("2. Register New Employee")
-        # print("3. Shift Plan")
+        # print("3. Update Employee")
+        # print("4. Shift Plan")
         # print("b. Back")
         # print("q. Quit")
 
@@ -46,6 +49,10 @@ class Employees:
                 self.register_new_employee()
 
             elif command == "3" or command == "3.":
+                
+                pass  # eftir að implementa
+            
+            elif command == "4" or command == "4.":
                 pass  # eftir að implementa
 
             else:
@@ -88,6 +95,16 @@ class Employees:
             # nid,name,role,rank,licence,address,phone_nr,
 
             print(table)
+            print(
+                    UIConstants.TWO_MENU_OPTION.format(
+                    UIConstants.SEARCH,
+                    UIConstants.SORT_BY,
+                    UIConstants.BACK,
+                    UIConstants.QUIT,
+                )
+            )
+
+            
         else:
             print(UIConstants.USER_NOT_FOUND)
             print(
@@ -150,6 +167,14 @@ class Employees:
                 )
 
             print(table)
+            print(
+                    UIConstants.TWO_MENU_OPTION.format(
+                    UIConstants.SEARCH,
+                    UIConstants.SORT_BY,
+                    UIConstants.BACK,
+                    UIConstants.QUIT,
+                )
+            )
 
 
     def get_sorted_list(self, command):
@@ -275,6 +300,8 @@ class Employees:
                         ]
                     )
             print(table)
+
+            print()
 
         else:
             print(UIConstants.INVALID_INPUT)
