@@ -437,7 +437,7 @@ class Employees:
             update_pilot_information = []
             for i in pilot_info_print:
                 print(f"{i}", end=" ")
-                pilot_information = input()
+                find_pilot = input("Enter Pilot SSID:")
                 update_pilot_information.append(pilot_information)
                 print(update_pilot_information)
 
