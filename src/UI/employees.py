@@ -141,7 +141,7 @@ class Employees:
             self.get_sorted_list((input("User Input: ")))
 
         elif command == "1" or command == "1.":
-            filter = input("Enter search filter (name, nid or job title): ")
+            filter = input("Enter search filter (SSID, Name or Job Title): ")
             filtered_employees = self.logic_wrapper.search(filter)
             table = PrettyTable()
             
@@ -204,9 +204,9 @@ class Employees:
                 for captain in captains:
                     table.add_row(
                         [
-                            captain.ssid,
+                            captain.nid,
                             captain.name,
-                            captain.job_title,
+                            captain.role,
                             captain.rank,
                             captain.license,
                             captain.phone_nr,
@@ -234,9 +234,9 @@ class Employees:
                 for copilot in copilots:
                     table.add_row(
                         [
-                            copilot.ssid,
+                            copilot.nid,
                             copilot.name,
-                            copilot.job_title,
+                            copilot.role,
                             copilot.rank,
                             copilot.license,
                             copilot.phone_nr,
@@ -263,9 +263,9 @@ class Employees:
                 for flight_attendant in flight_attendants:
                     table.add_row(
                         [
-                            flight_attendant.ssid,
+                            flight_attendant.nid,
                             flight_attendant.name,
-                            flight_attendant.job_title,
+                            flight_attendant.role,
                             flight_attendant.rank,
                             flight_attendant.phone_nr,
                             flight_attendant.address,
@@ -291,9 +291,9 @@ class Employees:
                 for head_of_service in heads_of_services:
                     table.add_row(
                         [
-                            head_of_service.ssid,
+                            head_of_service.nid,
                             head_of_service.name,
-                            head_of_service.job_title,
+                            head_of_service.role,
                             head_of_service.rank,
                             head_of_service.phone_nr,
                             head_of_service.address,
