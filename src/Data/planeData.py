@@ -19,21 +19,41 @@ class AirplaneData:
             and adds to the Airplane class.
         """
         ret_list = []
-        with open(self.plane_file_name, newline="", encoding="utf-8") as csv_file:
-            """ Er að reyna lesa inn headers og assign-a réttan sætis fjölda og manufacturer útfrá type id(plane insignia)-nu á sérverri flugvél
-            """
+        with open(self.plane_file_name, newline="", encoding="utf-8") as file:
+            file_reader = csv.DictReader(file)
+            for item in file_reader:
+                ret_list.append(Airplane(item["plane_insignia"], item["plane_type_id"]))
+            
+            self.get_all_airplanes_helper(ret_list)
+            return ret_list
+
+
+    def get_all_airplanes_helper(self, ret_list):
+        with open(self.legal_plane_file_name, newline="", encoding="utf-8") as csv_file:
             csv_reader = csv.DictReader(csv_file)
-            with open(self.legal_plane_file_name, newline="", encoding="utf-8") as file:
-                file_reader = csv.DictReader(file)
-                for item in csv_reader:
-                    if item["plane_insignia"]:
-                        ret_list.append(Airplane(item["plane_insignia"]))
+            rows = list(csv_reader)
+            print(rows)
 
-                return ret_list
-
-
-
+            for i in range(len(ret_list)):
                 
+                if ret_list[i].plane_type == "NABAE146":
+                    ret_list[i].plane_type = rows[0].get("plane_type_id")
+                    ret_list[i].supplier = rows[0].get("manufacturer")
+                    ret_list[i].seats = rows[0].get("capacity")
+
+                elif ret_list[i].plane_type == "NAFokkerF28":
+                    ret_list[i].plane_type = rows[1].get("plane_type_id")
+                    ret_list[i].supplier = rows[1].get("manufacturer")
+                    ret_list[i].seats = rows[1].get("capacity")
+
+                elif ret_list[i].plane_type == "NAFokkerF100":
+                    ret_list[i].plane_type = rows[2].get("plane_type_id")
+                    ret_list[i].supplier = rows[2].get("manufacturer")
+                    ret_list[i].seats = rows[2].get("capacity")
+
+                else:
+                    print("wtf")
+
 
 #aircraft.csv
 #plane_insignia,plane_type_id,date_of_manufacture,last_maintenance
