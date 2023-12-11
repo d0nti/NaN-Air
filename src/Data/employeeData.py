@@ -22,7 +22,6 @@ class EmployeeData:
 
             return ret_list
 
-
     def sort_by_captains(self):
         ret_list = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
@@ -32,8 +31,7 @@ class EmployeeData:
                 if row["rank"] == "Captain":
                     ret_list.append(Pilot(row["nid"], row["name"], row["role"], row["rank"], row["address"], row["phone_nr"], row["license"]))
             return ret_list
-        
-        
+
     def sort_by_co_pilots(self):
         ret_list = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
