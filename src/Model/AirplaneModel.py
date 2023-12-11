@@ -5,5 +5,5 @@ class Airplane:
         self.supplier = supplier
         self.seats = seats
 
-    def ___str__(self):
+    def __str__(self):
         return f"{self.insignia} {self.plane_type} {self.supplier} {self.seats}"
