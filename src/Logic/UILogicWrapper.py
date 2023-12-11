@@ -54,3 +54,9 @@ class UI_Logic_Wrapper:
         
     def copy_existing_voyage(self, voyage_info):
         return self.voyageslogic.copy_existing_voyage(voyage_info)
+    
+    def update_pilot(self, employee_info):
+        return self.employee_logic.update_pilot(employee_info)
+    
+    def update_flight_attendant(self, employee_info):
+        return self.employee_logic.update_flight_attendant(employee_info)

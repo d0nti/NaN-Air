@@ -57,3 +57,10 @@ class Logic_Data_Wrapper:
     
     def copy_existing_voyage(self, voyage_info):
         return self.voyagedata.copy_existing_voyage(voyage_info)
+    
+    def update_pilot(self, employee_info):
+        return self.employee_data.update_pilot(employee_info)
+    
+    def update_flight_attendant(self, employee_info):
+        return self.employee_data.update_flight_attendant(employee_info)
+    

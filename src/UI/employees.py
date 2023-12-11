@@ -4,6 +4,7 @@ from Model.EmployeeModel import Employee
 from Model.EmployeeModel import Pilot
 from Model.EmployeeModel import FlightAttendant
 import sys
+from Data.employeeData import EmployeeData
 
 
 class Employees:
@@ -411,13 +412,7 @@ class Employees:
             print(UIConstants.INVALID_INPUT)  # MAKE ERROR MSG PLS
 
     def update_employee(self):
-        """This function prints a new menu for the user, which allows
-        them to either create a new pilot or flight attendant.
-        This will generate a list of all the information that the
-        user wants to list for the new employee and sends it over
-        to the employeelogic.py file for verification.
-        """
-        print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_EMPLOYEE))
+        print(UIConstants.HEADER.format(UIConstants.UPDATE_EMPLOYEE))
         print(
             UIConstants.TWO_MENU_OPTION.format(
                 UIConstants.UPDATE_PILOT,
@@ -427,81 +422,44 @@ class Employees:
             )
         )
 
-        # print("Choose an employee to register")
-        # print("")
         command = input("User input: ")
         if command == "1" or command == "1.":
             print(UIConstants.HEADER.format(UIConstants.UPDATE_PILOT))
-            print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
-            pilot_info_print = UIConstants.UPDATE_EMPLOYEE_INFO.split(", ")
+            ssid = input("Enter the SSID of the pilot to update: ")
+            print(UIConstants.UPDATE_EMPLOYEE_INPUT)
+            pilot_info_print = UIConstants.UPDATE_EMPLOYEE_INPUT.split(", ")
 
-            update_pilot_information = []
+            all_pilot_information = []
             for i in pilot_info_print:
                 print(f"{i}", end=" ")
-                find_pilot = input("Enter Pilot SSID:")
-                update_pilot_information.append(pilot_information)
-                print(update_pilot_information)
+                pilot_information = input()
+                all_pilot_information.append(pilot_information)
 
-            if len(update_pilot_information) == 6:
-                ssid, name, rank, address, phone_nr, license = [
-                    update_pilot_information[i]
-                    for i in range(0, (len(update_pilot_information)))
-                ]
-                self.logic_wrapper.register_pilot(
-                    Pilot(ssid, name, "Pilot", rank, address, phone_nr, license)
-                )
-            elif len(update_pilot_information) == 7:
-                ssid, name, rank, address, phone_nr, home_phone_nr, license = [
-                    update_pilot_information[i]
-                    for i in range(0, (len(update_pilot_information)))
-                ]
-                self.logic_wrapper.update_pilot(
-                    Pilot(
-                        ssid,
-                        name,
-                        "Pilot",
-                        rank,
-                        address,
-                        phone_nr,
-                        home_phone_nr,
-                        license,
-                    )
-                )
+            if len(all_pilot_information) == 5:
+                rank, address, phone_nr, home_phone_nr, license = all_pilot_information
+                employee = Pilot(ssid, "", "Pilot", rank, address, phone_nr, license)
+                self.logic_wrapper.update_pilot(employee)
             else:
-                pass  # ERROR :)
+                print(UIConstants.INVALID_INPUT)  # ERROR :)
 
         elif command == "2" or command == "2.":
             print(UIConstants.HEADER.format(UIConstants.UPDATE_FLIGHT_ATTENDANT))
-            print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
-            flight_attendant_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
-            flight_attendant_info_print = flight_attendant_info_print[0:-2]
+            ssid = input("Enter the SSID of the flight attendant to update: ")
+            print(UIConstants.UPDATE_EMPLOYEE_INPUT)
+            flight_attendant_info_print = UIConstants.UPDATE_EMPLOYEE_INPUT.split(", ")
 
-            update_flight_attendant_information = []
-            for i in flight_attendant_info_print[0 : len(flight_attendant_info_print)]:
+            all_flight_attendant_information = []
+            for i in flight_attendant_info_print:
                 print(f"{i}", end=" ")
-                update_flight_attendant_information = input()
-                update_flight_attendant_information.append(update_flight_attendant_information)
+                flight_attendant_information = input()
+                all_flight_attendant_information.append(flight_attendant_information)
 
-            if len(update_flight_attendant_information) == 5:
-                ssid, name, rank, address, phone_nr = [
-                    update_flight_attendant_information[i]
-                    for i in range(0, (len(update_flight_attendant_information)))
-                ]
-                self.logic_wrapper.update_flight_attendant(
-                    FlightAttendant(ssid, name, "Cabincrew", rank, address, phone_nr)
-                )
-            elif len(update_flight_attendant_information) == 6:
-                ssid, name, rank, address, phone_nr, home_phone_nr = [
-                    update_flight_attendant_information[i]
-                    for i in range(0, (len(update_flight_attendant_information)))
-                ]
-                self.logic_wrapper.register_flight_attendant(
-                    FlightAttendant(
-                        ssid, name, "Cabincrew", rank, address, phone_nr, home_phone_nr
-                    )
-                )
+            if len(all_flight_attendant_information) == 4:
+                rank, address, phone_nr, home_phone_nr = all_flight_attendant_information
+                employee = FlightAttendant(ssid, "", "Cabincrew", rank, address, phone_nr)
+                self.logic_wrapper.update_flight_attendant(employee)
             else:
-                pass  # ERROR :)
+                print(UIConstants.INVALID_INPUT)  # ERROR :)
 
         elif command == "b" or command == "b.":
             pass
@@ -510,4 +468,5 @@ class Employees:
             pass
 
         else:
-            print(UIConstants.INVALID_INPUT)  # MAKE ERROR MSG PLS
+            print(UIConstants.INVALID_INPUT)  # ERROR :)
+            
