@@ -1,4 +1,8 @@
+
+
 class EmployeeSsidLenError(Exception):
+    pass
+class EmployeeSsidExistsError(Exception):
     pass
 class SsidNumError(Exception):
     pass
@@ -187,8 +191,6 @@ class VerifyFlightAttendant:
             raise SsidNumError
         elif not self.nid.isdigit():
             raise SsidNumError
-        # elif int(temp1) < MAX_PILOT_BIRTH_YEAR[-3:-1] or int(temp1) > MIN_PILOT_BIRTH_YEAR[-3:-1]:
-        #     raise EmployeeAgeError
         else:
             return True
 
