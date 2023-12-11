@@ -62,12 +62,11 @@ class AirplaneData:
 
 
     def create_airplane(self, plane):
-        with open(self.plane_file_name, "a", encoding="utf-8") as csv_file:
+        with open(self.plane_file_name, "a", encoding="utf-8") as csvfile:
             fieldnames = ["name", "type", "supplier", "seats"]
-            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-            employee_data = list(map(lambda key: plane[key], plane.keys()))
-            writer.writerow({"name": employee_data[0], "type": employee_data[1], "supplier": employee_data[2], "seats": employee_data[3]})
-
+            writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
+            writer.writerow({"name": plane.name, "type": plane.type,
+                             "supplier": plane.supplier, "seats": plane.seats,})
 
 
             #frá fyrirlestri
