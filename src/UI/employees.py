@@ -7,6 +7,7 @@ import sys
 from Data.employeeData import EmployeeData
 
 
+
 class Employees:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
@@ -53,7 +54,7 @@ class Employees:
                 self.update_employee()
             
             elif command == "4" or command == "4.":
-                pass  # eftir að implementa
+                self.display_shift_plan()
 
             else:
                 print(UIConstants.INVALID_INPUT)
@@ -437,6 +438,22 @@ class Employees:
 
         print("Employee information updated successfully.")
 
+#nid,name,shift_start_date,shift_start_time,shift_end_date,shift_end_time
+
+
+
+    def display_shift_plan(self):
+
+        #get the shift plan from employeeData.py
+        ret_list = EmployeeData.get_shift_plan(self)
+
+        table = PrettyTable()
         
+        table.field_names = ["NID", "Name", "Shift Start Date", "Shift Start Time", "Shift End Date", "Shift End Time"]
 
+        #add data rows to the table
+        for row in ret_list:
+            table.add_row(row)
 
+        # Print the table
+        print(table)

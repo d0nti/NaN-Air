@@ -55,6 +55,11 @@ class UIConstants:
     FLIGHT_ATTENDTANTS = "Flight Attendants"
     HEADS_OF_SERVICE = "Heads of Service"
     REGISTER_VOYAGE_INFO = "UUID, Destination, Departure Time, Departure Date, Arrival Time, Arrival Date, Captain, Co-Pilot, Flight Service Manager, Flight Attendant"
+    SHIFT_START_DATE = "Shift Start Date"
+    SHIFT_START_TIME = "Shift Start Time"
+    SHIFT_END_DATE = "Shift End Date"
+    SHIFT_END_TIME = "Shift End Time"
+    DISPLAY_SHIFT_PLAN = "Display Shift Plan"
 
     
     REGISTER_NEW_VOYAGE = "Register New Voyage"
