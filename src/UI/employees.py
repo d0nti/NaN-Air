@@ -423,7 +423,7 @@ class Employees:
             home_phone_nr = input("Enter the new home phone number (optional): ")
             license = input("Enter the new license: ")
 
-            EmployeeData.update_pilot(ssid, rank, address, phone_nr, home_phone_nr, license)
+            EmployeeData.update_pilot(ssid, rank)
         elif employee_type == "2":
             # Update flight attendant
             rank = input("Enter the new rank: ")
@@ -444,54 +444,3 @@ class Employees:
 
 
 
-
-'''
-    def update_employee(self):
-        print(UIConstants.HEADER.format(UIConstants.UPDATE_EMPLOYEE))
-        print(
-            UIConstants.TWO_MENU_OPTION.format(
-                UIConstants.UPDATE_PILOT,
-                UIConstants.UPDATE_FLIGHT_ATTENDANT,
-                UIConstants.BACK,
-                UIConstants.QUIT,
-            )
-        )
-
-        command = input("User input: ")
-
-        if command == "1" or command == "1.":
-            print(UIConstants.HEADER.format(UIConstants.UPDATE_PILOT))
-            ssid = input("Enter the SSID of the pilot you want to update: ")
-            rank = input("Enter the new rank: ")
-            address = input("Enter the new address: ")
-            phone_nr = input("Enter the new phone number: ")
-            home_phone_nr = input("Enter the new home phone number (optional): ")
-            license = input("Enter the new license: ")
-
-            self.logic_wrapper.update_pilot(ssid, rank, address, phone_nr, home_phone_nr, license)
-
-        elif command == "2" or command == "2.":
-            print(UIConstants.HEADER.format(UIConstants.UPDATE_FLIGHT_ATTENDANT))
-            ssid = input("Enter the SSID of the flight attendant you want to update: ")
-            rank = input("Enter the new rank: ")
-            address = input("Enter the new address: ")
-            phone_nr = input("Enter the new phone number: ")
-            home_phone_nr = input("Enter the new home phone number (optional): ")
-
-            self.logic_wrapper.update_flight_attendant(ssid, {
-                "rank": rank,
-                "address": address,
-                "phone_nr": phone_nr,
-                "home_phone_nr": home_phone_nr
-            })
-
-
-        elif command == "b" or command == "b.":
-            pass
-
-        elif command == "q" or command == "q.":
-            pass
-
-        else:
-            print(UIConstants.INVALID_INPUT)
-'''
