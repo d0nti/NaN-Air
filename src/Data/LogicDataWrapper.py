@@ -10,8 +10,10 @@ class Logic_Data_Wrapper:
         self.employee_data = EmployeeData()
         self.destination_data = DestinationData()
         self.airplane_data = AirplaneData()
-        self.voyagedata = VoyageData()
-        self.voyagedata.voyages = VoyageData.read_voyages_from_disk()
+        self.voyagedata = VoyageData(VoyageData.read_voyages_from_disk())
+
+    def write_voyage_data_to_disk(self):
+        VoyageData.write_voyages(self.voyagedata.get_all_voyages())
 
     def register_pilot(self, employee_info):
         return self.employee_data.register_pilot(employee_info)

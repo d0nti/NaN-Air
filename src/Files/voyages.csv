@@ -1,5 +1,5 @@
 id,destination,departure,arrival,captain,copilot,flight_service_manager,flight_attendant
-250fc08c-8c37-432f-a4dd-367a6f7e8315,London,2023-04-20T19:12:44,2023-04-21T05:12:44,,,,
+250fc08c-8c37-432f-a4dd-367a6f7e8315,London,2023-04-20T19:12:44,2023-04-21T05:12:44,None,,,
 35d7ba70-3c2c-47de-90c8-0baf92b2dff8,Paris,2023-06-26T22:07:46,2023-06-27T07:07:46,,,,
 a50d1e90-fc89-48e3-a70e-19daaf6dc374,Benedorm,2023-05-12T06:55:49,2023-05-12T11:55:49,,,,
 9127a8f1-c236-4b13-8b7c-d92d35040978,Bolungarvík,2023-01-05T03:55:37,2023-01-05T13:55:37,,,,
