@@ -125,8 +125,8 @@ class EmployeeData:
                 "role",
                 "rank",
                 "license",
-                "phone_nr",
                 "address",
+                "phone_nr",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow(
