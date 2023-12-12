@@ -501,6 +501,3 @@ class Employees:
 
         # Print the table
         print(table)
-
-    def get_sorted_list_by_day(self):
-        pass

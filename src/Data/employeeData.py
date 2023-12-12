@@ -179,7 +179,7 @@ class EmployeeData:
                     ret_list.append(row)
         # returns the list of employees that match the search
         return ret_list
-
+    
     def get_shift_plan(self):
             ret_list = []
             with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
@@ -188,3 +188,15 @@ class EmployeeData:
                     ret_list.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
 
             return ret_list
+    
+    def search_by_day(self, filter):
+        ret_list = []
+        with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if (
+                    str(filter) in row["shift_start_date"]
+                ):  # can use these param to search
+                    ret_list.append(row)
+        # returns the list of employees that match the search
+        return ret_list

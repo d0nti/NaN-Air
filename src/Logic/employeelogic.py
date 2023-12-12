@@ -25,6 +25,9 @@ class EmployeeLogic:
     def sort_by_co_pilots(self):
         return self.data_wrapper.sort_by_co_pilots()
     
+    def search_by_day(self, filter):
+        return self.data_wrapper.search_by_day(filter)
+    
     def sort_by_flight_attendants(self):
         return self.data_wrapper.sort_by_flight_attendants()
     
@@ -41,9 +44,5 @@ class EmployeeLogic:
         return self.data_wrapper.update_flight_attendant(employee_info)
         
 
-
-
-
-        
 
 
