@@ -12,14 +12,17 @@ class Logic_Data_Wrapper:
         self.airplane_data = AirplaneData()
         self.voyagedata = VoyageData(VoyageData.read_voyages_from_disk())
 
-    def write_voyage_data_to_disk(self):
-        VoyageData.write_voyages(self.voyagedata.get_all_voyages())
+    def write_voyages_to_disk(self):
+        VoyageData.write_voyages_to_disk(self.voyagedata.get_all_voyages())
 
     def register_pilot(self, employee_info):
         return self.employee_data.register_pilot(employee_info)
 
     def register_flight_attendant(self, employee_info):
         return self.employee_data.register_flight_attendant(employee_info)
+
+    def set_staff(self, voyage_id: str, **kwarg):
+        return self.voyagedata.set_staff(voyage_id, **kwarg)
 
     def get_all_employees(self):
         return self.employee_data.get_all_employees()
