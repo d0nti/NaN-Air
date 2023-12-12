@@ -28,6 +28,8 @@ class AirplaneData:
 
 
     def get_all_airplanes_helper(self, ret_list):
+        """ 
+        """
         with open(self.legal_plane_file_name, newline="", encoding="utf-8") as csv_file:
             csv_reader = csv.DictReader(csv_file)
             rows = list(csv_reader)
@@ -50,10 +52,9 @@ class AirplaneData:
                     ret_list[i].seats = rows[2].get("capacity")
 
 
-    def register_airplane(self, plane):
+    def register_airplane(self, airplane_info):
         with open(self.plane_file_name, "a", encoding="utf-8") as csvfile:
-            fieldnames = ["name", "type", "supplier", "seats"]
+            fieldnames = ["plane_insignia", "plane_type_id", "date_of_manufacture", "last_maintainance"]
             writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
-            writer.writerow({"name": plane.name, "type": plane.type,
-                             "supplier": plane.supplier, "seats": plane.seats,})
+            writer.writerow({"plane_insignia": airplane_info.insignia, "plane_type_id": airplane_info.plane_type, "date_of_manufacture":"", "last_maintainance":""})
 

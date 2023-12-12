@@ -50,7 +50,7 @@ class UIConstants:
     HOME_PHONE_NUMBER = "Home Phone Number (optional)"
     E_MAIL_ADDRESS = "E-mail Address"
     NO_EMPLOYEE_FOUND = "No employee found"
-    CAPTAINS = "Captainss"
+    CAPTAINS = "Captains"
     CO_PILOTS = "Co-Pilots"
     FLIGHT_ATTENDTANTS = "Flight Attendants"
     HEADS_OF_SERVICE = "Heads of Service"

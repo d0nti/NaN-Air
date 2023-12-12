@@ -26,6 +26,9 @@ class UI_Logic_Wrapper:
     def get_all_airplanes(self):
         return self.airplane_logic.get_all_airplanes()
 
+    def register_airplane(self, airplane_info):
+        return self.airplane_logic.register_airplane(airplane_info)
+
     def search(self, filter):
         return self.employee_logic.search(filter)
 
@@ -71,5 +74,3 @@ class UI_Logic_Wrapper:
     def update_flight_attendant(self, employee_info):
         return self.employee_logic.update_flight_attendant(employee_info)
 
-    def register_airplane(self, airplane_info):
-        return self.airplane_logic.register_airplane(airplane_info)

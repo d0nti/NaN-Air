@@ -116,9 +116,7 @@ class VerifyPilot:
         for i in range(1, len(temp)):
             temp2 += str(temp[i])
 
-        if len(self.phone_nr) != 11:
-            raise EmployeePhoneNumberError
-        elif temp[0] != "+":
+        if len(self.phone_nr) != 7:
             raise EmployeePhoneNumberError
         elif not temp2.isdigit():
             raise EmployeePhoneNumberError
@@ -137,9 +135,7 @@ class VerifyPilot:
         for i in range(1, len(temp)):
             temp2 += str(temp[i])
 
-        if len(self.home_phone) != 11:
-            raise EmployeeHomePhoneNumberError
-        elif temp[0] != "+":
+        if len(self.home_phone) != 7:
             raise EmployeeHomePhoneNumberError
         elif not temp2.isdigit():
             raise EmployeeHomePhoneNumberError
@@ -158,7 +154,7 @@ class VerifyPilot:
         self.Rank()
         self.Address()
         self.PhoneNumber()
-        if self.home_phone != '':
+        if self.home_phone != None:
             self.HomePhoneNumber()
         self.License()
 
@@ -239,9 +235,7 @@ class VerifyFlightAttendant:
         for i in range(1, len(temp)):
             temp2 += str(temp[i])
 
-        if len(self.phone_nr) != 11:
-            raise EmployeePhoneNumberError
-        elif temp[0] != "+":
+        if len(self.phone_nr) != 7:
             raise EmployeePhoneNumberError
         elif not temp2.isdigit():
             raise EmployeePhoneNumberError
@@ -260,9 +254,7 @@ class VerifyFlightAttendant:
         for i in range(1, len(temp)):
             temp2 += str(temp[i])
 
-        if len(self.home_phone) != 11:
-            raise EmployeeHomePhoneNumberError
-        elif temp[0] != "+":
+        if len(self.home_phone) != 7:
             raise EmployeeHomePhoneNumberError
         elif not temp2.isdigit():
             raise EmployeeHomePhoneNumberError
@@ -276,6 +268,6 @@ class VerifyFlightAttendant:
         self.Rank()
         self.Address()
         self.PhoneNumber()
-        if self.home_phone != '':
+        if self.home_phone != None:
             self.HomePhoneNumber()
     

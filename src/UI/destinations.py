@@ -66,7 +66,7 @@ class Destinations:
             for destination in destinations:
                 table.add_row([destination.name, 
                                destination.country, 
-                               destination.airport_call_sign, 
+                               destination.airport_call_sign,
                                destination.flight_time, 
                                destination.distance_from_iceland, 
                                destination.contact_name, 
@@ -121,6 +121,7 @@ class Destinations:
         self.command = command
 
         if command == "q" or "q.":
+            print(UIConstants.QUIT_MESSAGE)
             sys.exit
             pass
         

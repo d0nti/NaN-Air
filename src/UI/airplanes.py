@@ -37,7 +37,7 @@ class Airplanes:
 
             
             elif command == "2" or command == "2.":
-                pass
+                self.register_new_airplane()
 
             elif command == "3" or command == "3.":
                 pass
@@ -77,13 +77,21 @@ class Airplanes:
 
             print(table)
   
-        
-
-        
     
     def register_new_airplane(self):
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_AIRPLANE))
-        pass
+        new_airplane = Airplane()
+        new_airplane.insignia = input("Please input the new airplane's insignia(XX-XXX).")
+        plane_type = input("Choose an airplane type for the new aircraft.\n1. BAE146 \n2. FokkerF28 \n3. FokkerF100\n")
+        if plane_type == "1" or plane_type == "1.":
+            new_airplane.plane_type = "NABAE146"
+        if plane_type == "2" or plane_type == "2.":
+            new_airplane.plane_type = "NAFokkerF28"
+        if plane_type == "3" or plane_type == "3.":
+            new_airplane.plane_type = "NAFokkerF100"
+        new_airplane.supplier = input("Please input the name of the new airplane's supplier.")
+        new_airplane.seats = input("Please input the number of seats available on the new airplane.")
+        self.logic_wrapper.register_airplane(new_airplane)
 
     def find_airplane(self):
         print(UIConstants.HEADER.format(UIConstants.FIND_AIRPLANE))
