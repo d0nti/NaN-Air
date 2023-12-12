@@ -34,11 +34,13 @@ MIN_PILOT_BIRTH_YEAR = list(MIN_PILOT_BIRTH_YEAR)
 
 
 class VerifyPilot:
-    def __init__(self, employee_info):
+    def __init__(self, employee_info, data: list):
         """ verification class with methods to verify every input from user when
             creating a new pilot employee.
             Meant to take in an employee class object.
         """
+        
+        self.data = data
         self.nid = employee_info.nid
         self.name = employee_info.name
         self.role = employee_info.role
@@ -48,10 +50,26 @@ class VerifyPilot:
         self.home_phone = employee_info.home_phone_nr
         self.license = employee_info.license
 
+    def Verify_Pilot_Helper(self, info_type):
+        """ info_type must be a string with the values 'nid', 'name', 'role',
+            'rank', 'address', 'phone_nr', 'home_phone_nr' or 'license'.
+            This func will then return a list of all registered strings 
+        """
+
+        in_use_info = []
+
+        for i in range(len(self.data)):
+            temp = self.data[i]
+            in_use_info.append(temp.get(str(info_type)))
+
+        return in_use_info
+
+
     def Ssid(self):
         """ Checks if ssid is of length 10, checks if ssid is only numbers,
             checks if pilot is older than 65 years or younger than 25,
         """
+
         temp1 = list(self.nid)                  # Transform nid to a list data type for later indexing
         temp1 = temp1[4:6]                      # Takes the "age" numericals from ssid and assigns them to temp1 
         temp1 = str(temp1[0]) + str(temp1[-1])  # Splices both numericals from the line above into a string and assigns them to temp1
@@ -69,6 +87,8 @@ class VerifyPilot:
             raise SsidNumError
         if int(temp1) < int(temp2) and int(temp1) > int(temp3):    # Else if age of pilot is less than the MAX age or if age of pilot is more than the MIN age 
             raise EmployeeAgeError
+        if self.nid in self.Verify_Pilot_Helper("nid"):     # Checks if nid already exists
+            raise EmployeeSsidExistsError
         else:
             return True
 
@@ -76,6 +96,7 @@ class VerifyPilot:
         """ Checks if a pilot's name is longer than MAX_EMP_NAME_LEN
             or shorter than MIN_EMP_NAME_LEN
         """
+
         if len(self.name) > MAX_EMP_NAME_LEN:
             raise EmployeeNameLongError
         elif len(self.name) < MIN_EMP_NAME_LEN:
@@ -86,6 +107,7 @@ class VerifyPilot:
     def Rank(self):
         """ Verifies that a pilot's rank is either pilot or copilot
         """
+
         if self.rank.lower() != "captain" and self.rank.lower() != "copilot":
             raise EmployeeRankError
         else:
@@ -95,6 +117,7 @@ class VerifyPilot:
         """ Splits the address string into a list and verifies that the first 
             item is not digits and that the last item is digits
         """
+
         temp = self.address.split(" ")
         
         if temp[0].isdigit():
@@ -154,18 +177,20 @@ class VerifyPilot:
         self.Rank()
         self.Address()
         self.PhoneNumber()
-        if self.home_phone != None:
+        if self.home_phone != "":
             self.HomePhoneNumber()
         self.License()
 
 
 
 class VerifyFlightAttendant:
-    def __init__(self, employee_info):
+    def __init__(self, employee_info, data: list):
         """ verification class with methods to verify every input from user when
             creating a new flight attendant employee.
             Meant to take in an employee class object.
         """
+
+        self.data = data
         self.nid = employee_info.nid
         self.name = employee_info.name
         self.role = employee_info.role
@@ -175,10 +200,25 @@ class VerifyFlightAttendant:
         self.home_phone = employee_info.home_phone_nr
 
 
+    def Verify_Flight_Attendant_Helper(self, info_type):
+        """ info_type must be a string with the values 'nid', 'name', 'role',
+            'rank', 'address', 'phone_nr', 'home_phone_nr' or 'license'.
+            This func will then return a list of all registered strings 
+        """
+
+        in_use_info = []
+
+        for i in range(len(self.data)):
+            temp = self.data[i]
+            in_use_info.append(temp.get(str(info_type)))
+
+        return in_use_info
+
     def Ssid(self):
         """ Checks if ssid is of length 10, checks if ssid is only numbers,
             checks if pilot is older than 65 years or younger than 25,
         """
+
         temp1 = list(self.nid)
         temp1 = temp1[4:6]
         temp1 = str(temp1[0]) + str(temp1[-1])
@@ -187,6 +227,8 @@ class VerifyFlightAttendant:
             raise SsidNumError
         elif not self.nid.isdigit():
             raise SsidNumError
+        if self.nid in self.Verify_Pilot_Helper("nid"):     # Checks if nid already exists
+            raise EmployeeSsidExistsError 
         else:
             return True
 
@@ -194,6 +236,7 @@ class VerifyFlightAttendant:
         """ Checks if a pilot's name is longer than MAX_EMP_NAME_LEN
             or shorter than MIN_EMP_NAME_LEN
         """
+
         if len(self.name) > MAX_EMP_NAME_LEN:
             raise EmployeeNameLongError
         elif len(self.name) < MIN_EMP_NAME_LEN:
@@ -214,6 +257,7 @@ class VerifyFlightAttendant:
         """ Splits the address string into a list and verifies that the first 
             item is not digits and that the last item is digits
         """
+
         temp = self.address.split(" ")
         
         if temp[0].isdigit():
@@ -268,6 +312,6 @@ class VerifyFlightAttendant:
         self.Rank()
         self.Address()
         self.PhoneNumber()
-        if self.home_phone != None:
+        if self.home_phone != "":
             self.HomePhoneNumber()
     

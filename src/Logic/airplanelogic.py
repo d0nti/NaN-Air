@@ -1,3 +1,5 @@
+from Logic.Verifications.verifyairplane import VerifyAirplane
+
 
 class AirplaneLogic:
     def __init__(self, data_connection):

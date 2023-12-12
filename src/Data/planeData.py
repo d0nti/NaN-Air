@@ -19,7 +19,7 @@ class AirplaneData:
             and adds to the Airplane class.
         """
         ret_list = []
-        with open(self.plane_file_name, newline="", encoding="utf-8") as file:
+        with open(self.plane_file_name, newline = "", encoding = "utf-8") as file:
             file_reader = csv.DictReader(file)
             for item in file_reader:
                 ret_list.append(Airplane(item["plane_insignia"], item["plane_type_id"]))
@@ -30,7 +30,7 @@ class AirplaneData:
     def get_all_airplanes_helper(self, ret_list):
         """ 
         """
-        with open(self.legal_plane_file_name, newline="", encoding="utf-8") as csv_file:
+        with open(self.legal_plane_file_name, newline = "", encoding = "utf-8") as csv_file:
             csv_reader = csv.DictReader(csv_file)
             rows = list(csv_reader)
 
