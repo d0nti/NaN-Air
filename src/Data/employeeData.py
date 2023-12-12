@@ -109,43 +109,17 @@ class EmployeeData:
         return ret_list
 
 #marvin
+#ssid, rank, address, phone_nr, home_phone_nr, license)
+
     def update_pilot(self, employee):
-        #uses the search function previously defined to find the employee that needs to be updated
-        employees = self.search(employee.nid)  #only search by nid because nid is unique
-        if employees:
-            #update the employee with the new information
-            updated_employee = employees[0]  #lets assume that only one employee is found
-            #change this information to the new information
-            updated_employee["role"] = employee.role
-            updated_employee["rank"] = employee.rank
-            updated_employee["license"] = employee.license
-            updated_employee["address"] = employee.address
-            updated_employee["phone_nr"] = employee.phone_nr
+        # Search for the pilot by nid
+        pilots = self.search(employee.nid)
 
-            #write the new information to the csv file
-            with open(self.file_name, "w", newline="", encoding="utf-8") as csvfile:
-                fieldnames = ["nid", "name", "role", "rank", "license", "address", "phone_nr"]
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(employees)
+        # If the pilot is found, delete the existing pilot
+        if pilots:
+            self.delete_employee(pilots[0]["nid"])
 
-    def update_flight_attendant(self, employee):
-        #uses the search function previously defined to find the employee that needs to be updated
-        employees = self.search(employee.nid) #search only by nid
-        if employees:
-            #update the employee with the new information
-            updated_employee = employees[0] #lets assume that only one employee is found
-            #change this information to the new information
-            updated_employee["role"] = employee.role
-            updated_employee["rank"] = employee.rank
-            updated_employee["address"] = employee.address
-            updated_employee["phone_nr"] = employee.phone_nr
-
-            #write the new information to the csv file
-            with open(self.file_name, "w", newline="", encoding="utf-8") as csvfile:
-                fieldnames = ["nid", "name", "role", "rank", "license", "address", "phone_nr"]
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(employees)
-
+        # Register the updated pilot
+        self.register_pilot(employee)
+        
         
