@@ -96,17 +96,37 @@ class EmployeeData:
                              "role": employee.role, "rank": employee.rank, "license": "N/A",
                              "address": employee.address, "phone_nr": employee.phone_nr})
 
-
+#nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
     def search(self, filter):
         #takes a input from ui and searches for it in the csv file
         ret_list = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                if filter in row["name"] or filter in row["nid"] or filter in row["role"]: #can use these param to search
+                if filter in row["name"] or filter in row["nid"] or filter in row["role"] or filter in row ["license"]: #can use these param to search
                     ret_list.append(row)
         #returns the list of employees that match the search
         return ret_list
+             
+
+    def delete_employee(self, nid):
+        with open(self.file_name, "r", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            rows = list(reader)
+
+        # Find the employee with the matching nid
+        for i, row in enumerate(rows):
+            if row["nid"] == nid:
+                # Remove the employee from the list of rows
+                del rows[i]
+                break
+
+        # Write the updated contents back to the CSV file
+        with open(self.file_name, "w", encoding="utf-8") as csvfile:
+            fieldnames = ["nid", "name", "role", "rank", "license", "address", "phone_nr", "pref_nr", "slot_param"]
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(rows)
 
 #marvin
 #ssid, rank, address, phone_nr, home_phone_nr, license)
@@ -121,5 +141,5 @@ class EmployeeData:
 
         # Register the updated pilot
         self.register_pilot(employee)
-        
+            
         

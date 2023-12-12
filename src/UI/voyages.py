@@ -2,19 +2,39 @@ from UI.Utils.Constants import UIConstants
 import sys
 from prettytable import PrettyTable
 from Model.VoyageModel import Voyage
+from Model.EmployeeModel import Employee, Pilot, FlightAttendant
 from dataclasses import fields, asdict
 from Logic.UILogicWrapper import UI_Logic_Wrapper
 from datetime import datetime
+from collections.abc import Iterable
 
 
 def print_dataclass_as_table(instances, data_class_type):
-    table = PrettyTable(field_names=[field for field in data_class_type.__dataclass_fields__.keys()])
+    """Prints a dataclass as a table."""
+    if not isinstance(instances, Iterable):
+        instances = [instances]
+
+    table = PrettyTable(
+        field_names=[field for field in data_class_type.__dataclass_fields__.keys()]
+    )
     if not instances:
         print("No instances found.")
         return
     for instance in instances:
         table.add_row([v for _, v in asdict(instance).items()])
     print(table)
+
+
+def generate_table(employees):
+    """Generates a table from a list of employees."""
+    table = PrettyTable()
+    table.field_names = ["NID", "Name", "Role", "Rank", "Address", "Phone Number", "License"]
+    
+    for employee in employees:
+        table.add_row([employee.nid, employee.name, employee.role, employee.rank, employee.address, employee.phone_nr, employee.license])
+    
+    return table
+
 
 class Voyages:
     def __init__(self, logic_wrapper):
@@ -59,12 +79,15 @@ class Voyages:
 
             elif command == "4" or command == "4.":
                 voyage_id = input("Enter Voyage ID: ")
-                print_dataclass_as_table(self.logic_wrapper.find_voyage(voyage_id), Voyage)
+                voyage = self.logic_wrapper.find_voyage(voyage_id)
+                print_dataclass_as_table(voyage, Voyage
+                )
 
             else:
                 print(UIConstants.INVALID_INPUT)
 
     def list_all_voyages(self):
+        """Lists all voyages from a file."""
         voyages = self.logic_wrapper.get_all_voyages()
 
         if voyages:
@@ -100,23 +123,27 @@ class Voyages:
         elif command == "2" or command == "2.":
             voyage_id = input("Enter Voyage ID: ")
             new_date = input("Enter new date (YYYY-MM-DD): ")
-            
-            self.logic_wrapper.copy_to_new_date(voyage_id, datetime.fromisoformat(new_date))
+
+            self.logic_wrapper.copy_to_new_date(
+                voyage_id, datetime.fromisoformat(new_date)
+            )
             print("Voyage copied.")
             print_dataclass_as_table(self.logic_wrapper.get_all_voyages(), Voyage)
-            
+
         elif command == "3" or command == "3.":
             voyage_id = input("Enter Voyage ID: ")
             interval_in_days = int(input("Enter interval in days: "))
             end_date = input("Enter end date (YYYY-MM-DD): ")
-            
-            self.logic_wrapper.make_recurring_voyage(voyage_id, interval_in_days, datetime.fromisoformat(end_date))
+
+            self.logic_wrapper.make_recurring_voyage(
+                voyage_id, interval_in_days, datetime.fromisoformat(end_date)
+            )
             print("Voyage made recurring.")
             print_dataclass_as_table(self.logic_wrapper.get_all_voyages(), Voyage)
-            
+
         elif command == "b":
             return "b"
-            
+
         elif command == "q":
             print(UIConstants.QUIT_MESSAGE)
             sys.exit()
@@ -124,143 +151,41 @@ class Voyages:
     def populate_voyage(self):
         voyages = self.logic_wrapper.get_all_voyages()
         for voyage in voyages:
-            if voyage.captain == "None":
+            if voyage.captain == "None" or voyage.captain == "":
                 sorted_captains = self.logic_wrapper.sort_by_captains()
-                table = PrettyTable()
-                table.field_names = [
-                    "NID",
-                    "Name",
-                    "Role",
-                    "Rank",
-                    "Address",
-                    "Phone Number",
-                    "License",
-                ]
-                for captain in sorted_captains:
-                    table.add_row(
-                        [
-                            captain.nid,
-                            captain.name,
-                            captain.role,
-                            captain.rank,
-                            captain.address,
-                            captain.phone_nr,
-                            captain.license,
-                        ]
-                    )
-
-                print(
-                    voyage.vid,
-                    voyage.destination,
-                    voyage.departuretime,
-                    voyage.departuredate,
-                    voyage.arrivaltime,
-                    voyage.arrivaldate,
-                )
+                table = generate_table(sorted_captains)
+                
+                print(f"Voyage ID: {voyage.id}, {voyage.destination}, {voyage.departure}, {voyage.arrival}")
                 print("Available Captains: ")
                 print(table)
-            elif voyage.copilot == "None":
+    
+            elif voyage.copilot == "None" or voyage.copilot == "":
                 sorted_copilots = self.logic_wrapper.sort_by_co_pilots()
-                table = PrettyTable()
-                table.field_names = [
-                    "NID",
-                    "Name",
-                    "Role",
-                    "Rank",
-                    "Address",
-                    "Phone Number",
-                    "License",
-                ]
-                for copilot in sorted_copilots:
-                    table.add_row(
-                        [
-                            copilot.nid,
-                            copilot.name,
-                            copilot.role,
-                            copilot.rank,
-                            copilot.address,
-                            copilot.phone_nr,
-                            copilot.license,
-                        ]
-                    )
-
-                print(
-                    voyage.vid,
-                    voyage.destination,
-                    voyage.departuretime,
-                    voyage.departuredate,
-                    voyage.arrivaltime,
-                    voyage.arrivaldate,
-                )
+                table = generate_table(sorted_copilots)
+                
+                print(f"Voyage ID: {voyage.id}, {voyage.destination}, {voyage.departure}, {voyage.arrival}")
                 print("Available Copilots: ")
                 print(table)
-            elif voyage.flight_service_manager == "None":
-                sorted_heads_of_service = self.logic_wrapper.sort_by_heads_of_service()
-                table = PrettyTable()
-                table.field_names = [
-                    "NID",
-                    "Name",
-                    "Role",
-                    "Rank",
-                    "Address",
-                    "Phone Number",
-                ]
-                for head_of_service in sorted_heads_of_service:
-                    table.add_row(
-                        [
-                            head_of_service.nid,
-                            head_of_service.name,
-                            head_of_service.role,
-                            head_of_service.rank,
-                            head_of_service.address,
-                            head_of_service.phone_nr,
-                        ]
-                    )
 
-                print(
-                    voyage.vid,
-                    voyage.destination,
-                    voyage.departuretime,
-                    voyage.departuredate,
-                    voyage.arrivaltime,
-                    voyage.arrivaldate,
-                )
+            elif voyage.flight_service_manager == "None" or voyage.flight_service_manager == "":
+                sorted_heads_of_service = self.logic_wrapper.sort_by_heads_of_service()
+                table = generate_table(sorted_heads_of_service)
+                
+                print(f"Voyage ID: {voyage.id}, {voyage.destination}, {voyage.departure}, {voyage.arrival}")
                 print("Available Heads of Service: ")
                 print(table)
-            elif voyage.flight_attendant == "None":
+                
+            elif voyage.flight_attendant == "None" or voyage.flight_attendant == "":
                 sorted_flight_attendants = (
                     self.logic_wrapper.sort_by_flight_attendants()
                 )
-                table = PrettyTable()
-                table.field_names = [
-                    "NID",
-                    "Name",
-                    "Role",
-                    "Rank",
-                    "Address",
-                    "Phone Number",
-                ]
-                for flight_attendant in sorted_flight_attendants:
-                    table.add_row(
-                        [
-                            flight_attendant.nid,
-                            flight_attendant.name,
-                            flight_attendant.role,
-                            flight_attendant.rank,
-                            flight_attendant.address,
-                            flight_attendant.phone_nr,
-                        ]
-                    )
-
-                print(
-                    voyage.vid,
-                    voyage.destination,
-                    voyage.departuretime,
-                    voyage.departuredate,
-                    voyage.arrivaltime,
-                    voyage.arrivaldate,
-                )
+                table = generate_table(sorted_flight_attendants)
+                
+                print(f"Voyage ID: {voyage.id}, {voyage.destination}, {voyage.departure}, {voyage.arrival}")
                 print("Available Flight Attendants: ")
                 print(table)
+            
             else:
-                print("All registered voyages are fully staffed.")
+                print(
+                    f"Voyage {voyage.destination} {voyage.departure}, ({voyage.id}) is fully staffed."
+                )

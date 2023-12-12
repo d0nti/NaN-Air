@@ -140,9 +140,9 @@ class Employees:
             # print("4. Heads of Service"),
 
             self.get_sorted_list((input("User Input: ")))
-
+#nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
         elif command == "1" or command == "1.":
-            filter = input("Enter search filter (SSID, Name or Job Title): ")
+            filter = input("Enter search filter (SSID, Name, license or Job Title): ")
             filtered_employees = self.logic_wrapper.search(filter)
             table = PrettyTable()
             
@@ -151,6 +151,7 @@ class Employees:
                 UIConstants.NAME,
                 UIConstants.JOB_TITLE,
                 UIConstants.RANK,
+                UIConstants.LICENSE,
                 UIConstants.ADDRESS,
                 UIConstants.PHONE_NUMBER,
             ]
@@ -162,6 +163,7 @@ class Employees:
                         employee["name"],
                         employee["role"],
                         employee["rank"],
+                        employee["license"],
                         employee["address"],
                         employee["phone_nr"],
                     ]
@@ -444,48 +446,5 @@ class Employees:
         print("Employee information updated successfully.")
 
         
-
-
-
-
-
-
-
-
-
-
-'''
-    def update_employee(self):
-        employee_type = input("Select the employee type to update:\n1. Update pilot\n2. Update flight attendant\n")
-        ssid = input("Enter the SSID of the employee you want to update: ")
-
-        if employee_type == "1":
-            # Update pilot
-            rank = input("Enter the new rank: ")
-            address = input("Enter the new address: ")
-            phone_nr = input("Enter the new phone number: ")
-            home_phone_nr = input("Enter the new home phone number (optional): ")
-            license = input("Enter the new license: ")
-
-            EmployeeData.update_pilot(ssid, rank, address, phone_nr, home_phone_nr, license)
-        elif employee_type == "2":
-            # Update flight attendant
-            rank = input("Enter the new rank: ")
-            address = input("Enter the new address: ")
-            phone_nr = input("Enter the new phone number: ")
-            home_phone_nr = input("Enter the new home phone number (optional): ")
-
-            EmployeeData.update_flight_attendant(ssid, rank, address, phone_nr, home_phone_nr)
-        else:
-            print("Invalid employee type selection.")
-
-        print("Employee information updated successfully.")
-
-'''
-
-
-
-
-
 
 
