@@ -159,4 +159,5 @@ Marvin: Shift plan
 Viggó: Logic
 Anton: UI og smá logic
 
+samantekt: náðum að gera mikið í dag, voyages er kominn langt á leið, logic líka og svo er núna hægt að displaya vaktaplanið. Gengur vel :)
 
