@@ -73,4 +73,3 @@ class UI_Logic_Wrapper:
     
     def update_flight_attendant(self, employee_info):
         return self.employee_logic.update_flight_attendant(employee_info)
-

@@ -7,7 +7,6 @@ import sys
 from Data.employeeData import EmployeeData
 
 
-
 class Employees:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
@@ -52,7 +51,7 @@ class Employees:
 
             elif command == "3" or command == "3.":
                 self.update_employee()
-            
+
             elif command == "4" or command == "4.":
                 self.display_shift_plan()
 
@@ -66,14 +65,14 @@ class Employees:
         if employees:
             table = PrettyTable()
             table.field_names = [
-            UIConstants.SSID,
-            UIConstants.NAME,
-            UIConstants.JOB_TITLE,
-            UIConstants.RANK,
-            UIConstants.ADDRESS,
-            UIConstants.PHONE_NUMBER
+                UIConstants.SSID,
+                UIConstants.NAME,
+                UIConstants.JOB_TITLE,
+                UIConstants.RANK,
+                UIConstants.ADDRESS,
+                UIConstants.PHONE_NUMBER,
             ]
-            
+
             # table.field_names = [
             #     "Name",
             #     "SSID",
@@ -81,7 +80,7 @@ class Employees:
             #     "Phone Number",
             #     "Address",
             # ]
-            for employee in employees: # fix e
+            for employee in employees:  # fix e
                 table.add_row(
                     [
                         employee.nid,
@@ -97,7 +96,7 @@ class Employees:
 
             print(table)
             print(
-                    UIConstants.TWO_MENU_OPTION.format(
+                UIConstants.TWO_MENU_OPTION.format(
                     UIConstants.SEARCH,
                     UIConstants.SORT_BY,
                     UIConstants.BACK,
@@ -105,10 +104,17 @@ class Employees:
                 )
             )
 
-            
         else:
             print(UIConstants.USER_NOT_FOUND)
-        
+
+        print(
+            UIConstants.TWO_MENU_OPTION.format(
+                UIConstants.SEARCH,
+                UIConstants.SORT_BY,
+                UIConstants.BACK,
+                UIConstants.QUIT,
+            )
+        )
 
         # print("1. Search")
         # print("2. Sort by:")
@@ -133,12 +139,12 @@ class Employees:
             # print("4. Heads of Service"),
 
             self.get_sorted_list((input("User Input: ")))
-#nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
+        # nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
         elif command == "1" or command == "1.":
             filter = input("Enter search filter (SSID, Name, license or Job Title): ")
             filtered_employees = self.logic_wrapper.search(filter)
             table = PrettyTable()
-            
+
             table.field_names = [
                 UIConstants.SSID,
                 UIConstants.NAME,
@@ -164,14 +170,13 @@ class Employees:
 
             print(table)
             print(
-                    UIConstants.TWO_MENU_OPTION.format(
+                UIConstants.TWO_MENU_OPTION.format(
                     UIConstants.SEARCH,
                     UIConstants.SORT_BY,
                     UIConstants.BACK,
                     UIConstants.QUIT,
                 )
             )
-
 
     def get_sorted_list(self, command):
         self.command = command
@@ -326,7 +331,7 @@ class Employees:
         command = input("User input: ")
         if command == "1" or command == "1.":
             print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_PILOT))
-            print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
+            print(UIConstants.INFORMATION_MESSAGE)
             pilot_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
 
             all_pilot_information = []
@@ -367,7 +372,7 @@ class Employees:
 
         elif command == "2" or command == "2.":
             print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_FLIGHT_ATTENDANT))
-            print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
+            print(UIConstants.INFORMATION_MESSAGE)
             flight_attendant_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
             flight_attendant_info_print = flight_attendant_info_print[0:-2]
 
@@ -407,19 +412,90 @@ class Employees:
             pass
 
         else:
-            print(UIConstants.INVALID_INPUT)
+            print(UIConstants.INVALID_INPUT)  # MAKE ERROR MSG PLS
 
+    def update_employee(self):
+        print(UIConstants.HEADER.format(UIConstants.UPDATE_EMPLOYEE))
+        print(
+            UIConstants.TWO_MENU_OPTION.format(
+                UIConstants.UPDATE_PILOT,
+                UIConstants.UPDATE_FLIGHT_ATTENDANT,
+                UIConstants.BACK,
+                UIConstants.QUIT,
+            )
+        )
+
+        command = input("User input: ")
+        if command == "1" or command == "1.":
+            print(UIConstants.HEADER.format(UIConstants.UPDATE_PILOT))
+            ssid = input("Enter the SSID of the pilot to update: ")
+            print(UIConstants.UPDATE_EMPLOYEE_INPUT)
+            pilot_info_print = UIConstants.UPDATE_EMPLOYEE_INPUT.split(", ")
+
+            all_pilot_information = []
+            for i in pilot_info_print:
+                print(f"{i}", end=" ")
+                pilot_information = input()
+                all_pilot_information.append(pilot_information)
+
+            if len(all_pilot_information) == 5:
+                rank, address, phone_nr, home_phone_nr, license = all_pilot_information
+                employee = Pilot(ssid, "", "Pilot", rank, address, phone_nr, license)
+                self.logic_wrapper.update_pilot(employee)
+            else:
+                print(UIConstants.INVALID_INPUT)  # ERROR :)
+
+        elif command == "2" or command == "2.":
+            print(UIConstants.HEADER.format(UIConstants.UPDATE_FLIGHT_ATTENDANT))
+            ssid = input("Enter the SSID of the flight attendant to update: ")
+            print(UIConstants.UPDATE_EMPLOYEE_INPUT)
+            flight_attendant_info_print = UIConstants.UPDATE_EMPLOYEE_INPUT.split(", ")
+
+            all_flight_attendant_information = []
+            for i in flight_attendant_info_print:
+                print(f"{i}", end=" ")
+                flight_attendant_information = input()
+                all_flight_attendant_information.append(flight_attendant_information)
+
+            if len(all_flight_attendant_information) == 4:
+                (
+                    rank,
+                    address,
+                    phone_nr,
+                    home_phone_nr,
+                ) = all_flight_attendant_information
+                employee = FlightAttendant(
+                    ssid, "", "Cabincrew", rank, address, phone_nr
+                )
+                self.logic_wrapper.update_flight_attendant(employee)
+            else:
+                print(UIConstants.INVALID_INPUT)  # ERROR :)
+
+        elif command == "b" or command == "b.":
+            pass
+
+        elif command == "q" or command == "q.":
+            pass
+
+        else:
+            print(UIConstants.INVALID_INPUT)  # ERROR :)
 
     def display_shift_plan(self):
-
-        #get the shift plan from employeeData.py
+        # get the shift plan from employeeData.py
         ret_list = EmployeeData.get_shift_plan(self)
 
         table = PrettyTable()
-        
-        table.field_names = ["NID", "Name", "Shift Start Date", "Shift Start Time", "Shift End Date", "Shift End Time"]
 
-        #add data rows to the table
+        table.field_names = [
+            "NID",
+            "Name",
+            "Shift Start Date",
+            "Shift Start Time",
+            "Shift End Date",
+            "Shift End Time",
+        ]
+
+        # add data rows to the table
         for row in ret_list:
             table.add_row(row)
 
@@ -427,5 +503,4 @@ class Employees:
         print(table)
 
     def get_sorted_list_by_day(self):
-        pass 
-    #todo: add this function
+        pass
