@@ -410,38 +410,6 @@ class Employees:
             print(UIConstants.INVALID_INPUT)
 
 
-    def update_employee(self):
-        employee_type = input("Select the employee type to update:\n1. Update pilot\n2. Update flight attendant\n")
-        ssid = input("Enter the SSID of the employee you want to update: ")
-
-        if employee_type == "1":
-            # Update pilot
-            rank = input("Enter the new rank: ")
-            address = input("Enter the new address: ")
-            phone_nr = input("Enter the new phone number: ")
-            home_phone_nr = input("Enter the new home phone number (optional): ")
-            license = input("Enter the new license: ")
-
-            EmployeeData.update_pilot(ssid, rank, address, phone_nr, home_phone_nr, license)
-
-        elif employee_type == "2":
-            # Update flight attendant
-            rank = input("Enter the new rank: ")
-            address = input("Enter the new address: ")
-            phone_nr = input("Enter the new phone number: ")
-            home_phone_nr = input("Enter the new home phone number (optional): ")
-
-            EmployeeData.update_flight_attendant(ssid, rank, address, phone_nr, home_phone_nr)
-
-        else:
-            print("Invalid employee type selection.")
-
-        print("Employee information updated successfully.")
-
-#nid,name,shift_start_date,shift_start_time,shift_end_date,shift_end_time
-
-
-
     def display_shift_plan(self):
 
         #get the shift plan from employeeData.py
@@ -457,3 +425,7 @@ class Employees:
 
         # Print the table
         print(table)
+
+    def get_sorted_list_by_day(self):
+        pass 
+    #todo: add this function

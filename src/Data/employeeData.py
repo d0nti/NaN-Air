@@ -118,4 +118,25 @@ class EmployeeData:
                 ret_list.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
 
             return ret_list
+        
+    def sort_by_working_day(self, date):
+        ret_list = []
+        with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row["shift_start_date"] == date:
+                    ret_list.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
+
+            return ret_list
+
+    def sort_by_not_working_day(self, date):
+        ret_list = []
+        with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row["shift_start_date"] != date:
+                    ret_list.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
+
+            return ret_list
+
                 
