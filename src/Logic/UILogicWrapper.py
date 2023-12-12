@@ -3,6 +3,7 @@ from Logic.destinationlogic import DestinationLogic
 from Logic.airplanelogic import AirplaneLogic
 from Data.LogicDataWrapper import Logic_Data_Wrapper
 from Logic.voyageslogic import VoyagesLogic
+from datetime import datetime
 
 
 class UI_Logic_Wrapper:
@@ -49,11 +50,14 @@ class UI_Logic_Wrapper:
     def register_new_voyage(self, voyage_info):
         return self.voyageslogic.register_new_voyage(voyage_info)
     
-    def search_voyages(self, filter):
-        return self.voyageslogic.search_voyages(filter)
+    def find_voyage(self, filter):
+        return self.voyageslogic.find_voyage(filter)
         
-    def copy_existing_voyage(self, voyage_info):
-        return self.voyageslogic.copy_existing_voyage(voyage_info)
+    def copy_to_new_date(self, voyage_id: str, new_date: datetime):
+        return self.voyageslogic.copy_to_new_date(voyage_id, new_date)
+    
+    def make_recurring_voyage(self, voyage_id, interval_in_days: int, end_date: datetime):
+        return self.voyageslogic.make_recurring_voyage(voyage_id, interval_in_days, end_date)
     
     def update_pilot(self, employee_info):
         return self.employee_logic.update_pilot(employee_info)

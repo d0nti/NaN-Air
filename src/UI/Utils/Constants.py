@@ -54,7 +54,7 @@ class UIConstants:
     CO_PILOTS = "Co-Pilots"
     FLIGHT_ATTENDTANTS = "Flight Attendants"
     HEADS_OF_SERVICE = "Heads of Service"
-    REGISTER_VOYAGE_INFO = "VID, Destination, Departure Time, Departure Date, Arrival Time, Arrival Date, Captain, Co-Pilot, Flight Service Manager, Flight Attendant"
+    REGISTER_VOYAGE_INFO = "UUID, Destination, Departure Time, Departure Date, Arrival Time, Arrival Date, Captain, Co-Pilot, Flight Service Manager, Flight Attendant"
 
     
     REGISTER_NEW_VOYAGE = "Register New Voyage"

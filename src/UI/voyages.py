@@ -2,8 +2,19 @@ from UI.Utils.Constants import UIConstants
 import sys
 from prettytable import PrettyTable
 from Model.VoyageModel import Voyage
+from dataclasses import fields, asdict
 from Logic.UILogicWrapper import UI_Logic_Wrapper
+from datetime import datetime
 
+
+def print_dataclass_as_table(instances, data_class_type):
+    table = PrettyTable(field_names=[field for field in data_class_type.__dataclass_fields__.keys()])
+    if not instances:
+        print("No instances found.")
+        return
+    for instance in instances:
+        table.add_row([v for _, v in asdict(instance).items()])
+    print(table)
 
 class Voyages:
     def __init__(self, logic_wrapper):
@@ -47,8 +58,8 @@ class Voyages:
                 self.populate_voyage()
 
             elif command == "4" or command == "4.":
-                filter = input("Enter Voyage ID or Destination: ")
-                self.search_voyages(filter)
+                voyage_id = input("Enter Voyage ID: ")
+                print_dataclass_as_table(self.logic_wrapper.find_voyage(voyage_id), Voyage)
 
             else:
                 print(UIConstants.INVALID_INPUT)
@@ -57,43 +68,11 @@ class Voyages:
         voyages = self.logic_wrapper.get_all_voyages()
 
         if voyages:
-            table = PrettyTable()
-            table.field_names = [
-                "Voyage ID",
-                "Destination",
-                "Departure Time",
-                "Departure Date",
-                "Arrival Time",
-                "Arrival Date",
-                "Captain",
-                "Copilot",
-                "Flight Service Manager",
-                "Flight Attendant",
-            ]
-
-            for voyage in voyages:
-                table.add_row(
-                    [
-                        voyage.vid,
-                        voyage.destination,
-                        voyage.departuretime,
-                        voyage.departuredate,
-                        voyage.arrivaltime,
-                        voyage.arrivaldate,
-                        voyage.captain,
-                        voyage.copilot,
-                        voyage.flight_service_manager,
-                        voyage.flight_attendant,
-                    ]
-                )
-
-            print(table)
+            print_dataclass_as_table(voyages, Voyage)
         else:
             print("No voyages found.")
 
     def register_new_voyage(self):
-        # voyages = self.logic_wrapper.get_all_voyages()
-
         print("1. Register New Voyage")
         print("2. Copy Existing Voyage")
         print("3. Make Recurring Voyage")
@@ -111,29 +90,29 @@ class Voyages:
                 voyage_information = input()
                 all_voyage_information.append(voyage_information)
 
-            table = PrettyTable()
-            table.field_names = [
-                "Voyage ID",
-                "Destination",
-                "Departure Time",
-                "Departure Date",
-                "Arrival Time",
-                "Arrival Date",
-                "Captain",
-                "Copilot",
-                "Flight Service Manager",
-                "Flight Attendant",
-            ]
-
+            table = PrettyTable(UIConstants.REGISTER_VOYAGE_INFO.split(", "))
             table.add_row(all_voyage_information)
-
             print(table)
 
             self.logic_wrapper.register_new_voyage(all_voyage_information)
-
             print("New Voyage Registered.")
+
         elif command == "2" or command == "2.":
-            self.copy_existing_voyage()
+            voyage_id = input("Enter Voyage ID: ")
+            new_date = input("Enter new date (YYYY-MM-DD): ")
+            
+            self.logic_wrapper.copy_to_new_date(voyage_id, datetime.fromisoformat(new_date))
+            print("Voyage copied.")
+            print_dataclass_as_table(self.logic_wrapper.get_all_voyages(), Voyage)
+            
+        elif command == "3" or command == "3.":
+            voyage_id = input("Enter Voyage ID: ")
+            interval_in_days = int(input("Enter interval in days: "))
+            end_date = input("Enter end date (YYYY-MM-DD): ")
+            
+            self.logic_wrapper.make_recurring_voyage(voyage_id, interval_in_days, datetime.fromisoformat(end_date))
+            print("Voyage made recurring.")
+            print_dataclass_as_table(self.logic_wrapper.get_all_voyages(), Voyage)
             
         elif command == "b":
             return "b"
@@ -285,57 +264,3 @@ class Voyages:
                 print(table)
             else:
                 print("All registered voyages are fully staffed.")
-
-    def search_voyages(self, filter):
-        #filter = input("Enter Voyage ID or Destination: ") - from input_prompt_voyages
-        filtered_voyages = self.logic_wrapper.search_voyages(filter)
-        table = PrettyTable()
-        
-        table.field_names = [
-            "Voyage ID",
-            "Destination",
-            "Departure Time",
-            "Departure Date",
-            "Arrival Time",
-            "Arrival Date",
-            "Captain",
-            "Copilot",
-            "Flight Service Manager",
-            "Flight Attendant",
-        ]
-        
-        for voyage in filtered_voyages:
-            table.add_row(
-                [
-                    voyage.get('vid'),
-                    voyage.get('destination'),
-                    voyage.get('departuretime'),
-                    voyage.get('departuredate'),
-                    voyage.get('arrivaltime'),
-                    voyage.get('arrivaldate'),
-                    voyage.get('captain'),
-                    voyage.get('copilot'),
-                    voyage.get('flight_service_manager'),
-                    voyage.get('flight_attendant'),
-                ]
-            )
-        
-        print(table)
-
-    def copy_existing_voyage(self):
-        
-        voyage = self.logic_wrapper.search_voyages(input("Enter Voyage ID or Destination: "))
-        
-        print(voyage)
-                        
-        if voyage != []:
-            self.logic_wrapper.copy_existing_voyage(voyage)
-            print("Voyage copied.")
-        else:
-            print("Voyage not found.")
-
-    def make_recurring_voyage(self):
-        pass
-    
-    def edit_voyage(self):
-        pass
