@@ -9,6 +9,7 @@ import csv
 class EmployeeData:
     def __init__(self):
         self.file_name = "src/Files/crew.csv"
+        self.shift_file = "src/Files/shift_plan.csv"
         self.number_of_employees = 0
 
 #frá fyrirlestri
@@ -109,37 +110,33 @@ class EmployeeData:
         return ret_list
              
 
-    def delete_employee(self, nid):
-        with open(self.file_name, "r", encoding="utf-8") as csvfile:
+    def get_shift_plan(self):
+        ret_list = []
+        with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
-            rows = list(reader)
+            for row in reader:
+                ret_list.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
 
-        # Find the employee with the matching nid
-        for i, row in enumerate(rows):
-            if row["nid"] == nid:
-                # Remove the employee from the list of rows
-                del rows[i]
-                break
-
-        # Write the updated contents back to the CSV file
-        with open(self.file_name, "w", encoding="utf-8") as csvfile:
-            fieldnames = ["nid", "name", "role", "rank", "license", "address", "phone_nr", "pref_nr", "slot_param"]
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
-            writer.writerows(rows)
-
-#marvin
-#ssid, rank, address, phone_nr, home_phone_nr, license)
-
-    def update_pilot(self, employee):
-        # Search for the pilot by nid
-        pilots = self.search(employee.nid)
-
-        # If the pilot is found, delete the existing pilot
-        if pilots:
-            self.delete_employee(pilots[0]["nid"])
-
-        # Register the updated pilot
-        self.register_pilot(employee)
-            
+            return ret_list
         
+    def sort_by_working_day(self, date):
+        ret_list = []
+        with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row["shift_start_date"] == date:
+                    ret_list.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
+
+            return ret_list
+
+    def sort_by_not_working_day(self, date):
+        ret_list = []
+        with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row["shift_start_date"] != date:
+                    ret_list.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
+
+            return ret_list
+
+                

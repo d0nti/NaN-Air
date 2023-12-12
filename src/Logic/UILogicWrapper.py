@@ -62,6 +62,12 @@ class UI_Logic_Wrapper:
     def make_recurring_voyage(self, voyage_id, interval_in_days: int, end_date: datetime):
         return self.voyages_logic.make_recurring_voyage(voyage_id, interval_in_days, end_date)
     
+    def get_manned_voyages(self):
+        return self.voyages_logic.get_manned_voyages()
+    
+    def get_unmanned_voyages(self):
+        return self.voyages_logic.get_unmanned_voyages()
+    
     def update_pilot(self, employee_info):
         return self.employee_logic.update_pilot(employee_info)
     

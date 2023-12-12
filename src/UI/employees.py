@@ -7,6 +7,7 @@ import sys
 from Data.employeeData import EmployeeData
 
 
+
 class Employees:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
@@ -53,7 +54,7 @@ class Employees:
                 self.update_employee()
             
             elif command == "4" or command == "4.":
-                pass  # eftir að implementa
+                self.display_shift_plan()
 
             else:
                 print(UIConstants.INVALID_INPUT)
@@ -108,14 +109,6 @@ class Employees:
         else:
             print(UIConstants.USER_NOT_FOUND)
         
-        print(
-            UIConstants.TWO_MENU_OPTION.format(
-            UIConstants.SEARCH,
-            UIConstants.SORT_BY,
-            UIConstants.BACK,
-            UIConstants.QUIT,
-                )
-            )
 
         # print("1. Search")
         # print("2. Sort by:")
@@ -417,34 +410,22 @@ class Employees:
             print(UIConstants.INVALID_INPUT)
 
 
-    def update_employee(self):
-        employee_type = input("Select the employee type to update:\n1. Update pilot\n2. Update flight attendant\n")
-        ssid = input("Enter the SSID of the employee you want to update: ")
+    def display_shift_plan(self):
 
-        if employee_type == "1":
-            # Update pilot
-            rank = input("Enter the new rank: ")
-            address = input("Enter the new address: ")
-            phone_nr = input("Enter the new phone number: ")
-            home_phone_nr = input("Enter the new home phone number (optional): ")
-            license = input("Enter the new license: ")
+        #get the shift plan from employeeData.py
+        ret_list = EmployeeData.get_shift_plan(self)
 
-            EmployeeData.update_pilot(ssid, rank, address, phone_nr, home_phone_nr, license)
-
-        elif employee_type == "2":
-            # Update flight attendant
-            rank = input("Enter the new rank: ")
-            address = input("Enter the new address: ")
-            phone_nr = input("Enter the new phone number: ")
-            home_phone_nr = input("Enter the new home phone number (optional): ")
-
-            EmployeeData.update_flight_attendant(ssid, rank, address, phone_nr, home_phone_nr)
-
-        else:
-            print("Invalid employee type selection.")
-
-        print("Employee information updated successfully.")
-
+        table = PrettyTable()
         
+        table.field_names = ["NID", "Name", "Shift Start Date", "Shift Start Time", "Shift End Date", "Shift End Time"]
 
+        #add data rows to the table
+        for row in ret_list:
+            table.add_row(row)
 
+        # Print the table
+        print(table)
+
+    def get_sorted_list_by_day(self):
+        pass 
+    #todo: add this function
