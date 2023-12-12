@@ -140,9 +140,9 @@ class Employees:
             # print("4. Heads of Service"),
 
             self.get_sorted_list((input("User Input: ")))
-
+#nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
         elif command == "1" or command == "1.":
-            filter = input("Enter search filter (SSID, Name or Job Title): ")
+            filter = input("Enter search filter (SSID, Name, license or Job Title): ")
             filtered_employees = self.logic_wrapper.search(filter)
             table = PrettyTable()
             
@@ -151,6 +151,7 @@ class Employees:
                 UIConstants.NAME,
                 UIConstants.JOB_TITLE,
                 UIConstants.RANK,
+                UIConstants.LICENSE,
                 UIConstants.ADDRESS,
                 UIConstants.PHONE_NUMBER,
             ]
@@ -162,6 +163,7 @@ class Employees:
                         employee["name"],
                         employee["role"],
                         employee["rank"],
+                        employee["license"],
                         employee["address"],
                         employee["phone_nr"],
                     ]
