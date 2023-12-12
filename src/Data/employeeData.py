@@ -112,32 +112,14 @@ class EmployeeData:
 #ssid, rank, address, phone_nr, home_phone_nr, license)
 
     def update_pilot(self, employee):
-        # Search for the pilot in the employee data
+        # Search for the pilot by nid
         pilots = self.search(employee.nid)
-        if len(pilots) == 0:
-            return "Pilot not found."
 
-        # Update the pilot's information
-        for pilot in pilots:
-            pilot["rank"] = employee.rank
-            pilot["address"] = employee.address
-            pilot["phone_nr"] = employee.phone_nr
-            pilot["home_phone_nr"] = employee.home_phone_nr
-            pilot["license"] = employee.license
+        # If the pilot is found, delete the existing pilot
+        if pilots:
+            self.delete_employee(pilots[0]["nid"])
 
-        # Save the updated information to the file
-        with open(self.file_name, "w", encoding="utf-8") as csvfile:
-            fieldnames = ["nid", "name", "role", "rank", "license", "phone_nr", "address", "home_phone_nr"]
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
-            writer.writerows(pilots)
-
-        return 
+        # Register the updated pilot
+        self.register_pilot(employee)
         
-
-
-
-
-
-
-
+        
