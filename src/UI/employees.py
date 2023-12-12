@@ -412,6 +412,41 @@ class Employees:
             print(UIConstants.INVALID_INPUT)  # MAKE ERROR MSG PLS
 
     def update_employee(self):
+        employee_type = input("Select the employee type to update:\n1. Update pilot\n2. Update flight attendant\n")
+        ssid = input("Enter the SSID of the employee you want to update: ")
+
+        if employee_type == "1":
+            # Update pilot
+            rank = input("Enter the new rank: ")
+            address = input("Enter the new address: ")
+            phone_nr = input("Enter the new phone number: ")
+            home_phone_nr = input("Enter the new home phone number (optional): ")
+            license = input("Enter the new license: ")
+
+            EmployeeData.update_pilot(ssid, rank, address, phone_nr, home_phone_nr, license)
+        elif employee_type == "2":
+            # Update flight attendant
+            rank = input("Enter the new rank: ")
+            address = input("Enter the new address: ")
+            phone_nr = input("Enter the new phone number: ")
+            home_phone_nr = input("Enter the new home phone number (optional): ")
+
+            EmployeeData.update_flight_attendant(ssid, rank, address, phone_nr, home_phone_nr)
+        else:
+            print("Invalid employee type selection.")
+
+        print("Employee information updated successfully.")
+
+
+
+
+
+
+
+
+
+'''
+    def update_employee(self):
         print(UIConstants.HEADER.format(UIConstants.UPDATE_EMPLOYEE))
         print(
             UIConstants.TWO_MENU_OPTION.format(
@@ -423,43 +458,33 @@ class Employees:
         )
 
         command = input("User input: ")
+
         if command == "1" or command == "1.":
             print(UIConstants.HEADER.format(UIConstants.UPDATE_PILOT))
-            ssid = input("Enter the SSID of the pilot to update: ")
-            print(UIConstants.UPDATE_EMPLOYEE_INPUT)
-            pilot_info_print = UIConstants.UPDATE_EMPLOYEE_INPUT.split(", ")
+            ssid = input("Enter the SSID of the pilot you want to update: ")
+            rank = input("Enter the new rank: ")
+            address = input("Enter the new address: ")
+            phone_nr = input("Enter the new phone number: ")
+            home_phone_nr = input("Enter the new home phone number (optional): ")
+            license = input("Enter the new license: ")
 
-            all_pilot_information = []
-            for i in pilot_info_print:
-                print(f"{i}", end=" ")
-                pilot_information = input()
-                all_pilot_information.append(pilot_information)
-
-            if len(all_pilot_information) == 5:
-                rank, address, phone_nr, home_phone_nr, license = all_pilot_information
-                employee = Pilot(ssid, "", "Pilot", rank, address, phone_nr, license)
-                self.logic_wrapper.update_pilot(employee)
-            else:
-                print(UIConstants.INVALID_INPUT)  # ERROR :)
+            self.logic_wrapper.update_pilot(ssid, rank, address, phone_nr, home_phone_nr, license)
 
         elif command == "2" or command == "2.":
             print(UIConstants.HEADER.format(UIConstants.UPDATE_FLIGHT_ATTENDANT))
-            ssid = input("Enter the SSID of the flight attendant to update: ")
-            print(UIConstants.UPDATE_EMPLOYEE_INPUT)
-            flight_attendant_info_print = UIConstants.UPDATE_EMPLOYEE_INPUT.split(", ")
+            ssid = input("Enter the SSID of the flight attendant you want to update: ")
+            rank = input("Enter the new rank: ")
+            address = input("Enter the new address: ")
+            phone_nr = input("Enter the new phone number: ")
+            home_phone_nr = input("Enter the new home phone number (optional): ")
 
-            all_flight_attendant_information = []
-            for i in flight_attendant_info_print:
-                print(f"{i}", end=" ")
-                flight_attendant_information = input()
-                all_flight_attendant_information.append(flight_attendant_information)
+            self.logic_wrapper.update_flight_attendant(ssid, {
+                "rank": rank,
+                "address": address,
+                "phone_nr": phone_nr,
+                "home_phone_nr": home_phone_nr
+            })
 
-            if len(all_flight_attendant_information) == 4:
-                rank, address, phone_nr, home_phone_nr = all_flight_attendant_information
-                employee = FlightAttendant(ssid, "", "Cabincrew", rank, address, phone_nr)
-                self.logic_wrapper.update_flight_attendant(employee)
-            else:
-                print(UIConstants.INVALID_INPUT)  # ERROR :)
 
         elif command == "b" or command == "b.":
             pass
@@ -468,5 +493,5 @@ class Employees:
             pass
 
         else:
-            print(UIConstants.INVALID_INPUT)  # ERROR :)
-            
+            print(UIConstants.INVALID_INPUT)
+'''

@@ -34,10 +34,6 @@ class EmployeeLogic:
     def search(self, filter):
         return self.data_wrapper.search(filter)
     
-
-    def update_pilot(self, employee_info):
-        return self.data_wrapper.update_pilot(employee_info)
-    
     def update_pilot(self, employee_info):
         return self.data_wrapper.update_pilot(employee_info)
 
