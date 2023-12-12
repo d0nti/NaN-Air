@@ -147,3 +147,16 @@ Anton: halda áfram með ui og laga b og q takka
 
 Samantekt:
 náðum að vera nokkuð dugleg í dag, Andrea komst langa leiðina með voyages og er þetta allt að koma hjá okkur.
+
+12. des
+Morgunfærsla:
+við erum komin langleiðina finnst okkur með A kröfur og eigum bara nokkrar eftir, ætlum að reyna klára fleiri í dag
+
+Verkefnaskipting:
+Hera: UI og fastar
+Andrea: voyages
+Marvin: Shift plan
+Viggó: Logic
+Anton: UI og smá logic
+
+
