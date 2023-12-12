@@ -50,7 +50,7 @@ class AirplaneData:
                     ret_list[i].seats = rows[2].get("capacity")
 
 
-    def create_airplane(self, plane):
+    def register_airplane(self, plane):
         with open(self.plane_file_name, "a", encoding="utf-8") as csvfile:
             fieldnames = ["name", "type", "supplier", "seats"]
             writer = csv.DictWriter(csvfile, fieldnames = fieldnames)

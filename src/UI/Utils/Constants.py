@@ -10,8 +10,8 @@ class UIConstants:
     FIND_AIRPLANE = "Find Airplane"
     PRINT_AIRPLANE_EFFICIENCY = "Print Airplane Efficiency"
     TYPE = "Type"
-    SEATS = "seats"
-    SUPPLIER = "supplier"
+    SEATS = "Seats"
+    SUPPLIER = "Supplier"
 
     DISPLAY_DESTINATIONS = "Display Destinations"
     REGISTER_NEW_DESTINATION = "Register New Destination"

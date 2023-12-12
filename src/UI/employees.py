@@ -140,9 +140,9 @@ class Employees:
             # print("4. Heads of Service"),
 
             self.get_sorted_list((input("User Input: ")))
-
+#nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
         elif command == "1" or command == "1.":
-            filter = input("Enter search filter (SSID, Name or Job Title): ")
+            filter = input("Enter search filter (SSID, Name, license or Job Title): ")
             filtered_employees = self.logic_wrapper.search(filter)
             table = PrettyTable()
             
@@ -151,6 +151,7 @@ class Employees:
                 UIConstants.NAME,
                 UIConstants.JOB_TITLE,
                 UIConstants.RANK,
+                UIConstants.LICENSE,
                 UIConstants.ADDRESS,
                 UIConstants.PHONE_NUMBER,
             ]
@@ -162,6 +163,7 @@ class Employees:
                         employee["name"],
                         employee["role"],
                         employee["rank"],
+                        employee["license"],
                         employee["address"],
                         employee["phone_nr"],
                     ]
@@ -411,6 +413,7 @@ class Employees:
         else:
             print(UIConstants.INVALID_INPUT)  # MAKE ERROR MSG PLS
 
+
     def update_employee(self):
         employee_type = input("Select the employee type to update:\n1. Update pilot\n2. Update flight attendant\n")
         ssid = input("Enter the SSID of the employee you want to update: ")
@@ -437,61 +440,6 @@ class Employees:
 
         print("Employee information updated successfully.")
 
+        
 
 
-
-
-
-
-
-
-'''
-    def update_employee(self):
-        print(UIConstants.HEADER.format(UIConstants.UPDATE_EMPLOYEE))
-        print(
-            UIConstants.TWO_MENU_OPTION.format(
-                UIConstants.UPDATE_PILOT,
-                UIConstants.UPDATE_FLIGHT_ATTENDANT,
-                UIConstants.BACK,
-                UIConstants.QUIT,
-            )
-        )
-
-        command = input("User input: ")
-
-        if command == "1" or command == "1.":
-            print(UIConstants.HEADER.format(UIConstants.UPDATE_PILOT))
-            ssid = input("Enter the SSID of the pilot you want to update: ")
-            rank = input("Enter the new rank: ")
-            address = input("Enter the new address: ")
-            phone_nr = input("Enter the new phone number: ")
-            home_phone_nr = input("Enter the new home phone number (optional): ")
-            license = input("Enter the new license: ")
-
-            self.logic_wrapper.update_pilot(ssid, rank, address, phone_nr, home_phone_nr, license)
-
-        elif command == "2" or command == "2.":
-            print(UIConstants.HEADER.format(UIConstants.UPDATE_FLIGHT_ATTENDANT))
-            ssid = input("Enter the SSID of the flight attendant you want to update: ")
-            rank = input("Enter the new rank: ")
-            address = input("Enter the new address: ")
-            phone_nr = input("Enter the new phone number: ")
-            home_phone_nr = input("Enter the new home phone number (optional): ")
-
-            self.logic_wrapper.update_flight_attendant(ssid, {
-                "rank": rank,
-                "address": address,
-                "phone_nr": phone_nr,
-                "home_phone_nr": home_phone_nr
-            })
-
-
-        elif command == "b" or command == "b.":
-            pass
-
-        elif command == "q" or command == "q.":
-            pass
-
-        else:
-            print(UIConstants.INVALID_INPUT)
-'''
