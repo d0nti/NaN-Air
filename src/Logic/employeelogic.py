@@ -11,7 +11,7 @@ class EmployeeLogic:
             self.data_wrapper.register_pilot(employee_info)
 
     def register_flight_attendant(self, employee_info):
-        temp = VerifyFlightAttendant(employee_info)
+        temp = VerifyFlightAttendant(employee_info, self.search("Cabincrew"))
         temp.ValidateFlightAttendant()
         if temp:
             self.data_wrapper.register_flight_attendant(employee_info)
