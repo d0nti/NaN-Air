@@ -228,8 +228,8 @@ class Voyages:
 
     def input_prompt_display_voyages(self):
         while True:
-            print("1. List manned voyages")
-            print("2. List unmanned voyages")
+            print("1. List Manned Voyages")
+            print("2. List Unmanned oyages")
             print("b. Back")
             print("q. Quit")
             command = input("User Input: ")
