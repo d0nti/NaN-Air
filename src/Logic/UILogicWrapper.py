@@ -50,6 +50,12 @@ class UI_Logic_Wrapper:
     def get_all_voyages(self):
         return self.voyages_logic.get_all_voyages()
 
+    def set_staff(self, voyage_id: str, **kwarg):
+        return self.voyages_logic.set_staff(voyage_id, **kwarg)
+
+    def write_voyages_to_disk(self):
+        return self.voyages_logic.write_voyages_to_disk()
+
     def register_new_voyage(self, voyage_info):
         return self.voyages_logic.register_new_voyage(voyage_info)
     

@@ -24,9 +24,9 @@ class VoyageData:
             return voyages
 
     @classmethod
-    def write_voyages(cls, voyages: [Voyage]):
-        with open(cls.FILE_NAME, "w", newline="") as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=fields(Voyage))
+    def write_voyages_to_disk(cls, voyages: [Voyage] = [], file_name=None):
+        with open(file_name or cls.FILE_NAME, "w", newline="") as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=[f.name for f in fields(Voyage)])
             writer.writeheader()
             for voyage in voyages:
                 writer.writerow(asdict(voyage))
@@ -39,13 +39,15 @@ class VoyageData:
 
     def find_voyage_by_id(self, voyage_id: UUID):
         for voyage in self.voyages:
-            if voyage_id in voyage.id:
+            if voyage_id == voyage.id:
                 return voyage
+        return None
 
     def make_recurring_voyage(
         self, voyage_id: str, interval_in_days: int, end_date: datetime
     ):
         voyage = self.find_voyage_by_id(voyage_id)
+        assert voyage, "Voyage ID needs to exist in table. Try again"
         difference = end_date - voyage.departure
         for i in range(0, difference.days + 1, interval_in_days):
             self.voyages.append(
@@ -59,6 +61,7 @@ class VoyageData:
 
     def copy_to_new_date(self, voyage_id: str, new_date: datetime):
         voyage = self.find_voyage_by_id(voyage_id)
+        assert voyage, "Voyage ID needs to exist in table. Try again"
         new_arrival = voyage.arrival + (
             new_date
             - voyage.departure.replace(
@@ -99,3 +102,8 @@ class VoyageData:
             ):
                 unmanned_voyages.append(voyage)
         return unmanned_voyages
+
+    def set_staff(self, voyage_id: str, **kwarg):
+        for i, voyage in enumerate(self.voyages):
+            if voyage_id == voyage.id:
+                self.voyages[i] = replace(voyage, **kwarg)

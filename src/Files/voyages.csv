@@ -1,5 +1,13 @@
-id,destination,departure,arrival,captain,copilot,flight_service_manager,flight_attendant
-250fc08c-8c37-432f-a4dd-367a6f7e8315,London,2023-04-20T19:12:44,2023-04-21T05:12:44,,,,
-35d7ba70-3c2c-47de-90c8-0baf92b2dff8,Paris,2023-06-26T22:07:46,2023-06-27T07:07:46,Brjánn Leifsson,Stína Símalína,Nenni Níski,Solla Stirða
-a50d1e90-fc89-48e3-a70e-19daaf6dc374,Benedorm,2023-05-12T06:55:49,2023-05-12T11:55:49,,,,
-9127a8f1-c236-4b13-8b7c-d92d35040978,Bolungarvík,2023-01-05T03:55:37,2023-01-05T13:55:37,,,,
+destination,departure,arrival,captain,copilot,flight_service_manager,flight_attendant,id
+London,2023-04-20 19:12:44,2023-04-21 05:12:44,3009907461,1309927223,409858797,,250fc08c-8c37-432f-a4dd-367a6f7e8315
+Paris,2023-06-26 22:07:46,2023-06-27 07:07:46,Brjánn Leifsson,Stína Símalína,Nenni Níski,Solla Stirða,35d7ba70-3c2c-47de-90c8-0baf92b2dff8
+Benedorm,2023-05-12 06:55:49,2023-05-12 11:55:49,,,,,a50d1e90-fc89-48e3-a70e-19daaf6dc374
+Bolungarvík,2023-01-05 03:55:37,2023-01-05 13:55:37,,,,,9127a8f1-c236-4b13-8b7c-d92d35040978
+London,2222-11-11 19:12:44,2222-11-12 05:12:44,,,,,1bd8ad1f-70dd-47b9-bce3-dc168face479
+London,2023-04-20 19:12:44,2023-04-21 05:12:44,,,,,5e7a5c2e-3058-4b7c-9fa3-72da4d210475
+London,2023-04-21 19:12:44,2023-04-22 05:12:44,,,,,0713dac5-bc7e-407a-bd77-b05dc2aa745f
+London,2023-04-22 19:12:44,2023-04-23 05:12:44,,,,,549be5c7-5d4a-4317-93bd-520e75fcca5c
+London,2023-04-23 19:12:44,2023-04-24 05:12:44,,,,,000ff783-96a3-44ce-b0d3-b0fb36ad7824
+London,2023-04-24 19:12:44,2023-04-25 05:12:44,,,,,0ad008f7-dacd-4504-971a-f8d799913daf
+London,2023-04-25 19:12:44,2023-04-26 05:12:44,,,,,9c29fe25-632b-416d-bf04-345b01dd2e6f
+London,2023-04-26 19:12:44,2023-04-27 05:12:44,,,,,5b1f2454-45e8-46a2-9946-fb4bc10e747a

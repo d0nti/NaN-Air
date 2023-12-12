@@ -54,11 +54,11 @@ class UIConstants:
     CO_PILOTS = "Co-Pilots"
     FLIGHT_ATTENDTANTS = "Flight Attendants"
     HEADS_OF_SERVICE = "Heads of Service"
-    REGISTER_VOYAGE_INFO = "UUID, Destination, Departure Time, Departure Date, Arrival Time, Arrival Date, Captain, Co-Pilot, Flight Service Manager, Flight Attendant"
-    SHIFT_START_DATE = "Shift Start Date"
-    SHIFT_START_TIME = "Shift Start Time"
-    SHIFT_END_DATE = "Shift End Date"
-    SHIFT_END_TIME = "Shift End Time"
+    REGISTER_VOYAGE_INFO = "UUID, Destination, Departure Time (HH:MM), Departure Date (YYYY-MM-DD), Arrival Time (HH:MM), Arrival Date (YYYY-MM-DD), Captain (National ID), Co-Pilot (National ID), Flight Service Manager (National ID), Flight Attendant (National ID)"
+    SHIFT_START_DATE = "Shift Start Date (YYYY-MM-DD)"
+    SHIFT_START_TIME = "Shift Start Time (HH-MM)"
+    SHIFT_END_DATE = "Shift End Date (YYYY-MM-DD)"
+    SHIFT_END_TIME = "Shift End Time (HH-MM)"
     DISPLAY_SHIFT_PLAN = "Display Shift Plan"
 
     
