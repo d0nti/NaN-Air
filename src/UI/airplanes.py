@@ -18,7 +18,6 @@ class Airplanes:
         # print("4. Print Airplane Efficiency")
         # print("b. Back")
         # print("q. Quit")
-        print("Hér er ég")
 
     def input_prompt_airplanes(self):
         while True:
@@ -36,7 +35,6 @@ class Airplanes:
             elif command == "1" or command == "1.":
                 self.list_airplanes()
 
-                print("ARGH")
             
             elif command == "2" or command == "2.":
                 pass
