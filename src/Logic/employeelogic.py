@@ -5,7 +5,7 @@ class EmployeeLogic:
         self.data_wrapper = data_connection
 
     def register_pilot(self, employee_info):
-        temp = VerifyPilot(employee_info)
+        temp = VerifyPilot(employee_info, self.search("Pilot"))
         temp.ValidatePilot()
         if temp:
             self.data_wrapper.register_pilot(employee_info)
@@ -33,9 +33,6 @@ class EmployeeLogic:
     
     def search(self, filter):
         return self.data_wrapper.search(filter)
-    
-    def update_pilot(self, employee_info):
-        return self.data_wrapper.update_pilot(employee_info)
     
     def update_pilot(self, employee_info):
         return self.data_wrapper.update_pilot(employee_info)

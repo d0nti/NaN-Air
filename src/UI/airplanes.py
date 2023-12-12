@@ -18,7 +18,6 @@ class Airplanes:
         # print("4. Print Airplane Efficiency")
         # print("b. Back")
         # print("q. Quit")
-        print("Hér er ég")
 
     def input_prompt_airplanes(self):
         while True:
@@ -36,10 +35,9 @@ class Airplanes:
             elif command == "1" or command == "1.":
                 self.list_airplanes()
 
-                print("ARGH")
             
             elif command == "2" or command == "2.":
-                pass
+                self.register_new_airplane()
 
             elif command == "3" or command == "3.":
                 pass
@@ -79,13 +77,20 @@ class Airplanes:
 
             print(table)
   
-        
-
-        
     
     def register_new_airplane(self):
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_AIRPLANE))
-        pass
+        new_airplane = Airplane()
+        new_airplane.insignia = input("Please input the new airplanes insignia(XX-XXX). ")
+        plane_type = input("Choose an airplane type for the new aircraft.\n1. BAE146 \n2. FokkerF28 \n3. FokkerF100\n")
+        if plane_type == "1" or plane_type == "1.":
+            new_airplane.plane_type = "NABAE146"
+        if plane_type == "2" or plane_type == "2.":
+            new_airplane.plane_type = "NAFokkerF28"
+        if plane_type == "3" or plane_type == "3.":
+            new_airplane.plane_type = "NAFokkerF100"
+        new_airplane.supplier = input("Please input the name of the new airplanes supplier. ")
+        self.logic_wrapper.register_airplane(new_airplane)
 
     def find_airplane(self):
         print(UIConstants.HEADER.format(UIConstants.FIND_AIRPLANE))

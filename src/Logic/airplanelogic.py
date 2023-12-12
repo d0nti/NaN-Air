@@ -1,3 +1,5 @@
+from Logic.Verifications.verifyairplane import VerifyAirplane
+
 
 class AirplaneLogic:
     def __init__(self, data_connection):
@@ -9,4 +11,6 @@ class AirplaneLogic:
     def get_all_airplanes(self):
         return self.data_wrapper.get_all_airplanes()
     
+    def register_airplane(self, airplane_info):
+        return self.data_wrapper.register_airplane(airplane_info)
     

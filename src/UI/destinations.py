@@ -146,6 +146,7 @@ class Destinations:
         self.command = command
 
         if command == "q" or "q.":
+            print(UIConstants.QUIT_MESSAGE)
             sys.exit
             pass
 

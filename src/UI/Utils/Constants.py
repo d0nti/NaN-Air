@@ -10,8 +10,8 @@ class UIConstants:
     FIND_AIRPLANE = "Find Airplane"
     PRINT_AIRPLANE_EFFICIENCY = "Print Airplane Efficiency"
     TYPE = "Type"
-    SEATS = "seats"
-    SUPPLIER = "supplier"
+    SEATS = "Seats"
+    SUPPLIER = "Supplier"
 
     DISPLAY_DESTINATIONS = "Display Destinations"
     REGISTER_NEW_DESTINATION = "Register New Destination"
@@ -50,11 +50,16 @@ class UIConstants:
     HOME_PHONE_NUMBER = "Home Phone Number (optional)"
     E_MAIL_ADDRESS = "E-mail Address"
     NO_EMPLOYEE_FOUND = "No employee found"
-    CAPTAINS = "Captainss"
+    CAPTAINS = "Captains"
     CO_PILOTS = "Co-Pilots"
     FLIGHT_ATTENDTANTS = "Flight Attendants"
     HEADS_OF_SERVICE = "Heads of Service"
     REGISTER_VOYAGE_INFO = "UUID, Destination, Departure Time, Departure Date, Arrival Time, Arrival Date, Captain, Co-Pilot, Flight Service Manager, Flight Attendant"
+    SHIFT_START_DATE = "Shift Start Date"
+    SHIFT_START_TIME = "Shift Start Time"
+    SHIFT_END_DATE = "Shift End Date"
+    SHIFT_END_TIME = "Shift End Time"
+    DISPLAY_SHIFT_PLAN = "Display Shift Plan"
 
     
     REGISTER_NEW_VOYAGE = "Register New Voyage"

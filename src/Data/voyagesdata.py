@@ -5,26 +5,27 @@ import csv
 
 from Model.VoyageModel import Voyage
 
+
 class VoyageData:
-    FILE_NAME = "Files/voyages.csv"
+    FILE_NAME = "src/Files/voyages.csv"
 
     def __init__(self, voyages: [Voyage] = []):
         self.voyages = voyages
 
     @classmethod
-    def read_voyages_from_disk(cls, file_name = None):
+    def read_voyages_from_disk(cls, file_name=None):
         with open(file_name or cls.FILE_NAME, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             voyages = []
             for row in reader:
-                row['departure'] = datetime.fromisoformat(row['departure'])
-                row['arrival'] = datetime.fromisoformat(row['arrival'])
+                row["departure"] = datetime.fromisoformat(row["departure"])
+                row["arrival"] = datetime.fromisoformat(row["arrival"])
                 voyages.append(Voyage(**row))
             return voyages
 
     @classmethod
     def write_voyages(cls, voyages: [Voyage]):
-        with open(cls.FILE_NAME, 'w', newline='') as csvfile:
+        with open(cls.FILE_NAME, "w", newline="") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fields(Voyage))
             writer.writeheader()
             for voyage in voyages:
@@ -41,18 +42,60 @@ class VoyageData:
             if voyage_id in voyage.id:
                 return voyage
 
-    def make_recurring_voyage(self, voyage_id: str, interval_in_days: int, end_date: datetime):
+    def make_recurring_voyage(
+        self, voyage_id: str, interval_in_days: int, end_date: datetime
+    ):
         voyage = self.find_voyage_by_id(voyage_id)
         difference = end_date - voyage.departure
         for i in range(0, difference.days + 1, interval_in_days):
-            self.voyages.append(replace(voyage, departure=voyage.departure + timedelta(days=i), arrival=voyage.arrival + timedelta(days=i), id=uuid4()))
+            self.voyages.append(
+                replace(
+                    voyage,
+                    departure=voyage.departure + timedelta(days=i),
+                    arrival=voyage.arrival + timedelta(days=i),
+                    id=uuid4(),
+                )
+            )
 
     def copy_to_new_date(self, voyage_id: str, new_date: datetime):
         voyage = self.find_voyage_by_id(voyage_id)
-        new_arrival = voyage.arrival + (new_date - voyage.departure.replace(minute=new_date.minute, hour=new_date.hour, second=new_date.second, microsecond=new_date.microsecond))
-        new_departure = voyage.departure.replace(year=new_date.year, month=new_date.month, day=new_date.day)
-        new_voyage = replace(voyage, arrival=new_arrival, departure=new_departure, id=uuid4())
+        new_arrival = voyage.arrival + (
+            new_date
+            - voyage.departure.replace(
+                minute=new_date.minute,
+                hour=new_date.hour,
+                second=new_date.second,
+                microsecond=new_date.microsecond,
+            )
+        )
+        new_departure = voyage.departure.replace(
+            year=new_date.year, month=new_date.month, day=new_date.day
+        )
+        new_voyage = replace(
+            voyage, arrival=new_arrival, departure=new_departure, id=uuid4()
+        )
         self.voyages.append(new_voyage)
-        
-        
-        
+
+    def get_manned_voyages(self):
+        manned_voyages = []
+        for voyage in self.voyages:
+            if (
+                voyage.captain
+                and voyage.copilot
+                and voyage.flight_attendants
+                and voyage.head_of_service
+            ):
+                manned_voyages.append(voyage)
+        return manned_voyages
+
+    def get_unmanned_voyages(self):
+        unmanned_voyages = []
+        for voyage in self.voyages:
+            if (
+                not voyage.captain
+                or not voyage.copilot
+                or not voyage.flight_attendants
+                or not voyage.head_of_service
+            ):
+                unmanned_voyages.append(voyage)
+        return unmanned_voyages

@@ -8,6 +8,7 @@ import csv
 class EmployeeData:
     def __init__(self):
         self.file_name = "src/Files/crew.csv"
+        self.shift_file = "src/Files/shift_plan.csv"
         self.number_of_employees = 0
 
     # frá fyrirlestri
@@ -66,6 +67,7 @@ class EmployeeData:
                         )
                     )
         return ret_list
+
 
     def sort_by_flight_attendants(self):
         ret_list = []

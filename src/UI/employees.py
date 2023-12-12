@@ -7,6 +7,7 @@ import sys
 from Data.employeeData import EmployeeData
 
 
+
 class Employees:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
@@ -53,7 +54,7 @@ class Employees:
                 self.update_employee()
 
             elif command == "4" or command == "4.":
-                pass  # eftir að implementa
+                self.display_shift_plan()
 
             else:
                 print(UIConstants.INVALID_INPUT)
@@ -139,9 +140,9 @@ class Employees:
             # print("4. Heads of Service"),
 
             self.get_sorted_list((input("User Input: ")))
-
+#nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
         elif command == "1" or command == "1.":
-            filter = input("Enter search filter (SSID, Name or Job Title): ")
+            filter = input("Enter search filter (SSID, Name, license or Job Title): ")
             filtered_employees = self.logic_wrapper.search(filter)
             table = PrettyTable()
 
@@ -150,6 +151,7 @@ class Employees:
                 UIConstants.NAME,
                 UIConstants.JOB_TITLE,
                 UIConstants.RANK,
+                UIConstants.LICENSE,
                 UIConstants.ADDRESS,
                 UIConstants.PHONE_NUMBER,
             ]
@@ -161,6 +163,7 @@ class Employees:
                         employee["name"],
                         employee["role"],
                         employee["rank"],
+                        employee["license"],
                         employee["address"],
                         employee["phone_nr"],
                     ]
@@ -347,6 +350,7 @@ class Employees:
                 self.logic_wrapper.register_pilot(
                     Pilot(ssid, name, "Pilot", rank, address, phone_nr, license)
                 )
+
             elif len(all_pilot_information) == 7:
                 ssid, name, rank, address, phone_nr, home_phone_nr, license = [
                     all_pilot_information[i]
@@ -387,6 +391,7 @@ class Employees:
                 self.logic_wrapper.register_flight_attendant(
                     FlightAttendant(ssid, name, "Cabincrew", rank, address, phone_nr)
                 )
+
             elif len(all_flight_attendant_information) == 6:
                 ssid, name, rank, address, phone_nr, home_phone_nr = [
                     all_flight_attendant_information[i]
@@ -397,6 +402,7 @@ class Employees:
                         ssid, name, "Cabincrew", rank, address, phone_nr, home_phone_nr
                     )
                 )
+
             else:
                 pass  # ERROR :)
 
@@ -453,15 +459,8 @@ class Employees:
                 all_flight_attendant_information.append(flight_attendant_information)
 
             if len(all_flight_attendant_information) == 4:
-                (
-                    rank,
-                    address,
-                    phone_nr,
-                    home_phone_nr,
-                ) = all_flight_attendant_information
-                employee = FlightAttendant(
-                    ssid, "", "Cabincrew", rank, address, phone_nr
-                )
+                rank, address, phone_nr, home_phone_nr = all_flight_attendant_information
+                employee = FlightAttendant(ssid, "", "Cabincrew", rank, address, phone_nr)
                 self.logic_wrapper.update_flight_attendant(employee)
             else:
                 print(UIConstants.INVALID_INPUT)  # ERROR :)
@@ -474,3 +473,5 @@ class Employees:
 
         else:
             print(UIConstants.INVALID_INPUT)  # ERROR :)
+            
+            
