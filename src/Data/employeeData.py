@@ -107,7 +107,18 @@ class EmployeeData:
                     ret_list.append(row)
         #returns the list of employees that match the search
         return ret_list
+             
 
+    def delete_employee(self, nid):
+        # Search for the employee by nid
+        employees = self.search(nid)
+
+        # If the employee is found, remove it from the list
+        if employees:
+            self.employee_list.remove(employees[0])
+            print("Employee deleted successfully.")
+        else:
+            print("Employee not found.")
 #marvin
 #ssid, rank, address, phone_nr, home_phone_nr, license)
 
@@ -121,5 +132,5 @@ class EmployeeData:
 
         # Register the updated pilot
         self.register_pilot(employee)
-        
+            
         
