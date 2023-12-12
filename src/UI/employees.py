@@ -349,6 +349,7 @@ class Employees:
                 self.logic_wrapper.register_pilot(
                     Pilot(ssid, name, "Pilot", rank, address, phone_nr, license)
                 )
+
             elif len(all_pilot_information) == 7:
                 ssid, name, rank, address, phone_nr, home_phone_nr, license = [
                     all_pilot_information[i]
@@ -389,6 +390,7 @@ class Employees:
                 self.logic_wrapper.register_flight_attendant(
                     FlightAttendant(ssid, name, "Cabincrew", rank, address, phone_nr)
                 )
+
             elif len(all_flight_attendant_information) == 6:
                 ssid, name, rank, address, phone_nr, home_phone_nr = [
                     all_flight_attendant_information[i]
@@ -399,6 +401,7 @@ class Employees:
                         ssid, name, "Cabincrew", rank, address, phone_nr, home_phone_nr
                     )
                 )
+
             else:
                 pass  # ERROR :)
 
@@ -409,7 +412,7 @@ class Employees:
             pass
 
         else:
-            print(UIConstants.INVALID_INPUT)  # MAKE ERROR MSG PLS
+            print(UIConstants.INVALID_INPUT)
 
 
     def update_employee(self):
@@ -425,6 +428,7 @@ class Employees:
             license = input("Enter the new license: ")
 
             EmployeeData.update_pilot(ssid, rank, address, phone_nr, home_phone_nr, license)
+
         elif employee_type == "2":
             # Update flight attendant
             rank = input("Enter the new rank: ")
@@ -433,6 +437,7 @@ class Employees:
             home_phone_nr = input("Enter the new home phone number (optional): ")
 
             EmployeeData.update_flight_attendant(ssid, rank, address, phone_nr, home_phone_nr)
+
         else:
             print("Invalid employee type selection.")
 
