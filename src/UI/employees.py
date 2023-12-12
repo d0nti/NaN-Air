@@ -7,7 +7,6 @@ import sys
 from Data.employeeData import EmployeeData
 
 
-
 class Employees:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
@@ -140,7 +139,7 @@ class Employees:
             # print("4. Heads of Service"),
 
             self.get_sorted_list((input("User Input: ")))
-#nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
+        # nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
         elif command == "1" or command == "1.":
             filter = input("Enter search filter (SSID, Name, license or Job Title): ")
             filtered_employees = self.logic_wrapper.search(filter)
@@ -459,8 +458,15 @@ class Employees:
                 all_flight_attendant_information.append(flight_attendant_information)
 
             if len(all_flight_attendant_information) == 4:
-                rank, address, phone_nr, home_phone_nr = all_flight_attendant_information
-                employee = FlightAttendant(ssid, "", "Cabincrew", rank, address, phone_nr)
+                (
+                    rank,
+                    address,
+                    phone_nr,
+                    home_phone_nr,
+                ) = all_flight_attendant_information
+                employee = FlightAttendant(
+                    ssid, "", "Cabincrew", rank, address, phone_nr
+                )
                 self.logic_wrapper.update_flight_attendant(employee)
             else:
                 print(UIConstants.INVALID_INPUT)  # ERROR :)
@@ -473,5 +479,28 @@ class Employees:
 
         else:
             print(UIConstants.INVALID_INPUT)  # ERROR :)
-            
-            
+
+    def display_shift_plan(self):
+        # get the shift plan from employeeData.py
+        ret_list = EmployeeData.get_shift_plan(self)
+
+        table = PrettyTable()
+
+        table.field_names = [
+            "NID",
+            "Name",
+            "Shift Start Date",
+            "Shift Start Time",
+            "Shift End Date",
+            "Shift End Time",
+        ]
+
+        # add data rows to the table
+        for row in ret_list:
+            table.add_row(row)
+
+        # Print the table
+        print(table)
+
+    def get_sorted_list_by_day(self):
+        pass
