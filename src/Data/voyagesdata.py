@@ -82,8 +82,8 @@ class VoyageData:
             if (
                 voyage.captain
                 and voyage.copilot
-                and voyage.flight_attendants
-                and voyage.head_of_service
+                and voyage.flight_attendant
+                and voyage.flight_service_manager
             ):
                 manned_voyages.append(voyage)
         return manned_voyages
@@ -94,8 +94,8 @@ class VoyageData:
             if (
                 not voyage.captain
                 or not voyage.copilot
-                or not voyage.flight_attendants
-                or not voyage.head_of_service
+                or not voyage.flight_attendant
+                or not voyage.flight_service_manager
             ):
                 unmanned_voyages.append(voyage)
         return unmanned_voyages
