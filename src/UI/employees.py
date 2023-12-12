@@ -424,7 +424,7 @@ class Employees:
             home_phone_nr = input("Enter the new home phone number (optional): ")
             license = input("Enter the new license: ")
 
-            EmployeeData.update_pilot(ssid, rank, address, phone_nr, home_phone_nr, license)
+            EmployeeData.update_pilot(ssid, rank)
         elif employee_type == "2":
             # Update flight attendant
             rank = input("Enter the new rank: ")

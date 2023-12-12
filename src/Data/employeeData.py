@@ -110,15 +110,24 @@ class EmployeeData:
              
 
     def delete_employee(self, nid):
-        # Search for the employee by nid
-        employees = self.search(nid)
+        with open(self.file_name, "r", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            rows = list(reader)
 
-        # If the employee is found, remove it from the list
-        if employees:
-            self.employee_list.remove(employees[0])
-            print("Employee deleted successfully.")
-        else:
-            print("Employee not found.")
+        # Find the employee with the matching nid
+        for i, row in enumerate(rows):
+            if row["nid"] == nid:
+                # Remove the employee from the list of rows
+                del rows[i]
+                break
+
+        # Write the updated contents back to the CSV file
+        with open(self.file_name, "w", encoding="utf-8") as csvfile:
+            fieldnames = ["nid", "name", "role", "rank", "license", "address", "phone_nr", "pref_nr", "slot_param"]
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(rows)
+
 #marvin
 #ssid, rank, address, phone_nr, home_phone_nr, license)
 
