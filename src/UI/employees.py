@@ -51,7 +51,7 @@ class Employees:
 
             elif command == "3" or command == "3.":
                 self.update_employee()
-            
+
             elif command == "4" or command == "4.":
                 pass  # eftir að implementa
 
@@ -65,14 +65,14 @@ class Employees:
         if employees:
             table = PrettyTable()
             table.field_names = [
-            UIConstants.SSID,
-            UIConstants.NAME,
-            UIConstants.JOB_TITLE,
-            UIConstants.RANK,
-            UIConstants.ADDRESS,
-            UIConstants.PHONE_NUMBER
+                UIConstants.SSID,
+                UIConstants.NAME,
+                UIConstants.JOB_TITLE,
+                UIConstants.RANK,
+                UIConstants.ADDRESS,
+                UIConstants.PHONE_NUMBER,
             ]
-            
+
             # table.field_names = [
             #     "Name",
             #     "SSID",
@@ -80,7 +80,7 @@ class Employees:
             #     "Phone Number",
             #     "Address",
             # ]
-            for employee in employees: # fix e
+            for employee in employees:  # fix e
                 table.add_row(
                     [
                         employee.nid,
@@ -96,7 +96,7 @@ class Employees:
 
             print(table)
             print(
-                    UIConstants.TWO_MENU_OPTION.format(
+                UIConstants.TWO_MENU_OPTION.format(
                     UIConstants.SEARCH,
                     UIConstants.SORT_BY,
                     UIConstants.BACK,
@@ -104,18 +104,17 @@ class Employees:
                 )
             )
 
-            
         else:
             print(UIConstants.USER_NOT_FOUND)
-        
+
         print(
             UIConstants.TWO_MENU_OPTION.format(
-            UIConstants.SEARCH,
-            UIConstants.SORT_BY,
-            UIConstants.BACK,
-            UIConstants.QUIT,
-                )
+                UIConstants.SEARCH,
+                UIConstants.SORT_BY,
+                UIConstants.BACK,
+                UIConstants.QUIT,
             )
+        )
 
         # print("1. Search")
         # print("2. Sort by:")
@@ -145,7 +144,7 @@ class Employees:
             filter = input("Enter search filter (SSID, Name or Job Title): ")
             filtered_employees = self.logic_wrapper.search(filter)
             table = PrettyTable()
-            
+
             table.field_names = [
                 UIConstants.SSID,
                 UIConstants.NAME,
@@ -169,14 +168,13 @@ class Employees:
 
             print(table)
             print(
-                    UIConstants.TWO_MENU_OPTION.format(
+                UIConstants.TWO_MENU_OPTION.format(
                     UIConstants.SEARCH,
                     UIConstants.SORT_BY,
                     UIConstants.BACK,
                     UIConstants.QUIT,
                 )
             )
-
 
     def get_sorted_list(self, command):
         self.command = command
@@ -331,7 +329,7 @@ class Employees:
         command = input("User input: ")
         if command == "1" or command == "1.":
             print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_PILOT))
-            print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
+            print(UIConstants.INFORMATION_MESSAGE)
             pilot_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
 
             all_pilot_information = []
@@ -371,7 +369,7 @@ class Employees:
 
         elif command == "2" or command == "2.":
             print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_FLIGHT_ATTENDANT))
-            print(UIConstants.EMPLOYEE_INFORMATION_MESSAGE)
+            print(UIConstants.INFORMATION_MESSAGE)
             flight_attendant_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
             flight_attendant_info_print = flight_attendant_info_print[0:-2]
 
@@ -455,8 +453,15 @@ class Employees:
                 all_flight_attendant_information.append(flight_attendant_information)
 
             if len(all_flight_attendant_information) == 4:
-                rank, address, phone_nr, home_phone_nr = all_flight_attendant_information
-                employee = FlightAttendant(ssid, "", "Cabincrew", rank, address, phone_nr)
+                (
+                    rank,
+                    address,
+                    phone_nr,
+                    home_phone_nr,
+                ) = all_flight_attendant_information
+                employee = FlightAttendant(
+                    ssid, "", "Cabincrew", rank, address, phone_nr
+                )
                 self.logic_wrapper.update_flight_attendant(employee)
             else:
                 print(UIConstants.INVALID_INPUT)  # ERROR :)
@@ -469,4 +474,3 @@ class Employees:
 
         else:
             print(UIConstants.INVALID_INPUT)  # ERROR :)
-            

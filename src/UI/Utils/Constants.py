@@ -16,7 +16,7 @@ class UIConstants:
     DISPLAY_DESTINATIONS = "Display Destinations"
     REGISTER_NEW_DESTINATION = "Register New Destination"
     FIND_DESTINATION = "Find Destination"
-    DESTINATION_IINFO = "Country, Airport, Flight Time, Distance from Iceland, Contact Name, Contact Phone Number"
+    DESTINATION_IINFO = "Name, Country, Airport, Flight Time, Distance from Iceland, Contact Name, Contact Phone Number"
     REGISTER_DESTINATION_MESSAGE = "A new destination has been added to the system"
     COUNTRY = "Country"
     AIRPORT = "Airport"
@@ -25,6 +25,7 @@ class UIConstants:
     CONTACT_NAME = "Contact Name"
     CONTACT_PHONE_NUMBER = "Contact Phone Number"
     NO_DESTINATIONS_REGISTERED = "No destinations registered"
+
 
 
     DISPLAY_EMPLOYEES = "Display Employess"
@@ -36,7 +37,6 @@ class UIConstants:
     UPDATE_FLIGHT_ATTENDANT = "Update Flight Attendant"
     SHIFT_PLAN = "Shift Plan"
     EMPLOYEE_LIST = "Employee list"
-    EMPLOYEE_INFORMATION_MESSAGE = "Please Enter the Following Information in the following order:"
     EMPLOYEE_INFORMATION = "Employee Name, Employee SSID, Job Title, Pilot License (If applicable), Home Address, Phone Number, E-mail Address, Home Phone Number (optional), License"          
     REGISTER_EMPLOYEE_INFO = "SSID, Name, Rank, Address, Phonenumber, Home Phone Number(optional), License"
     UPDATE_EMPLOYEE_INPUT = "Role, Rank, License, Address, Phone number"
@@ -75,8 +75,7 @@ class UIConstants:
     USER_NOT_FOUND = "User Not Found!"
     CONTINUE_MESSAGE = "Press enter to continue"
     GO_BACK_INSTRUCTION = "Press Q and enter to go back"
-    
-
+    INFORMATION_MESSAGE = "Please Enter the Following Information in the following order:"
 
 
     HEADER = (
