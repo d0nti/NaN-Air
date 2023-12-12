@@ -2,6 +2,7 @@ from Data.employeeData import EmployeeData
 from Data.destinationData import DestinationData
 from Data.planeData import AirplaneData
 from Data.voyagesdata import VoyageData
+from datetime import datetime
 
 
 class Logic_Data_Wrapper:
@@ -10,6 +11,7 @@ class Logic_Data_Wrapper:
         self.destination_data = DestinationData()
         self.airplane_data = AirplaneData()
         self.voyagedata = VoyageData()
+        self.voyagedata.voyages = VoyageData.read_voyages_from_disk()
 
     def register_pilot(self, employee_info):
         return self.employee_data.register_pilot(employee_info)
@@ -49,14 +51,17 @@ class Logic_Data_Wrapper:
     def get_all_voyages(self):
         return self.voyagedata.get_all_voyages()
 
-    def register_new_voyage(self, voyage_info):
-        return self.voyagedata.register_new_voyage(voyage_info)
+    def register_new_voyage(self, voyage):
+        return self.voyagedata.register_new_voyage(voyage)
     
-    def search_voyages(self, filter):
-        return self.voyagedata.search_voyages(filter)
+    def find_voyage(self, id):
+        return self.voyagedata.find_voyage_by_id(id)
     
-    def copy_existing_voyage(self, voyage_info):
-        return self.voyagedata.copy_existing_voyage(voyage_info)
+    def copy_to_new_date(self, voyage_id: str, new_date: datetime):
+        return self.voyagedata.copy_to_new_date(voyage_id, new_date)
+
+    def make_recurring_voyage(self, voyage_id, interval_in_days: int, end_date: datetime):
+        return self.voyagedata.make_recurring_voyage(voyage_id, interval_in_days, end_date)
     
     def update_pilot(self, employee_info):
         return self.employee_data.update_pilot(employee_info)

@@ -1,86 +1,58 @@
-from Model.VoyageModel import Voyage
-
+from dataclasses import asdict, replace, fields
+from datetime import timedelta, datetime
+from uuid import uuid4, UUID
 import csv
 
+from Model.VoyageModel import Voyage
 
 class VoyageData:
-    def __init__(self):
-        self.file_name = "src/Files/voyages.csv"
+    FILE_NAME = "Files/voyages.csv"
+
+    def __init__(self, voyages: [Voyage] = []):
+        self.voyages = voyages
+
+    @classmethod
+    def read_voyages_from_disk(cls, file_name = None):
+        with open(file_name or cls.FILE_NAME, newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            voyages = []
+            for row in reader:
+                row['departure'] = datetime.fromisoformat(row['departure'])
+                row['arrival'] = datetime.fromisoformat(row['arrival'])
+                voyages.append(Voyage(**row))
+            return voyages
+
+    @classmethod
+    def write_voyages(cls, voyages: [Voyage]):
+        with open(cls.FILE_NAME, 'w', newline='') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=fields(Voyage))
+            writer.writeheader()
+            for voyage in voyages:
+                writer.writerow(asdict(voyage))
 
     def get_all_voyages(self):
-        ret_list = []
-        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                ret_list.append(
-                    Voyage(
-                        row["vid"],
-                        row["destination"],
-                        row["departuretime"],
-                        row["departuredate"],
-                        row["arrivaltime"],
-                        row["arrivaldate"],
-                        row["captain"],
-                        row["copilot"],
-                        row["flight_service_manager"],
-                        row["flight_attendant"],
-                    )
-                )
-            return ret_list
+        return self.voyages
 
-    def register_new_voyage(self, voyage):
-        with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
-            fieldnames = [
-                "vid",
-                "destination",
-                "departuretime",
-                "departuredate",
-                "arrivaltime",
-                "arrivaldate",
-                "captain",
-                "copilot",
-                "flight_service_manager",
-                "flight_attendant",
-            ]
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow(
-                {
-                    "vid": voyage[0],
-                    "destination": voyage[1],
-                    "departuretime": voyage[2],
-                    "departuredate": voyage[3],
-                    "arrivaltime": voyage[4],
-                    "arrivaldate": voyage[5],
-                    "captain": voyage[6],
-                    "copilot": voyage[7],
-                    "flight_service_manager": voyage[8],
-                    "flight_attendant": voyage[9],
-                }
-            )
+    def register_new_voyage(self, voyage: Voyage):
+        self.voyages.append(voyage)
 
-    def search_voyages(self, filter):
-        ret_list = []
-        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                if filter in row["vid"] or filter in row["destination"]:
-                    ret_list.append(row)
-        return ret_list
+    def find_voyage_by_id(self, voyage_id: UUID):
+        for voyage in self.voyages:
+            if voyage_id in voyage.id:
+                return voyage
 
-    def copy_existing_voyage(self, search_value):
-        with open(self.file_name, newline="\n", encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                voyage_data = [
-                    row["vid"],
-                    row["destination"],
-                    row["departuretime"],
-                    row["departuredate"],
-                    row["arrivaltime"],
-                    row["arrivaldate"],
-                    row["captain"],
-                    row["copilot"],
-                    row["flight_service_manager"],
-                    row["flight_attendant"],
-                ]
-            self.register_new_voyage(voyage_data)
+    def make_recurring_voyage(self, voyage_id: str, interval_in_days: int, end_date: datetime):
+        voyage = self.find_voyage_by_id(voyage_id)
+        difference = end_date - voyage.departure
+        for i in range(0, difference.days + 1, interval_in_days):
+            self.voyages.append(replace(voyage, departure=voyage.departure + timedelta(days=i), arrival=voyage.arrival + timedelta(days=i), id=uuid4()))
+
+    def copy_to_new_date(self, voyage_id: str, new_date: datetime):
+        voyage = self.find_voyage_by_id(voyage_id)
+        new_arrival = voyage.arrival + (new_date - voyage.departure.replace(minute=new_date.minute, hour=new_date.hour, second=new_date.second, microsecond=new_date.microsecond))
+        new_departure = voyage.departure.replace(year=new_date.year, month=new_date.month, day=new_date.day)
+        new_voyage = replace(voyage, arrival=new_arrival, departure=new_departure, id=uuid4())
+        self.voyages.append(new_voyage)
+        
+        
+        
