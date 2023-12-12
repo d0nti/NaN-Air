@@ -40,7 +40,7 @@ class VoyagesLogic:
     def edit_voyage(self, voyage_info):
         pass
 
-    def staff_voyage(self, voyage_info):
+    def populate_voyage(self, voyage_info):
         pass
 
     def add_captain_to_voyage(self, voyage_info):
