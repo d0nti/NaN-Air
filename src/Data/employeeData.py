@@ -180,64 +180,11 @@ class EmployeeData:
         # returns the list of employees that match the search
         return ret_list
 
-    # marvin
-    def update_pilot(self, employee):
-        # uses the search function previously defined to find the employee that needs to be updated
-        employees = self.search(
-            employee.nid
-        )  # only search by nid because nid is unique
-        if employees:
-            # update the employee with the new information
-            updated_employee = employees[
-                0
-            ]  # lets assume that only one employee is found
-            # change this information to the new information
-            updated_employee["role"] = employee.role
-            updated_employee["rank"] = employee.rank
-            updated_employee["license"] = employee.license
-            updated_employee["address"] = employee.address
-            updated_employee["phone_nr"] = employee.phone_nr
+    def get_shift_plan(self):
+            ret_list = []
+            with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    ret_list.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
 
-            # write the new information to the csv file
-            with open(self.file_name, "w", newline="", encoding="utf-8") as csvfile:
-                fieldnames = [
-                    "nid",
-                    "name",
-                    "role",
-                    "rank",
-                    "license",
-                    "address",
-                    "phone_nr",
-                ]
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(employees)
-
-    def update_flight_attendant(self, employee):
-        # uses the search function previously defined to find the employee that needs to be updated
-        employees = self.search(employee.nid)  # search only by nid
-        if employees:
-            # update the employee with the new information
-            updated_employee = employees[
-                0
-            ]  # lets assume that only one employee is found
-            # change this information to the new information
-            updated_employee["role"] = employee.role
-            updated_employee["rank"] = employee.rank
-            updated_employee["address"] = employee.address
-            updated_employee["phone_nr"] = employee.phone_nr
-
-            # write the new information to the csv file
-            with open(self.file_name, "w", newline="", encoding="utf-8") as csvfile:
-                fieldnames = [
-                    "nid",
-                    "name",
-                    "role",
-                    "rank",
-                    "license",
-                    "address",
-                    "phone_nr",
-                ]
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(employees)
+            return ret_list
