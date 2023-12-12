@@ -20,12 +20,22 @@ class VoyagesLogic:
 
     def find_voyage(self, voyage_id: str):
         return self.data_wrapper.find_voyage(voyage_id)
-    
+
     def copy_to_new_date(self, voyage_id: str, new_date: datetime):
         return self.data_wrapper.copy_to_new_date(voyage_id, new_date)
 
-    def make_recurring_voyage(self, voyage_id: str, interval_in_days: int, end_date: datetime):
-        return self.data_wrapper.make_recurring_voyage(voyage_id, interval_in_days, end_date)
+    def make_recurring_voyage(
+        self, voyage_id: str, interval_in_days: int, end_date: datetime
+    ):
+        return self.data_wrapper.make_recurring_voyage(
+            voyage_id, interval_in_days, end_date
+        )
+
+    def get_manned_voyages(self):
+        return self.data_wrapper.get_manned_voyages()
+
+    def get_unmanned_voyages(self):
+        return self.data_wrapper.get_unmanned_voyages()
 
     def edit_voyage(self, voyage_info):
         pass

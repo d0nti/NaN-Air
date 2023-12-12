@@ -61,19 +61,28 @@ class Logic_Data_Wrapper:
 
     def register_new_voyage(self, voyage):
         return self.voyagedata.register_new_voyage(voyage)
-    
+
     def find_voyage(self, id):
         return self.voyagedata.find_voyage_by_id(id)
-    
+
     def copy_to_new_date(self, voyage_id: str, new_date: datetime):
         return self.voyagedata.copy_to_new_date(voyage_id, new_date)
 
-    def make_recurring_voyage(self, voyage_id, interval_in_days: int, end_date: datetime):
-        return self.voyagedata.make_recurring_voyage(voyage_id, interval_in_days, end_date)
-    
+    def make_recurring_voyage(
+        self, voyage_id, interval_in_days: int, end_date: datetime
+    ):
+        return self.voyagedata.make_recurring_voyage(
+            voyage_id, interval_in_days, end_date
+        )
+
+    def get_manned_voyages(self):
+        return self.voyagedata.get_manned_voyages()
+
+    def get_unmanned_voyages(self):
+        return self.voyagedata.get_unmanned_voyages()
+
     def update_pilot(self, employee_info):
         return self.employee_data.update_pilot(employee_info)
-    
+
     def update_flight_attendant(self, employee_info):
         return self.employee_data.update_flight_attendant(employee_info)
-    
