@@ -125,8 +125,8 @@ class EmployeeData:
                 "role",
                 "rank",
                 "license",
-                "phone_nr",
                 "address",
+                "phone_nr",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow(
@@ -165,7 +165,7 @@ class EmployeeData:
                 }
             )
 
-    def search(self, filter):
+    def search_employee(self, filter):
         # takes a input from ui and searches for it in the csv file
         ret_list = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
@@ -179,63 +179,27 @@ class EmployeeData:
                     ret_list.append(row)
         # returns the list of employees that match the search
         return ret_list
+    
+    def get_shift_plan(self):
+            ret_list = []
+            with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    ret_list.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
 
-    # marvin
-    def update_pilot(self, employee):
-        # uses the search function previously defined to find the employee that needs to be updated
-        employees = self.search(employee.nid)  # only search by nid because nid is unique
-        if employees:
-            # update the employee with the new information
-            updated_employee = employees[
-                0
-            ]  # lets assume that only one employee is found
-            # change this information to the new information
-            updated_employee["role"] = employee.role
-            updated_employee["rank"] = employee.rank
-            updated_employee["license"] = employee.license
-            updated_employee["address"] = employee.address
-            updated_employee["phone_nr"] = employee.phone_nr
+            return ret_list
+    
 
-            # write the new information to the csv file
-            with open(self.file_name, "w", newline="", encoding="utf-8") as csvfile:
-                fieldnames = [
-                    "nid",
-                    "name",
-                    "role",
-                    "rank",
-                    "license",
-                    "address",
-                    "phone_nr",
-                ]
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(employees)
 
-    def update_flight_attendant(self, employee):
-        # uses the search function previously defined to find the employee that needs to be updated
-        employees = self.search(employee.nid)  # search only by nid
-        if employees:
-            # update the employee with the new information
-            updated_employee = employees[
-                0
-            ]  # lets assume that only one employee is found
-            # change this information to the new information
-            updated_employee["role"] = employee.role
-            updated_employee["rank"] = employee.rank
-            updated_employee["address"] = employee.address
-            updated_employee["phone_nr"] = employee.phone_nr
-
-            # write the new information to the csv file
-            with open(self.file_name, "w", newline="", encoding="utf-8") as csvfile:
-                fieldnames = [
-                    "nid",
-                    "name",
-                    "role",
-                    "rank",
-                    "license",
-                    "address",
-                    "phone_nr",
-                ]
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(employees)
+    def search_by_day(self, filter):
+        ret_list = []
+        with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if (
+                    str(filter) in row["shift_start_date"]
+                ):  # can use these param to search
+                    ret_list.append(row)
+        # returns the list of employees that match the search
+        return ret_list
+ 

@@ -9,11 +9,11 @@ class VoyagesLogic:
     def register_new_voyage(self, voyage_info):
         self.data_wrapper.register_new_voyage(voyage_info)
 
+    def write_voyages_to_disk(self):
+        self.data_wrapper.write_voyages_to_disk()
+
     def get_single_voyage_given_uuid(self, uuid):
-        for voyage in Voyage.voyages:
-            if voyage.uuid == uuid:
-                return voyage
-        return None
+        return self.data_wrapper.find_voyage_by_id(uuid)
 
     def get_all_voyages(self):
         return self.data_wrapper.get_all_voyages()
@@ -37,20 +37,5 @@ class VoyagesLogic:
     def get_unmanned_voyages(self):
         return self.data_wrapper.get_unmanned_voyages()
 
-    def edit_voyage(self, voyage_info):
-        pass
-
-    def populate_voyage(self, voyage_info):
-        pass
-
-    def add_captain_to_voyage(self, voyage_info):
-        pass
-
-    def add_copilot_to_voyage(self, voyage_info):
-        pass
-
-    def add_flight_attendant_to_voyage(self, voyage_info):
-        pass
-
-    def add_head_of_service_to_voyage(self, voyage_info):
-        pass
+    def set_staff(self, voyage_id: str, **kwarg):
+        return self.data_wrapper.set_staff(voyage_id, **kwarg)

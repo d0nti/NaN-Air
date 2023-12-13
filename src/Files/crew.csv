@@ -34,11 +34,23 @@ nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
 1110732819,Arthur Karr,Cabincrew,Flight Attendant,N/A,Fellsmúli 33,8998833,1,xc20
 2602806942,Teresa Thruman,Cabincrew,Flight Attendant,N/A,Fellsmúli 34,8998834,1,lv70
 1107951952,Elizabeth Mcfadden,Cabincrew,Flight Attendant,N/A,Fellsmúli 35,8998835,5,au16
-1234567890,Test Man :),Cabincrew,Flight Attendant,N/A,Menntavegur 1,58123451234567890,Test Man 2 Man,Cabincrew,Flight Attendant,N/A,Menntavegur 2,5812345
-1234807890,Test Pilot Man,Pilot,Captain,NAFokkerF100,5812345,Menntavegur 57
-,,Pilot,,,,
-1,,Pilot,,,,
-,,Pilot,,,,
-,,Pilot,,,,
-,,Pilot,,,,
-1234807891,TestPilot70,Pilot,Captian,Lol Allt,mammaín,Menntunarvegur 1009
+1234567890,Test Man :),Cabincrew,Flight Attendant,N/A,Menntavegur 1,58123451234567890,Test Man 2 Man,Cabincrew,Flight Attendant,N/A,Menntavegur 2,5812345
+
+1234807890,Test Pilot Man,Pilot,Captain,NAFokkerF100,5812345,Menntavegur 57
+
+,,Pilot,,,,
+
+1,,Pilot,,,,
+
+,,Pilot,,,,
+
+,,Pilot,,,,
+
+,,Pilot,,,,
+
+1234807891,TestPilot70,Pilot,Captian,Lol Allt,mammaín,Menntunarvegur 1009
+
+1234807892,TestPilot70,Pilot,Captain,NAFokkerF100,5812345,Menntavegur 78
+
+1234807893,TestPLot47,Pilot,Captain,NABAE28,Menntavegur 7 0 8,5812345
+

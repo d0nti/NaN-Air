@@ -66,11 +66,7 @@ class MainMenu:
 
                 if command == "1" or command == "1.":
                     
-                    self.voyages.voyages_menu_output() # PRENTAR MENU
-                    back = self.voyages.input_prompt_voyages() # LES INPUT
-                    
-                    if back == "b":
-                        break
+                    self.voyages.input_prompt_voyages()
 
                 elif command == "2" or command == "2.":
                     # self.employees.input_prompt_employees() # LES INPUT

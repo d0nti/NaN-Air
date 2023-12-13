@@ -28,8 +28,10 @@ class AirplaneData:
 
 
     def get_all_airplanes_helper(self, ret_list):
-        """ 
+        """ 'splices' information needed to complete the ret_list from the function above,
+            should not be called outside of get_all_airplanes.
         """
+
         with open(self.legal_plane_file_name, newline = "", encoding = "utf-8") as csv_file:
             csv_reader = csv.DictReader(csv_file)
             rows = list(csv_reader)

@@ -5,13 +5,13 @@ class EmployeeLogic:
         self.data_wrapper = data_connection
 
     def register_pilot(self, employee_info):
-        temp = VerifyPilot(employee_info, self.search("Pilot"))
+        temp = VerifyPilot(employee_info, self.search_employee("Pilot"))
         temp.ValidatePilot()
         if temp:
             self.data_wrapper.register_pilot(employee_info)
 
     def register_flight_attendant(self, employee_info):
-        temp = VerifyFlightAttendant(employee_info)
+        temp = VerifyFlightAttendant(employee_info, self.search_employee("Cabincrew"))
         temp.ValidateFlightAttendant()
         if temp:
             self.data_wrapper.register_flight_attendant(employee_info)
@@ -25,25 +25,27 @@ class EmployeeLogic:
     def sort_by_co_pilots(self):
         return self.data_wrapper.sort_by_co_pilots()
     
+    def search_by_day(self, filter):
+        return self.data_wrapper.search_by_day(filter)
+    
     def sort_by_flight_attendants(self):
         return self.data_wrapper.sort_by_flight_attendants()
     
     def sort_by_heads_of_service(self):
         return self.data_wrapper.sort_by_heads_of_service()
     
-    def search(self, filter):
-        return self.data_wrapper.search(filter)
+    def search_employee(self, filter):
+        return self.data_wrapper.search_employee(filter)
     
     def update_pilot(self, employee_info):
         return self.data_wrapper.update_pilot(employee_info)
 
     def update_flight_attendant(self, employee_info):
         return self.data_wrapper.update_flight_attendant(employee_info)
+    
+    def get_shift_plan(self):
+        return self.data_wrapper.get_shift_plan()
         
 
-
-
-
-        
 
 

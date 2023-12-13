@@ -3,7 +3,7 @@ import sys
 from prettytable import PrettyTable
 from Model.VoyageModel import Voyage
 from Model.EmployeeModel import Employee, Pilot, FlightAttendant
-from dataclasses import fields, asdict
+from dataclasses import fields, asdict, replace
 from Logic.UILogicWrapper import UI_Logic_Wrapper
 from datetime import datetime
 from collections.abc import Iterable
@@ -13,31 +13,30 @@ def print_dataclass_as_table(instances, data_class_type):
     """Prints a dataclass as a table."""
     if not isinstance(instances, Iterable):
         instances = [instances]
+    elif not instances:
+        return
 
     table = PrettyTable(
         field_names=[field for field in data_class_type.__dataclass_fields__.keys()]
     )
-    if not instances:
-        return
     for instance in instances:
         table.add_row([v for _, v in asdict(instance).items()])
 
     print(table)
 
 
-def generate_table(employees):
+def print_employees_table(employees):
     """Generates a table from a list of employees."""
-    table = PrettyTable()
-    table.field_names = [
-        "NID",
-        "Name",
-        "Role",
-        "Rank",
-        "Address",
-        "Phone Number",
-        "License",
-    ]
-
+    table = PrettyTable(
+        field_names=[
+            "NID",
+            "Name",
+            "Role",
+            "Rank",
+            "Address",
+            "Phone Number",
+        ]
+    )
     for employee in employees:
         table.add_row(
             [
@@ -47,55 +46,81 @@ def generate_table(employees):
                 employee.rank,
                 employee.address,
                 employee.phone_nr,
-                employee.license,
             ]
         )
 
-    return table
+    print(table)
 
 
 class Voyages:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
 
-    def voyages_menu_output(self):
-        # * PRENTAR MENU-IÐ .  <---- PUNKTUR
-        print(UIConstants.HEADER.format(UIConstants.MANAGE_VOYAGES))
-        print(
-            UIConstants.FOUR_MENU_OPTION.format(
-                UIConstants.DISPLAY_VOYAGES,  # 1. Display Voyages
-                UIConstants.REGISTER_NEW_VOYAGE,  # 2. Register Voyages
-                UIConstants.POPULATE_VOYAGE,  # 3. Populate Voyage
-                UIConstants.CHECK_VOYAGE_STATUS,  # 4. Check Voyage Status
-                UIConstants.BACK,  # b. Back
-                UIConstants.QUIT,  # q. Quit
-            )
-        )
+    def save_and_quit(self):
+        self.logic_wrapper.write_voyages_to_disk()
+        print(UIConstants.QUIT_MESSAGE)
+        sys.exit()
 
     def input_prompt_voyages(self):
-        # *LES INPUT . <---- PUNKTUR
         while True:
-            command = input("User Input: ")
-            command = command.lower()
+            print(UIConstants.HEADER.format(UIConstants.MANAGE_VOYAGES))
+            print("1. Display Voyages")
+            print("2. Register New Voyage")
+            print("3. Copy Existing Voyage")
+            print("4. Make Recurring Voyage")
+            print("5. Choose Staff")
+            print("6. Check Voyage Status")
+            print("q. Quit")
+            command = input("User Input: ").lower()
 
-            if command == "q" or command == "q.":
-                print(UIConstants.QUIT_MESSAGE)
-                sys.exit()
+            if "q" in command:
+                self.save_and_quit()
 
-            elif command == "b" or command == "b.":
-                return "b"
-
-            elif command == "1" or command == "1.":
+            elif "1" in command:
                 self.list_all_voyages()
                 self.input_prompt_display_voyages()
 
-            elif command == "2" or command == "2.":
-                self.register_new_voyage()
+            elif "2" in command:
+                voyage_info_print = UIConstants.REGISTER_VOYAGE_INFO.split(", ")
 
-            elif command == "3" or command == "3.":
+                all_voyage_information = []
+                for voyage in voyage_info_print:
+                    print(f"{voyage}: ", end=" ")
+                    voyage_information = input()
+                    all_voyage_information.append(voyage_information)
+
+                table = PrettyTable(UIConstants.REGISTER_VOYAGE_INFO.split(", "))
+                table.add_row(all_voyage_information)
+                print(table)
+
+                self.logic_wrapper.register_new_voyage(all_voyage_information)
+                print("New Voyage Registered.")
+
+            elif "3" in command:
+                voyage_id = input("Enter Voyage ID: ")
+                new_date = input("Enter new date (YYYY-MM-DD): ")
+
+                self.logic_wrapper.copy_to_new_date(
+                    voyage_id, datetime.fromisoformat(new_date)
+                )
+                print("Voyage copied.")
+                print_dataclass_as_table(self.logic_wrapper.get_all_voyages(), Voyage)
+
+            elif "4" in command:
+                voyage_id = input("Enter Voyage ID: ")
+                interval_in_days = int(input("Enter interval in days: "))
+                end_date = input("Enter end date (YYYY-MM-DD): ")
+
+                self.logic_wrapper.make_recurring_voyage(
+                    voyage_id, interval_in_days, datetime.fromisoformat(end_date)
+                )
+                print("Voyage made recurring.")
+                print_dataclass_as_table(self.logic_wrapper.get_all_voyages(), Voyage)
+
+            elif "5" in command:
                 self.populate_voyage()
 
-            elif command == "4" or command == "4.":
+            elif "6" in command:
                 voyage_id = input("Enter Voyage ID: ")
                 voyage = self.logic_wrapper.find_voyage(voyage_id)
                 print_dataclass_as_table(voyage, Voyage)
@@ -112,148 +137,111 @@ class Voyages:
         else:
             print("No voyages found.")
 
-    def register_new_voyage(self):
-        print("1. Register New Voyage")
-        print("2. Copy Existing Voyage")
-        print("3. Make Recurring Voyage")
-        print("b. Back")
-        print("q. Quit")
-
-        command = input("User Input: ")
-
-        if command == "1" or command == "1.":
-            voyage_info_print = UIConstants.REGISTER_VOYAGE_INFO.split(", ")
-
-            all_voyage_information = []
-            for voyage in voyage_info_print:
-                print(f"{voyage}: ", end=" ")
-                voyage_information = input()
-                all_voyage_information.append(voyage_information)
-
-            table = PrettyTable(UIConstants.REGISTER_VOYAGE_INFO.split(", "))
-            table.add_row(all_voyage_information)
-            print(table)
-
-            self.logic_wrapper.register_new_voyage(all_voyage_information)
-            print("New Voyage Registered.")
-
-        elif command == "2" or command == "2.":
-            voyage_id = input("Enter Voyage ID: ")
-            new_date = input("Enter new date (YYYY-MM-DD): ")
-
-            self.logic_wrapper.copy_to_new_date(
-                voyage_id, datetime.fromisoformat(new_date)
-            )
-            print("Voyage copied.")
-            print_dataclass_as_table(self.logic_wrapper.get_all_voyages(), Voyage)
-
-        elif command == "3" or command == "3.":
-            voyage_id = input("Enter Voyage ID: ")
-            interval_in_days = int(input("Enter interval in days: "))
-            end_date = input("Enter end date (YYYY-MM-DD): ")
-
-            self.logic_wrapper.make_recurring_voyage(
-                voyage_id, interval_in_days, datetime.fromisoformat(end_date)
-            )
-            print("Voyage made recurring.")
-            print_dataclass_as_table(self.logic_wrapper.get_all_voyages(), Voyage)
-
-        elif command == "b":
-            return "b"
-
-        elif command == "q":
-            print(UIConstants.QUIT_MESSAGE)
-            sys.exit()
-
     def populate_voyage(self):
-        voyages = self.logic_wrapper.get_all_voyages()
-        for voyage in voyages:
-            if voyage.captain == "None" or voyage.captain == "":
-                sorted_captains = self.logic_wrapper.sort_by_captains()
-                table = generate_table(sorted_captains)
+        voyage_id = input("Enter Voyage ID: ").strip()
+        while True:
+            voyage = self.logic_wrapper.find_voyage(voyage_id)
 
+            if not voyage:
+                print("Voyage not found")
+                return
+
+            if self.check_if_voyage_manned(voyage):
+                print("Voyage is fully staffed.")
+                return
+
+            self.choose_staff_prompt(voyage)
+
+            command = input("User Input: ")
+            if "1" in command:
+                captains = self.logic_wrapper.sort_by_captains()
+                print_employees_table(captains)
+                nid = input("Select nid (National ID) of captain: ")
+                self.logic_wrapper.set_staff(voyage_id, captain=nid)
+                print(f"Successfully set captain {nid} to voyage {voyage.id}")
+            elif "2" in command:
+                copilots = self.logic_wrapper.sort_by_co_pilots()
+                print_employees_table(copilots)
+                nid = input("Select nid (National ID) of copilot: ")
+                self.logic_wrapper.set_staff(voyage_id, copilot=nid)
+                print(f"Successfully set copilot {nid} to voyage {voyage.id}")
+            elif "3" in command:
+                managers = self.logic_wrapper.sort_by_heads_of_service()
+                print_employees_table(managers)
+                nid = input("Select nid (National ID) of flight service manager: ")
+                self.logic_wrapper.set_staff(voyage_id, flight_service_manager=nid)
                 print(
-                    f"Voyage ID: {voyage.id}, {voyage.destination}, {voyage.departure}, {voyage.arrival}"
+                    f"Successfully set flight service manager {nid} to voyage {voyage.id}"
                 )
-                print("Available Captains: ")
-                print(table)
-
-            elif voyage.copilot == "None" or voyage.copilot == "":
-                sorted_copilots = self.logic_wrapper.sort_by_co_pilots()
-                table = generate_table(sorted_copilots)
-
+            elif "4" in command:
+                attendants = self.logic_wrapper.sort_by_flight_attendants()
+                print_employees_table(attendants)
+                nid = input("Select nid (National ID) of flight attendants: ")
+                self.logic_wrapper.set_staff(voyage_id, flight_attendant=nid)
                 print(
-                    f"Voyage ID: {voyage.id}, {voyage.destination}, {voyage.departure}, {voyage.arrival}"
+                    f"Successfully set flight attendant {nid} to voyage {voyage.id}"
                 )
-                print("Available Copilots: ")
-                print(table)
-
-            elif (
-                voyage.flight_service_manager == "None"
-                or voyage.flight_service_manager == ""
-            ):
-                sorted_heads_of_service = self.logic_wrapper.sort_by_heads_of_service()
-                table = generate_table(sorted_heads_of_service)
-
-                print(
-                    f"Voyage ID: {voyage.id}, {voyage.destination}, {voyage.departure}, {voyage.arrival}"
-                )
-                print("Available Heads of Service: ")
-                print(table)
-
-            elif voyage.flight_attendant == "None" or voyage.flight_attendant == "":
-                sorted_flight_attendants = (
-                    self.logic_wrapper.sort_by_flight_attendants()
-                )
-                table = generate_table(sorted_flight_attendants)
-
-                print(
-                    f"Voyage ID: {voyage.id}, {voyage.destination}, {voyage.departure}, {voyage.arrival}"
-                )
-                print("Available Flight Attendants: ")
-                print(table)
-
+            elif "q" in command:
+                self.save_and_quit()
             else:
-                print(
-                    f"Voyage {voyage.destination} {voyage.departure}, ({voyage.id}) is fully staffed."
-                )
+                print("Invalid input, try again...")
 
-    def get_manned_voyages(self):
+    def check_if_voyage_manned(self, voyage):
         manned_voyages = self.logic_wrapper.get_manned_voyages()
-        return manned_voyages
+        return voyage in manned_voyages
+
+    def check_if_voyage_unmanned(self, voyage):
+        unmanned_voyages = self.logic_wrapper.get_unmanned_voyages()
+        return voyage in unmanned_voyages
 
     def get_unmanned_voyages(self):
         unmanned_voyages = self.logic_wrapper.get_unmanned_voyages()
         return unmanned_voyages
 
+    def get_manned_voyages(self):
+        manned_voyages = self.logic_wrapper.get_manned_voyages()
+        return manned_voyages
+
     def input_prompt_display_voyages(self):
         while True:
-            print("1. List manned voyages")
-            print("2. List unmanned voyages")
-            print("b. Back")
+            print("1. List Manned Voyages" )
+            print("2. List Unmanned Voyages" )
             print("q. Quit")
+
             command = input("User Input: ")
-            if command == "1" or command == "1.":
+            if "1" in command:
                 manned_voyages = self.get_manned_voyages()
 
                 if manned_voyages:
                     print_dataclass_as_table(manned_voyages, Voyage)
                 else:
                     print("No voyages found.")
-                    continue
+                continue
 
-            elif command == "2" or command == "2.":
+            elif "2" in command:
                 unmanned_voyages = self.get_unmanned_voyages()
 
                 if unmanned_voyages:
                     print_dataclass_as_table(unmanned_voyages, Voyage)
                 else:
                     print("No voyages found.")
-                    continue
 
-            elif command == "b" or command == "b.":
-                return "b"
+                continue
 
-            elif command == "q" or command == "q.":
-                print(UIConstants.QUIT_MESSAGE)
-                sys.exit()
+            elif "q" in command:
+                self.save_and_quit()
+
+    def choose_staff_prompt(self, voyage):
+        print("Voyage not fully staffed.")
+
+        if not voyage.captain:
+            print("1. Add Captain")
+        if not voyage.copilot:
+            print("2. Add Co-Pilot")
+        if not voyage.flight_service_manager:
+            print("3. Add Head of Service")
+        if not voyage.flight_attendant:
+            print("4. Add Flight Attendant")
+        else:
+            print("Voyage is fully staffed.")
+        print("q. Quit")

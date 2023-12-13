@@ -14,6 +14,10 @@ class UI_Logic_Wrapper:
         self.voyages_logic = VoyagesLogic(logic_data_wrapper_instance)
         self.airplane_logic = AirplaneLogic(logic_data_wrapper_instance)
 
+#
+#       EMPLOYEE CALLS
+#
+
     def register_pilot(self, employee_info):
         return self.employee_logic.register_pilot(employee_info)
 
@@ -23,14 +27,11 @@ class UI_Logic_Wrapper:
     def get_all_employees(self):
         return self.employee_logic.get_all_employees()
 
-    def get_all_airplanes(self):
-        return self.airplane_logic.get_all_airplanes()
-
-    def register_airplane(self, airplane_info):
-        return self.airplane_logic.register_airplane(airplane_info)
-
-    def search(self, filter):
-        return self.employee_logic.search(filter)
+    def search_employee(self, filter):
+        return self.employee_logic.search_employee(filter)
+    
+    def search_by_day(self, filter):
+        return self.employee_logic.search_by_day(filter)
 
     def sort_by_captains(self):
         return self.employee_logic.sort_by_captains()
@@ -44,11 +45,44 @@ class UI_Logic_Wrapper:
     def sort_by_heads_of_service(self):
         return self.employee_logic.sort_by_heads_of_service()
 
+    def update_pilot(self, employee_info):
+        return self.employee_logic.update_pilot(employee_info)
+    
+    def update_flight_attendant(self, employee_info):
+        return self.employee_logic.update_flight_attendant(employee_info)
+        
+    def get_shift_plan(self):
+        return self.employee_logic.get_shift_plan()
+
+#
+#       AIRPLANE CALLS
+#
+
+    def get_all_airplanes(self):
+        return self.airplane_logic.get_all_airplanes()
+
+    def register_airplane(self, airplane_info):
+        return self.airplane_logic.register_airplane(airplane_info)
+
+#
+#       DESTINATION CALLS
+#
+
     def get_all_destinations(self):
         return self.destination_logic.get_all_destinations()
 
+#
+#       VOYAGE CALLS
+#
+
     def get_all_voyages(self):
         return self.voyages_logic.get_all_voyages()
+
+    def set_staff(self, voyage_id: str, **kwarg):
+        return self.voyages_logic.set_staff(voyage_id, **kwarg)
+
+    def write_voyages_to_disk(self):
+        return self.voyages_logic.write_voyages_to_disk()
 
     def register_new_voyage(self, voyage_info):
         return self.voyages_logic.register_new_voyage(voyage_info)
@@ -67,9 +101,5 @@ class UI_Logic_Wrapper:
     
     def get_unmanned_voyages(self):
         return self.voyages_logic.get_unmanned_voyages()
+
     
-    def update_pilot(self, employee_info):
-        return self.employee_logic.update_pilot(employee_info)
-    
-    def update_flight_attendant(self, employee_info):
-        return self.employee_logic.update_flight_attendant(employee_info)
