@@ -161,3 +161,14 @@ Anton: UI og smá logic
 
 samantekt: náðum að gera mikið í dag, voyages er kominn langt á leið, logic líka og svo er núna hægt að displaya vaktaplanið. Gengur vel :)
 
+
+13. des
+Höldum áfram með að klára A kröfur
+
+Verkefnaskipting:
+Hera: Update information
+Andrea: Voyages (man voyages ofl)
+Anton: halda áfram með UI og laga loopur þar sem b og q virkar ekki
+Marvin: Shift plan
+Viggó: logic og hjálpa alls staðar
+
