@@ -10,9 +10,6 @@ class VerifyAirplane:
 
         self.data = data
         self.insignia = airplane_info.insignia
-        self.plane_type = airplane_info.plane_type
-        self.supplier = airplane_info.supplier
-        self.seats = airplane_info.seats
 
 
     def verify_airplane_helper(self, info_type: str):
@@ -37,13 +34,13 @@ class VerifyAirplane:
             raise InsigniaFormatError()
 
         elif len(insignia) != 2:
-            pass#ERROR
+            raise InsigniaFormatError()
 
         elif len(insignia[0]) != 2:
-            pass#ERROR
+            raise InsigniaFormatError()
 
         elif len(insignia[-1]) != 3:
-            pass#ERROR
+            raise InsigniaFormatError()
 
         elif self.insignia in self.verify_airplane_helper("insignia"):
             raise InvalidInsigniaError()
