@@ -32,6 +32,9 @@ class UI_Logic_Wrapper:
 
     def search_by_day(self, filter):
         return self.employee_logic.search_by_day(filter)
+    
+    def search_by_not_day(self, filter):
+        return self.employee_logic.search_by_not_day(filter)
 
     def sort_by_captains(self):
         return self.employee_logic.sort_by_captains()

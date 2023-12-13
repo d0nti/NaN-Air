@@ -5,14 +5,14 @@ class EmployeeLogic:
         self.data_wrapper = data_connection
 
     def register_pilot(self, employee_info):
-        temp = VerifyPilot(employee_info, self.search_employee("Pilot"))
-        temp.ValidatePilot()
+        temp = VerifyPilot(employee_info, self.get_all_employees())
+        temp.validatepilot()
         if temp:
             self.data_wrapper.register_pilot(employee_info)
 
     def register_flight_attendant(self, employee_info):
-        temp = VerifyFlightAttendant(employee_info, self.search_employee("Cabincrew"))
-        temp.ValidateFlightAttendant()
+        temp = VerifyFlightAttendant(employee_info, self.get_all_employees())
+        temp.validateflightattendant()
         if temp:
             self.data_wrapper.register_flight_attendant(employee_info)
 
@@ -27,6 +27,9 @@ class EmployeeLogic:
     
     def search_by_day(self, filter):
         return self.data_wrapper.search_by_day(filter)
+    
+    def search_by_not_day(self, filter):
+        return self.data_wrapper.search_by_not_day(filter)
     
     def sort_by_flight_attendants(self):
         return self.data_wrapper.sort_by_flight_attendants()

@@ -7,7 +7,7 @@ class Employee:
         rank=None,
         address=None,
         phone_nr=None,
-        home_phone_nr=None,
+        home_phone_nr="",
     ):
         self.nid = nid
         self.name = name
@@ -30,7 +30,7 @@ class Pilot(Employee):
         rank=None,
         address=None,
         phone_nr=None,
-        home_phone_nr=None,
+        home_phone_nr="",
         license=None,
     ):
         self.license = license
@@ -49,6 +49,6 @@ class FlightAttendant(Employee):
         rank=None,
         address=None,
         phone_nr=None,
-        home_phone_nr=None,
+        home_phone_nr="",
     ):
         super().__init__(nid, name, role, rank, address, phone_nr, home_phone_nr)
