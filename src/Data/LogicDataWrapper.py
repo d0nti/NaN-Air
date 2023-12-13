@@ -51,6 +51,12 @@ class Logic_Data_Wrapper:
     def search_by_not_day(self, filter):
         return self.employee_data.search_by_not_day(filter)
 
+    def update_pilot(self, employee_info):
+        return self.employee_data.update_pilot(employee_info)
+
+    def update_flight_attendant(self, employee_info):
+        return self.employee_data.update_flight_attendant(employee_info)
+
     #
     #       AIRPLANE FUNCTION CALLS FROM HERE DOWN
     #
@@ -91,11 +97,6 @@ class Logic_Data_Wrapper:
     def get_unmanned_voyages(self):
         return self.voyagedata.get_unmanned_voyages()
 
-    def update_pilot(self, employee_info):
-        return self.employee_data.update_pilot(employee_info)
-
-    def update_flight_attendant(self, employee_info):
-        return self.employee_data.update_flight_attendant(employee_info)
     
     def get_shift_plan(self):
         return self.employee_data.get_shift_plan()

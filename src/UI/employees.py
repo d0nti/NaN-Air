@@ -1,10 +1,8 @@
 from prettytable import PrettyTable
 from UI.Utils.Constants import UIConstants
-from Model.EmployeeModel import Employee
 from Model.EmployeeModel import Pilot
 from Model.EmployeeModel import FlightAttendant
 import sys
-from Data.employeeData import EmployeeData
 
 
 class Employees:
