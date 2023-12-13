@@ -90,3 +90,6 @@ class Logic_Data_Wrapper:
 
     def update_flight_attendant(self, employee_info):
         return self.employee_data.update_flight_attendant(employee_info)
+    
+    def get_shift_plan(self):
+        return self.employee_data.get_shift_plan()

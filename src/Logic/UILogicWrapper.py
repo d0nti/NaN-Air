@@ -50,6 +50,9 @@ class UI_Logic_Wrapper:
     
     def update_flight_attendant(self, employee_info):
         return self.employee_logic.update_flight_attendant(employee_info)
+        
+    def get_shift_plan(self):
+        return self.employee_logic.get_shift_plan()
 
 #
 #       AIRPLANE CALLS
@@ -98,4 +101,5 @@ class UI_Logic_Wrapper:
     
     def get_unmanned_voyages(self):
         return self.voyages_logic.get_unmanned_voyages()
+
     
