@@ -134,7 +134,7 @@ class Employees:
         # nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
         elif command == "1" or command == "1.":
             filter = input("Enter search filter (SSID, Name, license or Job Title): ")
-            filtered_employees = self.logic_wrapper.search(filter)
+            filtered_employees = self.logic_wrapper.search_employee(filter)
             table = PrettyTable()
 
             table.field_names = [
