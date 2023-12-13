@@ -179,7 +179,7 @@ class EmployeeData:
                     ret_list.append(row)
         # returns the list of employees that match the search
         return ret_list
-    
+
     def get_shift_plan(self):
             ret_list = []
             with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
