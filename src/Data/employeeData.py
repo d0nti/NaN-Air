@@ -183,9 +183,7 @@ class EmployeeData:
     # marvin
     def update_pilot(self, employee):
         # uses the search function previously defined to find the employee that needs to be updated
-        employees = self.search(
-            employee.nid
-        )  # only search by nid because nid is unique
+        employees = self.search(employee.nid)  # only search by nid because nid is unique
         if employees:
             # update the employee with the new information
             updated_employee = employees[

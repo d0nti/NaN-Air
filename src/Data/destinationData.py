@@ -50,3 +50,17 @@ class DestinationData:
                     "contact_phone_nr": destination.contact_phone_nr,
                 }
             )
+
+    def search_destination(self, filter):
+        ret_list = []
+        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if (
+                    filter in row["name"]
+                    or filter in row["airport"]
+                    or filter in row["contact_name"]
+                    or filter in row["contact_phone_nr"]
+                ):
+                    ret_list.append(row)
+        return ret_list
