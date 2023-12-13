@@ -44,6 +44,12 @@ class Logic_Data_Wrapper:
 
     def search_employee(self, filter):
         return self.employee_data.search_employee(filter)
+    
+    def search_by_day(self, filter):
+        return self.employee_data.search_by_day(filter)
+    
+    def search_by_not_day(self, filter):
+        return self.employee_data.search_by_not_day(filter)
 
     #
     #       AIRPLANE FUNCTION CALLS FROM HERE DOWN

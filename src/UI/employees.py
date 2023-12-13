@@ -500,12 +500,39 @@ class Employees:
         print("1. Working on a specific day")
         print("2. Not working on a specific day")
 
-        choice = input("Enter your choice: ")
+        command = input("Enter your choice: ")
 
-        if choice == "1":
-            day = input("Enter the day to search for: ") #get the day to search for
-            results = EmployeeData.search_by_day(day, True) #searches for the day and returns the results
-            print(results)
+        if command == "1" or command == "1.":
+            filter = input("Enter the day to search for: ") #get the day to search for
+            results = self.logic_wrapper.search_by_day(filter)
+
+            table = PrettyTable()
+
+            table.field_names = [
+                "NID",
+                "Name",
+                "Shift Start Date",
+                "Shift Start Time",
+                "Shift End Date",
+                "Shift End Time",
+            ]
+
+            for row in results:
+                table.add_row([
+                    row['nid'],
+                    row['name'],
+                    row['shift_start_date'],
+                    row['shift_start_time'],
+                    row['shift_end_date'],
+                    row['shift_end_time']
+                ])
+
+            # Print the table
+            print(table)
+
+        elif command == "2" or command == "2.":
+            filter = input("Enter the day to search for: ") #get the day to search for
+            results = self.logic_wrapper.search_by_not_day(filter)
 
             table = PrettyTable()
 
@@ -520,32 +547,15 @@ class Employees:
 
             # Add data rows to the table
             for row in results:
-                table.add_row(row)
+                table.add_row([
+                    row['nid'],
+                    row['name'],
+                    row['shift_start_date'],
+                    row['shift_start_time'],
+                    row['shift_end_date'],
+                    row['shift_end_time']
+                ])
 
             # Print the table
             print(table)
-        elif choice == "2":
-            day = input("Enter the day to search for: ") #get the day to search for
-            results = EmployeeData.search_by_day(day, False)
-
-            table = PrettyTable()
-
-            table.field_names = [
-                "NID",
-                "Name",
-                "Shift Start Date",
-                "Shift Start Time",
-                "Shift End Date",
-                "Shift End Time",
-            ]
-
-            # Add data rows to the table
-            for row in results:
-                table.add_row(row)
-
-            # Print the table
-            print(table)
-
-
-
 

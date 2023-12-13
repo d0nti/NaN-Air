@@ -165,7 +165,7 @@ class EmployeeData:
                 }
             )
 
-    def search_employee(self, filter):
+    def search(self, filter):
         # takes a input from ui and searches for it in the csv file
         ret_list = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
@@ -189,8 +189,6 @@ class EmployeeData:
 
             return ret_list
     
-
-
     def search_by_day(self, filter):
         ret_list = []
         with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
@@ -202,4 +200,30 @@ class EmployeeData:
                     ret_list.append(row)
         # returns the list of employees that match the search
         return ret_list
- 
+    
+
+    def search_by_not_day(self, filter, exclude_names = []):
+        ret_list = []
+
+        with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                shift_start_date = row["shift_start_date"]
+                shift_end_date = row["shift_end_date"]
+                employee_name = row["name"]
+
+                # Check if filter_date is within the range of the shift
+                if (
+                    shift_start_date <= filter <= shift_end_date
+                    or shift_end_date <= filter <= shift_start_date
+                ):
+                    continue  # Skip this row
+
+                # Check if the employee name is in the exclude_names list
+                if employee_name in exclude_names:
+                    continue  # Skip this row
+
+                ret_list.append(row)
+
+        return ret_list
+       
