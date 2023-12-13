@@ -54,7 +54,6 @@ class MainMenu:
         print(HEADER.format("Booking System"))
         print(MAIN_MENU)
         
-
     
     def input_prompt_mainmenu(self):
             
@@ -67,6 +66,9 @@ class MainMenu:
                 if command == "1" or command == "1.":
                     
                     self.voyages.input_prompt_voyages()
+                    back = self.voyages.input_prompt_voyages()
+                    if back == "b" or back =="b.":
+                        break
 
                 elif command == "2" or command == "2.":
                     # self.employees.input_prompt_employees() # LES INPUT

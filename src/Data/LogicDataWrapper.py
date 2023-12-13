@@ -13,9 +13,6 @@ class Logic_Data_Wrapper:
         self.airplane_data = AirplaneData()
         self.voyagedata = VoyageData(VoyageData.read_voyages_from_disk())
 
-    def write_voyages_to_disk(self):
-        VoyageData.write_voyages_to_disk(self.voyagedata.get_all_voyages())
-
     def register_pilot(self, employee_info):
         return self.employee_data.register_pilot(employee_info)
 
@@ -52,8 +49,14 @@ class Logic_Data_Wrapper:
     def search_by_not_day(self, filter):
         return self.employee_data.search_by_not_day(filter)
 
+    def update_pilot(self, employee_info):
+        return self.employee_data.update_pilot(employee_info)
+
+    def update_flight_attendant(self, employee_info):
+        return self.employee_data.update_flight_attendant(employee_info)
+
     #
-    #       AIRPLANE FUNCTION CALLS FROM HERE DOWN
+    #       AIRPLANE FUNCTION CALLS
     #
 
     def get_all_airplanes(self):
@@ -65,6 +68,9 @@ class Logic_Data_Wrapper:
     #
     #       VOYAGES DATA FUNCTIONS
     #
+
+    def write_voyages_to_disk(self):
+        VoyageData.write_voyages_to_disk(self.voyagedata.get_all_voyages())
 
     def get_all_voyages(self):
         return self.voyagedata.get_all_voyages()

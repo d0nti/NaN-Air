@@ -1,10 +1,7 @@
 from prettytable import PrettyTable
 from UI.Utils.Constants import UIConstants
-from Model.EmployeeModel import Employee
-from Model.EmployeeModel import Pilot
-from Model.EmployeeModel import FlightAttendant
+from Model.EmployeeModel import Pilot, FlightAttendant
 import sys
-from Data.employeeData import EmployeeData
 
 
 class Employees:
@@ -33,7 +30,7 @@ class Employees:
 
     def input_prompt_employees(self):
         # self.employees_menu_output()
-        while True:
+        
             command = input("User Input: ")
             command = command.lower()
 
@@ -170,11 +167,18 @@ class Employees:
                 )
             )
 
+        else:
+            pass
+
     def get_sorted_list(self, command):
         self.command = command
 
         if command == "q" or command == "q.":
             pass
+
+        elif command == "b" or command == "b.":
+            self.employees_menu_output()
+            return "b"
 
         elif command == "1" or command == "1.":
             # print(*self.logic_wrapper.sort_by_captains())
@@ -349,14 +353,7 @@ class Employees:
                 ]
                 self.logic_wrapper.register_pilot(
                     Pilot(
-                        ssid,
-                        name,
-                        "Pilot",
-                        rank,
-                        address,
-                        phone_nr,
-                        home_phone_nr,
-                        license,
+                        ssid, name, "Pilot", rank, address, phone_nr, home_phone_nr, license
                     )
                 )
             else:
@@ -398,7 +395,7 @@ class Employees:
                 pass  # ERROR :)
 
         elif command == "b" or command == "b.":
-            pass
+            return "b"
 
         elif command == "q" or command == "q.":
             pass
@@ -420,7 +417,16 @@ class Employees:
         command = input("User input: ")
         if command == "1" or command == "1.":
             print(UIConstants.HEADER.format(UIConstants.UPDATE_PILOT))
-            ssid = input("Enter the SSID of the pilot to update: ")
+            print("If you don't wish to change a given detail, leave it empty. \n")
+            while True:
+                ssid = input("Enter the SSID or name of the pilot to update: ")
+                if len(ssid) == 10:
+                    if self.logic_wrapper.search_employee(ssid):
+                        break
+                else:
+                    print("You have entered the wrong ssid, please try again. ")
+                    pass
+
             print(UIConstants.UPDATE_EMPLOYEE_INPUT)
             pilot_info_print = UIConstants.UPDATE_EMPLOYEE_INPUT.split(", ")
 
@@ -429,13 +435,17 @@ class Employees:
                 print(f"{i}", end=" ")
                 pilot_information = input()
                 all_pilot_information.append(pilot_information)
+            
+            print(all_pilot_information)
+            print(len(all_pilot_information))
 
-            if len(all_pilot_information) == 5:
-                rank, address, phone_nr, home_phone_nr, license = all_pilot_information
-                employee = Pilot(ssid, "", "Pilot", rank, address, phone_nr, license)
-                self.logic_wrapper.update_pilot(employee)
-            else:
-                print(UIConstants.INVALID_INPUT)  # ERROR :)
+            role, rank, license, address, phone_nr, home_phone_nr = [all_pilot_information[i] for i in range(0, (len(all_pilot_information)))]            
+
+            temp_dict = {"nid":ssid, "role":role, "rank":rank, "license":license, "address":address, "phone_nr":phone_nr, "home_phone_nr":home_phone_nr}
+
+            self.logic_wrapper.update_pilot(temp_dict)
+
+                    
 
         elif command == "2" or command == "2.":
             print(UIConstants.HEADER.format(UIConstants.UPDATE_FLIGHT_ATTENDANT))
@@ -464,7 +474,7 @@ class Employees:
                 print(UIConstants.INVALID_INPUT)  # ERROR :)
 
         elif command == "b" or command == "b.":
-            pass
+            return "b"
 
         elif command == "q" or command == "q.":
             pass
