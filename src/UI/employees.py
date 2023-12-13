@@ -474,7 +474,8 @@ class Employees:
 
     def display_shift_plan(self):
         # get the shift plan from employeeData.py
-        ret_list = EmployeeData.get_shift_plan(self)
+        ret_list = self.logic_wrapper.get_shift_plan()
+
 
         table = PrettyTable()
 

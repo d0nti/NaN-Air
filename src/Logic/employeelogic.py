@@ -42,6 +42,9 @@ class EmployeeLogic:
 
     def update_flight_attendant(self, employee_info):
         return self.data_wrapper.update_flight_attendant(employee_info)
+    
+    def get_shift_plan(self):
+        return self.data_wrapper.get_shift_plan()
         
 
 
