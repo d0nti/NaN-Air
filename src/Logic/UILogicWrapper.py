@@ -60,9 +60,6 @@ class UI_Logic_Wrapper:
 
     def register_airplane(self, airplane_info):
         return self.airplane_logic.register_airplane(airplane_info)
-    
-    def search_airplane(self, filter):
-        return self.airplane_logic.search_airplane(filter)
 
 #
 #       DESTINATION CALLS
