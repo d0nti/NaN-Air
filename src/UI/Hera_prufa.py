@@ -1,62 +1,155 @@
-BOOKING_SYSTEM = "Booking System"
-MANAGE_EMPLOYEES = "Manage Employees"
-MANAGE_AIRPLANES = "Manage Airplanes"
-MANAGE_DESTINATIONS = "Manage Destinations"
-MANAGE_VOYAGES = "Manage Voyages"
-DASH_SYMBOL = "-"
-LENGTH_SYMBOL = 30
-QUIT = "quit"
+class DestinationNameError(Exception):
+    pass
 
 
-HEADER = (
-    f"{DASH_SYMBOL * LENGTH_SYMBOL}"
-    + "\n"
-    + "  NaN Air - {location}"
-    + "\n"
-    + f"{DASH_SYMBOL * LENGTH_SYMBOL}"
-)
-
-MAIN_MENU = (
-
-    "1. {}"
-    + "\n"
-    + "2. {}"
-    + "\n"
-    + "3. {}"
-    + "\n"
-    + "4. {}"
-    + "\n"
-    + "q. {}"
-)
-
-class UIConstants:
-    MAIN_MENU = "This is the Main {} menu!!!"
+class DestinationNameExistsError(Exception):
+    pass
 
 
-print(UIConstants.MAIN_MENU.format("AAAAAAAA"))
+class DestinationCountryError(Exception):
+    pass
 
-class Destination:
-    def __init__(
-        self,
-        name=None,
-        country=None,
-        airport=None,
-        flight_time=None,
-        distance_from_iceland=None,
-        contact_name=None,
-        contact_phone_nr=None,
-    ):
-        # self.destination_number = destination_number
-        self.name = name
-        self.country = country
-        self.airport_call_sign = airport
-        self.flight_time = flight_time
-        self.distance_from_iceland = distance_from_iceland
-        self.contact_name = contact_name
-        self.contact_phone_nr = contact_phone_nr
 
-    def ___str__(self):
-        return f"{self.name} {self.country} {self.airport_call_sign} {self.flight_time} {self.distance_from_iceland}  {self.contact_name} {self.contact_phone_nr}"
+class DestinationCountryExistsError(Exception):
+    pass
 
-name, country, airport, fligh_time, distance_from_iceland, contact_name, contact_phone_nr = ["Nuuk","Greenland","Nuuk_Airport","1_hour","1200km","Ivaana","+299-558-7709"]
-x = Destination(name, country, airport, fligh_time, distance_from_iceland, contact_name, contact_phone_nr)
+
+class DestinationAirportError(Exception):
+    pass
+
+
+class DestinationAirportExistsError(Exception):
+    pass
+
+
+class DestinationDistanceError(Exception):
+    pass
+
+
+class DestinationFlightTimeError(Exception):
+    pass
+
+
+class DestinationContactError(Exception):
+    pass
+
+
+class DestinationContactExistsError(Exception):
+    pass
+
+
+class DestinationContactNumberError(Exception):
+    pass
+
+
+class DestinationContactNumberExistsError(Exception):
+    pass
+
+
+class DestinationContactNumberLenghtError(Exception):
+    pass
+
+
+class VerifyDestination:
+    def __init__(self, destination_info: object, data: list) -> None:
+        self.data = data
+        self.name = destination_info.name
+        self.country = destination_info.country
+        self.airport = destination_info.airport
+        self.distance = destination_info.distance_from_iceland
+        self.flight_time = destination_info.flight_time
+        self.contact_name = destination_info.contact_name
+        self.contact_phone_nr = destination_info.contact_phone_nr
+
+    def Verify_Destination_Helper(self, info_type):
+        in_use_info = []
+
+        for i in range(len(self.data)):
+            temp = self.data[i]
+            in_use_info.append(temp.get(str(info_type)))
+
+        return in_use_info
+
+    def Name(self):
+        if self.name.isdigit():
+            raise DestinationNameError
+
+        elif self.name in self.Verify_Destination_Helper("name"):
+            raise DestinationNameExistsError
+
+        else:
+            return True
+
+    def Country(self):
+        if self.country.isdigit():
+            raise DestinationCountryError
+
+        else:
+            return True
+
+    def Airport(self):
+        if self.airport.isdigit():
+            raise DestinationAirportError
+
+        elif self.airport in self.Verify_Destination_Helper("airport"):
+            raise DestinationAirportExistsError
+
+        else:
+            return True
+
+    def Distance(self):
+        if not self.distance.lower().strip("km. ").isdigit():
+            raise DestinationDistanceError
+
+        else:
+            return True
+
+    def Flight_time(self):
+        if not self.flight_time.isdigit():
+            raise DestinationFlightTimeError
+
+        else:
+            return True
+
+    def Contact(self):
+        if self.contact_name.isdigit():
+            raise DestinationContactError
+
+        elif self.contact_name in self.Verify_Destination_Helper("contact_name"):
+            raise DestinationContactExistsError
+
+        else:
+            return True
+
+    def Contact_number(self):
+        first_digit = self.contact_phone_nr.split()[0]
+
+        if not first_digit == "+":
+            raise DestinationContactNumberError
+
+        elif not self.contact_phone_nr.split().pop(first_digit).isdigit():
+            raise DestinationContactNumberError
+
+        elif self.contact_phone_nr.split().pop(first_digit) != 10:
+            raise DestinationContactNumberLenghtError
+
+        elif self.contact_phone_nr in self.Verify_Destination_Helper(
+            "contact_phone_nr"
+        ):
+            raise DestinationContactNumberExistsError
+
+        else:
+            return True
+
+    def ValidateDestination(self):
+        self.Name()
+        self.Country()
+        self.Airport()
+        self.Distance()
+        self.Flight_time()
+        self.Distance()
+        self.Contact()
+        self.Contact_number()
+
+
+X = VerifyDestination()

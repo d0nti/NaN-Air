@@ -6,7 +6,7 @@ class DestinationLogic:
         self.data_wrapper = data_connection
 
     def register_destination(self, destination_info):
-        temp = VerifyDestination(destination_info)
+        temp = VerifyDestination(destination_info, self.get_all_destinations())
         temp.ValidateDestination()
         if temp:
             self.data_wrapper.register_destination(destination_info)
@@ -15,4 +15,4 @@ class DestinationLogic:
         return self.data_wrapper.get_all_destinations()
 
     def search_destination(self, filter):
-        return self.data_wrapper.search(filter)
+        return self.data_wrapper.search_destination(filter)

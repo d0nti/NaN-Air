@@ -194,20 +194,20 @@ class EmployeeData:
         with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                if (
-                    str(filter) in row["shift_start_date"]
-                ):  # can use these param to search
+                if str(filter) == row["shift_start_date"]:
                     ret_list.append(row)
-        # returns the list of employees that match the search
         return ret_list
     
-    def search_by_not_day(self, filter):
-        ret_list = []
+    def search_by_not_day(self, filter_date):
         with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
-            for row in reader:
-                if str(filter) != row["shift_start_date"]:
-                    ret_list.append(row)
-                elif str(filter) == row["shift_start_date"]:
-                    ret_list = [r for r in ret_list if r["name"] != row["name"]] #if the person is working on that day remove the name from list
+
+            working_employees = {row["name"] for row in reader if str(filter_date) == row["shift_start_date"]}
+
+            csvfile.seek(0)
+            next(reader)
+
+            ret_list = [row for row in reader if row["name"] not in working_employees]
+
         return ret_list
+    
