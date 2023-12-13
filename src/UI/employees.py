@@ -493,3 +493,58 @@ class Employees:
 
         # Print the table
         print(table)
+
+        # Menu for searching by working or not working on a specific day
+        print("Search by:")
+        print("1. Working on a specific day")
+        print("2. Not working on a specific day")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            day = input("Enter the day to search for: ") #get the day to search for
+            results = EmployeeData.search_by_day(day, True) #searches for the day and returns the results
+            print(results)
+
+            table = PrettyTable()
+
+            table.field_names = [
+                "NID",
+                "Name",
+                "Shift Start Date",
+                "Shift Start Time",
+                "Shift End Date",
+                "Shift End Time",
+            ]
+
+            # Add data rows to the table
+            for row in results:
+                table.add_row(row)
+
+            # Print the table
+            print(table)
+        elif choice == "2":
+            day = input("Enter the day to search for: ") #get the day to search for
+            results = EmployeeData.search_by_day(day, False)
+
+            table = PrettyTable()
+
+            table.field_names = [
+                "NID",
+                "Name",
+                "Shift Start Date",
+                "Shift Start Time",
+                "Shift End Date",
+                "Shift End Time",
+            ]
+
+            # Add data rows to the table
+            for row in results:
+                table.add_row(row)
+
+            # Print the table
+            print(table)
+
+
+
+
