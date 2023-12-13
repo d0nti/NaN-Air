@@ -76,6 +76,9 @@ class Voyages:
             if "q" in command:
                 self.save_and_quit()
 
+            elif "b" in command:
+                return "b"
+
             elif "1" in command:
                 self.list_all_voyages()
                 self.input_prompt_display_voyages()

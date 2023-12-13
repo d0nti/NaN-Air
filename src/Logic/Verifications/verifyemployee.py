@@ -134,7 +134,7 @@ class VerifyFlightAttendant:
         """ Checks that a home phone number is 11 digits long
             and that all but the first item are digits
         """
-
+        
         if len(str(self.home_phone)) != 7:
             raise EmployeeHomePhoneNumberError
         if not str(self.phone_nr).isdigit():

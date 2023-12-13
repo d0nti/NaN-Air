@@ -25,7 +25,7 @@ class VoyageData:
 
     @classmethod
     def write_voyages_to_disk(cls, voyages: [Voyage] = [], file_name=None):
-        with open(file_name or cls.FILE_NAME, "w", newline="") as csvfile:
+        with open(file_name or cls.FILE_NAME, "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=[f.name for f in fields(Voyage)])
             writer.writeheader()
             for voyage in voyages:

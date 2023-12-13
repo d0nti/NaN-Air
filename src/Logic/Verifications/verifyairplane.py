@@ -2,7 +2,8 @@ class InvalidInsigniaError(Exception):
     pass
 class InsigniaFormatError(Exception):
     pass
-
+class InsigniaExistsError(Exception):
+    pass
 
 
 class VerifyAirplane:
@@ -43,7 +44,7 @@ class VerifyAirplane:
             raise InsigniaFormatError()
 
         elif self.insignia in self.verify_airplane_helper("insignia"):
-            raise InvalidInsigniaError()
+            raise InsigniaExistsError()
 
 
     def validate_plane(self):

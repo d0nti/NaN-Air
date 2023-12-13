@@ -12,10 +12,9 @@ class Destinations:
     def destinations_menu_output(self):
         print(UIConstants.HEADER.format(UIConstants.MANAGE_DESTINATIONS))
         print(
-            UIConstants.THREE_MENU_OPTION.format(
+            UIConstants.TWO_MENU_OPTION.format(
                 UIConstants.DISPLAY_DESTINATIONS,
                 UIConstants.REGISTER_NEW_DESTINATION,
-                UIConstants.FIND_DESTINATION,
                 UIConstants.BACK,
                 UIConstants.QUIT,
             )
@@ -23,7 +22,6 @@ class Destinations:
 
         # print("1. Display Destinations")
         # print("2. Register Destination")
-        # print("3. Find Destination")
         # print("b. Back")
         # print("q. Quit")
 
@@ -137,34 +135,3 @@ class Destinations:
         name, country, airport, flight_time, distance_from_iceland, contact_name, contact_phone_nr = all_destination_info
         self.logic_wrapper.register_destination(Destination(name, country, airport, flight_time, distance_from_iceland, contact_name, contact_phone_nr))
 
-
-    def find_destination(self):
-        print(UIConstants.HEADER.format(UIConstants.FIND_DESTINATION))
-        pass
-
-    """def get_sorted_list(self, command):
-        self.command = command
-
-        if command == "q" or "q.":
-            print(UIConstants.QUIT_MESSAGE)
-            sys.exit
-            pass
-
-        elif command == "b" or "q.":
-            pass
-
-        elif command == "1" or "1.":
-            countries = self.logic_wrapper.sort_by_country()
-            pass    
-
-        elif command == "2" or "2.":
-            airports = self.logic_wrapper.sort_by_airport()
-            pass
-
-        elif command == "3" or "3.":
-            flights_durations = self.logic_wrapper.sort_by_flight_duration()
-            pass
-
-        elif command == "4" or "4.":
-            distances_from_Iceland = self.logic_wrapper.sort_by_distance_from_Iceland()
-            pass"""

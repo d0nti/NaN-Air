@@ -33,7 +33,7 @@ class Employees:
 
     def input_prompt_employees(self):
         # self.employees_menu_output()
-        while True:
+        
             command = input("User Input: ")
             command = command.lower()
 
@@ -170,11 +170,18 @@ class Employees:
                 )
             )
 
+        else:
+            pass
+
     def get_sorted_list(self, command):
         self.command = command
 
         if command == "q" or command == "q.":
             pass
+
+        elif command == "b" or command == "b.":
+            self.employees_menu_output()
+            return "b"
 
         elif command == "1" or command == "1.":
             # print(*self.logic_wrapper.sort_by_captains())
@@ -398,7 +405,7 @@ class Employees:
                 pass  # ERROR :)
 
         elif command == "b" or command == "b.":
-            pass
+            return "b"
 
         elif command == "q" or command == "q.":
             pass
@@ -464,7 +471,7 @@ class Employees:
                 print(UIConstants.INVALID_INPUT)  # ERROR :)
 
         elif command == "b" or command == "b.":
-            pass
+            return "b"
 
         elif command == "q" or command == "q.":
             pass
