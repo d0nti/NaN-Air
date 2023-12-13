@@ -137,6 +137,8 @@ class Destinations:
         name, country, airport, flight_time, distance_from_iceland, contact_name, contact_phone_nr = all_destination_info
         self.logic_wrapper.register_destination(Destination(name, country, airport, flight_time, distance_from_iceland, contact_name, contact_phone_nr))
 
+        
+
 
     def find_destination(self):
         print(UIConstants.HEADER.format(UIConstants.FIND_DESTINATION))

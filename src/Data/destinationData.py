@@ -5,7 +5,7 @@ import csv
 
 class DestinationData:
     def __init__(self):
-        self.file_name = "src/Files/Destinations.csv"
+        self.file_name = "NaN-Air/src/Files/Destinations.csv"
 
     # frá fyrirlestri
     def get_all_destinations(self):
@@ -27,7 +27,7 @@ class DestinationData:
 
         return ret_list
 
-    def create_destination(self, destination):
+    def register_destination(self, destination):
         with open(self.file_name, "a", encoding="utf-8") as csvfile:
             fieldnames = [
                 "name",

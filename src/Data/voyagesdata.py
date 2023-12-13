@@ -7,7 +7,7 @@ from Model.VoyageModel import Voyage
 
 
 class VoyageData:
-    FILE_NAME = "src/Files/voyages.csv"
+    FILE_NAME = "NaN-Air/src/Files/voyages.csv"
 
     def __init__(self, voyages: [Voyage] = []):
         self.voyages = voyages
@@ -26,7 +26,9 @@ class VoyageData:
     @classmethod
     def write_voyages_to_disk(cls, voyages: [Voyage] = [], file_name=None):
         with open(file_name or cls.FILE_NAME, "w", newline="") as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=[f.name for f in fields(Voyage)])
+            writer = csv.DictWriter(
+                csvfile, fieldnames=[f.name for f in fields(Voyage)]
+            )
             writer.writeheader()
             for voyage in voyages:
                 writer.writerow(asdict(voyage))

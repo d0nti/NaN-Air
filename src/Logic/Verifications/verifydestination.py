@@ -56,7 +56,8 @@ class VerifyDestination:
         self.name = destination_info.name
         self.country = destination_info.country
         self.airport = destination_info.airport
-        self.distance = destination_info.distance_from_iceland
+        self.distance = destination_info.distance_from_Iceland
+        self.flight_time = destination_info.flight_time
         self.contact_name = destination_info.contact_name
         self.contact_phone_nr = destination_info.contact_phone_nr
 
@@ -104,7 +105,7 @@ class VerifyDestination:
             return True
 
     def Flight_time(self):
-        if not self.Flight_time.isdigit():
+        if not self.flight_time.isdigit():
             raise DestinationFlightTimeError
 
         else:
@@ -121,15 +122,17 @@ class VerifyDestination:
             return True
 
     def Contact_number(self):
-        first_digit = self.contact_phone_nr.split()[0]
+        temp = list(self.contact_phone_nr)
+        temp2 = ""
+        print(temp[1:])
 
-        if not first_digit == "+":
+        if not temp[0] == "+":
             raise DestinationContactNumberError
 
-        elif not self.contact_phone_nr.split().pop(first_digit).isdigit():
+        elif not self.contact_phone_nr.strip("+").isdigit():
             raise DestinationContactNumberError
 
-        elif self.contact_phone_nr.split().pop(first_digit) != 10:
+        elif len(temp[1:]) != 10:
             raise DestinationContactNumberLenghtError
 
         elif self.contact_phone_nr in self.Verify_Destination_Helper(
@@ -139,6 +142,19 @@ class VerifyDestination:
 
         else:
             return True
+
+        """temp = list(self.home_phone)
+        temp2 = ""
+        
+        for i in range(1, len(temp)):
+            temp2 += str(temp[i])
+
+        if len(self.home_phone) != 7:
+            raise EmployeeHomePhoneNumberError
+        elif not temp2.isdigit():
+            raise EmployeeHomePhoneNumberError
+        else:
+            return True"""
 
     def ValidateDestination(self):
         self.Name()
