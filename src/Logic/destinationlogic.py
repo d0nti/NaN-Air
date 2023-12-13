@@ -6,7 +6,7 @@ class DestinationLogic:
         self.data_wrapper = data_connection
 
     def register_destination(self, destination_info):
-        temp = VerifyDestination(destination_info, self.search_destination("name"))
+        temp = VerifyDestination(destination_info, self.get_all_destinations())
         temp.ValidateDestination()
         if temp:
             self.data_wrapper.register_destination(destination_info)
