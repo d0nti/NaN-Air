@@ -28,6 +28,9 @@ class EmployeeLogic:
     def search_by_day(self, filter):
         return self.data_wrapper.search_by_day(filter)
     
+    def search_by_not_day(self, filter):
+        return self.data_wrapper.search_by_not_day(filter)
+    
     def sort_by_flight_attendants(self):
         return self.data_wrapper.sort_by_flight_attendants()
     
