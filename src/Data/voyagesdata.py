@@ -7,7 +7,7 @@ from Model.VoyageModel import Voyage
 
 
 class VoyageData:
-    FILE_NAME = "NaN-Air/src/Files/voyages.csv"
+    FILE_NAME = "src/Files/voyages.csv"
 
     def __init__(self, voyages: [Voyage] = []):
         self.voyages = voyages
