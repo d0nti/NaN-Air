@@ -189,6 +189,15 @@ class EmployeeData:
 
             return ret_list
     
+    def search_by_day(self, filter):
+        ret_list = []
+        with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if str(filter) == row["shift_start_date"]:
+                    ret_list.append(row)
+        return ret_list
+    
     def search_by_not_day(self, filter):
          ret_list = []
          with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
