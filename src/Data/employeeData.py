@@ -1,6 +1,4 @@
-from Model.EmployeeModel import Employee
-from Model.EmployeeModel import Pilot
-from Model.EmployeeModel import FlightAttendant
+from Model.EmployeeModel import Pilot, FlightAttendant
 
 import csv
 
@@ -175,19 +173,31 @@ class EmployeeData:
                     filter in row["name"]
                     or filter in row["nid"]
                     or filter in row["role"]
+                    or filter in row["license"]
                 ):  # can use these param to search
                     ret_list.append(row)
         # returns the list of employees that match the search
         return ret_list
+    
+    def update_pilot(self, employee_info: dict):
+        """ Does not replace data yet, 
+        """
+        with open(self.file_name, "w", newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row["nid"] == employee_info["nid"]:
+                    for i in employee_info:
+                        if i != "" and i != None:
+                            row[employee_info[i]] = i
 
     def get_shift_plan(self):
-            ret_list = []
-            with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for row in reader:
-                    ret_list.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
+        ret_list = []
+        with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                ret_list.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
 
-            return ret_list
+        return ret_list
     
     def search_by_day(self, filter):
         ret_list = []

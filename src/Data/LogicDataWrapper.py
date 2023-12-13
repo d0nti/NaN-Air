@@ -12,8 +12,6 @@ class Logic_Data_Wrapper:
         self.airplane_data = AirplaneData()
         self.voyagedata = VoyageData(VoyageData.read_voyages_from_disk())
 
-    def write_voyages_to_disk(self):
-        VoyageData.write_voyages_to_disk(self.voyagedata.get_all_voyages())
 
     def register_pilot(self, employee_info):
         return self.employee_data.register_pilot(employee_info)
@@ -58,7 +56,7 @@ class Logic_Data_Wrapper:
         return self.employee_data.update_flight_attendant(employee_info)
 
     #
-    #       AIRPLANE FUNCTION CALLS FROM HERE DOWN
+    #       AIRPLANE FUNCTION CALLS
     #
 
     def get_all_airplanes(self):
@@ -72,6 +70,9 @@ class Logic_Data_Wrapper:
     #       VOYAGES DATA FUNCTIONS
     #
 
+    def write_voyages_to_disk(self):
+        VoyageData.write_voyages_to_disk(self.voyagedata.get_all_voyages())
+
     def get_all_voyages(self):
         return self.voyagedata.get_all_voyages()
 
@@ -84,12 +85,8 @@ class Logic_Data_Wrapper:
     def copy_to_new_date(self, voyage_id: str, new_date: datetime):
         return self.voyagedata.copy_to_new_date(voyage_id, new_date)
 
-    def make_recurring_voyage(
-        self, voyage_id, interval_in_days: int, end_date: datetime
-    ):
-        return self.voyagedata.make_recurring_voyage(
-            voyage_id, interval_in_days, end_date
-        )
+    def make_recurring_voyage(self, voyage_id, interval_in_days: int, end_date: datetime):
+        return self.voyagedata.make_recurring_voyage(voyage_id, interval_in_days, end_date)
 
     def get_manned_voyages(self):
         return self.voyagedata.get_manned_voyages()
@@ -97,11 +94,10 @@ class Logic_Data_Wrapper:
     def get_unmanned_voyages(self):
         return self.voyagedata.get_unmanned_voyages()
 
-    
     def get_shift_plan(self):
         return self.employee_data.get_shift_plan()
 
- #
+    #
     #       DESTINATION DATA FUNCTIONS
     #
 

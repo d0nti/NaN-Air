@@ -39,7 +39,7 @@ class UIConstants:
     EMPLOYEE_LIST = "Employee list"
     EMPLOYEE_INFORMATION = "Employee Name, Employee SSID, Job Title, Pilot License (If applicable), Home Address, Phone Number, E-mail Address, Home Phone Number (optional), License"          
     REGISTER_EMPLOYEE_INFO = "SSID, Name, Rank, Address, Phonenumber, Home Phone Number(optional), License"
-    UPDATE_EMPLOYEE_INPUT = "Role, Rank, License, Address, Phone number"
+    UPDATE_EMPLOYEE_INPUT = "Role, Rank, License, Address, Phone number, Home Phone Number"
     NAME = "Name"
     SSID = "SSID"
     JOB_TITLE = "Job Title"
