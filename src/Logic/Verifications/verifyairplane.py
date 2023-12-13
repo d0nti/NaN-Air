@@ -1,5 +1,7 @@
 class InvalidInsigniaError(Exception):
     pass
+class InsigniaFormatError(Exception):
+    pass
 
 
 
@@ -29,11 +31,12 @@ class VerifyAirplane:
 
     def verify_insignia(self):
 
-        try: insignia = self.insignia.split("-")
+        insignia = self.insignia.split("-")
         
-        except 
+        if self.insignia.split()[2] != "-":
+            raise InsigniaFormatError()
 
-        if len(insignia) != 2:
+        elif len(insignia) != 2:
             pass#ERROR
 
         elif len(insignia[0]) != 2:
