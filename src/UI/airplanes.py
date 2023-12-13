@@ -89,7 +89,6 @@ class Airplanes:
             new_airplane.plane_type = "NAFokkerF28"
         if plane_type == "3" or plane_type == "3.":
             new_airplane.plane_type = "NAFokkerF100"
-        new_airplane.supplier = input("Please input the name of the new airplanes supplier. ")
         self.logic_wrapper.register_airplane(new_airplane)
 
     def find_airplane(self):

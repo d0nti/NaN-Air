@@ -1,47 +1,151 @@
 class DestinationNameError(Exception):
     pass
+
+
 class DestinationNameExistsError(Exception):
     pass
+
+
 class DestinationCountryError(Exception):
     pass
+
+
 class DestinationCountryExistsError(Exception):
     pass
+
+
 class DestinationAirportError(Exception):
     pass
+
+
+class DestinationAirportExistsError(Exception):
+    pass
+
+
 class DestinationDistanceError(Exception):
     pass
+
+
 class DestinationFlightTimeError(Exception):
     pass
+
+
 class DestinationContactError(Exception):
     pass
+
+
 class DestinationContactExistsError(Exception):
     pass
+
+
 class DestinationContactNumberError(Exception):
     pass
-class DestinationContactNumberError(Exception):
+
+
+class DestinationContactNumberExistsError(Exception):
     pass
 
-class VerifysDestination:
-    def __init__(self, destination_info: object) -> None:
-        pass
 
-    def name(self):
-        pass
+class DestinationContactNumberLenghtError(Exception):
+    pass
 
-    def country(self):
-        pass
 
-    def airport(self):
-        pass
+class VerifyDestination:
+    def __init__(self, destination_info: object, data: list) -> None:
+        self.data = data
+        self.name = destination_info.name
+        self.country = destination_info.country
+        self.airport = destination_info.airport
+        self.distance = destination_info.distance_from_iceland
+        self.contact_name = destination_info.contact_name
+        self.contact_phone_nr = destination_info.contact_phone_nr
 
-    def distance(self):
-        pass
+    def Verify_Destination_Helper(self, info_type):
+        in_use_info = []
 
-    def flight_time(self):
-        pass
+        for i in range(len(self.data)):
+            temp = self.data[i]
+            in_use_info.append(temp.get(str(info_type)))
 
-    def contact(self):
-        pass
-    
-    def contact_number(self):
-        pass
+        return in_use_info
+
+    def Name(self):
+        if self.name.isdigit():
+            raise DestinationNameError
+
+        elif self.name in self.Verify_Destination_Helper("name"):
+            raise DestinationNameExistsError
+
+        else:
+            return True
+
+    def Country(self):
+        if self.country.isdigit():
+            raise DestinationCountryError
+
+        else:
+            return True
+
+    def Airport(self):
+        if self.airport.isdigit():
+            raise DestinationAirportError
+
+        elif self.airport in self.Verify_Destination_Helper("airport"):
+            raise DestinationAirportExistsError
+
+        else:
+            return True
+
+    def Distance(self):
+        if not self.distance.lower().strip("km. ").isdigit():
+            raise DestinationDistanceError
+
+        else:
+            return True
+
+    def Flight_time(self):
+        if not self.Flight_time.isdigit():
+            raise DestinationFlightTimeError
+
+        else:
+            return True
+
+    def Contact(self):
+        if self.contact_name.isdigit():
+            raise DestinationContactError
+
+        elif self.contact_name in self.Verify_Destination_Helper("contact_name"):
+            raise DestinationContactExistsError
+
+        else:
+            return True
+
+    def Contact_number(self):
+        first_digit = self.contact_phone_nr.split()[0]
+
+        if not first_digit == "+":
+            raise DestinationContactNumberError
+
+        elif not self.contact_phone_nr.split().pop(first_digit).isdigit():
+            raise DestinationContactNumberError
+
+        elif self.contact_phone_nr.split().pop(first_digit) != 10:
+            raise DestinationContactNumberLenghtError
+
+        elif self.contact_phone_nr in self.Verify_Destination_Helper(
+            "contact_phone_nr"
+        ):
+            raise DestinationContactNumberExistsError
+
+        else:
+            return True
+
+    def ValidateDestination(self):
+        self.Name()
+        self.Country()
+        self.Airport()
+        self.Distance()
+        self.Flight_time()
+        self.Distance()
+        self.Contact()
+        self.Contact_number()

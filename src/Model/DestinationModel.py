@@ -19,4 +19,4 @@ class Destination:
         self.contact_phone_nr = contact_phone_nr
 
     def ___str__(self):
-        return f"{self.destination_number} {self.country} {self.airport_call_sign} {self.flight_time} {self.distance_from_iceland}"
+        return f"{self.name} {self.country} {self.airport_call_sign} {self.flight_time} {self.distance_from_iceland}  {self.contact_name} {self.contact_phone_nr}"
