@@ -201,29 +201,13 @@ class EmployeeData:
         # returns the list of employees that match the search
         return ret_list
     
-
-    def search_by_not_day(self, filter, exclude_names = []):
+    def search_by_not_day(self, filter):
         ret_list = []
-
         with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                shift_start_date = row["shift_start_date"]
-                shift_end_date = row["shift_end_date"]
-                employee_name = row["name"]
-
-                # Check if filter_date is within the range of the shift
-                if (
-                    shift_start_date <= filter <= shift_end_date
-                    or shift_end_date <= filter <= shift_start_date
-                ):
-                    continue  # Skip this row
-
-                # Check if the employee name is in the exclude_names list
-                if employee_name in exclude_names:
-                    continue  # Skip this row
-
-                ret_list.append(row)
-
+                if str(filter) != row["shift_start_date"]:
+                    ret_list.append(row)
+                elif str(filter) == row["shift_start_date"]:
+                    ret_list = [r for r in ret_list if r["name"] != row["name"]] #if the person is working on that day remove the name from list
         return ret_list
-       
