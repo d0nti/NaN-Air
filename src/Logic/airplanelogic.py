@@ -14,3 +14,5 @@ class AirplaneLogic:
     def register_airplane(self, airplane_info):
         return self.data_wrapper.register_airplane(airplane_info)
     
+    def search_airplane(self, filter):
+        return self.data_wrapper.search_airplane(filter)

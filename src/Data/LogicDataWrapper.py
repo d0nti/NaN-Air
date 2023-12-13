@@ -42,8 +42,8 @@ class Logic_Data_Wrapper:
     def sort_by_heads_of_service(self):
         return self.employee_data.sort_by_heads_of_service()
 
-    def search(self, filter):
-        return self.employee_data.search(filter)
+    def search_employee(self, filter):
+        return self.employee_data.search_employee(filter)
 
     #
     #       AIRPLANE FUNCTION CALLS FROM HERE DOWN
@@ -54,6 +54,9 @@ class Logic_Data_Wrapper:
 
     def register_airplane(self, airplane_info):
         return self.airplane_data.register_airplane(airplane_info)
+
+    def search_airplane(self, filter):
+        return self.airplane_data.search_airplane(filter)
 
     #
     #       VOYAGES DATA FUNCTIONS

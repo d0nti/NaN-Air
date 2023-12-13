@@ -14,6 +14,10 @@ class UI_Logic_Wrapper:
         self.voyages_logic = VoyagesLogic(logic_data_wrapper_instance)
         self.airplane_logic = AirplaneLogic(logic_data_wrapper_instance)
 
+#
+#       EMPLOYEE CALLS
+#
+
     def register_pilot(self, employee_info):
         return self.employee_logic.register_pilot(employee_info)
 
@@ -23,14 +27,8 @@ class UI_Logic_Wrapper:
     def get_all_employees(self):
         return self.employee_logic.get_all_employees()
 
-    def get_all_airplanes(self):
-        return self.airplane_logic.get_all_airplanes()
-
-    def register_airplane(self, airplane_info):
-        return self.airplane_logic.register_airplane(airplane_info)
-
-    def search(self, filter):
-        return self.employee_logic.search(filter)
+    def search_employee(self, filter):
+        return self.employee_logic.search_employee(filter)
     
     def search_by_day(self, filter):
         return self.employee_logic.search_by_day(filter)
@@ -47,8 +45,35 @@ class UI_Logic_Wrapper:
     def sort_by_heads_of_service(self):
         return self.employee_logic.sort_by_heads_of_service()
 
+    def update_pilot(self, employee_info):
+        return self.employee_logic.update_pilot(employee_info)
+    
+    def update_flight_attendant(self, employee_info):
+        return self.employee_logic.update_flight_attendant(employee_info)
+
+#
+#       AIRPLANE CALLS
+#
+
+    def get_all_airplanes(self):
+        return self.airplane_logic.get_all_airplanes()
+
+    def register_airplane(self, airplane_info):
+        return self.airplane_logic.register_airplane(airplane_info)
+    
+    def search_airplane(self, filter):
+        return self.airplane_logic.search_airplane(filter)
+
+#
+#       DESTINATION CALLS
+#
+
     def get_all_destinations(self):
         return self.destination_logic.get_all_destinations()
+
+#
+#       VOYAGE CALLS
+#
 
     def get_all_voyages(self):
         return self.voyages_logic.get_all_voyages()
@@ -77,8 +102,3 @@ class UI_Logic_Wrapper:
     def get_unmanned_voyages(self):
         return self.voyages_logic.get_unmanned_voyages()
     
-    def update_pilot(self, employee_info):
-        return self.employee_logic.update_pilot(employee_info)
-    
-    def update_flight_attendant(self, employee_info):
-        return self.employee_logic.update_flight_attendant(employee_info)
