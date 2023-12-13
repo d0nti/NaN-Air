@@ -66,7 +66,7 @@ class VerifyDestination:
 
         for i in range(len(self.data)):
             temp = self.data[i]
-            in_use_info.append(temp.get(str(info_type)))
+            in_use_info.append(getattr(temp, info_type))
 
         return in_use_info
 
@@ -123,7 +123,6 @@ class VerifyDestination:
 
     def Contact_number(self):
         temp = list(self.contact_phone_nr)
-        temp2 = ""
         print(temp[1:])
 
         if not temp[0] == "+":
@@ -142,19 +141,6 @@ class VerifyDestination:
 
         else:
             return True
-
-        """temp = list(self.home_phone)
-        temp2 = ""
-        
-        for i in range(1, len(temp)):
-            temp2 += str(temp[i])
-
-        if len(self.home_phone) != 7:
-            raise EmployeeHomePhoneNumberError
-        elif not temp2.isdigit():
-            raise EmployeeHomePhoneNumberError
-        else:
-            return True"""
 
     def ValidateDestination(self):
         self.Name()
