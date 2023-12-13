@@ -25,8 +25,14 @@ class UIConstants:
     CONTACT_NAME = "Contact Name"
     CONTACT_PHONE_NUMBER = "Contact Phone Number"
     NO_DESTINATIONS_REGISTERED = "No destinations registered"
-
-
+    SUCCESFULL_REGISTRATION_FOR_DESTINATION = (
+        "Congrats a new destination has been registered"
+    )
+    UPDATE_DESTINATION = "Update Destination"
+    UPDATE_DESTINATION_MESSAGE = (
+        "Please enter in the name of the destination you would like to update"
+    )
+    UPDATE_DESTINATION_INFO = "Contact Name, Contact Phone Number"
 
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
@@ -37,8 +43,10 @@ class UIConstants:
     UPDATE_FLIGHT_ATTENDANT = "Update Flight Attendant"
     SHIFT_PLAN = "Shift Plan"
     EMPLOYEE_LIST = "Employee list"
-    EMPLOYEE_INFORMATION = "Employee Name, Employee SSID, Job Title, Pilot License (If applicable), Home Address, Phone Number, E-mail Address, Home Phone Number (optional), License"          
-    REGISTER_EMPLOYEE_INFO = "SSID, Name, Rank, Address, Phonenumber, Home Phone Number(optional), License"
+    EMPLOYEE_INFORMATION = "Employee Name, Employee SSID, Job Title, Pilot License (If applicable), Home Address, Phone Number, E-mail Address, Home Phone Number (optional), License"
+    REGISTER_EMPLOYEE_INFO = (
+        "SSID, Name, Rank, Address, Phonenumber, Home Phone Number(optional), License"
+    )
     UPDATE_EMPLOYEE_INPUT = "Role, Rank, License, Address, Phone number"
     NAME = "Name"
     SSID = "SSID"
@@ -61,14 +69,12 @@ class UIConstants:
     SHIFT_END_TIME = "Shift End Time (HH-MM)"
     DISPLAY_SHIFT_PLAN = "Display Shift Plan"
 
-    
     REGISTER_NEW_VOYAGE = "Register New Voyage"
     EDIT_VOYAGE = "Edit Voyage"
     POPULATE_VOYAGE = "Populate Voyage"
     DISPLAY_VOYAGES = "Display Voyages"
     CHECK_VOYAGE_STATUS = "Check Voyage Status"
 
-    
     INVALID_INPUT = "Invalid input! Please try again."
     QUIT_MESSAGE = "Bye Bye!"
     DASH_SYMBOL = "-"
@@ -80,51 +86,27 @@ class UIConstants:
     USER_NOT_FOUND = "User Not Found!"
     CONTINUE_MESSAGE = "Press enter to continue"
     GO_BACK_INSTRUCTION = "Press Q and enter to go back"
-    INFORMATION_MESSAGE = "Please Enter the Following Information in the following order:"
-
+    INFORMATION_MESSAGE = (
+        "Please Enter the Following Information in the following order:"
+    )
 
     HEADER = (
-    f"{DASH_SYMBOL * LENGTH_SYMBOL}"
-    + "\n"
-    + "  NaN Air - {}"
-    + "\n"
-    + f"{DASH_SYMBOL * LENGTH_SYMBOL}"
+        f"{DASH_SYMBOL * LENGTH_SYMBOL}"
+        + "\n"
+        + "  NaN Air - {}"
+        + "\n"
+        + f"{DASH_SYMBOL * LENGTH_SYMBOL}"
     )
 
     MAIN_MENU = (
-
-        "1. {}"
-        + "\n"
-        + "2. {}"
-        + "\n"
-        + "3. {}"
-        + "\n"
-        + "4. {}"
-        + "\n"
-        + "q. {}"
+        "1. {}" + "\n" + "2. {}" + "\n" + "3. {}" + "\n" + "4. {}" + "\n" + "q. {}"
     )
 
     THREE_MENU_OPTION = (
-        "1. {}"
-        + "\n"
-        + "2. {}"
-        + "\n"
-        + "3. {}"
-        + "\n"
-        + "b. {}"
-        + "\n"
-        + "q. {}"
-        )
-
-    TWO_MENU_OPTION = (
-        "1. {}"
-        + "\n"
-        + "2. {}"
-        + "\n"
-        + "b. {}"
-        + "\n"
-        + "q. {}"
+        "1. {}" + "\n" + "2. {}" + "\n" + "3. {}" + "\n" + "b. {}" + "\n" + "q. {}"
     )
+
+    TWO_MENU_OPTION = "1. {}" + "\n" + "2. {}" + "\n" + "b. {}" + "\n" + "q. {}"
 
     FOUR_MENU_OPTION = (
         "1. {}"
@@ -155,8 +137,3 @@ class UIConstants:
         + "\n"
         + "q. {}"
     )
-
-
-    
-
-

@@ -1,3 +1,6 @@
+from Model.DestinationModel import Destination
+
+
 class DestinationNameError(Exception):
     pass
 
@@ -51,15 +54,17 @@ class DestinationContactNumberLenghtError(Exception):
 
 
 class VerifyDestination:
-    def __init__(self, destination_info: object, data: list) -> None:
+    def __init__(self, destination_info: Destination, data: list) -> None:
         self.data = data
-        self.name = destination_info.name
-        self.country = destination_info.country
-        self.airport = destination_info.airport
-        self.distance = destination_info.distance_from_Iceland
-        self.flight_time = destination_info.flight_time
-        self.contact_name = destination_info.contact_name
-        self.contact_phone_nr = destination_info.contact_phone_nr
+        self.dest_to_validate = destination_info
+
+        # self.name = destination_info.name
+        # self.country = destination_info.country
+        # self.airport = destination_info.airport
+        # self.distance = destination_info.distance_from_Iceland
+        # self.flight_time = destination_info.flight_time
+        # self.contact_name = destination_info.contact_name
+        # self.contact_phone_nr = destination_info.contact_phone_nr
 
     def Verify_Destination_Helper(self, info_type):
         in_use_info = []
@@ -71,73 +76,70 @@ class VerifyDestination:
         return in_use_info
 
     def Name(self):
-        if self.name.isdigit():
-            raise DestinationNameError
+        if self.dest_to_validate.name.isdigit():
+            raise DestinationNameError()
 
-        elif self.name in self.Verify_Destination_Helper("name"):
-            raise DestinationNameExistsError
+        elif self.dest_to_validate.name in self.Verify_Destination_Helper("name"):
+            raise DestinationNameExistsError()
 
         else:
             return True
 
     def Country(self):
-        if self.country.isdigit():
-            raise DestinationCountryError
+        if self.dest_to_validate.country.isdigit():
+            raise DestinationCountryError()
 
         else:
             return True
 
     def Airport(self):
-        if self.airport.isdigit():
-            raise DestinationAirportError
+        if self.dest_to_validate.airport.isdigit():
+            raise DestinationAirportError()
 
-        elif self.airport in self.Verify_Destination_Helper("airport"):
-            raise DestinationAirportExistsError
+        elif self.dest_to_validate.airport in self.Verify_Destination_Helper("airport"):
+            raise DestinationAirportExistsError()
 
         else:
             return True
 
     def Distance(self):
-        if not self.distance.lower().strip("km. ").isdigit():
-            raise DestinationDistanceError
+        if not self.dest_to_validate.distance.lower().strip("km. ").isdigit():
+            raise DestinationDistanceError()
 
         else:
             return True
 
     def Flight_time(self):
-        if not self.flight_time.isdigit():
-            raise DestinationFlightTimeError
+        if not self.dest_to_validate.flight_time.isdigit():
+            raise DestinationFlightTimeError()
 
         else:
             return True
 
     def Contact(self):
-        if self.contact_name.isdigit():
-            raise DestinationContactError
-
-        elif self.contact_name in self.Verify_Destination_Helper("contact_name"):
-            raise DestinationContactExistsError
+        if self.dest_to_validate.contact_name.isdigit():
+            raise DestinationContactError()
 
         else:
             return True
 
     def Contact_number(self):
-        temp = list(self.contact_phone_nr)
+        temp = list(self.dest_to_validate.contact_phone_nr)
         print(temp[1:])
 
         if not temp[0] == "+":
-            raise DestinationContactNumberError
+            raise DestinationContactNumberError()
 
-        elif not self.contact_phone_nr.strip("+").isdigit():
-            raise DestinationContactNumberError
+        elif not self.dest_to_validate.contact_phone_nr.strip("+").isdigit():
+            raise DestinationContactNumberError()
 
         elif len(temp[1:]) != 10:
-            raise DestinationContactNumberLenghtError
+            raise DestinationContactNumberLenghtError()
 
-        elif self.contact_phone_nr in self.Verify_Destination_Helper(
+        elif self.dest_to_validate.contact_phone_nr in self.Verify_Destination_Helper(
             "contact_phone_nr"
         ):
-            raise DestinationContactNumberExistsError
+            raise DestinationContactNumberExistsError()
 
         else:
             return True
@@ -151,3 +153,9 @@ class VerifyDestination:
         self.Distance()
         self.Contact()
         self.Contact_number()
+
+    def ValidateDestinationUpdate(self, new_contact_name, new_contact_phonen_nr):
+        self.dest_to_validate.contact_name = new_contact_name
+        self.dest_to_validate.contact_phone_nr = new_contact_phonen_nr
+        check = self.Contact() and self.Contact_number()
+        return check

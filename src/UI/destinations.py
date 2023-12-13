@@ -2,6 +2,7 @@ from Logic.UILogicWrapper import UI_Logic_Wrapper
 from UI.Utils.Constants import UIConstants
 from prettytable import PrettyTable
 from Model.DestinationModel import Destination
+from Logic.Verifications.verifydestination import DestinationNameError
 import sys
 
 
@@ -12,10 +13,11 @@ class Destinations:
     def destinations_menu_output(self):
         print(UIConstants.HEADER.format(UIConstants.MANAGE_DESTINATIONS))
         print(
-            UIConstants.THREE_MENU_OPTION.format(
+            UIConstants.FOUR_MENU_OPTION.format(
                 UIConstants.DISPLAY_DESTINATIONS,
                 UIConstants.REGISTER_NEW_DESTINATION,
                 UIConstants.FIND_DESTINATION,
+                UIConstants.UPDATE_DESTINATION,
                 UIConstants.BACK,
                 UIConstants.QUIT,
             )
@@ -24,6 +26,7 @@ class Destinations:
         # print("1. Display Destinations")
         # print("2. Register Destination")
         # print("3. Find Destination")
+        # print("3. Update Destination")
         # print("b. Back")
         # print("q. Quit")
 
@@ -45,11 +48,12 @@ class Destinations:
 
             elif command == "2" or command == "2.":
                 self.register_new_destination()
-                pass
 
             elif command == "3" or command == "3.":
                 self.find_destination()
-                pass
+
+            elif command == "4" or command == "4.":
+                self.update_destination()
 
             else:
                 print(UIConstants.INVALID_INPUT)
@@ -75,9 +79,9 @@ class Destinations:
                     [
                         destination.name,
                         destination.country,
-                        destination.airport_call_sign,
+                        destination.airport,
                         destination.flight_time,
-                        destination.distance_from_iceland,
+                        destination.distance_from_Iceland,
                         destination.contact_name,
                         destination.contact_phone_nr,
                     ]
@@ -130,43 +134,62 @@ class Destinations:
         destination_info_print = UIConstants.DESTINATION_IINFO.split(", ")
         all_destination_info = []
         for i in destination_info_print:
-            print(f"{i}", end = " ")
+            print(f"{i}", end=" ")
             destination_infomation = input()
             all_destination_info.append(destination_infomation)
 
-        name, country, airport, flight_time, distance_from_iceland, contact_name, contact_phone_nr = all_destination_info
-        self.logic_wrapper.register_destination(Destination(name, country, airport, flight_time, distance_from_iceland, contact_name, contact_phone_nr))
+        (
+            name,
+            country,
+            airport,
+            flight_time,
+            distance_from_Iceland,
+            contact_name,
+            contact_phone_nr,
+        ) = all_destination_info
+        try:
+            self.logic_wrapper.register_destination(
+                Destination(
+                    name,
+                    country,
+                    airport,
+                    flight_time,
+                    distance_from_Iceland,
+                    contact_name,
+                    contact_phone_nr,
+                )
+            )
 
-        
+        except DestinationNameError:
+            pass
 
+        else:
+            print("NAME NOT GOOD!!!")
+            print(UIConstants.SUCCESFULL_REGISTRATION_FOR_DESTINATION)
 
     def find_destination(self):
         print(UIConstants.HEADER.format(UIConstants.FIND_DESTINATION))
-        pass
 
-    """def get_sorted_list(self, command):
-        self.command = command
+    def update_destination(self):
+        print(UIConstants.HEADER.format(UIConstants.UPDATE_DESTINATION))
+        print(UIConstants.UPDATE_DESTINATION_MESSAGE)
 
-        if command == "q" or "q.":
-            print(UIConstants.QUIT_MESSAGE)
-            sys.exit
-            pass
+        destination_name = input("User Input: ")
+        destination = self.logic_wrapper.search_destination(destination_name)
+        print(destination)
 
-        elif command == "b" or "q.":
-            pass
+        all_info_to_change = []
+        for change_info in UIConstants.UPDATE_DESTINATION_INFO.split(", "):
+            print(f"{change_info}", end=" ")
+            changed_info = input()
+            all_info_to_change.append(changed_info)
+        contact_name, contact_phone_nr = all_info_to_change
 
-        elif command == "1" or "1.":
-            countries = self.logic_wrapper.sort_by_country()
-            pass    
+        # validate crap
 
-        elif command == "2" or "2.":
-            airports = self.logic_wrapper.sort_by_airport()
-            pass
-
-        elif command == "3" or "3.":
-            flights_durations = self.logic_wrapper.sort_by_flight_duration()
-            pass
-
-        elif command == "4" or "4.":
-            distances_from_Iceland = self.logic_wrapper.sort_by_distance_from_Iceland()
-            pass"""
+        destination.contact_name = ...
+        destination.contact_phone_nr = ...
+        # add try around this
+        self.logic_wrapper.update_destination(
+            destination, contact_name, contact_phone_nr
+        )

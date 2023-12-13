@@ -4,6 +4,7 @@ from Logic.airplanelogic import AirplaneLogic
 from Logic.voyageslogic import VoyagesLogic
 from Data.LogicDataWrapper import Logic_Data_Wrapper
 from datetime import datetime
+from Model.DestinationModel import Destination
 
 
 class UI_Logic_Wrapper:
@@ -63,8 +64,9 @@ class UI_Logic_Wrapper:
 
     def get_all_airplanes(self):
         return self.airplane_logic.get_all_airplanes()
-
+#þetta er comment
     def register_airplane(self, airplane_info):
+        """Þetta er docstring"""
         return self.airplane_logic.register_airplane(airplane_info)
 
     #
@@ -79,6 +81,9 @@ class UI_Logic_Wrapper:
 
     def search_destination(self, filter):
         return self.destination_logic.search_destination(filter)
+    
+    def update_destination(self, destination: Destination, contact_name, contact_phone_nr):
+        return self.destination_logic.update_destination(destination, contact_name, contact_phone_nr)
 
     #
     #       VOYAGE CALLS

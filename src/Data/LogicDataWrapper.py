@@ -3,6 +3,7 @@ from Data.destinationData import DestinationData
 from Data.planeData import AirplaneData
 from Data.voyagesdata import VoyageData
 from datetime import datetime
+from Model.DestinationModel import Destination
 
 
 class Logic_Data_Wrapper:
@@ -44,10 +45,10 @@ class Logic_Data_Wrapper:
 
     def search_employee(self, filter):
         return self.employee_data.search_employee(filter)
-    
+
     def search_by_day(self, filter):
         return self.employee_data.search_by_day(filter)
-    
+
     def search_by_not_day(self, filter):
         return self.employee_data.search_by_not_day(filter)
 
@@ -60,7 +61,6 @@ class Logic_Data_Wrapper:
 
     def register_airplane(self, airplane_info):
         return self.airplane_data.register_airplane(airplane_info)
-
 
     #
     #       VOYAGES DATA FUNCTIONS
@@ -96,11 +96,11 @@ class Logic_Data_Wrapper:
 
     def update_flight_attendant(self, employee_info):
         return self.employee_data.update_flight_attendant(employee_info)
-    
+
     def get_shift_plan(self):
         return self.employee_data.get_shift_plan()
 
- #
+    #
     #       DESTINATION DATA FUNCTIONS
     #
 
@@ -109,6 +109,10 @@ class Logic_Data_Wrapper:
 
     def register_destination(self, destination_info):
         return self.destination_data.register_destination(destination_info)
-    
+
     def search_destination(self, filter):
         return self.destination_data.search_destination(filter)
+
+    def update_destination(self, destination: Destination):
+        """Updates the given instance of the destination in the storage layer"""
+        return self.destination_data.update_destination(destination)
