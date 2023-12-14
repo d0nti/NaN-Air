@@ -48,7 +48,8 @@ class UIConstants:
     REGISTER_EMPLOYEE_INFO = (
         "SSID, Name, Rank, Address, Phonenumber, Home Phone Number(optional), License"
     )
-    UPDATE_EMPLOYEE_INPUT = "Role, Rank, License, Address, Phone number"
+    UPDATE_PILOT_INPUT = "Role, Rank, License, Address, Phone number, Home Phone Number"
+    UPDATE_FLIGHT_ATTENDANT_INPUT = "Role, Rank, Address, Phone number, Home Phone Number"
     NAME = "Name"
     SSID = "SSID"
     JOB_TITLE = "Job Title"

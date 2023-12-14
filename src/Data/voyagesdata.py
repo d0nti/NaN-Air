@@ -107,3 +107,6 @@ class VoyageData:
         for i, voyage in enumerate(self.voyages):
             if voyage_id == voyage.id:
                 self.voyages[i] = replace(voyage, **kwarg)
+
+    
+    

@@ -145,15 +145,16 @@ class Employees:
             ]
 
             for employee in filtered_employees:
+                print(employee)
                 table.add_row(
                     [
-                        employee["nid"],
-                        employee["name"],
-                        employee["role"],
-                        employee["rank"],
-                        employee["license"],
-                        employee["address"],
-                        employee["phone_nr"],
+                        employee.nid,
+                        employee.name,
+                        employee.role,
+                        employee.rank,
+                        employee.license,
+                        employee.address,
+                        employee.phone_nr,
                     ]
                 )
 
@@ -335,7 +336,6 @@ class Employees:
                 print(f"{i}", end=" ")
                 pilot_information = input()
                 all_pilot_information.append(pilot_information)
-                print(all_pilot_information)
 
             if len(all_pilot_information) == 6:
                 ssid, name, rank, address, phone_nr, license = [
@@ -419,59 +419,49 @@ class Employees:
             print(UIConstants.HEADER.format(UIConstants.UPDATE_PILOT))
             print("If you don't wish to change a given detail, leave it empty. \n")
             while True:
-                ssid = input("Enter the SSID or name of the pilot to update: ")
+                ssid = input("Enter the SSID of the pilot to update: ")
                 if len(ssid) == 10:
-                    if self.logic_wrapper.search_employee(ssid):
+                    pilot_to_change = self.logic_wrapper.search_employee(ssid)[0]
+                    if pilot_to_change:
+                        break
+                    else:
+                        print("You have entered the wrong ssid, please try again. ")
+                        pass
+
+            print(UIConstants.UPDATE_PILOT_INPUT)
+            pilot_info_print = UIConstants.UPDATE_PILOT_INPUT.split(", ")
+
+            all_pilot_information = []
+            for i in pilot_info_print:
+                print(f"{i}", end=" ")
+                new_information = input()
+                all_pilot_information.append(new_information)
+
+            self.logic_wrapper.update_pilot(pilot_to_change, all_pilot_information)
+
+        elif command == "2" or command == "2.":
+            print(UIConstants.HEADER.format(UIConstants.UPDATE_FLIGHT_ATTENDANT))
+            print("If you don't wish to change a given detail, leave it empty. \n")
+            while True:
+                ssid = input("Enter the SSID of the flight attendant to update: ")
+                if len(ssid) == 10:
+                    flight_attendant_to_change = self.logic_wrapper.search_employee(ssid)[0]
+                    if flight_attendant_to_change:
                         break
                 else:
                     print("You have entered the wrong ssid, please try again. ")
                     pass
 
-            print(UIConstants.UPDATE_EMPLOYEE_INPUT)
-            pilot_info_print = UIConstants.UPDATE_EMPLOYEE_INPUT.split(", ")
-
-            all_pilot_information = []
-            for i in pilot_info_print:
-                print(f"{i}", end=" ")
-                pilot_information = input()
-                all_pilot_information.append(pilot_information)
-            
-            print(all_pilot_information)
-            print(len(all_pilot_information))
-
-            role, rank, license, address, phone_nr, home_phone_nr = [all_pilot_information[i] for i in range(0, (len(all_pilot_information)))]            
-
-            temp_dict = {"nid":ssid, "role":role, "rank":rank, "license":license, "address":address, "phone_nr":phone_nr, "home_phone_nr":home_phone_nr}
-
-            self.logic_wrapper.update_pilot(temp_dict)
-
-                    
-
-        elif command == "2" or command == "2.":
-            print(UIConstants.HEADER.format(UIConstants.UPDATE_FLIGHT_ATTENDANT))
-            ssid = input("Enter the SSID of the flight attendant to update: ")
-            print(UIConstants.UPDATE_EMPLOYEE_INPUT)
-            flight_attendant_info_print = UIConstants.UPDATE_EMPLOYEE_INPUT.split(", ")
-
+            print(UIConstants.UPDATE_FLIGHT_ATTENDANT_INPUT)
+            flight_attendant_info_print = UIConstants.UPDATE_FLIGHT_ATTENDANT_INPUT.split(", ")
             all_flight_attendant_information = []
+
             for i in flight_attendant_info_print:
                 print(f"{i}", end=" ")
-                flight_attendant_information = input()
-                all_flight_attendant_information.append(flight_attendant_information)
-
-            if len(all_flight_attendant_information) == 4:
-                (
-                    rank,
-                    address,
-                    phone_nr,
-                    home_phone_nr,
-                ) = all_flight_attendant_information
-                employee = FlightAttendant(
-                    ssid, "", "Cabincrew", rank, address, phone_nr
-                )
-                self.logic_wrapper.update_flight_attendant(employee)
-            else:
-                print(UIConstants.INVALID_INPUT)  # ERROR :)
+                new_information = input()
+                all_flight_attendant_information.append(new_information)
+            
+            self.logic_wrapper.update_flight_attendant(flight_attendant_to_change, all_flight_attendant_information)
 
         elif command == "b" or command == "b.":
             return "b"
@@ -509,10 +499,19 @@ class Employees:
         print("Search by:")
         print("1. Working on a specific day")
         print("2. Not working on a specific day")
+        print("b. back")
+        print("q. quit")
 
         command = input("Enter your choice: ")
 
-        if command == "1" or command == "1.":
+        if command == "q" or command == "q.":
+            print(UIConstants.QUIT_MESSAGE)
+            sys.exit()
+
+        elif command == "b" or command == "b.":
+                return "b"
+
+        elif command == "1" or command == "1.":
             filter = input("Enter the day to search for: ") #get the day to search for
             results = self.logic_wrapper.search_by_day(filter)
 
@@ -539,6 +538,7 @@ class Employees:
 
             # Print the table
             print(table)
+            print(f"These employees here above are working on {filter}")
 
         elif command == "2" or command == "2.":
             filter = input("Enter the day to search for: ") #get the day to search for
@@ -568,4 +568,4 @@ class Employees:
 
             # Print the table
             print(table)
-
+            print(f"These employees here above are not working on {filter}")

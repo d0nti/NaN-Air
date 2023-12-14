@@ -50,7 +50,7 @@ class DestinationContactNumberLenghtError(Exception):
 
 
 class VerifyDestination:
-    def __init__(self, destination_info: Destination, data: list) -> None:
+    def __init__(self, destination_info: Destination, data: list):
         self.data = data
         self.dest_to_validate = destination_info
 
