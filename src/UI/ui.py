@@ -80,7 +80,6 @@ class MainMenu:
                 
                 elif command == "3" or command == "3.":
                     
-                    self.destinations.destinations_menu_output() # PRENTAR MENU
                     back = self.destinations.input_prompt_destinations() # LES INPUT
                     if back == "b":
                         break

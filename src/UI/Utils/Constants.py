@@ -83,7 +83,7 @@ class UIConstants:
     LENGTH_SYMBOL = 43
     QUIT = "Quit"
     BACK = "Back"
-    SEARCH = "Search"
+    SEARCH = "Search by:"
     SORT_BY = "Sort by:"
     USER_NOT_FOUND = "User Not Found!"
     CONTINUE_MESSAGE = "Press enter to continue"
@@ -91,8 +91,8 @@ class UIConstants:
     INFORMATION_MESSAGE = (
         "Please Enter the Following Information in the following order:"
     )
-    SEARCH_DESTINATION_MESSAGE = " Please enter in one of the following information for the destination/s you would like to search \
-                                Name, Country, Airport, Flight duration, Distance from Iceland, Contact Name, Contact phone number"
+    SEARCH_DESTINATION_MESSAGE = " Please enter in one of the following information for the destination/s you would like to search:"
+    SEARCH_DESTINATION_MESSAGE_CONTINUE = "Name, Country, Airport, Flight duration, Distance from Iceland, Contact Name, Contact phone number"
     DESTINATION_SEARCH_FILTER_NOT_FOUND_ERROR_MESSAGE = (
         "Note: No destination matched the inputted information "
     )
@@ -114,6 +114,10 @@ class UIConstants:
     )
 
     TWO_MENU_OPTION = "1. {}" + "\n" + "2. {}" + "\n" + "b. {}" + "\n" + "q. {}"
+
+    ONE_MENU_OPTION = (
+        "1. {}" + "\n" + "b. {}" + "\n" + "q. {}"
+    )
 
     FOUR_MENU_OPTION = (
         "1. {}"

@@ -12,7 +12,7 @@ class Destination:
         # self.destination_number = destination_number
         self.name = name
         self.country = country
-        self.airport = airport
+        self.airport = airport.strip("_Airport")
         self.flight_time = flight_time.strip("_hour")
         self.distance_from_Iceland = distance_from_Iceland.strip("km")
         self.contact_name = contact_name
