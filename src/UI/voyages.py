@@ -71,6 +71,7 @@ class Voyages:
             print("5. Choose Staff")
             print("6. Check Voyage Status")
             print("7. Check Voyages an Employee is Working")
+            print("b. back")
             print("q. Quit")
             command = input("User Input: ").lower()
 
@@ -164,11 +165,10 @@ class Voyages:
                 print(f"Employee {employee_name} is working on the above voyages in the week starting on {filter_date}")
             else:
                 print(UIConstants.INVALID_INPUT)
-
+        
     def list_all_voyages(self):
         """Lists all voyages from a file."""
         voyages = self.logic_wrapper.get_all_voyages()
-
         if voyages:
             print_dataclass_as_table(voyages, Voyage)
         else:
@@ -243,10 +243,13 @@ class Voyages:
         while True:
             print("1. List Manned Voyages" )
             print("2. List Unmanned Voyages" )
+            print("b. back")
             print("q. Quit")
 
             command = input("User Input: ")
-            if "1" in command:
+            if command == "b":
+                return "b"
+            elif "1" in command:
                 manned_voyages = self.get_manned_voyages()
 
                 if manned_voyages:
