@@ -14,6 +14,7 @@ from Logic.Verifications.verifydestination import DestinationContactError
 from Logic.Verifications.verifydestination import DestinationContactNumberError
 from Logic.Verifications.verifydestination import DestinationContactNumberExistsError
 from Logic.Verifications.verifydestination import DestinationContactNumberLenghtError
+from Logic.destinationlogic import DestinationSearchFilterNotFoundError
 import sys
 
 
@@ -144,24 +145,25 @@ class Destinations:
 
         destination_info_print = UIConstants.DESTINATION_IINFO.split(", ")
         all_destination_info = []
-        for i in destination_info_print:
-            print(f"{i}", end=" ")
-            destination_infomation = input()
-            all_destination_info.append(destination_infomation)
-
-        (
-            name,
-            country,
-            airport,
-            flight_time,
-            distance_from_Iceland,
-            contact_name,
-            contact_phone_nr,
-        ) = all_destination_info
 
         is_destination_valid = False
         while not is_destination_valid:
             try:
+                for i in destination_info_print:
+                    print(f"{i}", end=" ")
+                    destination_infomation = input()
+                    all_destination_info.append(destination_infomation)
+
+                (
+                    name,
+                    country,
+                    airport,
+                    flight_time,
+                    distance_from_Iceland,
+                    contact_name,
+                    contact_phone_nr,
+                ) = all_destination_info
+
                 self.logic_wrapper.register_destination(
                     Destination(
                         name,
@@ -213,10 +215,47 @@ class Destinations:
 
     def find_destination(self):
         print(UIConstants.HEADER.format(UIConstants.FIND_DESTINATION))
-        print()
+        print(UIConstants.SEARCH_DESTINATION_MESSAGE)
 
-        """"""
+        is_search_destination_valid = False
+        while not is_search_destination_valid:
+            try:
+                print()
+                command = input("User Input: ")
+                searched_destination = self.logic_wrapper.search_destination(command)
 
+                if searched_destination:
+                    table = PrettyTable()
+                    table.field_names = [
+                        UIConstants.NAME,
+                        UIConstants.COUNTRY,
+                        UIConstants.AIRPORT,
+                        UIConstants.FLIGHT_DURATION,
+                        UIConstants.DISTANCE_FROM_ICELAND,
+                        UIConstants.CONTACT_NAME,
+                        UIConstants.CONTACT_PHONE_NUMBER,
+                    ]
+
+                    for destination in searched_destination:
+                        table.add_row(
+                            [
+                                destination.name,
+                                destination.country,
+                                destination.airport,
+                                destination.flight_time + "_hour",
+                                destination.distance_from_Iceland + "km",
+                                destination.contact_name,
+                                destination.contact_phone_nr,
+                            ]
+                        )
+
+                    print(table)
+            except DestinationSearchFilterNotFoundError:
+                print(UIConstants.INVALID_INPUT)
+                print(UIConstants.DESTINATION_SEARCH_FILTER_NOT_FOUND_ERROR_MESSAGE)
+
+            else:
+                is_search_destination_valid = True
 
     def update_destination(self):
         print(UIConstants.HEADER.format(UIConstants.UPDATE_DESTINATION))

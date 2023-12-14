@@ -59,21 +59,32 @@ class DestinationData:
             )
 
     def search_destination(self, filter):
-        searched_destination = None
+        searched_destination = []
+
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                if filter in row["name"]:
-                    searched_destination = Destination(
-                        row["name"],
-                        row["country"],
-                        row["airport"],
-                        row["flight_time"],
-                        row["distance_from_Iceland"],
-                        row["contact_name"],
-                        row["contact_phone_nr"],
+                if (
+                    filter in row["name"]
+                    or filter in row["country"]
+                    or filter in row["airport"]
+                    or filter in row["flight_time"]
+                    or filter in row["distance_from_Iceland"]
+                    or filter in row["contact_name"]
+                    or filter in row["contact_phone_nr"]
+                ):
+                    searched_destination.append(
+                        Destination(
+                            row["name"],
+                            row["country"],
+                            row["airport"],
+                            row["flight_time"],
+                            row["distance_from_Iceland"],
+                            row["contact_name"],
+                            row["contact_phone_nr"],
+                        )
                     )
-        return searched_destination
+                return searched_destination
 
     def update_destination(self, destination: Destination):
         """This function takes in uppdated instance of Destination.

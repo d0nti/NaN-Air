@@ -91,6 +91,11 @@ class UIConstants:
     INFORMATION_MESSAGE = (
         "Please Enter the Following Information in the following order:"
     )
+    SEARCH_DESTINATION_MESSAGE = " Please enter in one of the following information for the destination/s you would like to search \
+                                Name, Country, Airport, Flight duration, Distance from Iceland, Contact Name, Contact phone number"
+    DESTINATION_SEARCH_FILTER_NOT_FOUND_ERROR_MESSAGE = (
+        "Note: No destination matched the inputted information "
+    )
 
     HEADER = (
         f"{DASH_SYMBOL * LENGTH_SYMBOL}"
@@ -140,27 +145,26 @@ class UIConstants:
         + "q. {}"
     )
 
+    # Destination Error Messages
 
-# Destination Error Messages
+    DESTINATION_NAME_ERROR_MESSAGE = "Note: All characters must be in the alphabet"
+    DESTINATION_NAME_EXISTS_ERROR_MESSAGE = (
+        "Note: The name name for the destination already exists"
+    )
 
-DESTINATION_NAME_ERROR_MESSAGE = "Note: All characters must be in the alphabet"
-DESTINATION_NAME_EXISTS_ERROR_MESSAGE = (
-    "Note: The name name for the destination already exists"
-)
+    DESTINATION_COUNTRY_ERROR_MESSAGE = "Note: All character must be in the alphabet"
+    DESTINATION_AIRPORT_ERROR_MESSAGE = "Note: All character must be in the alphabet"
+    DESTINATION_AIRPORT_EXISTS_ERROR_MESSAGE = (
+        "Note: The name for the airport already exists"
+    )
 
-DESTINATION_COUNTRY_ERROR_MESSAGE = "Note: All character must be in the alphabet"
-DESTINATION_AIRPORT_ERROR_MESSAGE = "Note: All character must be in the alphabet"
-DESTINATION_AIRPORT_EXISTS_ERROR_MESSAGE = (
-    "Note: The name for the airport already exists"
-)
+    DESTINATION_DISTANCE_ERROR_MESSAGE = "Note: All characters must be digit"
+    DESTINATION_FLIGHT_TIME_ERROR_MESSAGE = "Note: All character mus be digit"
+    DESTINATION_CONTACT_ERROR_MESSAGE = "Note: All characters must be in the alphabet"
+    DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE = (
+        "Note: the phone number must include + and a 10 digit number"
+    )
 
-DESTINATION_DISTANCE_ERROR_MESSAGE = "Note: All characters must be digit"
-DESTINATION_FLIGHT_TIME_ERROR_MESSAGE = "Note: All character mus be digit"
-DESTINATION_CONTACT_ERROR_MESSAGE = "Note: All characters must be in the alphabet"
-DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE = (
-    "Note: the phone number must include + and a 10 digit number"
-)
-
-DESTINATION_CONTACT_NUMBER_EXISTS_ERROR_MESSAGE = (
-    "Note: The phone number already exists"
-)
+    DESTINATION_CONTACT_NUMBER_EXISTS_ERROR_MESSAGE = (
+        "Note: The phone number already exists"
+    )

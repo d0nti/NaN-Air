@@ -72,7 +72,7 @@ class VerifyDestination:
         return in_use_info
 
     def Name(self):
-        if self.dest_to_validate.name.isalpha():
+        if not self.dest_to_validate.name.isalpha():
             raise DestinationNameError()
 
         elif self.dest_to_validate.name in self.Verify_Destination_Helper("name"):
@@ -82,14 +82,14 @@ class VerifyDestination:
             return True
 
     def Country(self):
-        if self.dest_to_validate.country.isalpha():
+        if not self.dest_to_validate.country.isalpha():
             raise DestinationCountryError()
 
         else:
             return True
 
     def Airport(self):
-        if self.dest_to_validate.airport.isalpha():
+        if not self.dest_to_validate.airport.isalpha():
             raise DestinationAirportError()
 
         elif self.dest_to_validate.airport in self.Verify_Destination_Helper("airport"):
@@ -113,7 +113,7 @@ class VerifyDestination:
             return True
 
     def Contact(self):
-        if self.dest_to_validate.contact_name.isdigit():
+        if not self.dest_to_validate.contact_name.isalpha():
             raise DestinationContactError()
 
         else:
