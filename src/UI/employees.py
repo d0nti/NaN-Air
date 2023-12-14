@@ -438,13 +438,8 @@ class Employees:
         # print("Search by:")
         print("1. Working on a specific day")
         print("2. Not working on a specific day")
-<<<<<<< HEAD
         print("b. Back")
         print("q. Quit")
-=======
-        print("b. back")
-        print("q. quit")
->>>>>>> e8a0abb9376eaf41d71872d4672add752757463e
 
         command = input("Enter your choice: ")
 
@@ -514,13 +509,11 @@ class Employees:
             print(table)
             print(f"These employees here above are not working on {filter}")
 
-<<<<<<< HEAD
         elif command == "b" or command == "b.": #####################<=======
             print("GO BACK!")
             self.employees_menu_output()
             self.input_prompt_employees() #Þetta virkar
             return "b"
-=======
 
     def register_new_pilot(self):
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_PILOT))
@@ -697,4 +690,3 @@ class Employees:
             all_flight_attendant_information.append(new_information)
         
         self.logic_wrapper.update_flight_attendant(flight_attendant_to_change, all_flight_attendant_information)
->>>>>>> e8a0abb9376eaf41d71872d4672add752757463e
