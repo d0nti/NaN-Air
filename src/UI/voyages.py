@@ -70,6 +70,7 @@ class Voyages:
             print("4. Make Recurring Voyage")
             print("5. Choose Staff")
             print("6. Check Voyage Status")
+            print("7. Check Voyages an Employee is Working")
             print("q. Quit")
             command = input("User Input: ").lower()
 
