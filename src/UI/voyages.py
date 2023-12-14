@@ -127,7 +127,14 @@ class Voyages:
                 voyage_id = input("Enter Voyage ID: ")
                 voyage = self.logic_wrapper.find_voyage(voyage_id)
                 print_dataclass_as_table(voyage, Voyage)
+            
+            #employee_name, filter_date
+            elif "7" in command:
+                employee_name = input("Enter employee name: ")
+                filter_date = input("Enter date (YYYY-MM-DD): ")
 
+                self.logic_wrapper.search_by_employee_working_in_week(filter_date, employee_name)
+                print("Searched by employee working in week.")
             else:
                 print(UIConstants.INVALID_INPUT)
 
