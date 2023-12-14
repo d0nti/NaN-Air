@@ -70,6 +70,8 @@ class Voyages:
             print("4. Make Recurring Voyage")
             print("5. Choose Staff")
             print("6. Check Voyage Status")
+            print("7. Check Voyages an Employee is Working")
+            print("b. back")
             print("q. Quit")
             command = input("User Input: ").lower()
 
@@ -128,20 +130,45 @@ class Voyages:
                 voyage = self.logic_wrapper.find_voyage(voyage_id)
                 print_dataclass_as_table(voyage, Voyage)
             
-            #employee_name, filter_date
+            #destination,departure,arrival,captain,copilot,flight_service_manager,flight_attendant,id
             elif "7" in command:
                 employee_name = input("Enter employee name: ")
-                filter_date = input("Enter date (YYYY-MM-DD): ")
+                filter_date = input("Enter start date to search (YYYY-MM-DD): ")
 
-                self.logic_wrapper.search_by_employee_working_in_week(filter_date, employee_name)
-                print("Searched by employee working in week.")
+                voyages_that_an_employee_is_working = self.logic_wrapper.voyages_an_employee_is_working(employee_name, filter_date)
+                table = PrettyTable()
+
+                table.field_names = [
+                    "Destination",
+                    "Departure",
+                    "Arrival",
+                    "Captain",
+                    "Co Pilot",
+                    "Flight Service Manager",
+                    "Flight Attendant",
+                ]
+
+                # Add data rows to the table
+                for row in voyages_that_an_employee_is_working:
+                    table.add_row([
+                        row['destination'],
+                        row['departure'],
+                        row['arrival'],
+                        row['captain'],
+                        row['copilot'],
+                        row['flight_service_manager'],
+                        row['flight_attendant']
+                    ])
+
+                # Print the table
+                print(table)
+                print(f"Employee {employee_name} is working on the above voyages in the week starting on {filter_date}")
             else:
                 print(UIConstants.INVALID_INPUT)
-
+        
     def list_all_voyages(self):
         """Lists all voyages from a file."""
         voyages = self.logic_wrapper.get_all_voyages()
-
         if voyages:
             print_dataclass_as_table(voyages, Voyage)
         else:
@@ -216,10 +243,13 @@ class Voyages:
         while True:
             print("1. List Manned Voyages" )
             print("2. List Unmanned Voyages" )
+            print("b. back")
             print("q. Quit")
 
             command = input("User Input: ")
-            if "1" in command:
+            if command == "b":
+                return "b"
+            elif "1" in command:
                 manned_voyages = self.get_manned_voyages()
 
                 if manned_voyages:

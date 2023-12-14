@@ -53,50 +53,27 @@ class MainMenu:
     def menu_output(self):
         print(HEADER.format("Booking System"))
         print(MAIN_MENU)
-
+        
+    def dostuff(self):
+        self.menu_output()
+        return input("User Input: ").lower()
 
     def input_prompt_mainmenu(self):
             
-        while True:
-            
-            self.menu_output()
-            while True:
-                command = input("User Input: ").lower()
-
-                if command == "1" or command == "1.":
-                    
-                    self.voyages.input_prompt_voyages()
-                    back = self.voyages.input_prompt_voyages()
-                    if back == "b" or back =="b.":
-                        break
-
-                elif command == "2" or command == "2.":
-                    # self.employees.input_prompt_employees() # LES INPUT
-                    
-                    self.employees.employees_menu_output() # PRENTAR MENU
-                    back = self.employees.input_prompt_employees() # LES INPUT. SETT Í BREYTU TIL ÞESS AÐ GETA KALLAÐ Á HANA RÉTT TIL AÐ FARA TILBAKA 
-                    if back == "b":
-                        break
-                
-                elif command == "3" or command == "3.":
-                    
-                    back = self.destinations.input_prompt_destinations() # LES INPUT
-                    if back == "b":
-                        break
-
-                elif command == "4" or command == "4.":
-                    
-                    self.airplanes.airplanes_menu_output()
-                    back = self.airplanes.input_prompt_airplanes()
-                    if back == "b":
-                        break
-                    
-                elif command == "q" or command == "q.":
-                    
-                    print(QUIT_MESSAGE)
-                    sys.exit()
-
-                else:
-                    
-                    print("Invalid input! Please try again")
-                    self.menu_output()  
+        while  (command := self.dostuff()) not in ("b", "b."):
+            if command == "1" or command == "1.": 
+                self.voyages.input_prompt_voyages()
+            elif command == "2" or command == "2.":
+                # self.employees.input_prompt_employees() # LES INPUT
+                #self.employees.employees_menu_output() # PRENTAR MENU
+                self.employees.input_prompt_employees() # LES INPUT. SETT Í BREYTU TIL ÞESS AÐ GETA KALLAÐ Á HANA RÉTT TIL AÐ FARA TILBAKA 
+            elif command == "3" or command == "3.":                   
+                self.destinations.destinations_menu_output() # PRENTAR MENU
+                self.destinations.input_prompt_destinations() # LES INPUT
+            elif command == "4" or command == "4.":                  
+                self.airplanes.airplanes_menu_output()
+                self.airplanes.input_prompt_airplanes()
+            else:                   
+                print("Invalid input! Please try again") 
+                input("press enter to continue") 
+        # end while command

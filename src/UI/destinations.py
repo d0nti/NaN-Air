@@ -1,18 +1,11 @@
-from Logic.UILogicWrapper import UI_Logic_Wrapper
 from UI.Utils.Constants import UIConstants
 from prettytable import PrettyTable
 from Model.DestinationModel import Destination
-from Logic.Verifications.verifydestination import DestinationNameError
-from Logic.Verifications.verifydestination import DestinationNameExistsError
-from Logic.Verifications.verifydestination import DestinationCountryError
-from Logic.Verifications.verifydestination import DestinationAirportError
-from Logic.Verifications.verifydestination import DestinationAirportExistsError
-from Logic.Verifications.verifydestination import DestinationDistanceError
-from Logic.Verifications.verifydestination import DestinationFlightTimeError
-from Logic.Verifications.verifydestination import DestinationContactError
-from Logic.Verifications.verifydestination import DestinationContactNumberError
-from Logic.Verifications.verifydestination import DestinationContactNumberExistsError
-from Logic.Verifications.verifydestination import DestinationContactNumberLenghtError
+from Logic.Verifications.verifydestination import(
+DestinationNameError,DestinationNameExistsError,DestinationCountryError,
+DestinationAirportError,DestinationAirportExistsError,
+DestinationDistanceError,DestinationFlightTimeError,DestinationContactError,DestinationContactNumberError,
+DestinationContactNumberExistsError,DestinationContactNumberLenghtError)
 from Logic.destinationlogic import DestinationSearchFilterNotFoundError
 import sys
 
@@ -56,8 +49,9 @@ class Destinations:
                 return "b"
 
             elif command == "1" or command == "1.":
-                self.list_destinations()
-
+                back = self.list_destinations() #<==== DISPLAY DESTINATIONS
+                if back == "b":
+                    pass
             elif command == "2" or command == "2.":
                 self.register_new_destination()
 
@@ -108,7 +102,7 @@ class Destinations:
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_DESTINATION))
         print(UIConstants.INFORMATION_MESSAGE)
 
-        destination_info_print = UIConstants.DESTINATION_IINFO.split(", ")
+        destination_info_print = UIConstants.DESTINATION_INFO.split(", ")
         all_destination_info = []
 
         is_destination_valid = False

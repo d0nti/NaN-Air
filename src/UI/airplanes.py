@@ -40,16 +40,16 @@ class Airplanes:
                 self.register_new_airplane()
 
             elif command == "3" or command == "3.":
-                pass
+                self.find_airplane()
 
             elif command == "4" or command == "4.":
-                pass
+                self.print_airplane_efficiency()
 
             else:
                 print(UIConstants.INVALID_INPUT)
                 
 
-    def list_airplanes(self):
+    def list_airplanes(self): ### <=== 1. Display Airplanes
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_AIRPLANES))
         airplanes = self.logic_wrapper.get_all_airplanes()
 
@@ -76,7 +76,10 @@ class Airplanes:
                 )
 
             print(table)
-  
+
+
+        self.airplanes_menu_output()
+        self.input_prompt_airplanes()
     
     def register_new_airplane(self):
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_AIRPLANE))
