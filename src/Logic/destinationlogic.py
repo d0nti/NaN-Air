@@ -2,6 +2,10 @@ from Logic.Verifications.verifydestination import VerifyDestination
 from Model.DestinationModel import Destination
 
 
+class DestinationSearchFilterNotFoundError(Exception):
+    pass
+
+
 class DestinationLogic:
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
@@ -16,7 +20,23 @@ class DestinationLogic:
         return self.data_wrapper.get_all_destinations()
 
     def search_destination(self, filter):
-        return self.data_wrapper.search_destination(filter)
+        all_destinations = self.get_all_destinations()
+        found_destination = None
+        for destination in all_destinations:
+            if (
+                destination.name == filter
+                or destination.country == filter
+                or destination.airport == filter
+                or destination.flight_time == filter
+                or destination.distance_from_Iceland == filter
+                or destination.contact_name == filter
+                or destination.contact_phone_nr == filter
+            ):
+                found_destination = destination
+        if found_destination != None:
+            return self.data_wrapper.search_destination(filter)
+        else:
+            raise DestinationSearchFilterNotFoundError
 
     def update_destination(
         self, destination: Destination, contact_name, contact_phone_nr
