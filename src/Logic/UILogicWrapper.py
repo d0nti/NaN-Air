@@ -49,11 +49,11 @@ class UI_Logic_Wrapper:
     def sort_by_heads_of_service(self):
         return self.employee_logic.sort_by_heads_of_service()
 
-    def update_pilot(self, employee_info):
-        return self.employee_logic.update_pilot(employee_info)
+    def update_pilot(self, employee_info, new_employee_info):
+        return self.employee_logic.update_pilot(employee_info, new_employee_info)
 
-    def update_flight_attendant(self, employee_info):
-        return self.employee_logic.update_flight_attendant(employee_info)
+    def update_flight_attendant(self, employee_info, new_employee_info):
+        return self.employee_logic.update_flight_attendant(employee_info, new_employee_info)
 
     def get_shift_plan(self):
         return self.employee_logic.get_shift_plan()
@@ -64,9 +64,8 @@ class UI_Logic_Wrapper:
 
     def get_all_airplanes(self):
         return self.airplane_logic.get_all_airplanes()
-#þetta er comment
+
     def register_airplane(self, airplane_info):
-        """Þetta er docstring"""
         return self.airplane_logic.register_airplane(airplane_info)
 
     #
