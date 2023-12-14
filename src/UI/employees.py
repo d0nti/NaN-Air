@@ -454,7 +454,7 @@ class Employees:
 
             for row in results:
                 table.add_row([
-                    row['ssid'],
+                    row['nid'],
                     row['name'],
                     row['shift_start_date'],
                     row['shift_start_time'],

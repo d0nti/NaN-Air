@@ -132,7 +132,7 @@ class Voyages:
             #destination,departure,arrival,captain,copilot,flight_service_manager,flight_attendant,id
             elif "7" in command:
                 employee_name = input("Enter employee name: ")
-                filter_date = input("Enter date (YYYY-MM-DD): ")
+                filter_date = input("Enter start date to search (YYYY-MM-DD): ")
 
                 voyages_that_an_employee_is_working = self.logic_wrapper.voyages_an_employee_is_working(employee_name, filter_date)
                 table = PrettyTable()
