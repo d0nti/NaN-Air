@@ -111,7 +111,7 @@ class Employees:
             filtered_employees = self.logic_wrapper.search_employee(filter)
             table = PrettyTable()
 
-                table.field_names = [
+            table.field_names = [
                     UIConstants.SSID,
                     UIConstants.NAME,
                     UIConstants.JOB_TITLE,
@@ -121,7 +121,7 @@ class Employees:
                     UIConstants.PHONE_NUMBER,
                 ]
 
-                for employee in filtered_employees:
+            for employee in filtered_employees:
                     table.add_row(
                         [
                             employee.nid,
@@ -133,8 +133,8 @@ class Employees:
                             employee.phone_nr,
                         ]
                     )
-                print(table)
-                print(
+            print(table)
+            print(
                     UIConstants.TWO_MENU_OPTION.format(
                         UIConstants.SEARCH,
                         UIConstants.SORT_BY,
@@ -142,8 +142,8 @@ class Employees:
                         UIConstants.QUIT,
                     )
                 )
-            else:
-                pass
+        else:
+            pass
 
     def get_sorted_list(self, command):
         self.command = command
