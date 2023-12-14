@@ -493,6 +493,7 @@ class Employees:
             table.add_row(row)
 
         # Print the table
+        print(UIConstants.HEADER.format(UIConstants.SHIFT_PLAN))
         print(table)
 
         # Menu for searching by working or not working on a specific day

@@ -113,7 +113,7 @@ class VerifyDestination:
             return True
 
     def Contact(self):
-        if self.dest_to_validate.contact_name.isdigit():
+        if not self.dest_to_validate.contact_name.isalpha():
             raise DestinationContactError()
 
         else:
