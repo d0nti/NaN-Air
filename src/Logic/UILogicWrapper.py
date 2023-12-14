@@ -119,3 +119,7 @@ class UI_Logic_Wrapper:
 
     def get_unmanned_voyages(self):
         return self.voyages_logic.get_unmanned_voyages()
+    
+    def search_by_employee_working_in_week(self, filter_date):
+        return self.voyages_logic.search_by_employee_working_in_week(filter_date)
+

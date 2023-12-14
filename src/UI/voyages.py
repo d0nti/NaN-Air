@@ -127,6 +127,14 @@ class Voyages:
                 voyage_id = input("Enter Voyage ID: ")
                 voyage = self.logic_wrapper.find_voyage(voyage_id)
                 print_dataclass_as_table(voyage, Voyage)
+            
+            elif "7" in command:
+                employee_name = input("Enter employee name: ")
+                filter_date = input("Enter date (YYYY-MM-DD): ")
+                end_date = input("Enter end date (YYYY-MM-DD): ")                
+                self.logic_wrapper.make_recurring_voyage(
+                    employee_name, datetime.fromisoformat(filter_date, end_date)
+                )
 
             else:
                 print(UIConstants.INVALID_INPUT)

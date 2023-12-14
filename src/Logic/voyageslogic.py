@@ -39,3 +39,6 @@ class VoyagesLogic:
 
     def set_staff(self, voyage_id: str, **kwarg):
         return self.data_wrapper.set_staff(voyage_id, **kwarg)
+    
+    def search_by_employee_working_in_week (self, filter_date):
+        return self.data_wrapper.search_by_employee_working_in_week(filter_date)
