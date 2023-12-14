@@ -99,7 +99,7 @@ class VerifyDestination:
             return True
 
     def Distance(self):
-        if not self.dest_to_validate.distance.isdigit():
+        if not self.dest_to_validate.distance_from_Iceland.isdigit():
             raise DestinationDistanceError()
 
         else:
