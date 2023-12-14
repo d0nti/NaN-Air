@@ -44,10 +44,10 @@ class Logic_Data_Wrapper:
         return self.employee_data.search_employee(filter)
 
     def search_by_day(self, filter):
-        return self.employee_data.search_by_day(filter)
+        return self.employee_data.search_by_working_on_day(filter)
 
     def search_by_not_day(self, filter):
-        return self.employee_data.search_by_not_day(filter)
+        return self.employee_data.search_by_not_working_on_day(filter)
 
     def update_pilot(self, employee_info):
         return self.employee_data.update_pilot(employee_info)
@@ -122,3 +122,6 @@ class Logic_Data_Wrapper:
     def update_destination(self, destination: Destination):
         """Updates the given instance of the destination in the storage layer"""
         return self.destination_data.update_destination(destination)
+    
+    def voyages_an_employee_is_working(self, filter_date, employee_name):
+        return self.voyagedata.voyages_an_employee_is_working(filter_date, employee_name)

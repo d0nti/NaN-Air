@@ -1,8 +1,12 @@
-from Logic.UILogicWrapper import UI_Logic_Wrapper
 from UI.Utils.Constants import UIConstants
 from prettytable import PrettyTable
 from Model.DestinationModel import Destination
-from Logic.Verifications.verifydestination import DestinationNameError
+from Logic.Verifications.verifydestination import(
+DestinationNameError,DestinationNameExistsError,DestinationCountryError,
+DestinationCountryExistsError,DestinationAirportError,DestinationAirportExistsError,
+DestinationDistanceError,DestinationFlightTimeError,DestinationContactError,DestinationContactNumberError,
+DestinationContactNumberExistsError,DestinationContactNumberLenghtError)
+from Logic.destinationlogic import DestinationSearchFilterNotFoundError
 import sys
 
 
@@ -81,8 +85,8 @@ class Destinations:
                         destination.name,
                         destination.country,
                         destination.airport,
-                        destination.flight_time,
-                        destination.distance_from_Iceland,
+                        destination.flight_time + "_hour",
+                        destination.distance_from_Iceland + "km",
                         destination.contact_name,
                         destination.contact_phone_nr,
                     ]
@@ -136,25 +140,18 @@ class Destinations:
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_DESTINATION))
         print(UIConstants.INFORMATION_MESSAGE)
 
-        destination_info_print = UIConstants.DESTINATION_IINFO.split(", ")
+        destination_info_print = UIConstants.DESTINATION_INFO.split(", ")
         all_destination_info = []
-        for i in destination_info_print:
-            print(f"{i}", end=" ")
-            destination_infomation = input()
-            all_destination_info.append(destination_infomation)
 
-        (
-            name,
-            country,
-            airport,
-            flight_time,
-            distance_from_Iceland,
-            contact_name,
-            contact_phone_nr,
-        ) = all_destination_info
-        try:
-            self.logic_wrapper.register_destination(
-                Destination(
+        is_destination_valid = False
+        while not is_destination_valid:
+            try:
+                for i in destination_info_print:
+                    print(f"{i}", end=" ")
+                    destination_infomation = input()
+                    all_destination_info.append(destination_infomation)
+
+                (
                     name,
                     country,
                     airport,
@@ -162,18 +159,100 @@ class Destinations:
                     distance_from_Iceland,
                     contact_name,
                     contact_phone_nr,
+                ) = all_destination_info
+
+                self.logic_wrapper.register_destination(
+                    Destination(
+                        name,
+                        country,
+                        airport,
+                        flight_time,
+                        distance_from_Iceland,
+                        contact_name,
+                        contact_phone_nr,
+                    )
                 )
-            )
 
-        except DestinationNameError:
-            pass
+            except DestinationNameError:
+                print(UIConstants.DESTINATION_NAME_ERROR_MESSAGE)
 
-        else:
-            print("NAME NOT GOOD!!!")
-            print(UIConstants.SUCCESFULL_REGISTRATION_FOR_DESTINATION)
+            except DestinationNameExistsError:
+                print(UIConstants.DESTINATION_NAME_EXISTS_ERROR_MESSAGE)
+
+            except DestinationCountryError:
+                print(UIConstants.DESTINATION_COUNTRY_ERROR_MESSAGE)
+
+            except DestinationAirportError:
+                print(UIConstants.DESTINATION_AIRPORT_ERROR_MESSAGE)
+
+            except DestinationAirportExistsError:
+                print(UIConstants.DESTINATION_AIRPORT_EXISTS_ERROR_MESSAGE)
+
+            except DestinationDistanceError:
+                print(UIConstants.DESTINATION_DISTANCE_ERROR_MESSAGE)
+
+            except DestinationFlightTimeError:
+                print(UIConstants.DESTINATION_FLIGHT_TIME_ERROR_MESSAGE)
+
+            except DestinationContactError:
+                print(UIConstants.DESTINATION_CONTACT_ERROR_MESSAGE)
+
+            except DestinationContactNumberError:
+                print(UIConstants.DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE)
+
+            except DestinationContactNumberExistsError:
+                print(UIConstants.DESTINATION_CONTACT_NUMBER_EXISTS_ERROR_MESSAGE)
+
+            except DestinationContactNumberLenghtError:
+                print(UIConstants.DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE)
+
+            else:
+                print(UIConstants.SUCCESFULL_REGISTRATION_FOR_DESTINATION)
+                is_destination_valid = True
 
     def find_destination(self):
         print(UIConstants.HEADER.format(UIConstants.FIND_DESTINATION))
+        print(UIConstants.SEARCH_DESTINATION_MESSAGE)
+
+        is_search_destination_valid = False
+        while not is_search_destination_valid:
+            try:
+                print()
+                command = input("User Input: ")
+                searched_destination = self.logic_wrapper.search_destination(command)
+
+                if searched_destination:
+                    table = PrettyTable()
+                    table.field_names = [
+                        UIConstants.NAME,
+                        UIConstants.COUNTRY,
+                        UIConstants.AIRPORT,
+                        UIConstants.FLIGHT_DURATION,
+                        UIConstants.DISTANCE_FROM_ICELAND,
+                        UIConstants.CONTACT_NAME,
+                        UIConstants.CONTACT_PHONE_NUMBER,
+                    ]
+
+                    for destination in searched_destination:
+                        table.add_row(
+                            [
+                                destination.name,
+                                destination.country,
+                                destination.airport,
+                                destination.flight_time + "_hour",
+                                destination.distance_from_Iceland + "km",
+                                destination.contact_name,
+                                destination.contact_phone_nr,
+                            ]
+                        )
+
+                    print(table)
+            except DestinationSearchFilterNotFoundError:
+                print(UIConstants.INVALID_INPUT)
+                print(UIConstants.DESTINATION_SEARCH_FILTER_NOT_FOUND_ERROR_MESSAGE)
+
+            else:
+                is_search_destination_valid = True
 
     def update_destination(self):
         print(UIConstants.HEADER.format(UIConstants.UPDATE_DESTINATION))
@@ -181,7 +260,33 @@ class Destinations:
 
         destination_name = input("User Input: ")
         destination = self.logic_wrapper.search_destination(destination_name)
-        print(destination)
+
+        if destination:
+            table = PrettyTable()
+            table.field_names = [
+                UIConstants.NAME,
+                UIConstants.COUNTRY,
+                UIConstants.AIRPORT,
+                UIConstants.FLIGHT_DURATION,
+                UIConstants.DISTANCE_FROM_ICELAND,
+                UIConstants.CONTACT_NAME,
+                UIConstants.CONTACT_PHONE_NUMBER,
+            ]
+
+            table.add_row(
+                [
+                    destination.name,
+                    destination.country,
+                    destination.airport,
+                    destination.flight_time + "_hour",
+                    destination.distance_from_Iceland + "km",
+                    destination.contact_name,
+                    destination.contact_phone_nr,
+                ]
+            )
+
+            print(table)
+            print(UIConstants.INFORMATION_MESSAGE)
 
         all_info_to_change = []
         for change_info in UIConstants.UPDATE_DESTINATION_INFO.split(", "):
@@ -190,11 +295,24 @@ class Destinations:
             all_info_to_change.append(changed_info)
         contact_name, contact_phone_nr = all_info_to_change
 
-        # validate crap
+        is_update_valid = False
+        while not is_update_valid:
+            try:
+                self.logic_wrapper.update_destination(
+                    destination, contact_name, contact_phone_nr
+                )
+            except DestinationContactError:
+                print(UIConstants.DESTINATION_CONTACT_ERROR_MESSAGE)
 
-        destination.contact_name = ...
-        destination.contact_phone_nr = ...
-        # add try around this
-        self.logic_wrapper.update_destination(
-            destination, contact_name, contact_phone_nr
-        )
+            except DestinationContactNumberError:
+                print(UIConstants.DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE)
+
+            except DestinationContactNumberLenghtError:
+                print(UIConstants.DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE)
+
+            except DestinationContactNumberExistsError:
+                print(UIConstants.DESTINATION_CONTACT_NUMBER_EXISTS_ERROR_MESSAGE)
+
+            else:
+                print(UIConstants.SUCCESFULL_UPDATE_FOR_DESTINATION)
+                is_update_valid = True

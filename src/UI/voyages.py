@@ -70,6 +70,7 @@ class Voyages:
             print("4. Make Recurring Voyage")
             print("5. Choose Staff")
             print("6. Check Voyage Status")
+            print("7. Check Voyages an Employee is Working")
             print("q. Quit")
             command = input("User Input: ").lower()
 
@@ -127,7 +128,40 @@ class Voyages:
                 voyage_id = input("Enter Voyage ID: ")
                 voyage = self.logic_wrapper.find_voyage(voyage_id)
                 print_dataclass_as_table(voyage, Voyage)
+            
+            #destination,departure,arrival,captain,copilot,flight_service_manager,flight_attendant,id
+            elif "7" in command:
+                employee_name = input("Enter employee name: ")
+                filter_date = input("Enter start date to search (YYYY-MM-DD): ")
 
+                voyages_that_an_employee_is_working = self.logic_wrapper.voyages_an_employee_is_working(employee_name, filter_date)
+                table = PrettyTable()
+
+                table.field_names = [
+                    "Destination",
+                    "Departure",
+                    "Arrival",
+                    "Captain",
+                    "Co Pilot",
+                    "Flight Service Manager",
+                    "Flight Attendant",
+                ]
+
+                # Add data rows to the table
+                for row in voyages_that_an_employee_is_working:
+                    table.add_row([
+                        row['destination'],
+                        row['departure'],
+                        row['arrival'],
+                        row['captain'],
+                        row['copilot'],
+                        row['flight_service_manager'],
+                        row['flight_attendant']
+                    ])
+
+                # Print the table
+                print(table)
+                print(f"Employee {employee_name} is working on the above voyages in the week starting on {filter_date}")
             else:
                 print(UIConstants.INVALID_INPUT)
 

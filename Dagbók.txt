@@ -172,3 +172,12 @@ Anton: halda áfram með UI og laga loopur þar sem b og q virkar ekki
 Marvin: Shift plan
 Viggó: logic og hjálpa alls staðar
 
+14. des
+Í dag ætlum við lengi og reyna klára allt saman. 
+
+Verkefnaskipting:
+Hera: klára destination
+Andrea: Voyages
+Anton: laga b og q alls staðar
+Marvin: prentvænt yfirlit sem sýnir allar vinnuferðir starfsmanns í ákveðinni viku
+Viggó: klára update employee
