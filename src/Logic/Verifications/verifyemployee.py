@@ -53,8 +53,7 @@ class VerifyFlightAttendant:
         info_in_use = []
 
         for i in range(len(self.all_employee_data)):
-            index_data = self.all_employee_data[i]
-            info_in_use.append(getattr(index_data, info_type))
+            info_in_use.append(getattr(self.all_employee_data[i], info_type))
 
         return info_in_use
 
@@ -172,8 +171,7 @@ class VerifyPilot(VerifyFlightAttendant):
         info_in_use = []
 
         for i in range(len(self.all_employee_info)):
-            index_data = self.all_employee_info[i]
-            info_in_use.append(getattr(index_data, info_type))
+            info_in_use.append(getattr(self.all_employee_info[i], info_type))
 
         return info_in_use
 

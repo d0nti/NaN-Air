@@ -21,8 +21,7 @@ class VerifyAirplane:
         in_use_info = []
 
         for i in range(len(self.all_airplane_data)):
-            temp = self.all_airplane_data[i]
-            in_use_info.append(getattr(temp, info_type))    # getattr kallar á method 'info_type' í classa temp
+            in_use_info.append(getattr(self.all_airplane_data[i], info_type))    # getattr kallar á method 'info_type' í classa temp
 
         return in_use_info
 
