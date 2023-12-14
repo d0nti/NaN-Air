@@ -11,11 +11,11 @@ class EmployeeData:
 
     # frá fyrirlestri
     def get_all_employees(self):
-        ret_list = []
+        all_employees = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                ret_list.append(
+                all_employees.append(
                     Pilot(
                         row["nid"],
                         row["name"],
@@ -26,15 +26,15 @@ class EmployeeData:
                     )
                 )
 
-        return ret_list
+        return all_employees
 
     def sort_by_captains(self):
-        ret_list = []
+        captains = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if row["rank"] == "Captain":
-                    ret_list.append(
+                    captains.append(
                         Pilot(
                             row["nid"],
                             row["name"],
@@ -45,15 +45,15 @@ class EmployeeData:
                             row["license"],
                         )
                     )
-        return ret_list
+        return captains
 
     def sort_by_co_pilots(self):
-        ret_list = []
+        co_pilots = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if row["rank"] == "Copilot":
-                    ret_list.append(
+                    co_pilots.append(
                         Pilot(
                             row["nid"],
                             row["name"],
@@ -64,16 +64,16 @@ class EmployeeData:
                             row["license"],
                         )
                     )
-        return ret_list
+        return co_pilots
 
 
     def sort_by_flight_attendants(self):
-        ret_list = []
+        flight_attendants = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if row["rank"] == "Flight Attendant":
-                    ret_list.append(
+                    flight_attendants.append(
                         FlightAttendant(
                             row["nid"],
                             row["name"],
@@ -83,15 +83,15 @@ class EmployeeData:
                             row["phone_nr"],
                         )
                     )
-        return ret_list
+        return flight_attendants
 
     def sort_by_heads_of_service(self):
-        ret_list = []
+        heads_of_service = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if row["rank"] == "Flight Service Manager":
-                    ret_list.append(
+                    heads_of_service.append(
                         FlightAttendant(
                             row["nid"],
                             row["name"],
@@ -101,7 +101,7 @@ class EmployeeData:
                             row["phone_nr"],
                         )
                     )
-        return ret_list
+        return heads_of_service
 
         # extra_sort = self.get_all_employees()
         # pilot_list = []
@@ -165,7 +165,7 @@ class EmployeeData:
 
     def search_employee(self, filter):
         # takes a input from ui and searches for it in the csv file
-        ret_list = []
+        search_result = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
@@ -175,9 +175,9 @@ class EmployeeData:
                     or filter in row["role"]
                     or filter in row["license"]
                 ):  # can use these param to search
-                    ret_list.append(row)
+                    search_result.append(row)
         # returns the list of employees that match the search
-        return ret_list
+        return search_result
     
     def update_pilot(self, employee_info: dict):
         """ Does not replace data yet, 
@@ -191,24 +191,25 @@ class EmployeeData:
                             row[employee_info[i]] = i
 
     def get_shift_plan(self):
-        ret_list = []
+        shift_plan = []
         with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                ret_list.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
+                shift_plan.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
 
-        return ret_list
+        return shift_plan
     
-    def search_by_day(self, filter):
-        ret_list = []
+    def search_by_working_on_day(self, filter):
+        employees_working = []
         with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if str(filter) == row["shift_start_date"]:
-                    ret_list.append(row)
-        return ret_list
+                    employees_working.append(row)
+        return employees_working
     
-    def search_by_not_day(self, filter_date):
+    def search_by_not_working_on_day(self, filter_date):
+        employees_not_working = []
         with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
 
@@ -217,7 +218,7 @@ class EmployeeData:
             csvfile.seek(0)
             next(reader)
 
-            ret_list = [row for row in reader if row["name"] not in working_employees]
+            employees_not_working = [row for row in reader if row["name"] not in working_employees]
 
-        return ret_list
+        return employees_not_working
     
