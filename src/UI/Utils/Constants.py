@@ -16,7 +16,7 @@ class UIConstants:
     DISPLAY_DESTINATIONS = "Display Destinations"
     REGISTER_NEW_DESTINATION = "Register New Destination"
     FIND_DESTINATION = "Find Destination"
-    DESTINATION_IINFO = "Name, Country, Airport, Flight Time, Distance from Iceland, Contact Name, Contact Phone Number"
+    DESTINATION_INFO = "Name, Country, Airport, Flight Time, Distance from Iceland, Contact Name, Contact Phone Number"
     REGISTER_DESTINATION_MESSAGE = "A new destination has been added to the system"
     COUNTRY = "Country"
     AIRPORT = "Airport"
@@ -25,7 +25,7 @@ class UIConstants:
     CONTACT_NAME = "Contact Name"
     CONTACT_PHONE_NUMBER = "Contact Phone Number"
     NO_DESTINATIONS_REGISTERED = "No destinations registered"
-    SUCCESFULL_REGISTRATION_FOR_DESTINATION = (
+    SUCCESSFULL_REGISTRATION_FOR_DESTINATION = (
         "Congrats a new destination has been registered"
     )
     UPDATE_DESTINATION = "Update Destination"
@@ -33,7 +33,7 @@ class UIConstants:
         "Please enter in the name of the destination you would like to update"
     )
     UPDATE_DESTINATION_INFO = "Contact Name, Contact Phone Number"
-    SUCCESFULL_UPDATE_FOR_DESTINATION = "Information has been sucessfully updated"
+    SUCCESSFULL_UPDATE_FOR_DESTINATION = "Information has been sucessfully updated"
 
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
@@ -168,3 +168,21 @@ class UIConstants:
     DESTINATION_CONTACT_NUMBER_EXISTS_ERROR_MESSAGE = (
         "Note: The phone number already exists"
     )
+
+    # Employee Error Messages
+
+    EMPLOYEE_SSID_LENGTH_ERROR = "Note: The SSID you entered is either too short or too long"
+    EMPLOYEE_SSID_EXISTS_ERROR = "Note: The SSID you entered is already assigned to an employee"
+    EMPLOYEE_SSID_FORMAT_ERROR = "Note: The SSID you entered contains non-numerical characters"
+    EMPLOYEE_PILOT_AGE_ERROR = "Note: The pilot you tried to register is either too old or too young"
+    EMPLOYEE_NAME_LONG_ERROR = "Note: The name you tried to enter is too long"
+    EMPLOYEE_NAME_SHORT_ERROR = "Note: The name you tried to enter is too short"
+    EMPLOYEE_ROLE_ERROR = "Note: The role you tried to assign does not exist"
+    EMPLOYEE_RANK_ERROR = "Note: The rank you tried to assign does not exist"
+    EMPLOYEE_ADDRESS_FORMAT_ERROR = "Note: The address you tried to enter is of an invalid format"
+    EMPLOYEE_PHONE_NUMBER_ERROR = "Note: The phone number you tried to assign to that employee is of an invalid format"
+    EMPLOYEE_HOME_PHONE_NUMBER_ERROR = "Note: The home phone number you tried to assign to that employee is of an invalid format"
+    PILOT_LICENSE_ERROR = "Note: The license you tried to enter is invalid"
+    SUCCESSFULL_REGISTRATION_FOR_PILOT = "Congratulations! You've successfully registered a pilot."
+    SUCCESSFULL_REGISTRATION_FOR_FLIGHT_ATTENDANT = "Congratulations! You've successfully registered a flight attendant."
+

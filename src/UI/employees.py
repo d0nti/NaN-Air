@@ -1,6 +1,11 @@
 from prettytable import PrettyTable
 from UI.Utils.Constants import UIConstants
 from Model.EmployeeModel import Pilot, FlightAttendant
+from Logic.Verifications.verifyemployee import(
+EmployeeSsidLenError,EmployeeSsidExistsError,SsidNumError,
+EmployeeAgeError,EmployeeNameLongError,EmployeeNameShortError,
+EmployeeRoleError,EmployeeRankError,EmployeeAddressError,
+EmployeePhoneNumberError,EmployeeHomePhoneNumberError,PilotLicenseError)
 import sys
 
 
@@ -306,6 +311,7 @@ class Employees:
 
         pass
 
+
     def register_new_employee(self):
         """This function prints a new menu for the user, which allows
         them to either create a new pilot or flight attendant.
@@ -327,72 +333,10 @@ class Employees:
         # print("")
         command = input("User input: ")
         if command == "1" or command == "1.":
-            print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_PILOT))
-            print(UIConstants.INFORMATION_MESSAGE)
-            pilot_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
-
-            all_pilot_information = []
-            for i in pilot_info_print:
-                print(f"{i}", end=" ")
-                pilot_information = input()
-                all_pilot_information.append(pilot_information)
-
-            if len(all_pilot_information) == 6:
-                ssid, name, rank, address, phone_nr, license = [
-                    all_pilot_information[i]
-                    for i in range(0, (len(all_pilot_information)))
-                ]
-                self.logic_wrapper.register_pilot(
-                    Pilot(ssid, name, "Pilot", rank, address, phone_nr, license)
-                )
-
-            elif len(all_pilot_information) == 7:
-                ssid, name, rank, address, phone_nr, home_phone_nr, license = [
-                    all_pilot_information[i]
-                    for i in range(0, (len(all_pilot_information)))
-                ]
-                self.logic_wrapper.register_pilot(
-                    Pilot(
-                        ssid, name, "Pilot", rank, address, phone_nr, home_phone_nr, license
-                    )
-                )
-            else:
-                pass  # ERROR :)
+            self.register_new_pilot()
 
         elif command == "2" or command == "2.":
-            print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_FLIGHT_ATTENDANT))
-            print(UIConstants.INFORMATION_MESSAGE)
-            flight_attendant_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
-            flight_attendant_info_print = flight_attendant_info_print[0:-2]
-
-            all_flight_attendant_information = []
-            for i in flight_attendant_info_print[0 : len(flight_attendant_info_print)]:
-                print(f"{i}", end=" ")
-                flight_attendant_information = input()
-                all_flight_attendant_information.append(flight_attendant_information)
-
-            if len(all_flight_attendant_information) == 5:
-                ssid, name, rank, address, phone_nr = [
-                    all_flight_attendant_information[i]
-                    for i in range(0, (len(all_flight_attendant_information)))
-                ]
-                self.logic_wrapper.register_flight_attendant(
-                    FlightAttendant(ssid, name, "Cabincrew", rank, address, phone_nr)
-                )
-
-            elif len(all_flight_attendant_information) == 6:
-                ssid, name, rank, address, phone_nr, home_phone_nr = [
-                    all_flight_attendant_information[i]
-                    for i in range(0, (len(all_flight_attendant_information)))
-                ]
-                self.logic_wrapper.register_flight_attendant(
-                    FlightAttendant(
-                        ssid, name, "Cabincrew", rank, address, phone_nr, home_phone_nr
-                    )
-                )
-
-            else:
-                pass  # ERROR :)
+            self.register_new_flight_attendant()
 
         elif command == "b" or command == "b.":
             return "b"
@@ -420,8 +364,9 @@ class Employees:
             print("If you don't wish to change a given detail, leave it empty. \n")
             while True:
                 ssid = input("Enter the SSID of the pilot to update: ")
-                if len(ssid) == 10:
-                    pilot_to_change = self.logic_wrapper.search_employee(ssid)[0]
+                if len(ssid) == 10: # Hér er hægt að skrifa hvaða ssid sem er og fá error ef það er ekki til
+                    if self.logic_wrapper.search_employee(ssid)[0]:                     # IDK    THIS
+                        pilot_to_change = self.logic_wrapper.search_employee(ssid)[0]   #     IF      WORKS
                     if pilot_to_change:
                         break
                     else:
@@ -440,28 +385,7 @@ class Employees:
             self.logic_wrapper.update_pilot(pilot_to_change, all_pilot_information)
 
         elif command == "2" or command == "2.":
-            print(UIConstants.HEADER.format(UIConstants.UPDATE_FLIGHT_ATTENDANT))
-            print("If you don't wish to change a given detail, leave it empty. \n")
-            while True:
-                ssid = input("Enter the SSID of the flight attendant to update: ")
-                if len(ssid) == 10:
-                    flight_attendant_to_change = self.logic_wrapper.search_employee(ssid)[0]
-                    if flight_attendant_to_change:
-                        break
-                else:
-                    print("You have entered the wrong SSID, please try again. ")
-                    pass
-
-            print(UIConstants.UPDATE_FLIGHT_ATTENDANT_INPUT)
-            flight_attendant_info_print = UIConstants.UPDATE_FLIGHT_ATTENDANT_INPUT.split(", ")
-            all_flight_attendant_information = []
-
-            for i in flight_attendant_info_print:
-                print(f"{i}", end=" ")
-                new_information = input()
-                all_flight_attendant_information.append(new_information)
-            
-            self.logic_wrapper.update_flight_attendant(flight_attendant_to_change, all_flight_attendant_information)
+            self.update_flight_attendant()
 
         elif command == "b" or command == "b.":
             return "b"
@@ -471,6 +395,7 @@ class Employees:
 
         else:
             print(UIConstants.INVALID_INPUT)  # ERROR :)
+
 
     def display_shift_plan(self):
         # get the shift plan from employeeData.py
@@ -570,3 +495,180 @@ class Employees:
             # Print the table
             print(table)
             print(f"These employees here above are not working on {filter}")
+
+
+    def register_new_pilot(self):
+        print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_PILOT))
+        print(UIConstants.INFORMATION_MESSAGE)
+        pilot_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
+
+        all_pilot_information = []
+
+        is_new_pilot_valid = False
+        while not is_new_pilot_valid:
+            try:
+                for option in pilot_info_print:
+                    print(f"{option}", end=" ")
+                    pilot_information = input()
+                    all_pilot_information.append(pilot_information)
+
+                if len(all_pilot_information) == 6:
+                    ssid, name, rank, address, phone_nr, license = [
+                        all_pilot_information[i]
+                        for i in range(0, (len(all_pilot_information)))
+                    ]
+                    self.logic_wrapper.register_pilot(
+                        Pilot(ssid, name, "Pilot", rank, address, phone_nr, license)
+                    )
+
+                elif len(all_pilot_information) == 7:
+                    ssid, name, rank, address, phone_nr, home_phone_nr, license = [
+                        all_pilot_information[i]
+                        for i in range(0, (len(all_pilot_information)))
+                    ]
+                    self.logic_wrapper.register_pilot(
+                        Pilot(
+                            ssid, name, "Pilot", rank, address, phone_nr, home_phone_nr, license
+                        )
+                    )
+
+            except EmployeeSsidLenError:
+                print(UIConstants.EMPLOYEE_SSID_LENGTH_ERROR)
+
+            except EmployeeSsidExistsError:
+                print(UIConstants.EMPLOYEE_SSID_EXISTS_ERROR)
+
+            except SsidNumError:
+                print(UIConstants.EMPLOYEE_SSID_FORMAT_ERROR)
+            
+            except EmployeeAgeError:
+                print(UIConstants.EMPLOYEE_PILOT_AGE_ERROR)
+            
+            except EmployeeNameLongError:
+                print(UIConstants.EMPLOYEE_NAME_LONG_ERROR)
+            
+            except EmployeeNameShortError:
+                print(UIConstants.EMPLOYEE_NAME_SHORT_ERROR)
+            
+            except EmployeeRoleError:
+                print(UIConstants.EMPLOYEE_ROLE_ERROR)
+            
+            except EmployeeRankError: 
+                print(UIConstants.EMPLOYEE_RANK_ERROR)
+            
+            except EmployeeAddressError:
+                print(UIConstants.EMPLOYEE_ADDRESS_FORMAT_ERROR)
+            
+            except EmployeePhoneNumberError:
+                print(UIConstants.EMPLOYEE_PHONE_NUMBER_ERROR)
+            
+            except EmployeeHomePhoneNumberError:
+                print(UIConstants.EMPLOYEE_HOME_PHONE_NUMBER_ERROR)
+            
+            except PilotLicenseError:
+                print(UIConstants.PILOT_LICENSE_ERROR)
+
+            else:
+                print(UIConstants.SUCCESSFULL_REGISTRATION_FOR_PILOT)
+                is_new_pilot_valid = True
+
+    def register_new_flight_attendant(self):
+        print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_FLIGHT_ATTENDANT))
+        print(UIConstants.INFORMATION_MESSAGE)
+        flight_attendant_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
+        flight_attendant_info_print = flight_attendant_info_print[0:-2]
+
+        all_flight_attendant_information = []
+        
+        is_new_flight_attendant_valid = False
+        while not is_new_flight_attendant_valid:
+            try:
+                for i in flight_attendant_info_print[0 : len(flight_attendant_info_print)]:
+                    print(f"{i}", end=" ")
+                    flight_attendant_information = input()
+                    all_flight_attendant_information.append(flight_attendant_information)
+
+                if len(all_flight_attendant_information) == 5:
+                    ssid, name, rank, address, phone_nr = [
+                        all_flight_attendant_information[i]
+                        for i in range(0, (len(all_flight_attendant_information)))
+                    ]
+                    self.logic_wrapper.register_flight_attendant(
+                        FlightAttendant(ssid, name, "Cabincrew", rank, address, phone_nr)
+                    )
+
+                elif len(all_flight_attendant_information) == 6:
+                    ssid, name, rank, address, phone_nr, home_phone_nr = [
+                        all_flight_attendant_information[i]
+                        for i in range(0, (len(all_flight_attendant_information)))
+                    ]
+                    self.logic_wrapper.register_flight_attendant(
+                        FlightAttendant(
+                            ssid, name, "Cabincrew", rank, address, phone_nr, home_phone_nr
+                        )
+                    )
+
+            except EmployeeSsidLenError:
+                print(UIConstants.EMPLOYEE_SSID_LENGTH_ERROR)
+
+            except EmployeeSsidExistsError:
+                print(UIConstants.EMPLOYEE_SSID_EXISTS_ERROR)
+
+            except SsidNumError:
+                print(UIConstants.EMPLOYEE_SSID_FORMAT_ERROR)
+            
+            except EmployeeAgeError:
+                print(UIConstants.EMPLOYEE_PILOT_AGE_ERROR)
+            
+            except EmployeeNameLongError:
+                print(UIConstants.EMPLOYEE_NAME_LONG_ERROR)
+            
+            except EmployeeNameShortError:
+                print(UIConstants.EMPLOYEE_NAME_SHORT_ERROR)
+            
+            except EmployeeRoleError:
+                print(UIConstants.EMPLOYEE_ROLE_ERROR)
+            
+            except EmployeeRankError: 
+                print(UIConstants.EMPLOYEE_RANK_ERROR)
+            
+            except EmployeeAddressError:
+                print(UIConstants.EMPLOYEE_ADDRESS_FORMAT_ERROR)
+            
+            except EmployeePhoneNumberError:
+                print(UIConstants.EMPLOYEE_PHONE_NUMBER_ERROR)
+            
+            except EmployeeHomePhoneNumberError:
+                print(UIConstants.EMPLOYEE_HOME_PHONE_NUMBER_ERROR)
+            
+            except PilotLicenseError:
+                print(UIConstants.PILOT_LICENSE_ERROR)
+
+            else:
+                print(UIConstants.SUCCESSFULL_REGISTRATION_FOR_PILOT)
+                is_new_flight_attendant_valid = True
+
+
+    def update_flight_attendant(self):
+        print(UIConstants.HEADER.format(UIConstants.UPDATE_FLIGHT_ATTENDANT))
+        print("If you don't wish to change a given detail, leave it empty. \n")
+        while True:
+            ssid = input("Enter the SSID of the flight attendant to update: ")
+            if len(ssid) == 10:
+                flight_attendant_to_change = self.logic_wrapper.search_employee(ssid)[0]
+                if flight_attendant_to_change:
+                    break
+            else:
+                print("You have entered the wrong SSID, please try again. ")
+                pass
+
+        print(UIConstants.UPDATE_FLIGHT_ATTENDANT_INPUT)
+        flight_attendant_info_print = UIConstants.UPDATE_FLIGHT_ATTENDANT_INPUT.split(", ")
+        all_flight_attendant_information = []
+
+        for i in flight_attendant_info_print:
+            print(f"{i}", end=" ")
+            new_information = input()
+            all_flight_attendant_information.append(new_information)
+        
+        self.logic_wrapper.update_flight_attendant(flight_attendant_to_change, all_flight_attendant_information)
