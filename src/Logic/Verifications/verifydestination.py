@@ -37,10 +37,6 @@ class DestinationContactError(Exception):
     pass
 
 
-class DestinationContactExistsError(Exception):
-    pass
-
-
 class DestinationContactNumberError(Exception):
     pass
 
@@ -76,7 +72,7 @@ class VerifyDestination:
         return in_use_info
 
     def Name(self):
-        if self.dest_to_validate.name.isdigit():
+        if self.dest_to_validate.name.isalpha():
             raise DestinationNameError()
 
         elif self.dest_to_validate.name in self.Verify_Destination_Helper("name"):
@@ -86,14 +82,14 @@ class VerifyDestination:
             return True
 
     def Country(self):
-        if self.dest_to_validate.country.isdigit():
+        if self.dest_to_validate.country.isalpha():
             raise DestinationCountryError()
 
         else:
             return True
 
     def Airport(self):
-        if self.dest_to_validate.airport.isdigit():
+        if self.dest_to_validate.airport.isalpha():
             raise DestinationAirportError()
 
         elif self.dest_to_validate.airport in self.Verify_Destination_Helper("airport"):
@@ -103,7 +99,7 @@ class VerifyDestination:
             return True
 
     def Distance(self):
-        if not self.dest_to_validate.distance.lower().strip("km. ").isdigit():
+        if not self.dest_to_validate.distance.isdigit():
             raise DestinationDistanceError()
 
         else:
@@ -125,7 +121,6 @@ class VerifyDestination:
 
     def Contact_number(self):
         temp = list(self.dest_to_validate.contact_phone_nr)
-        print(temp[1:])
 
         if not temp[0] == "+":
             raise DestinationContactNumberError()

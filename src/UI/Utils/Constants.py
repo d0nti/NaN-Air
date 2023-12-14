@@ -33,6 +33,7 @@ class UIConstants:
         "Please enter in the name of the destination you would like to update"
     )
     UPDATE_DESTINATION_INFO = "Contact Name, Contact Phone Number"
+    SUCCESFULL_UPDATE_FOR_DESTINATION = "Information has been sucessfully updated"
 
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
@@ -137,3 +138,28 @@ class UIConstants:
         + "\n"
         + "q. {}"
     )
+
+
+# Destination Error Messages
+
+DESTINATION_NAME_ERROR_MESSAGE = "Note: All characters must be in the alphabet"
+DESTINATION_NAME_EXISTS_ERROR_MESSAGE = (
+    "Note: The name name for the destination already exists"
+)
+
+DESTINATION_COUNTRY_ERROR_MESSAGE = "Note: All character must be in the alphabet"
+DESTINATION_AIRPORT_ERROR_MESSAGE = "Note: All character must be in the alphabet"
+DESTINATION_AIRPORT_EXISTS_ERROR_MESSAGE = (
+    "Note: The name for the airport already exists"
+)
+
+DESTINATION_DISTANCE_ERROR_MESSAGE = "Note: All characters must be digit"
+DESTINATION_FLIGHT_TIME_ERROR_MESSAGE = "Note: All character mus be digit"
+DESTINATION_CONTACT_ERROR_MESSAGE = "Note: All characters must be in the alphabet"
+DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE = (
+    "Note: the phone number must include + and a 10 digit number"
+)
+
+DESTINATION_CONTACT_NUMBER_EXISTS_ERROR_MESSAGE = (
+    "Note: The phone number already exists"
+)
