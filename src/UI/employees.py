@@ -33,20 +33,15 @@ class Employees:
     def input_prompt_employees(self):
         while (command := self.dostuff()) not in ("b", "b."):
             if command == "q" or command == "q.":
-                print("input prompt employees")
                 sys.exit()
             elif command == "1" or command == "1.":
                 self.list_employees()
-                print("list_employees")
             elif command == "2" or command == "2.":
                 self.register_new_employee()
-                print("register_new_employee")
             elif command == "3" or command == "3.":
                 self.update_employee()
-                print("update_employee")
             elif command == "4" or command == "4.":
                 self.display_shift_plan()
-                print("display_shift_plan")
             else:
                 print(UIConstants.INVALID_INPUT)
                 print("command was:", command)
@@ -106,69 +101,62 @@ class Employees:
 
         command = input("User Input: ")
 
-        if command == "b" or command == "b.":
-            pass
+        while command != "q" and command != "q.":
 
-        elif command == "2" or command == "2.":
-            print(
-                UIConstants.FOUR_MENU_OPTION.format(
-                    UIConstants.CAPTAINS,
-                    UIConstants.CO_PILOTS,
-                    UIConstants.FLIGHT_ATTENDTANTS,
-                    UIConstants.HEADS_OF_SERVICE,
-                    UIConstants.BACK,
-                    UIConstants.QUIT,
+            if command == "b" or command == "b.":
+                return "b"
+
+            elif command == "2" or command == "2.":
+                print(
+                    UIConstants.FOUR_MENU_OPTION.format(
+                        UIConstants.CAPTAINS,
+                        UIConstants.CO_PILOTS,
+                        UIConstants.FLIGHT_ATTENDTANTS,
+                        UIConstants.HEADS_OF_SERVICE,
+                        UIConstants.BACK,
+                        UIConstants.QUIT,
+                    )
                 )
-            )
+                self.get_sorted_list((input("User Input: ")))
+            
+            elif command == "1" or command == "1.":
+                filter = input("Enter search filter (SSID, Name, license or Job Title): ")
+                filtered_employees = self.logic_wrapper.search_employee(filter)
+                table = PrettyTable()
 
-            # print("1. Captains")
-            # print("2. Co-Pilots")
-            # print("3. Flight Attendants")
-            # print("4. Heads of Service"),
+                table.field_names = [
+                    UIConstants.SSID,
+                    UIConstants.NAME,
+                    UIConstants.JOB_TITLE,
+                    UIConstants.RANK,
+                    UIConstants.LICENSE,
+                    UIConstants.ADDRESS,
+                    UIConstants.PHONE_NUMBER,
+                ]
 
-            self.get_sorted_list((input("User Input: ")))
-        # nid,name,role,rank,license,address,phone_nr,pref_nr,slot_param
-        elif command == "1" or command == "1.":
-            filter = input("Enter search filter (SSID, Name, license or Job Title): ")
-            filtered_employees = self.logic_wrapper.search_employee(filter)
-            table = PrettyTable()
-
-            table.field_names = [
-                UIConstants.SSID,
-                UIConstants.NAME,
-                UIConstants.JOB_TITLE,
-                UIConstants.RANK,
-                UIConstants.LICENSE,
-                UIConstants.ADDRESS,
-                UIConstants.PHONE_NUMBER,
-            ]
-
-            for employee in filtered_employees:
-                print(employee)
-                table.add_row(
-                    [
-                        employee.nid,
-                        employee.name,
-                        employee.role,
-                        employee.rank,
-                        employee.license,
-                        employee.address,
-                        employee.phone_nr,
-                    ]
+                for employee in filtered_employees:
+                    table.add_row(
+                        [
+                            employee.nid,
+                            employee.name,
+                            employee.role,
+                            employee.rank,
+                            employee.license,
+                            employee.address,
+                            employee.phone_nr,
+                        ]
+                    )
+                print(table)
+                print(
+                    UIConstants.TWO_MENU_OPTION.format(
+                        UIConstants.SEARCH,
+                        UIConstants.SORT_BY,
+                        UIConstants.BACK,
+                        UIConstants.QUIT,
+                    )
                 )
-
-            print(table)
-            print(
-                UIConstants.TWO_MENU_OPTION.format(
-                    UIConstants.SEARCH,
-                    UIConstants.SORT_BY,
-                    UIConstants.BACK,
-                    UIConstants.QUIT,
-                )
-            )
-
-        else:
-            pass
+            else:
+                pass
 
     def get_sorted_list(self, command):
         self.command = command
@@ -178,13 +166,9 @@ class Employees:
             sys.exit()
 
         elif command == "b" or command == "b.":
-            print("Hér er ég")
-            self.employees_menu_output()
-            self.input_prompt_employees
             return "b"
 
         elif command == "1" or command == "1.":
-            # print(*self.logic_wrapper.sort_by_captains())
             captains = self.logic_wrapper.sort_by_captains()
 
             if captains:
@@ -325,7 +309,6 @@ class Employees:
                 UIConstants.QUIT,
             )
         )
-
         
         command = input("User input: ")
         
@@ -387,11 +370,8 @@ class Employees:
         elif command == "2" or command == "2.":
             self.update_flight_attendant()
 
-        elif command == "b" or command == "b.": #####################<=======
-            print("GO BACK!")
-            self.employees_menu_output()
-            self.input_prompt_employees() #Þetta virkar
-            return "b"
+        elif command == "b" or command == "b.": 
+            pass
 
         elif command == "q" or command == "q.":
             pass
@@ -521,8 +501,7 @@ class Employees:
                     all_pilot_information.append(pilot_information)
 
                 if len(all_pilot_information) == 6:
-                    ssid, name, rank, address, phone_nr, license = [
-                        all_pilot_information[i]
+                    ssid, name, rank, address, phone_nr, license = [all_pilot_information[i]
                         for i in range(0, (len(all_pilot_information)))
                     ]
                     self.logic_wrapper.register_pilot(
