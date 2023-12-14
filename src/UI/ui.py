@@ -60,7 +60,7 @@ class MainMenu:
 
     def input_prompt_mainmenu(self):
             
-        while  (command := self.dostuff()) not in ("q", "q."):
+        while  (command := self.dostuff()) not in ("b", "b."):
             if command == "1" or command == "1.": 
                 self.voyages.input_prompt_voyages()
             elif command == "2" or command == "2.":
@@ -73,8 +73,7 @@ class MainMenu:
             elif command == "4" or command == "4.":                  
                 self.airplanes.airplanes_menu_output()
                 self.airplanes.input_prompt_airplanes()                  
-            elif command == "b":       
-                pass  
+
             else:                   
                 print("Invalid input! Please try again") 
                 input("press enter to continue") 
