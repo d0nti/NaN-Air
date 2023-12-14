@@ -25,13 +25,23 @@ class Employees:
                 UIConstants.QUIT,
             )
         )
-    
-    def dostuff(self):
+
+        # print("1. Display Employees")
+        # print("2. Register New Employee")
+        # print("3. Update Employee")
+        # print("4. Shift Plan")
+        # print("b. Back")
+        # print("q. Quit")
+
+
+        
+    def while_control(self):
         self.employees_menu_output()
         return input("User Input: ").lower()
 
     def input_prompt_employees(self):
-        while (command := self.dostuff()) not in ("b", "b."):
+        # self.employees_menu_output()
+        while (command := self.while_control()) not in ("b", "b."):
             if command == "q" or command == "q.":
                 sys.exit()
             elif command == "1" or command == "1.":
@@ -46,8 +56,10 @@ class Employees:
                 print(UIConstants.INVALID_INPUT)
                 print("command was:", command)
                 input("press enter to continue")
+        # return "b"
         #end while
     # end func 
+
 
     def list_employees(self):
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_EMPLOYEES))
@@ -65,13 +77,6 @@ class Employees:
                 UIConstants.PHONE_NUMBER,
             ]
 
-            # table.field_names = [
-            #     "Name",
-            #     "SSID",
-            #     "Job Title",
-            #     "Phone Number",
-            #     "Address",
-            # ]
             for employee in employees:  # fix e
                 table.add_row(
                     [
@@ -83,9 +88,7 @@ class Employees:
                         employee.phone_nr,
                     ]
                 )
-
             # nid,name,role,rank,licence,address,phone_nr,
-
             print(table)
             print(
                 UIConstants.TWO_MENU_OPTION.format(
@@ -100,29 +103,13 @@ class Employees:
             print(UIConstants.USER_NOT_FOUND)
 
         command = input("User Input: ")
+        if command == "b" or command == "b.":
+            return "b"
 
-        while command != "q" and command != "q.":
-
-            if command == "b" or command == "b.":
-                return "b"
-
-            elif command == "2" or command == "2.":
-                print(
-                    UIConstants.FOUR_MENU_OPTION.format(
-                        UIConstants.CAPTAINS,
-                        UIConstants.CO_PILOTS,
-                        UIConstants.FLIGHT_ATTENDTANTS,
-                        UIConstants.HEADS_OF_SERVICE,
-                        UIConstants.BACK,
-                        UIConstants.QUIT,
-                    )
-                )
-                self.get_sorted_list((input("User Input: ")))
-            
-            elif command == "1" or command == "1.":
-                filter = input("Enter search filter (SSID, Name, license or Job Title): ")
-                filtered_employees = self.logic_wrapper.search_employee(filter)
-                table = PrettyTable()
+        elif command == "1" or command == "1.":
+            filter = input("Enter search filter (SSID, Name, license or Job Title): ")
+            filtered_employees = self.logic_wrapper.search_employee(filter)
+            table = PrettyTable()
 
                 table.field_names = [
                     UIConstants.SSID,
@@ -162,10 +149,10 @@ class Employees:
         self.command = command
 
         if command == "q" or command == "q.":
-            print(UIConstants.QUIT_MESSAGE)
-            sys.exit()
+            pass
 
         elif command == "b" or command == "b.":
+            self.employees_menu_output()
             return "b"
 
         elif command == "1" or command == "1.":
@@ -311,7 +298,6 @@ class Employees:
         )
         
         command = input("User input: ")
-        
         if command == "1" or command == "1.":
             self.register_new_pilot()
 
@@ -319,9 +305,6 @@ class Employees:
             self.register_new_flight_attendant()
 
         elif command == "b" or command == "b.":
-            print("REG GO BACK!")
-            self.employees_menu_output()
-            self.input_prompt_employees() #Þetta virkar
             return "b"
 
         elif command == "q" or command == "q.":
@@ -345,6 +328,7 @@ class Employees:
         if command == "1" or command == "1.":
             print(UIConstants.HEADER.format(UIConstants.UPDATE_PILOT))
             print("If you don't wish to change a given detail, leave it empty. \n")
+            
             while True:
                 ssid = input("Enter the SSID of the pilot to update: ")
                 if len(ssid) == 10: # Hér er hægt að skrifa hvaða ssid sem er og fá error ef það er ekki til
@@ -374,7 +358,7 @@ class Employees:
             pass
 
         elif command == "q" or command == "q.":
-            pass
+            sys.exit
 
         else:
             print(UIConstants.INVALID_INPUT)  # ERROR :)
@@ -405,7 +389,7 @@ class Employees:
         print(table)
 
         # Menu for searching by working or not working on a specific day
-        # print("Search by:")
+        print("Search by:")
         print("1. Working on a specific day")
         print("2. Not working on a specific day")
         print("b. Back")
@@ -474,16 +458,11 @@ class Employees:
                     row['shift_end_date'],
                     row['shift_end_time']
                 ])
-        
+
             # Print the table
             print(table)
             print(f"These employees here above are not working on {filter}")
 
-        elif command == "b" or command == "b.": #####################<=======
-            print("GO BACK!")
-            self.employees_menu_output()
-            self.input_prompt_employees() #Þetta virkar
-            return "b"
 
     def register_new_pilot(self):
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_PILOT))
