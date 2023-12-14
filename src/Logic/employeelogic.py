@@ -6,15 +6,15 @@ class EmployeeLogic:
         self.data_wrapper = data_connection
 
     def register_pilot(self, employee_info):
-        temp = VerifyPilot(employee_info, self.get_all_employees())
-        temp.validatepilot()
-        if temp:
+        validate_pilot = VerifyPilot(employee_info, self.get_all_employees())
+        validate_pilot.validatepilot()
+        if validate_pilot:
             self.data_wrapper.register_pilot(employee_info)
 
     def register_flight_attendant(self, employee_info):
-        temp = VerifyFlightAttendant(employee_info, self.get_all_employees())
-        temp.validateflightattendant()
-        if temp:
+        validate_flight_attendant = VerifyFlightAttendant(employee_info, self.get_all_employees())
+        validate_flight_attendant.validateflightattendant()
+        if validate_flight_attendant:
             self.data_wrapper.register_flight_attendant(employee_info)
 
     def get_all_employees(self):
@@ -60,7 +60,17 @@ class EmployeeLogic:
         if new_employee_info[5] != "": # 5 == home phone number
             employee_info.home_phone_nr = new_employee_info[5]
 
-        return self.data_wrapper.update_pilot(employee_info)
+        validate_pilot = VerifyPilot(employee_info, self.get_all_employees())
+        validate_pilot.Name()
+        validate_pilot.Role()
+        validate_pilot.Rank()
+        validate_pilot.Address()
+        validate_pilot.PhoneNumber()
+        if new_employee_info[5] != "" and employee_info.home_phone_nr != "":
+            validate_pilot.HomePhoneNumber()
+        validate_pilot.License()
+        if validate_pilot:
+            return self.data_wrapper.update_pilot(employee_info)
 
     def update_flight_attendant(self, employee_info: FlightAttendant, new_employee_info: list[str]):
         if new_employee_info[0] != "": # 0 == role
@@ -78,11 +88,16 @@ class EmployeeLogic:
         if new_employee_info[4] != "": # 4 == home phone number
             employee_info.home_phone_nr = new_employee_info[4]
         
-        return self.data_wrapper.update_flight_attendant(employee_info)
+        validate_flight_attendant = VerifyFlightAttendant(employee_info, self.get_all_employees())
+        validate_flight_attendant.Name()
+        validate_flight_attendant.Role()
+        validate_flight_attendant.Rank()
+        validate_flight_attendant.Address()
+        validate_flight_attendant.PhoneNumber()
+        if new_employee_info[4] != "" and employee_info.home_phone_nr != "":
+            validate_flight_attendant.HomePhoneNumber()
+        if validate_flight_attendant:
+            return self.data_wrapper.update_flight_attendant(employee_info)
     
     def get_shift_plan(self):
         return self.data_wrapper.get_shift_plan()
-        
-
-
-
