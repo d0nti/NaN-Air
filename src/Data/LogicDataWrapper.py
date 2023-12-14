@@ -123,5 +123,5 @@ class Logic_Data_Wrapper:
         """Updates the given instance of the destination in the storage layer"""
         return self.destination_data.update_destination(destination)
     
-    def search_by_employee_working_in_week (self, filter_date):
-        return self.voyagedata.search_by_employee_working_in_week(filter_date)
+    def search_by_employee_working_in_week (self, filter_date, employee_name):
+        return self.voyagedata.search_by_employee_working_in_week(filter_date, employee_name)
