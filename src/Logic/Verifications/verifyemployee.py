@@ -180,7 +180,6 @@ class VerifyPilot(VerifyFlightAttendant):
         """ Checks if ssid is of length 10, checks if ssid is only numbers,
             checks if pilot is older than 65 years or younger than 25,
         """
-
         temp1 = list(self.employee_info.nid)                  # Transform nid to a list data type for later indexing
         temp1 = temp1[4:6]                      # Takes the "age" numericals from ssid and assigns them to temp1 
         temp1 = str(temp1[0]) + str(temp1[-1])  # Splices both numericals from the line above into a string and assigns them to temp1
@@ -214,7 +213,6 @@ class VerifyPilot(VerifyFlightAttendant):
     def Rank(self):
         """ Verifies that a pilot's rank is either pilot or copilot
         """
-
         if self.employee_info.rank.lower() != "captain" and self.employee_info.rank.lower() != "copilot":
             raise EmployeeRankError
         else:

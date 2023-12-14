@@ -60,7 +60,7 @@ class MainMenu:
 
     def input_prompt_mainmenu(self):
             
-        while  (command := self.dostuff()) not in ("b", "b."):
+        while  (command := self.dostuff()) not in ("q", "q."):
             if command == "1" or command == "1.": 
                 self.voyages.input_prompt_voyages()
             elif command == "2" or command == "2.":

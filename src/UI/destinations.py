@@ -34,23 +34,17 @@ class Destinations:
         # print("b. Back")
         # print("q. Quit")
 
+    def while_control(self):
+        self.destinations_menu_output()
+        return input("User Input: ").lower()
+
     def input_prompt_destinations(self):
-        # self.destinations_menu_output()
-        while True:
-            command = input("User Input: ")
-            command = command.lower()
-
+        while (command := self.while_control()) not in ("b", "b."):
             if command == "q" or command == "q.":
-                print(UIConstants.QUIT_MESSAGE)
                 sys.exit()
-
-            elif command == "b" or command == "b.":
-                return "b"
-
             elif command == "1" or command == "1.":
-                back = self.list_destinations() #<==== DISPLAY DESTINATIONS
-                if back == "b":
-                    pass
+                self.list_destinations()
+
             elif command == "2" or command == "2.":
                 self.register_new_destination()
 
@@ -59,9 +53,10 @@ class Destinations:
 
             elif command == "4" or command == "4.":
                 self.update_destination()
-
             else:
                 print(UIConstants.INVALID_INPUT)
+                print("command was:", command)
+                input("press enter to continue")
 
     def list_destinations(self):
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_DESTINATIONS))
@@ -124,17 +119,13 @@ class Destinations:
             )
 
             self.get_sorted_list(input("User Input: "))
-            pass
+
 
         elif command == "b" or "b.":
-            print("Destination go BACK!")
-            self.destinations_menu_output()
-            self.input_prompt_destinations()
             return "b"
 
-
         elif command == "q" or "q.":
-            pass
+            return "q"
 
     def register_new_destination(self):
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_DESTINATION))
