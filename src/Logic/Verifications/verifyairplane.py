@@ -10,7 +10,7 @@ class VerifyAirplane:
     def __init__(self, airplane_info, data):
 
         self.data = data
-        self.insignia = airplane_info.insignia
+        self.airplane_info = airplane_info
 
 
     def verify_airplane_helper(self, info_type: str):
@@ -29,9 +29,9 @@ class VerifyAirplane:
 
     def verify_insignia(self):
 
-        insignia = self.insignia.split("-")
+        insignia = self.airplane_info.insignia.split("-")
         
-        if self.insignia.split()[2] != "-":
+        if self.airplane_info.insignia.split()[2] != "-":
             raise InsigniaFormatError()
 
         elif len(insignia) != 2:
@@ -43,7 +43,7 @@ class VerifyAirplane:
         elif len(insignia[-1]) != 3:
             raise InsigniaFormatError()
 
-        elif self.insignia in self.verify_airplane_helper("insignia"):
+        elif self.airplane_info.insignia in self.verify_airplane_helper("insignia"):
             raise InsigniaExistsError()
 
 

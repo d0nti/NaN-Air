@@ -1,6 +1,7 @@
 from Model.EmployeeModel import Pilot, FlightAttendant
-
 import csv
+import os
+import io
 
 
 class EmployeeData:
@@ -127,6 +128,10 @@ class EmployeeData:
                 "phone_nr",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            csvfile.seek(0, io.SEEK_END)
+            if csvfile.tell() == 0:
+                # we have an empty file so write headers
+                writer.writeheader()
             writer.writerow(
                 {
                     "nid": employee.nid,
@@ -151,6 +156,11 @@ class EmployeeData:
                 "phone_nr",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            csvfile.seek(0, io.SEEK_END)
+            if csvfile.tell() == 0:
+                # we have an empty file so write headers
+                writer.writeheader()
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow(
                 {
                     "nid": employee.nid,
@@ -163,32 +173,84 @@ class EmployeeData:
                 }
             )
 
+    # def search_employee(self, filter):
+    #     # takes a input from ui and searches for it in the csv file
+    #     ret_list = []
+    #     with open(self.file_name, newline="", encoding="utf-8") as csvfile:
+    #         reader = csv.DictReader(csvfile)
+    #         for row in reader:
+    #             if (
+    #                 filter in row["name"]
+    #                 or filter in row["nid"]
+    #                 or filter in row["role"]
+    #                 or filter in row["rank"]
+    #                 or filter in row["license"]
+    #             ):  # can use these param to search
+    #                 ret_list.append(row)
+    #     # returns the list of employees that match the search
+    #     return ret_list
+
     def search_employee(self, filter):
         # takes a input from ui and searches for it in the csv file
-        search_result = []
-        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                if (
-                    filter in row["name"]
-                    or filter in row["nid"]
-                    or filter in row["role"]
-                    or filter in row["license"]
-                ):  # can use these param to search
-                    search_result.append(row)
-        # returns the list of employees that match the search
-        return search_result
-    
-    def update_pilot(self, employee_info: dict):
+        matching_employee_list = []
+        all_employees = self.get_all_employees()
+        for employee in all_employees:
+            if employee.license != None and employee.license != "":
+                if filter in employee.name or filter in employee.nid or filter in employee.role or filter in employee.rank or filter in employee.license:
+                    matching_employee_list.append(employee)
+            else:
+                if filter in employee.name or filter in employee.nid or filter in employee.role or filter in employee.rank:
+                    matching_employee_list.append(employee)
+
+        # returns a list of employee objects that match the search
+        return matching_employee_list
+
+
+    def update_pilot(self, employee_info: object):
         """ Does not replace data yet, 
         """
-        with open(self.file_name, "w", newline="", encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                if row["nid"] == employee_info["nid"]:
-                    for i in employee_info:
-                        if i != "" and i != None:
-                            row[employee_info[i]] = i
+        allemployees = self.get_all_employees()
+        print(allemployees)
+        original_file_name = self.file_name
+        self.file_name += ".tmp"
+        for employee in allemployees:
+            if employee.nid == employee_info.nid:
+            # Updates new data if edited employee was a pilot
+                self.register_pilot(employee_info)
+            else:
+            # Copies old data to new file
+                print(employee.license)
+                if employee.license == "N/A": # If employee == FlightAttendant
+                    self.register_flight_attendant(employee)
+                else:
+                    self.register_pilot(employee)
+        # Deleting the original .csv file
+        os.remove(original_file_name)
+        os.rename(self.file_name, original_file_name)
+        self.file_name = original_file_name
+
+    def update_flight_attendant(self, employee_info: object):
+        """ Does not replace data yet, 
+        """
+        allemployees = self.get_all_employees()
+        original_file_name = self.file_name
+        self.file_name += ".tmp"
+        for employee in allemployees:
+            if employee.nid == employee_info.nid:
+            # Updates new data if edited employee was a flight attendant
+                self.register_flight_attendant(employee_info)
+            else:
+            # Copies old data to new file
+                print(employee.license)
+                if employee.license == "N/A": # If employee == FlightAttendant
+                    self.register_flight_attendant(employee)
+                else:
+                    self.register_pilot(employee)
+        # Deleting the original .csv file
+        os.remove(original_file_name)
+        os.rename(self.file_name, original_file_name)
+        self.file_name = original_file_name
+
 
     def get_shift_plan(self):
         shift_plan = []
