@@ -449,7 +449,7 @@ class Employees:
                     if flight_attendant_to_change:
                         break
                 else:
-                    print("You have entered the wrong ssid, please try again. ")
+                    print("You have entered the wrong SSID, please try again. ")
                     pass
 
             print(UIConstants.UPDATE_FLIGHT_ATTENDANT_INPUT)
@@ -480,7 +480,7 @@ class Employees:
         table = PrettyTable()
 
         table.field_names = [
-            "NID",
+            "SSID",
             "Name",
             "Shift Start Date",
             "Shift Start Time",
@@ -493,6 +493,7 @@ class Employees:
             table.add_row(row)
 
         # Print the table
+        print(UIConstants.HEADER.format(UIConstants.SHIFT_PLAN))
         print(table)
 
         # Menu for searching by working or not working on a specific day
@@ -518,7 +519,7 @@ class Employees:
             table = PrettyTable()
 
             table.field_names = [
-                "NID",
+                "SSID",
                 "Name",
                 "Shift Start Date",
                 "Shift Start Time",
@@ -528,7 +529,7 @@ class Employees:
 
             for row in results:
                 table.add_row([
-                    row['nid'],
+                    row['ssid'],
                     row['name'],
                     row['shift_start_date'],
                     row['shift_start_time'],
