@@ -1,3 +1,5 @@
+from Model.EmployeeModel import Employee, Pilot, FlightAttendant
+
 class EmployeeSsidLenError(Exception):
     pass
 class EmployeeSsidExistsError(Exception):
@@ -9,6 +11,8 @@ class EmployeeAgeError(Exception):
 class EmployeeNameLongError(Exception):
     pass
 class EmployeeNameShortError(Exception):
+    pass
+class EmployeeRoleError(Exception):
     pass
 class EmployeeRankError(Exception):
     pass
@@ -32,27 +36,27 @@ MIN_PILOT_BIRTH_YEAR = list(MIN_PILOT_BIRTH_YEAR)
 
 
 class VerifyFlightAttendant:
-    def __init__(self, employee_info: object, data: list):
+    def __init__(self, employee_info: FlightAttendant, all_employee_data: list[Employee]):
         """ verification class with methods to verify every input from user when
             creating a new flight attendant employee.
             Meant to take in an employee class object.
         """
         self.employee_info = employee_info
-        self.data = data
+        self.all_employee_data = all_employee_data
 
 
-    def verify_flight_attendant_helper(self, info_type):
+    def verify_flight_attendant_helper(self, info_type: str):
         """ info_type must be a string with the values 'nid', 'name', 'role',
             'rank', 'address', 'phone_nr', 'home_phone_nr' or 'license'.
             This func will then return a list of all registered strings 
         """
-        in_use_info = []
+        info_in_use = []
 
-        for i in range(len(self.data)):
-            temp = self.data[i]
-            in_use_info.append(getattr(temp, info_type))
+        for i in range(len(self.all_employee_data)):
+            index_data = self.all_employee_data[i]
+            info_in_use.append(getattr(index_data, info_type))
 
-        return in_use_info
+        return info_in_use
 
 
     def Ssid(self):
@@ -63,12 +67,12 @@ class VerifyFlightAttendant:
         temp1 = temp1[4:6]
         temp1 = str(temp1[0]) + str(temp1[-1])
 
-        if len(self.nid) != 10:
+        if len(self.employee_info.nid) != 10:
             raise SsidNumError
         elif not self.employee_info.nid.isdigit():
             raise SsidNumError
         if self.employee_info.nid in self.verify_flight_attendant_helper("nid"):     # Checks if nid already exists
-            raise EmployeeSsidExistsError 
+            raise EmployeeSsidExistsError
         else:
             return True
 
@@ -81,6 +85,14 @@ class VerifyFlightAttendant:
             raise EmployeeNameLongError
         elif len(self.employee_info.name) < MIN_EMP_NAME_LEN:
             raise EmployeeNameShortError
+        else:
+            return True
+
+    def Role(self):
+        """
+        """
+        if self.employee_info.role.lower() != "cabincrew":
+            raise EmployeeRoleError
         else:
             return True
 
@@ -116,6 +128,8 @@ class VerifyFlightAttendant:
             raise EmployeePhoneNumberError
         if not str(self.employee_info.phone_nr).isdigit():
             raise EmployeePhoneNumberError
+        else:
+            return True
 
 
     def HomePhoneNumber(self):
@@ -126,7 +140,8 @@ class VerifyFlightAttendant:
             raise EmployeeHomePhoneNumberError
         if not str(self.employee_info.phone_nr).isdigit():
             raise EmployeeHomePhoneNumberError
-
+        else:
+            return True
 
     def validateflightattendant(self):
         self.Ssid()
@@ -134,18 +149,18 @@ class VerifyFlightAttendant:
         self.Rank()
         self.Address()
         self.PhoneNumber()
-        if self.employee_info.home_phone != "":
+        if self.employee_info.home_phone_nr != "":
             self.HomePhoneNumber()
     
 
 
 class VerifyPilot(VerifyFlightAttendant):
-    def __init__(self, employee_info: object, data: list):
+    def __init__(self, employee_info: Pilot, all_employee_info: list[Employee]):
         """ verification class with methods to verify every input from user when
             creating a new pilot employee.
             Meant to take in an employee class object.
         """
-        self.data = data
+        self.all_employee_info = all_employee_info
         self.employee_info = employee_info
 
 
@@ -154,13 +169,13 @@ class VerifyPilot(VerifyFlightAttendant):
             'rank', 'address', 'phone_nr', 'home_phone_nr' or 'license'.
             This func will then return a list of all registered strings 
         """
-        in_use_info = []
+        info_in_use = []
 
-        for i in range(len(self.data)):
-            temp = self.data[i]
-            in_use_info.append(getattr(temp, info_type))
+        for i in range(len(self.all_employee_info)):
+            index_data = self.all_employee_info[i]
+            info_in_use.append(getattr(index_data, info_type))
 
-        return in_use_info
+        return info_in_use
 
 
     def Ssid(self):
@@ -190,6 +205,14 @@ class VerifyPilot(VerifyFlightAttendant):
         else:
             return True
 
+    def Role(self):
+        """
+        """
+        if self.employee_info.role.lower() != "pilot":
+            raise EmployeeRoleError
+        else:
+            return True
+
     def Rank(self):
         """ Verifies that a pilot's rank is either pilot or copilot
         """
@@ -203,7 +226,10 @@ class VerifyPilot(VerifyFlightAttendant):
         """ Meant to check if a pilots license is for a plane
             that NaN-Air owns or something, unsure of best implementation
         """
-        
+        if self.employee_info.license.lower() in self.verify_pilot_helper("license"):
+            raise PilotLicenseError
+        else:
+            return True
 
     def validatepilot(self):
         self.Ssid()
@@ -211,7 +237,7 @@ class VerifyPilot(VerifyFlightAttendant):
         self.Rank()
         self.Address()
         self.PhoneNumber()
-        if self.employee_info.home_phone != "":
+        if self.employee_info.home_phone_nr != "":
             self.HomePhoneNumber()
         self.License()
 

@@ -336,7 +336,6 @@ class Employees:
                 print(f"{i}", end=" ")
                 pilot_information = input()
                 all_pilot_information.append(pilot_information)
-                print(all_pilot_information)
 
             if len(all_pilot_information) == 6:
                 ssid, name, rank, address, phone_nr, license = [

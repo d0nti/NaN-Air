@@ -24,9 +24,10 @@ class EmployeeData:
                         row["rank"],
                         row["address"],
                         row["phone_nr"],
+                        row["home_phone_nr"],
+                        row["license"],
                     )
                 )
-
         return all_employees
 
     def sort_by_captains(self):
@@ -43,6 +44,7 @@ class EmployeeData:
                             row["rank"],
                             row["address"],
                             row["phone_nr"],
+                            row["home_phone_nr"],
                             row["license"],
                         )
                     )
@@ -62,7 +64,8 @@ class EmployeeData:
                             row["rank"],
                             row["address"],
                             row["phone_nr"],
-                            row["license"],
+                            row["home_phone_nr"],
+                            row["license"]
                         )
                     )
         return co_pilots
@@ -82,6 +85,7 @@ class EmployeeData:
                             row["rank"],
                             row["address"],
                             row["phone_nr"],
+                            row["home_phone_nr"]
                         )
                     )
         return flight_attendants
@@ -100,6 +104,7 @@ class EmployeeData:
                             row["rank"],
                             row["address"],
                             row["phone_nr"],
+                            row["home_phone_nr"]
                         )
                     )
         return heads_of_service
@@ -126,6 +131,7 @@ class EmployeeData:
                 "license",
                 "address",
                 "phone_nr",
+                "home_phone_nr"
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             csvfile.seek(0, io.SEEK_END)
@@ -141,6 +147,7 @@ class EmployeeData:
                     "license": employee.license,
                     "address": employee.address,
                     "phone_nr": employee.phone_nr,
+                    "home_phone_nr": employee.home_phone_nr,
                 }
             )
 
@@ -154,6 +161,7 @@ class EmployeeData:
                 "license",
                 "address",
                 "phone_nr",
+                "home_phone_nr",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             csvfile.seek(0, io.SEEK_END)
@@ -170,6 +178,7 @@ class EmployeeData:
                     "license": "N/A",
                     "address": employee.address,
                     "phone_nr": employee.phone_nr,
+                    "home_phone_nr": employee.home_phone_nr,
                 }
             )
 
@@ -205,12 +214,10 @@ class EmployeeData:
         # returns a list of employee objects that match the search
         return matching_employee_list
 
-
     def update_pilot(self, employee_info: object):
         """ Does not replace data yet, 
         """
         allemployees = self.get_all_employees()
-        print(allemployees)
         original_file_name = self.file_name
         self.file_name += ".tmp"
         for employee in allemployees:
@@ -219,7 +226,6 @@ class EmployeeData:
                 self.register_pilot(employee_info)
             else:
             # Copies old data to new file
-                print(employee.license)
                 if employee.license == "N/A": # If employee == FlightAttendant
                     self.register_flight_attendant(employee)
                 else:
@@ -241,7 +247,6 @@ class EmployeeData:
                 self.register_flight_attendant(employee_info)
             else:
             # Copies old data to new file
-                print(employee.license)
                 if employee.license == "N/A": # If employee == FlightAttendant
                     self.register_flight_attendant(employee)
                 else:
@@ -250,7 +255,6 @@ class EmployeeData:
         os.remove(original_file_name)
         os.rename(self.file_name, original_file_name)
         self.file_name = original_file_name
-
 
     def get_shift_plan(self):
         shift_plan = []
