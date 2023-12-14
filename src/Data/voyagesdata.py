@@ -107,3 +107,18 @@ class VoyageData:
         for i, voyage in enumerate(self.voyages):
             if voyage_id == voyage.id:
                 self.voyages[i] = replace(voyage, **kwarg)
+
+    def search_by_employee_working_in_week(self, filter_date):
+        employees_working = []
+        with open(self.FILE_NAME, newline ="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row["departure"] == filter_date:
+                    employees_working.append(
+                        Voyage(
+                            row["destination"],
+                            row["departure"],
+                            row["arrival"]
+                        )
+                    )
+        return employees_working
