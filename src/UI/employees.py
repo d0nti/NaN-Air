@@ -462,12 +462,12 @@ class Employees:
             table = PrettyTable()
 
             table.field_names = [
-                "SSID",
-                "Name",
-                "Shift Start Date",
-                "Shift Start Time",
-                "Shift End Date",
-                "Shift End Time",
+                UIConstants.SSID,
+                UIConstants.NAME,
+                UIConstants.SHIFT_START_DATE,
+                UIConstants.SHIFT_START_TIME,
+                UIConstants.SHIFT_END_DATE,
+                UIConstants.SHIFT_END_TIME,
             ]
 
             for row in results:
