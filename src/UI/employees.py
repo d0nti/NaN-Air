@@ -500,10 +500,19 @@ class Employees:
         print("Search by:")
         print("1. Working on a specific day")
         print("2. Not working on a specific day")
+        print("b. back")
+        print("q. quit")
 
         command = input("Enter your choice: ")
 
-        if command == "1" or command == "1.":
+        if command == "q" or command == "q.":
+            print(UIConstants.QUIT_MESSAGE)
+            sys.exit()
+
+        elif command == "b" or command == "b.":
+                return "b"
+
+        elif command == "1" or command == "1.":
             filter = input("Enter the day to search for: ") #get the day to search for
             results = self.logic_wrapper.search_by_day(filter)
 
@@ -530,6 +539,7 @@ class Employees:
 
             # Print the table
             print(table)
+            print(f"These employees here above are working on {filter}")
 
         elif command == "2" or command == "2.":
             filter = input("Enter the day to search for: ") #get the day to search for
@@ -559,4 +569,4 @@ class Employees:
 
             # Print the table
             print(table)
-
+            print(f"These employees here above are not working on {filter}")
