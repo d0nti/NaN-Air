@@ -27,34 +27,31 @@ class Employees:
         # print("4. Shift Plan")
         # print("b. Back")
         # print("q. Quit")
+    
+    def dostuff(self):
+        self.employees_menu_output()
+        return input("User Input: ").lower()
 
     def input_prompt_employees(self):
         # self.employees_menu_output()
-        
-            command = input("User Input: ")
-            command = command.lower()
-
+        while (command := self.dostuff()) not in ("b", "b."):
             if command == "q" or command == "q.":
-                print(UIConstants.QUIT_MESSAGE)
                 sys.exit()
-            elif command == "b" or command == "b.":
-                return "b"
-                # print("Going Back!")
             elif command == "1" or command == "1.":
+                # self.list_employees()
                 self.list_employees()
-
             elif command == "2" or command == "2.":
                 self.register_new_employee()
-
             elif command == "3" or command == "3.":
                 self.update_employee()
-
             elif command == "4" or command == "4.":
                 self.display_shift_plan()
-
             else:
                 print(UIConstants.INVALID_INPUT)
-
+                print("command was:", command)
+                input("press enter to continue")
+        #end while
+    # end func 
     def list_employees(self):
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_EMPLOYEES))
         employees = self.logic_wrapper.get_all_employees()
@@ -110,7 +107,14 @@ class Employees:
 
         command = input("User Input: ")
 
-        if command == "2" or command == "2.":
+        if command == "b" or command == "b.":
+            print("Hér er ég")
+            self.employees_menu_output()
+            back = self.input_prompt_employees() ## Prufa back = næst
+            if back == "b":
+                pass
+
+        elif command == "2" or command == "2.":
             print(
                 UIConstants.FOUR_MENU_OPTION.format(
                     UIConstants.CAPTAINS,
@@ -174,10 +178,13 @@ class Employees:
         self.command = command
 
         if command == "q" or command == "q.":
-            pass
+            print(UIConstants.QUIT_MESSAGE)
+            sys.exit()
 
         elif command == "b" or command == "b.":
+            print("Hér er ég")
             self.employees_menu_output()
+            self.input_prompt_employees
             return "b"
 
         elif command == "1" or command == "1.":
@@ -322,9 +329,9 @@ class Employees:
             )
         )
 
-        # print("Choose an employee to register")
-        # print("")
+        
         command = input("User input: ")
+        
         if command == "1" or command == "1.":
             print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_PILOT))
             print(UIConstants.INFORMATION_MESSAGE)
@@ -395,6 +402,9 @@ class Employees:
                 pass  # ERROR :)
 
         elif command == "b" or command == "b.":
+            print("REG GO BACK!")
+            self.employees_menu_output()
+            self.input_prompt_employees() #Þetta virkar
             return "b"
 
         elif command == "q" or command == "q.":
@@ -473,7 +483,10 @@ class Employees:
             else:
                 print(UIConstants.INVALID_INPUT)  # ERROR :)
 
-        elif command == "b" or command == "b.":
+        elif command == "b" or command == "b.": #####################<=======
+            print("GO BACK!")
+            self.employees_menu_output()
+            self.input_prompt_employees() #Þetta virkar
             return "b"
 
         elif command == "q" or command == "q.":
@@ -506,9 +519,11 @@ class Employees:
         print(table)
 
         # Menu for searching by working or not working on a specific day
-        print("Search by:")
+        # print("Search by:")
         print("1. Working on a specific day")
         print("2. Not working on a specific day")
+        print("b. Back")
+        print("q. Quit")
 
         command = input("Enter your choice: ")
 
@@ -565,7 +580,12 @@ class Employees:
                     row['shift_end_date'],
                     row['shift_end_time']
                 ])
-
+        
             # Print the table
             print(table)
 
+        elif command == "b" or command == "b.": #####################<=======
+            print("GO BACK!")
+            self.employees_menu_output()
+            self.input_prompt_employees() #Þetta virkar
+            return "b"

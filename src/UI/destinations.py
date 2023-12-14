@@ -44,8 +44,9 @@ class Destinations:
                 return "b"
 
             elif command == "1" or command == "1.":
-                self.list_destinations()
-
+                back = self.list_destinations() #<==== DISPLAY DESTINATIONS
+                if back == "b":
+                    pass
             elif command == "2" or command == "2.":
                 self.register_new_destination()
 
@@ -122,7 +123,11 @@ class Destinations:
             pass
 
         elif command == "b" or "b.":
-            pass
+            print("Destination go BACK!")
+            self.destinations_menu_output()
+            self.input_prompt_destinations()
+            return "b"
+
 
         elif command == "q" or "q.":
             pass
