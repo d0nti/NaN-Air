@@ -25,40 +25,38 @@ class Employees:
                 UIConstants.QUIT,
             )
         )
-
-        # print("1. Display Employees")
-        # print("2. Register New Employee")
-        # print("3. Update Employee")
-        # print("4. Shift Plan")
-        # print("b. Back")
-        # print("q. Quit")
     
     def dostuff(self):
         self.employees_menu_output()
         return input("User Input: ").lower()
 
     def input_prompt_employees(self):
-        # self.employees_menu_output()
         while (command := self.dostuff()) not in ("b", "b."):
             if command == "q" or command == "q.":
+                print("input prompt employees")
                 sys.exit()
             elif command == "1" or command == "1.":
-                # self.list_employees()
                 self.list_employees()
+                print("list_employees")
             elif command == "2" or command == "2.":
                 self.register_new_employee()
+                print("register_new_employee")
             elif command == "3" or command == "3.":
                 self.update_employee()
+                print("update_employee")
             elif command == "4" or command == "4.":
                 self.display_shift_plan()
+                print("display_shift_plan")
             else:
                 print(UIConstants.INVALID_INPUT)
                 print("command was:", command)
                 input("press enter to continue")
         #end while
     # end func 
+
     def list_employees(self):
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_EMPLOYEES))
+        print("list employee loop")
         employees = self.logic_wrapper.get_all_employees()
 
         if employees:
@@ -106,18 +104,10 @@ class Employees:
         else:
             print(UIConstants.USER_NOT_FOUND)
 
-
-        # print("1. Search")
-        # print("2. Sort by:")
-
         command = input("User Input: ")
 
         if command == "b" or command == "b.":
-            print("Hér er ég")
-            self.employees_menu_output()
-            back = self.input_prompt_employees() ## Prufa back = næst
-            if back == "b":
-                pass
+            pass
 
         elif command == "2" or command == "2.":
             print(
