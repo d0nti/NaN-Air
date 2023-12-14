@@ -17,6 +17,8 @@ class UIConstants:
     EMPLOYEE = "Employee"
     REGISTER_NEW_EMPLOYEES = "Register New Employee"
     SHIFT_PLAN = "Shift Plan"
+    SHIFT_START_DATE = "Shift Start Date"
+    SHIFT_END_DATE = "Shift End Date"
     INFORMATION_MESSAGE = "Please Enter the Following Information"
 
     LIST_DESTINATIONS = "List Destinations"
@@ -42,6 +44,7 @@ class UIConstants:
     
 
     NAME = "Name"
+    NID = "NID"
     SSID = "SSID"
     JOB_TITLE = "Job Title"
     lICENSE = "License"

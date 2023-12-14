@@ -72,8 +72,7 @@ class MainMenu:
                 self.destinations.input_prompt_destinations() # LES INPUT
             elif command == "4" or command == "4.":                  
                 self.airplanes.airplanes_menu_output()
-                self.airplanes.input_prompt_airplanes()                  
-
+                self.airplanes.input_prompt_airplanes()
             else:                   
                 print("Invalid input! Please try again") 
                 input("press enter to continue") 

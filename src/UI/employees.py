@@ -43,16 +43,20 @@ class Employees:
         # self.employees_menu_output()
         while (command := self.while_control()) not in ("b", "b."):
             if command == "q" or command == "q.":
+                print("input prompt employees")
                 sys.exit()
             elif command == "1" or command == "1.":
-                # self.list_employees()
                 self.list_employees()
+                print("list_employees")
             elif command == "2" or command == "2.":
                 self.register_new_employee()
+                print("register_new_employee")
             elif command == "3" or command == "3.":
                 self.update_employee()
+                print("update_employee")
             elif command == "4" or command == "4.":
                 self.display_shift_plan()
+                print("display_shift_plan")
             else:
                 print(UIConstants.INVALID_INPUT)
                 print("command was:", command)
@@ -61,8 +65,10 @@ class Employees:
         #end while
     # end func 
 
+
     def list_employees(self):
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_EMPLOYEES))
+        print("list employee loop")
         employees = self.logic_wrapper.get_all_employees()
 
         if employees:
@@ -416,8 +422,8 @@ class Employees:
         print("Search by:")
         print("1. Working on a specific day")
         print("2. Not working on a specific day")
-        print("b. back")
-        print("q. quit")
+        print("b. Back")
+        print("q. Quit")
 
         command = input("Enter your choice: ")
 
@@ -435,12 +441,12 @@ class Employees:
             table = PrettyTable()
 
             table.field_names = [
-                "SSID",
-                "Name",
-                "Shift Start Date",
-                "Shift Start Time",
-                "Shift End Date",
-                "Shift End Time",
+                UIConstants.SSID,
+                UIConstants.NAME,
+                UIConstants.SHIFT_START_DATE,
+                UIConstants.SHIFT_START_TIME,
+                UIConstants.SHIFT_END_DATE,
+                UIConstants.SHIFT_END_TIME,
             ]
 
             for row in results:
