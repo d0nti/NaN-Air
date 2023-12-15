@@ -80,8 +80,8 @@ class UIConstants:
     DISPLAY_SHIFT_PLAN = "Display Shift Plan"
     WORKING_ON_A_SPECIFIC_DAY = "Working on a specific day"
     NOT_WORKING_ON_A_SPECIFIC_DAY = "Not working on a specific day"
-    EMPLOYEES_WORKING_MESSAGE = "These employees here above are working on"
-    EMPLOYEES_NOT_WORKING = "These employees here above are not working on"
+    EMPLOYEES_WORKING_MESSAGE = "These employees here above are working on "
+    EMPLOYEES_NOT_WORKING = "These employees here above are not working on "
 
     REGISTER_NEW_VOYAGE = "Register New Voyage"
     EDIT_VOYAGE = "Edit Voyage"
