@@ -16,7 +16,7 @@ class UIConstants:
     PLANE_TYPE_ID = "Plane ID"
     PLANE_DATE_OF_MANUFACTURE = "Date Of Manufacture"
     PLANE_LAST_MAINTENANCE = "Last Maintenance"
-    PLANE_SEARCH_PARAM = "Search for plane"
+    PLANE_SEARCH_PARAM = "Search for plane "
 
     DISPLAY_DESTINATIONS = "Display Destinations"
     REGISTER_NEW_DESTINATION = "Register New Destination"
@@ -209,7 +209,7 @@ class UIConstants:
 
     DESTINATION_NAME_ERROR_MESSAGE = "Note: All characters must be in the alphabet"
     DESTINATION_NAME_EXISTS_ERROR_MESSAGE = (
-        "Note: The name name for the destination already exists"
+        "Note: The name for the destination already exists"
     )
 
     DESTINATION_COUNTRY_ERROR_MESSAGE = "Note: All character must be in the alphabet"

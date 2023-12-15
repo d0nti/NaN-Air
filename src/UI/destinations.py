@@ -1,11 +1,19 @@
 from UI.Utils.Constants import UIConstants
 from prettytable import PrettyTable
 from Model.DestinationModel import Destination
-from Logic.Verifications.verifydestination import(
-DestinationNameError,DestinationNameExistsError,DestinationCountryError,
-DestinationAirportError,DestinationAirportExistsError,
-DestinationDistanceError,DestinationFlightTimeError,DestinationContactError,DestinationContactNumberError,
-DestinationContactNumberExistsError,DestinationContactNumberLenghtError)
+from Logic.Verifications.verifydestination import (
+    DestinationNameError,
+    DestinationNameExistsError,
+    DestinationCountryError,
+    DestinationAirportError,
+    DestinationAirportExistsError,
+    DestinationDistanceError,
+    DestinationFlightTimeError,
+    DestinationContactError,
+    DestinationContactNumberError,
+    DestinationContactNumberExistsError,
+    DestinationContactNumberLenghtError,
+)
 from Logic.destinationlogic import DestinationSearchFilterNotFoundError
 import sys
 
@@ -27,39 +35,35 @@ class Destinations:
             )
         )
 
-        # print("1. Display Destinations")
-        # print("2. Register Destination")
-        # print("3. Find Destination")
-        # print("3. Update Destination")
-        # print("b. Back")
-        # print("q. Quit")
-
-    def while_control(self):
+    def show_destination_menu(self):
         self.destinations_menu_output()
         return input("User Input: ").lower()
 
-    def input_prompt_destinations(self):
-        while (command := self.while_control()) not in ("b", "b."):
+    def control_destination_menu(self):
+        while (command := self.show_destination_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
+                print(UIConstants.QUIT_MESSAGE)
                 sys.exit()
             elif command == "1" or command == "1.":
+                print(UIConstants.HEADER.format(UIConstants.DISPLAY_DESTINATIONS))
                 self.list_destinations()
 
             elif command == "2" or command == "2.":
+                print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_DESTINATION))
                 self.register_new_destination()
 
             elif command == "3" or command == "3.":
+                print(UIConstants.HEADER.format(UIConstants.FIND_DESTINATION))
                 self.find_destination()
 
             elif command == "4" or command == "4.":
+                print(UIConstants.HEADER.format(UIConstants.UPDATE_DESTINATION))
                 self.update_destination()
             else:
                 print(UIConstants.INVALID_INPUT)
-                print("command was:", command)
-                input("press enter to continue")
+                input(UIConstants.CONTINUE_MESSAGE)
 
     def list_destinations(self):
-        print(UIConstants.HEADER.format(UIConstants.DISPLAY_DESTINATIONS))
         destinations = self.logic_wrapper.get_all_destinations()
 
         if destinations:
@@ -90,10 +94,9 @@ class Destinations:
             print(table)
 
         else:
-            print(UIConstants.NO_DESTINATIONS_REGISTERED)  # Vantar fasta í constants
+            print(UIConstants.NO_DESTINATIONS_REGISTERED)
 
     def register_new_destination(self):
-        print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_DESTINATION))
         print(UIConstants.INFORMATION_MESSAGE)
 
         destination_info_print = UIConstants.DESTINATION_INFO.split(", ")
@@ -167,12 +170,13 @@ class Destinations:
                 is_destination_valid = True
 
     def find_destination(self):
-        print(UIConstants.HEADER.format(UIConstants.FIND_DESTINATION))
         print(
             f"{UIConstants.SEARCH_DESTINATION_MESSAGE} \n {UIConstants.SEARCH_DESTINATION_MESSAGE_CONTINUE}"
         )
 
-        while (command := input("\nUser Input (press enter to go back): ")).lower() != "":
+        while (
+            command := input("\nUser Input (press enter to go back): ")
+        ).lower() != "":
             try:
                 destinations = self.logic_wrapper.search_destination(command)
                 self.__print_destination(destinations)
@@ -209,7 +213,6 @@ class Destinations:
         print(table)
 
     def update_destination(self):
-        print(UIConstants.HEADER.format(UIConstants.UPDATE_DESTINATION))
         print(UIConstants.UPDATE_DESTINATION_MESSAGE)
 
         invalid_input = True
@@ -257,5 +260,5 @@ class Destinations:
                     print(UIConstants.DESTINATION_CONTACT_NUMBER_EXISTS_ERROR_MESSAGE)
 
                 else:
-                    print(UIConstants.SUCCESFULL_UPDATE_FOR_DESTINATION)
+                    print(UIConstants.SUCCESSFULL_UPDATE_FOR_DESTINATION)
                     is_update_valid = True
