@@ -95,6 +95,7 @@ class UIConstants:
     BACK = "Back"
     SEARCH = "Search by:"
     SORT_BY = "Sort by:"
+    SORT_BY_MENU_OUTPUT = "1. Captains" + "\n" + "2. Co-Pilots" + "\n" + "3. Flight Attendants" + "\n" + "4. Heads of Service" + "\n"
     USER_NOT_FOUND = "User Not Found!"
     CONTINUE_MESSAGE = "Press enter to continue"
     GO_BACK_INSTRUCTION = "Press Q and enter to go back"

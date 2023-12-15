@@ -142,6 +142,9 @@ class Employees:
                         UIConstants.QUIT,
                     )
                 )
+        elif command == "2" or command == "2.":
+            self.get_sorted_list(input(UIConstants.SORT_BY_MENU_OUTPUT))
+            
         else:
             pass
 
