@@ -106,7 +106,7 @@ class UIConstants:
     DESTINATION_SEARCH_FILTER_NOT_FOUND_ERROR_MESSAGE = (
         "Note: No destination matched the inputted information "
     )
-
+    NOTHING_IN_SEARCH = "Nothing in search"
     HEADER = (
         f"{DASH_SYMBOL * LENGTH_SYMBOL}"
         + "\n"
