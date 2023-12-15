@@ -49,13 +49,11 @@ class Employees:
         while (command := self.while_submenu_control()) not in ("b", "b."):
             if command == "q" or command == "q.":
                 sys.exit()
-
+                
             elif command == "1" or command == "1.":
-            if command == "1" or command == "1.":
                 self.employee_search_by_output()
 
             elif command == "2" or command == "2.":
-            if command == "2" or command == "2.":
                 self.employee_sort_by_output()
                 self.input_prompt_employee_sort_by_output()
 
