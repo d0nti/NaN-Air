@@ -41,7 +41,7 @@ class Logic_Data_Wrapper:
         return self.employee_data.search_by_day(filter)
 
     def search_by_not_day(self, filter):
-        return self.employee_data.search_by_not__day(filter)
+        return self.employee_data.search_by_not_day(filter)
 
     def update_pilot(self, employee_info):
         return self.employee_data.update_pilot(employee_info)
