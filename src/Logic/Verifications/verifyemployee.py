@@ -20,6 +20,8 @@ class EmployeeAddressError(Exception):
     pass
 class EmployeePhoneNumberError(Exception):
     pass
+class EmployeeEmailAddressError(Exception):
+    pass
 class EmployeeHomePhoneNumberError(Exception):
     pass
 class PilotLicenseError(Exception):
@@ -58,7 +60,7 @@ class VerifyFlightAttendant:
         return info_in_use
 
 
-    def Ssid(self):
+    def validate_nid(self):
         """ Checks if ssid is of length 10, checks if ssid is only numbers,
             checks if pilot is older than 65 years or younger than 25,
         """
@@ -70,13 +72,13 @@ class VerifyFlightAttendant:
             raise SsidNumError
         elif not self.employee_info.nid.isdigit():
             raise SsidNumError
-        if self.employee_info.nid in self.verify_flight_attendant_helper("nid"):     # Checks if nid already exists
+        elif self.employee_info.nid in self.verify_flight_attendant_helper("nid"):     # Checks if nid already exists
             raise EmployeeSsidExistsError
         else:
             return True
 
 
-    def Name(self):
+    def validate_name(self):
         """ Checks if a pilot's name is longer than MAX_EMP_NAME_LEN
             or shorter than MIN_EMP_NAME_LEN
         """
@@ -87,7 +89,7 @@ class VerifyFlightAttendant:
         else:
             return True
 
-    def Role(self):
+    def validate_role(self):
         """
         """
         if self.employee_info.role.lower() != "cabincrew":
@@ -96,7 +98,7 @@ class VerifyFlightAttendant:
             return True
 
 
-    def Rank(self):
+    def validate_rank(self):
         """ Verifies that a pilot's rank is either pilot or copilot
         """
         if self.employee_info.rank.lower() != "flight attendant" and self.employee_info.rank.lower() != "flight service manager":
@@ -105,9 +107,9 @@ class VerifyFlightAttendant:
             return True
 
 
-    def Address(self):
+    def validate_address(self):
         """ Splits the address string into a list and verifies that the first 
-            item is not digits and that the last item is digits
+            item does not contain digits and that the last contains only digits
         """
         temp = self.employee_info.address.split(" ")
         
@@ -119,37 +121,51 @@ class VerifyFlightAttendant:
             return True
 
 
-    def PhoneNumber(self):
+    def validate_phone_number(self):
         """ Checks that a phone number is 11 digits long
             and that all but the first item are digits
         """
         if len(str(self.employee_info.phone_nr)) != 7:
             raise EmployeePhoneNumberError
-        if not str(self.employee_info.phone_nr).isdigit():
+        elif not str(self.employee_info.phone_nr).isdigit():
             raise EmployeePhoneNumberError
         else:
             return True
 
+    def validate_email_address(self):
+        """ Chekcs that a string can be split with delimeter
+            '@', that it contains either '.is', '.com', '.org'
+        """
+        if not len(self.employee_info.email_address.split("@")) == 2:
+            raise EmployeeEmailAddressError
+        elif ".is" not in self.employee_info.email_address:
+            raise EmployeeEmailAddressError
+        elif ".com" not in self.employee_info.email_address:
+            raise EmployeeEmailAddressError
+        elif ".org" not in self.employee_info.email_address:
+            raise EmployeeEmailAddressError
+        else:
+            return True
 
-    def HomePhoneNumber(self):
+    def validate_home_phone_number(self):
         """ Checks that a home phone number is 11 digits long
             and that all but the first item are digits
         """
-        if len(str(self.employee_info.home_phone)) != 7:
+        if len(str(self.employee_info.home_phone_nr)) != 7:
             raise EmployeeHomePhoneNumberError
-        if not str(self.employee_info.phone_nr).isdigit():
+        elif not str(self.employee_info.home_phone_nr).isdigit():
             raise EmployeeHomePhoneNumberError
         else:
             return True
 
     def validateflightattendant(self):
-        self.Ssid()
-        self.Name()
-        self.Rank()
-        self.Address()
-        self.PhoneNumber()
+        self.validate_nid()
+        self.validate_name()
+        self.validate_rank()
+        self.validate_address()
+        self.validate_phone_number()
         if self.employee_info.home_phone_nr != "":
-            self.HomePhoneNumber()
+            self.validate_home_phone_number()
     
 
 
@@ -176,7 +192,7 @@ class VerifyPilot(VerifyFlightAttendant):
         return info_in_use
 
 
-    def Ssid(self):
+    def validate_nid(self):
         """ Checks if ssid is of length 10, checks if ssid is only numbers,
             checks if pilot is older than 65 years or younger than 25,
         """
@@ -193,16 +209,16 @@ class VerifyPilot(VerifyFlightAttendant):
 
         if len(self.employee_info.nid) != 10:     # If ssid number is not 10 digits
             raise SsidNumError
-        if not self.employee_info.nid.isdigit():    # Else if all numbers in the ssid are not digits
+        elif not self.employee_info.nid.isdigit():    # Else if all numbers in the ssid are not digits
             raise SsidNumError
-        if int(temp1) < int(temp2) and int(temp1) > int(temp3):    # Else if age of pilot is less than the MAX age or if age of pilot is more than the MIN age 
+        elif int(temp1) < int(temp2) and int(temp1) > int(temp3):    # Else if age of pilot is less than the MAX age or if age of pilot is more than the MIN age 
             raise EmployeeAgeError
-        if self.employee_info.nid in self.verify_pilot_helper("nid"):     # Checks if nid already exists
+        elif self.employee_info.nid in self.verify_pilot_helper("nid"):     # Checks if nid already exists
             raise EmployeeSsidExistsError
         else:
             return True
 
-    def Role(self):
+    def validate_role(self):
         """
         """
         if self.employee_info.role.lower() != "pilot":
@@ -210,7 +226,7 @@ class VerifyPilot(VerifyFlightAttendant):
         else:
             return True
 
-    def Rank(self):
+    def validate_rank(self):
         """ Verifies that a pilot's rank is either pilot or copilot
         """
         if self.employee_info.rank.lower() != "captain" and self.employee_info.rank.lower() != "copilot":
@@ -218,7 +234,7 @@ class VerifyPilot(VerifyFlightAttendant):
         else:
             return True
 
-    def License(self): #IMPLEMENT SOMETIME D:
+    def validate_license(self): #IMPLEMENT SOMETIME D:
         """ Meant to check if a pilots license is for a plane
             that NaN-Air owns or something, unsure of best implementation
         """
@@ -228,13 +244,13 @@ class VerifyPilot(VerifyFlightAttendant):
             return True
 
     def validatepilot(self):
-        self.Ssid()
-        self.Name()
-        self.Rank()
-        self.Address()
-        self.PhoneNumber()
+        self.validate_nid()
+        self.validate_name()
+        self.validate_rank()
+        self.validate_address()
+        self.validate_phone_number()
         if self.employee_info.home_phone_nr != "":
-            self.HomePhoneNumber()
-        self.License()
+            self.validate_home_phone_number()
+        self.validate_license()
 
 

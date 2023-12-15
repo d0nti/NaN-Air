@@ -3,7 +3,7 @@ from UI.employees import Employees
 from UI.destinations import Destinations
 from UI.airplanes import Airplanes
 from UI.Utils.Constants import UIConstants
-from Logic.UILogicWrapper import UI_Logic_Wrapper
+from Logic.LogicWrapper import UI_Logic_Wrapper
 from UI.Utils.Constants import UIConstants
 
 
@@ -43,6 +43,5 @@ class MainMenu:
                 self.airplanes.control_airplane_menu()
             else:
                 print(UIConstants.INVALID_INPUT)
-                input(UIConstants.CONTINUE_MESSAGE)
         print(UIConstants.QUIT_MESSAGE)
         # end while command

@@ -55,6 +55,9 @@ class UIConstants:
     EMPLOYEE_SEARCH_PARAM = (
         "Search for employee by SSID, Name, license, Job Title or type 'b' to go back: "
     )
+    EMPLOYEE_SEARCH = (
+        "Search for employee by SSID, Name, license, Job Title: "
+    )
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
     REGISTER_NEW_FLIGHT_ATTENDANT = "Register New Flight Attendant"
@@ -67,15 +70,15 @@ class UIConstants:
     EMPLOYEE_LIST = "Employee list"
     EMPLOYEE_INFORMATION = "Employee Name, Employee SSID, Job Title, Pilot License (If applicable), Home Address, Phone Number, E-mail Address, Home Phone Number (optional), License"
     REGISTER_EMPLOYEE_INFO = (
-        "SSID, Name, Rank, Address, Phonenumber, Home Phone Number(optional), License"
+        "SSID, Name, Rank, Address, Phonenumber, E-Mail Address, Home Phone Number(optional), License"
     )
     UPDATE_EMPLOYEE_INFO_MESSAGE = (
         "If you don't wish to change a given detail, leave it empty. \n"
     )
     WRONG_SSID_INPUTTED_MESSAGE = "You have entered the wrong ssid, please try again "
-    UPDATE_PILOT_INPUT = "Role, Rank, License, Address, Phone number, Home Phone Number"
+    UPDATE_PILOT_INPUT = "Role, Rank, License, Address, Phone number, E-Mail Address, Home Phone Number"
     UPDATE_FLIGHT_ATTENDANT_INPUT = (
-        "Role, Rank, Address, Phone number, Home Phone Number"
+        "Role, Rank, Address, Phone number, E-Mail Address, Home Phone Number"
     )
     NAME = "Name"
     SSID = "SSID"
@@ -310,14 +313,21 @@ class UIConstants:
     EMPLOYEE_ROLE_ERROR = "Note: The role you tried to assign does not exist"
     EMPLOYEE_RANK_ERROR = "Note: The rank you tried to assign does not exist"
     EMPLOYEE_ADDRESS_FORMAT_ERROR = (
-        "Note: The address you tried to enter is of an invalid format"
+        "Note: The address you entered is of an invalid format"
     )
     EMPLOYEE_PHONE_NUMBER_ERROR = "Note: The phone number you tried to assign to that employee is of an invalid format"
     EMPLOYEE_HOME_PHONE_NUMBER_ERROR = "Note: The home phone number you tried to assign to that employee is of an invalid format"
-    PILOT_LICENSE_ERROR = "Note: The license you tried to enter is invalid"
+    PILOT_LICENSE_ERROR = "Note: The license you entered is invalid"
+    EMPLOYEE_EMAIL_ADDRESS_ERROR = "Note: The e-mail address you entered is invalid"
     SUCCESSFULL_REGISTRATION_FOR_PILOT = (
         "Congratulations! You've successfully registered a pilot."
     )
     SUCCESSFULL_REGISTRATION_FOR_FLIGHT_ATTENDANT = (
         "Congratulations! You've successfully registered a flight attendant."
     )
+
+    AIRPLANE_INVALID_INSIGNIA_CHARACTER_ERROR = "Note: The insignia you entered contains invalid characters"
+    AIRPLANE_INSIGNIA_FORMAT_ERROR = "Note: The insignia you entered does not adhere to the correct format"
+    AIRPLANE_INSIGNIA_EXISTS_ERROR = "Note: The insignia you entered already exists"
+
+    SUCCESSFULL_REGISTRATION_FOR_AIRPLANE = "Congratulations! You've successfully registered an airplane."

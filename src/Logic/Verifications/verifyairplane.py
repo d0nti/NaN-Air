@@ -1,11 +1,12 @@
 from Model.AirplaneModel import Airplane
 
-class InvalidInsigniaError(Exception):
+class InvalidInsigniaCharacterError(Exception):
     pass
 class InsigniaFormatError(Exception):
     pass
 class InsigniaExistsError(Exception):
     pass
+
 
 class VerifyAirplane:
     def __init__(self, airplane_info: Airplane, all_airplane_data: list[Airplane]):
@@ -40,6 +41,12 @@ class VerifyAirplane:
 
         elif len(insignia[-1]) != 3:
             raise InsigniaFormatError()
+        
+        elif not insignia[0].isdigit():
+            raise InvalidInsigniaCharacterError
+
+        elif not insignia[-1].isdigit():
+            raise InvalidInsigniaCharacterError
 
         elif self.airplane_info.insignia in self.verify_airplane_helper("insignia"):
             raise InsigniaExistsError()
