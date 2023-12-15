@@ -203,7 +203,7 @@ class Voyages:
             voyage = self.logic_wrapper.find_voyage(voyage_id)
 
             if not voyage:
-                print(UIConstants.VOYAGE_NOT_FOUND)
+                print(UIConstants.NO_VOYAGES)
                 return
 
             if self.check_if_voyage_manned(voyage):
@@ -242,6 +242,9 @@ class Voyages:
             elif "q" == command:
                 print(UIConstants.QUIT_MESSAGE)
                 sys.exit()
+            elif "s" == command:
+                self.save_changes()
+                
             else:
                 print(UIConstants.INVALID_INPUT)
 
@@ -311,4 +314,5 @@ class Voyages:
             print("4. Add Flight Attendant")
         else:
             print("Voyage is fully staffed.")
-        print(UIConstants.QUIT)
+        print("s. " + UIConstants.SAVE)
+        print("q. " + UIConstants.QUIT)
