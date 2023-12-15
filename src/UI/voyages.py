@@ -70,14 +70,14 @@ class Voyages:
             if "q" == command:
                 self.save_and_quit()
 
-            elif "b" in command:
+            elif "b" == command:
                 return "b"
 
-            elif "1" in command:
+            elif "1" == command:
                 self.list_all_voyages()
                 self.input_prompt_display_voyages()
 
-            elif "2" in command:
+            elif "2" == command:
                 voyage_info_print = UIConstants.REGISTER_VOYAGE_INFO.split(", ")
 
                 all_voyage_information = []
@@ -93,7 +93,7 @@ class Voyages:
                 self.logic_wrapper.register_new_voyage(all_voyage_information)
                 print("New Voyage Registered.")
 
-            elif "3" in command:
+            elif "3" == command:
                 voyage_id = input("Enter Voyage ID: ")
                 new_date = input("Enter new date (YYYY-MM-DD): ")
 
@@ -103,7 +103,7 @@ class Voyages:
                 print("Voyage copied.")
                 print_dataclass_as_table(self.logic_wrapper.get_all_voyages(), Voyage)
 
-            elif "4" in command:
+            elif "4" == command:
                 voyage_id = input("Enter Voyage ID: ")
                 interval_in_days = int(input("Enter interval in days: "))
                 end_date = input("Enter end date (YYYY-MM-DD): ")
@@ -114,16 +114,16 @@ class Voyages:
                 print("Voyage made recurring.")
                 print_dataclass_as_table(self.logic_wrapper.get_all_voyages(), Voyage)
 
-            elif "5" in command:
+            elif "5" == command:
                 self.populate_voyage()
 
-            elif "6" in command:
+            elif "6" == command:
                 voyage_id = input("Enter Voyage ID: ")
                 voyage = self.logic_wrapper.find_voyage(voyage_id)
                 print_dataclass_as_table(voyage, Voyage)
             
             #destination,departure,arrival,captain,copilot,flight_service_manager,flight_attendant,id
-            elif "7" in command:
+            elif "7" == command:
                 employee_name = input("Enter employee name: ")
                 filter_date = input("Enter start date to search (YYYY-MM-DD): ")
 
@@ -182,19 +182,19 @@ class Voyages:
             self.choose_staff_prompt(voyage)
 
             command = input("User Input: ")
-            if "1" in command:
+            if "1" == command:
                 captains = self.logic_wrapper.sort_by_captains()
                 print_employees_table(captains)
                 nid = input("Select nid (National ID) of captain: ")
                 self.logic_wrapper.set_staff(voyage_id, captain=nid)
                 print(f"Successfully set captain {nid} to voyage {voyage.id}")
-            elif "2" in command:
+            elif "2" == command:
                 copilots = self.logic_wrapper.sort_by_co_pilots()
                 print_employees_table(copilots)
                 nid = input("Select nid (National ID) of copilot: ")
                 self.logic_wrapper.set_staff(voyage_id, copilot=nid)
                 print(f"Successfully set copilot {nid} to voyage {voyage.id}")
-            elif "3" in command:
+            elif "3" == command:
                 managers = self.logic_wrapper.sort_by_heads_of_service()
                 print_employees_table(managers)
                 nid = input("Select nid (National ID) of flight service manager: ")
@@ -202,7 +202,7 @@ class Voyages:
                 print(
                     f"Successfully set flight service manager {nid} to voyage {voyage.id}"
                 )
-            elif "4" in command:
+            elif "4" == command:
                 attendants = self.logic_wrapper.sort_by_flight_attendants()
                 print_employees_table(attendants)
                 nid = input("Select nid (National ID) of flight attendants: ")
@@ -238,7 +238,7 @@ class Voyages:
             command = input("User Input: ")
             if command == "b":
                 return "b"
-            elif "1" in command:
+            elif "1" == command:
                 manned_voyages = self.get_manned_voyages()
 
                 if manned_voyages:
@@ -247,7 +247,7 @@ class Voyages:
                     print("No voyages found.")
                 continue
 
-            elif "2" in command:
+            elif "2" == command:
                 unmanned_voyages = self.get_unmanned_voyages()
 
                 if unmanned_voyages:

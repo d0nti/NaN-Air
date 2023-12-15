@@ -181,3 +181,6 @@ Andrea: Voyages
 Anton: laga b og q alls staðar
 Marvin: prentvænt yfirlit sem sýnir allar vinnuferðir starfsmanns í ákveðinni viku
 Viggó: klára update employee
+
+samantekt:
+erum mjög nálægt því að klára, ætlum að setja finishing touches á morgun
