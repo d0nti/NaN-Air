@@ -24,6 +24,12 @@ class Employees:
         self.logic_wrapper = logic_wrapper
 
     def employees_menu_output(self):
+        """ Prints the main menu of the employee management environment,
+            showing that the user can acces a list of all Employees,
+            register a new employee, change an existing employees information,
+            display a multitude of differingly expansive shiftplans, and search
+            for specific employees from this point in the program
+        """
         print(UIConstants.HEADER.format(UIConstants.MANAGE_EMPLOYEES))
         print(
             UIConstants.FIVE_MENU_OPTION.format(
@@ -38,10 +44,18 @@ class Employees:
         )
 
     def show_employee_menu(self):
+        """ This function calls the function above whilst
+            also taking in where the user wants to manoeuvre
+        """
         self.employees_menu_output()
         return input("User Input: ").lower()
 
     def control_employee_menu(self):
+        """ Reads the input taken from the show_employee_menu
+            function and calls the appropriate function
+            through the established connection in the 
+            __init__
+        """
         while (command := self.show_employee_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
@@ -65,6 +79,10 @@ class Employees:
  
 
     def employee_register_output(self):
+        """ Prints the options that the user can choose from
+            after having accessed the register new employee
+            environment 
+        """
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_EMPLOYEE))
         print(
             UIConstants.TWO_MENU_OPTION.format(
@@ -76,10 +94,17 @@ class Employees:
         )
 
     def show_register_employee_menu(self):
+        """ This function calls the function above whilst
+            also taking in where the user wants to manoeuvre
+        """
         self.employee_register_output()
         return input("User Input: ").lower()
 
     def control_register_menu(self):
+        """ Reads the input taken from the show_register_employee_menu
+            function and makes the corresponding call through the
+            established connection in the __init__ function
+        """
         while (command := self.show_register_employee_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
@@ -98,6 +123,11 @@ class Employees:
                 # input(UIConstants.CONTINUE_MESSAGE)
 
     def employee_sort_by_output(self):
+        """ Prints the options that the user can choose from
+            after having accessed the filter employees
+            environment
+        """
+        print(UIConstants.HEADER.format(UIConstants.SORT_BY))
         print(
             UIConstants.FIVE_MENU_OPTION.format(
                 UIConstants.CAPTAINS,
@@ -111,10 +141,18 @@ class Employees:
         )
 
     def show_sort_employee_menu(self):
+        """ This function calls the function above whilst
+            also taking in where the user wants to manoeuvre
+        """
         self.employee_sort_by_output()
         return input("User Input: ").lower()
 
     def control_employee_sort_by_menu(self):
+        """ Reads the input taken from the show_employee_menu
+            function and calls the appropriate function
+            through the established connection in the 
+            __init__
+        """
         while (command := self.show_sort_employee_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
@@ -139,6 +177,10 @@ class Employees:
                 # input(UIConstants.CONTINUE_MESSAGE)
 
     def employee_shift_plan_search_by_output(self):
+        """ Prints the options that the user can choose from
+            after having accessed the register shift plan
+            environment
+        """
         print(
             UIConstants.TWO_MENU_OPTION.format(
                 UIConstants.WORKING_ON_A_SPECIFIC_DAY,
@@ -148,12 +190,20 @@ class Employees:
             )
         )
 
-    def show_sort_sort_shift_plan_menu(self):
+    def show_sort_shift_plan_menu(self):
+        """ This function calls the function above whilst
+            also taking in where the user wants to manoeuvre
+        """
         self.employee_shift_plan_search_by_output()
         return input("User Input: ").lower()
 
     def control_employee_shift_plan_search_by_menu(self):
-        while (command := self.show_sort_sort_shift_plan_menu()) not in ("b", "b."):
+        """ Reads the input taken from the show_sort_shift_plan_menu
+            function and calls the appropriate function
+            through the established connection in the 
+            __init__
+        """
+        while (command := self.show_sort_shift_plan_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
                 sys.exit()
@@ -179,6 +229,10 @@ class Employees:
 
     #submenu update employee
     def employee_update_output(self):
+        """ Prints the options that the user can choose from
+            after having accessed the update employee
+            environment 
+        """
         print(UIConstants.HEADER.format(UIConstants.UPDATE_EMPLOYEE))
         print(
             UIConstants.TWO_MENU_OPTION.format(
@@ -190,10 +244,18 @@ class Employees:
         )
     
     def show_update_employees_menu(self):
+        """ This function calls the function above whilst
+            also taking in where the user wants to manoeuvre
+        """
         self.employee_update_output()
         return input("User Input: ").lower()
 
     def control_update_employee_menu(self):
+        """ Reads the input taken from the show_update_employees_menu
+            function and calls the appropriate function
+            through the established connection in the 
+            __init__
+        """
         while (command := self.show_update_employees_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
@@ -211,6 +273,10 @@ class Employees:
 
 
     def list_employees(self):
+        """ Calls the get_all_employees function located in
+            the employee data file and uses the prettytables
+            package to display them in a readable fashion
+        """
         employees = self.logic_wrapper.get_all_employees()
 
         if employees:
@@ -292,6 +358,10 @@ class Employees:
         print(table)
 
     def display_shift_plan(self):
+        """ Calls the get_shift_plan function in the 
+            employee data file and uses the prettytables
+            package to display them in a readable fashion
+        """
         # get the shift plan from employeeData.py
         ret_list = self.logic_wrapper.get_shift_plan()
 
@@ -342,6 +412,11 @@ class Employees:
         print(table)
 
     def register_new_pilot(self):
+        """ Validates and dictates the format of a users
+            input values for a new pilot and, when they 
+            are all appropriate, it sends them to the 
+            logic layer for further verification
+        """
         print(UIConstants.INFORMATION_MESSAGE)
         pilot_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
 
@@ -427,6 +502,12 @@ class Employees:
                 is_new_pilot_valid = True
 
     def register_new_flight_attendant(self):
+        """ Validates and dictates the format of a users
+            input values for a new flight attendant
+            and, when they are all appropriate,
+            it sends them to the logic layer for further
+            verification
+        """
         print(UIConstants.INFORMATION_MESSAGE)
         flight_attendant_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
         flight_attendant_info_print = flight_attendant_info_print[0:-2]
@@ -518,6 +599,11 @@ class Employees:
                 is_new_flight_attendant_valid = True
 
     def update_pilot(self):
+        """ Functions alot like the register_new_pilot
+            function, but sends the new information to 
+            the update_pilot function in the logic layer
+            for verification
+        """
         print(UIConstants.HEADER.format(UIConstants.UPDATE_PILOT))
         print(UIConstants.UPDATE_EMPLOYEE_INFO_MESSAGE)
 
@@ -548,6 +634,11 @@ class Employees:
         self.logic_wrapper.update_pilot(pilot_to_change, all_pilot_information)
 
     def update_flight_attendant(self):
+        """ Functions alot like the register_new_flight_attendant
+            function, but sends the new information to 
+            the update_flight_attendant function in the logic
+            layer for verification
+        """
         print(UIConstants.UPDATE_EMPLOYEE_INFO_MESSAGE)
 
         correct_ssid = False
@@ -578,7 +669,9 @@ class Employees:
         )
 
     def search_employee(self):
-
+        """ Takes in and passes on the user's filter to the
+            logic layer and calls 
+        """
         filter = input(UIConstants.EMPLOYEE_SEARCH_PARAM)
         filtered_employees = self.logic_wrapper.search_employee(filter)
         table = PrettyTable()
