@@ -22,7 +22,6 @@ def print_dataclass_as_table_out(self, instances):
     for instance in instances:
         table.add_row([v for _, v in asdict(instance).items()])
 
-
     print(table)
 
 
@@ -78,8 +77,6 @@ class Voyages:
     # sub menu sort_by_man voyages
     def man_voyages_output(self, voyage):
         print(UIConstants.HEADER.format(UIConstants.CHOOSE_STAFF))
-        if not voyage.captain or not voyage.copilot or not voyage.flight_service_manager or not voyage.flight_attendant:
-            print(f"Voyage {voyage.id} is not fully staffed.")
         if not voyage.captain:
             print(f"1. {UIConstants.ADD_CAPTAIN}")
         if not voyage.copilot:
@@ -88,6 +85,7 @@ class Voyages:
             print(f"3. {UIConstants.ADD_HEADS_OF_SERVICE}")
         if not voyage.flight_attendant:
             print(f"4. {UIConstants.ADD_FLIGHT_ATTENDTANTS}")
+        print(f"s. Save changes")
         print(f"b. {UIConstants.BACK} \nq. {UIConstants.QUIT}")
 
     def show_man_voyages_menu(self, voyage):
@@ -99,9 +97,6 @@ class Voyages:
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
                 sys.exit()
-
-            if (voyage := self.get_voyage()) is None:
-                break
 
             elif command == "1" or command == "1.":
                 captains = self.logic_wrapper.sort_by_captains()
@@ -132,6 +127,9 @@ class Voyages:
                 name = input("Input name of flight attendants: ")
                 self.logic_wrapper.set_staff(voyage.id, flight_attendant=name)
                 print(f"Successfully set flight attendant {name} to voyage {voyage.id}")
+                
+            elif command.lower() == "s":
+                self.save_changes()
 
             else:
                 print(UIConstants.INVALID_INPUT)
@@ -143,17 +141,16 @@ class Voyages:
         # TODO: Validate input.
         # TODO: Get Voyage from logic wrapper.
         # TODO: If not voyage/if voyage manned ...
-        
+
         while True:
             voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
-            
+
             voyage = self.logic_wrapper.find_voyage(voyage_id)
-            
+
             if voyage is None:
                 return UIConstants.NO_VOYAGES
-            
+
             return voyage
-            
 
         # while not (voyage_id := input(UIConstants.ENTER_VOYAGE_ID)):
         #     print("Error")
@@ -220,7 +217,7 @@ class Voyages:
         else:
             print(UIConstants.NO_VOYAGES)
 
-    def print_employees_table(employees):
+    def print_employees_table(self, employees):
         """Generates a table from a list of employees."""
         table = PrettyTable(
             field_names=[
@@ -294,8 +291,8 @@ class Voyages:
 
     def check_voyage_status(self):
         voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
-        voyage = self.logic_wrapper.find_voyage(voyage_id)     
-        
+        voyage = self.logic_wrapper.find_voyage(voyage_id)
+
         self.print_dataclass_as_table(voyage)
 
     def check_voyage_employee_is_working(self):
@@ -347,7 +344,7 @@ class Voyages:
             print(UIConstants.NO_VOYAGES)
 
     def populate_voyage(self):
-        voyage_id = input(UIConstants.ENTER_VOYAGE_ID).strip()
+        voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
         while True:
             voyage = self.logic_wrapper.find_voyage(voyage_id)
 
@@ -358,9 +355,9 @@ class Voyages:
             if self.check_if_voyage_manned(voyage):
                 print("Voyage is fully staffed.")
                 return
+            else:
+                self.show_man_voyages_menu()
 
-            self.choose_staff_prompt(voyage)
-            
     def print_dataclass_as_table(self, instances):
         """Prints a dataclass as a table."""
 
@@ -374,6 +371,5 @@ class Voyages:
         )
         for instance in instances:
             table.add_row([v for _, v in asdict(instance).items()])
-
 
         print(table)
