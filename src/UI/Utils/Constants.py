@@ -4,7 +4,19 @@ class UIConstants:
     MANAGE_AIRPLANES = "Manage Airplanes"
     MANAGE_DESTINATIONS = "Manage Destinations"
     MANAGE_VOYAGES = "Manage Voyages"
-
+    MAIN_MENU = (
+        "1. Manage Voyages"
+        + "\n"
+        + "2. Manage Employees"
+        + "\n"
+        + "3. Manage Destinations"
+        + "\n"
+        + "4. Manage Aircrafts"
+        + "\n"
+        + "q. Quit"
+)
+    
+    
     DISPLAY_AIRPLANES = "Display Airplanes"
     REGISTER_NEW_AIRPLANE = "Register New Airplane"
     FIND_AIRPLANE = "Find Airplane"
@@ -41,7 +53,7 @@ class UIConstants:
     SUCCESSFULL_UPDATE_FOR_DESTINATION = "Information has been sucessfully updated"
 
     EMPLOYEE_SEARCH_PARAM = (
-        "Enter search filter or enter b to go back (SSID, Name, license or Job Title): "
+        "Search for employee by SSID, Name, license, Job Title or type 'b' to go back: "
     )
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
