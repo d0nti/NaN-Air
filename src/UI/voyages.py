@@ -55,11 +55,10 @@ class Voyages:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
 
-    def save_and_quit(self):
+    def save_changes(self):
         self.logic_wrapper.write_voyages_to_disk()
-        print(UIConstants.QUIT_MESSAGE)
-        sys.exit()
-
+        print(UIConstants.CHANGES_SAVED)
+        
     def input_prompt_voyages(self):
         while True:
             print(UIConstants.HEADER.format(UIConstants.MANAGE_VOYAGES))
@@ -79,7 +78,8 @@ class Voyages:
             command = input(UIConstants.USER_INPUT).lower()
 
             if "q" == command:
-                self.save_and_quit()
+                print(UIConstants.QUIT_MESSAGE)
+                sys.exit()
 
             elif "b" == command:
                 return "b"
@@ -110,6 +110,12 @@ class Voyages:
 
                 self.logic_wrapper.register_new_voyage(new_voyage)
                 print(UIConstants.NEW_VOYAGE_REGISTERED)
+                print("Press s to save changes: ")
+                command = input().lower()
+                if command == "s":
+                    self.save_changes()
+                else:
+                    continue
 
             elif "3" == command:
                 voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
@@ -234,7 +240,8 @@ class Voyages:
                 self.logic_wrapper.set_staff(voyage_id, flight_attendant=name)
                 print(f"Successfully set flight attendant {name} to voyage {voyage.id}")
             elif "q" == command:
-                self.save_and_quit()
+                print(UIConstants.QUIT_MESSAGE)
+                sys.exit()
             else:
                 print(UIConstants.INVALID_INPUT)
 
@@ -288,7 +295,8 @@ class Voyages:
                 continue
 
             elif "q" == command:
-                self.save_and_quit()
+                print(UIConstants.QUIT_MESSAGE)
+                sys.exit()
 
     def choose_staff_prompt(self, voyage):
         print("Voyage not fully staffed.")

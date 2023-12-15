@@ -89,6 +89,7 @@ class UIConstants:
     NOT_WORKING_ON_A_SPECIFIC_DAY = "Not working on a specific day"
     EMPLOYEES_WORKING_MESSAGE = "These employees here above are working on "
     EMPLOYEES_NOT_WORKING = "These employees here above are not working on "
+    CHANGES_SAVED = "Changes saved"
 
     REGISTER_NEW_VOYAGE = "Register New Voyage"
     EDIT_VOYAGE = "Edit Voyage"
@@ -120,6 +121,7 @@ class UIConstants:
     LENGTH_SYMBOL = 43
     QUIT = "Quit"
     BACK = "Back"
+    SAVE = "Save"
     SEARCH = "Search by:"
     SORT_BY = "Sort by:"
     SORT_BY_MENU_OUTPUT = (
@@ -213,6 +215,29 @@ class UIConstants:
         + "\n"
         + "q. {}"
     )
+    
+    EIGHT_MENU_OPTION = (
+        "1. {}"
+        + "\n"
+        + "2. {}"
+        + "\n"
+        + "3. {}"
+        + "\n"
+        + "4. {}"
+        + "\n"
+        + "5. {}"
+        + "\n"
+        + "6. {}"
+        + "\n"
+        + "7. {}"
+        + "\n"
+        + "b. {}"
+        + "\n"
+        + "s {}"
+        + "\n"
+        + "q. {}"
+    )
+
 
     # Destination Error Messages
 
