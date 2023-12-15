@@ -166,7 +166,7 @@ class Destinations:
                 print(UIConstants.DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE)
 
             else:
-                print(UIConstants.SUCCESFULL_REGISTRATION_FOR_DESTINATION)
+                print(UIConstants.SUCCESSFULL_REGISTRATION_FOR_DESTINATION)
                 is_destination_valid = True
 
     def find_destination(self):
