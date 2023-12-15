@@ -543,7 +543,6 @@ class Employees:
 
             print(UIConstants.UPDATE_PILOT_INPUT)
             pilot_info_print = UIConstants.UPDATE_PILOT_INPUT.split(", ")
-
             all_pilot_information = []
             for i in pilot_info_print:
                 print(f"{i}", end=" ")
@@ -874,3 +873,4 @@ class Employees:
         self.logic_wrapper.update_flight_attendant(
             flight_attendant_to_change, all_flight_attendant_information
         )
+        print("Employee has been updated!")
