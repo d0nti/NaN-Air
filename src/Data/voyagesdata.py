@@ -1,10 +1,6 @@
 from dataclasses import asdict, replace, fields
 from datetime import timedelta, datetime
 from uuid import uuid4, UUID
-<<<<<<< Updated upstream
-import csv
-=======
->>>>>>> Stashed changes
 from Model.VoyageModel import Voyage
 import csv
 
@@ -126,12 +122,8 @@ class VoyageData:
             if voyage_id == voyage.id:
                 self.voyages[i] = replace(voyage, **kwarg)
 
-<<<<<<< Updated upstream
-    def voyages_an_employee_is_working(self, employee_name, date_filter):
-=======
 #Kerfið skal geta birt prentvænt yfirlit sem sýnir allar vinnuferðir starfsmanns í ákveðinni viku
     def voyages_an_employee_is_working(self, employee_name: str, date_filter):
->>>>>>> Stashed changes
         matching_voyages = []
 
         with open(self.FILE_NAME) as csvfile:
