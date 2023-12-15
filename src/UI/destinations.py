@@ -100,12 +100,12 @@ class Destinations:
         print(UIConstants.INFORMATION_MESSAGE)
 
         destination_info_print = UIConstants.DESTINATION_INFO.split(", ")
-        all_destination_info = []
 
         is_destination_valid = False
         while not is_destination_valid:
             try:
                 for i in destination_info_print:
+                    all_destination_info = []
                     print(f"{i}", end=" ")
                     destination_infomation = input()
                     all_destination_info.append(destination_infomation)
@@ -119,7 +119,6 @@ class Destinations:
                     contact_name,
                     contact_phone_nr,
                 ) = all_destination_info
-
                 self.logic_wrapper.register_destination(
                     Destination(
                         name,
@@ -131,7 +130,6 @@ class Destinations:
                         contact_phone_nr,
                     )
                 )
-
             except DestinationNameError:
                 print(UIConstants.DESTINATION_NAME_ERROR_MESSAGE)
 
