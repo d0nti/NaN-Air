@@ -35,6 +35,7 @@ class UIConstants:
     UPDATE_DESTINATION_INFO = "Contact Name, Contact Phone Number"
     SUCCESSFULL_UPDATE_FOR_DESTINATION = "Information has been sucessfully updated"
 
+    EMPLOYEE_SEARCH_PARAM = "Enter search filter (SSID, Name, license or Job Title): "
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
     REGISTER_NEW_FLIGHT_ATTENDANT = "Register New Flight Attendant"
@@ -66,7 +67,7 @@ class UIConstants:
     CO_PILOTS = "Co-Pilots"
     FLIGHT_ATTENDTANTS = "Flight Attendants"
     HEADS_OF_SERVICE = "Heads of Service"
-    REGISTER_VOYAGE_INFO = "UUID, Destination, Departure Time (HH:MM), Departure Date (YYYY-MM-DD), Arrival Time (HH:MM), Arrival Date (YYYY-MM-DD), Captain (National ID), Co-Pilot (National ID), Flight Service Manager (National ID), Flight Attendant (National ID)"
+    REGISTER_VOYAGE_INFO = "UUID, Destination, Departure Time (HH:MM), Departure Date (YYYY-MM-DD), Arrival Time (HH:MM), Arrival Date (YYYY-MM-DD), Captain (Name), Co-Pilot (Name), Flight Service Manager (Name), Flight Attendant (Name)"
     SHIFT_START_DATE = "Shift Start Date (YYYY-MM-DD)"
     SHIFT_START_TIME = "Shift Start Time (HH-MM)"
     SHIFT_END_DATE = "Shift End Date (YYYY-MM-DD)"
@@ -82,6 +83,15 @@ class UIConstants:
     POPULATE_VOYAGE = "Populate Voyage"
     DISPLAY_VOYAGES = "Display Voyages"
     CHECK_VOYAGE_STATUS = "Check Voyage Status"
+    DISPLAY_VOYAGES = "Display Voyages"
+    REGISTER_NEW_VOYAGES = "Register New Voyage"
+    COPY_EXISTING_VOYAGE = "Copy Existing Voyage"
+    MAKE_RECURRING_VOYAGE = "Make Recurring Voyage"
+    CHOOSE_STAFF = "Choose Staff"
+    CHECK_VOYAGE_STATUS = "Check Voyage Status"
+    CHECK_VOYAGES_AN_EMP_IS_WORKING = "Check Voyages an Employee is Working"
+    LIST_MANNED_VOYAGES = "List Manned Voyages"
+    LIST_UNMANNED_VOYAGES = "List Unmanned Voyages"
 
     INVALID_INPUT = "Invalid input! Please try again."
     QUIT_MESSAGE = "Bye Bye!"
@@ -91,6 +101,7 @@ class UIConstants:
     BACK = "Back"
     SEARCH = "Search by:"
     SORT_BY = "Sort by:"
+    SORT_BY_MENU_OUTPUT = "1. Captains" + "\n" + "2. Co-Pilots" + "\n" + "3. Flight Attendants" + "\n" + "4. Heads of Service" + "\n"
     USER_NOT_FOUND = "User Not Found!"
     CONTINUE_MESSAGE = "Press enter to continue"
     GO_BACK_INSTRUCTION = "Press Q and enter to go back"
@@ -102,7 +113,7 @@ class UIConstants:
     DESTINATION_SEARCH_FILTER_NOT_FOUND_ERROR_MESSAGE = (
         "Note: No destination matched the inputted information "
     )
-
+    NOTHING_IN_SEARCH = "Nothing in search"
     HEADER = (
         f"{DASH_SYMBOL * LENGTH_SYMBOL}"
         + "\n"
@@ -149,6 +160,26 @@ class UIConstants:
         + "4. {}"
         + "\n"
         + "5. {}"
+        + "\n"
+        + "b. {}"
+        + "\n"
+        + "q. {}"
+    )
+
+    SEVEN_MENU_OPTION = (
+        "1. {}"
+        + "\n"
+        + "2. {}"
+        + "\n"
+        + "3. {}"
+        + "\n"
+        + "4. {}"
+        + "\n"
+        + "5. {}"
+        + "\n"
+        + "6. {}"
+        + "\n"
+        + "7. {}"
         + "\n"
         + "b. {}"
         + "\n"
