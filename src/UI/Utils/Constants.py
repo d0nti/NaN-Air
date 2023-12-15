@@ -4,7 +4,19 @@ class UIConstants:
     MANAGE_AIRPLANES = "Manage Airplanes"
     MANAGE_DESTINATIONS = "Manage Destinations"
     MANAGE_VOYAGES = "Manage Voyages"
-
+    MAIN_MENU = (
+        "1. Manage Voyages"
+        + "\n"
+        + "2. Manage Employees"
+        + "\n"
+        + "3. Manage Destinations"
+        + "\n"
+        + "4. Manage Aircrafts"
+        + "\n"
+        + "q. Quit"
+)
+    
+    
     DISPLAY_AIRPLANES = "Display Airplanes"
     REGISTER_NEW_AIRPLANE = "Register New Airplane"
     FIND_AIRPLANE = "Find Airplane"
@@ -41,7 +53,7 @@ class UIConstants:
     SUCCESSFULL_UPDATE_FOR_DESTINATION = "Information has been sucessfully updated"
 
     EMPLOYEE_SEARCH_PARAM = (
-        "Enter search filter or enter b to go back (SSID, Name, license or Job Title): "
+        "Search for employee by SSID, Name, license, Job Title or type 'b' to go back: "
     )
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
@@ -79,7 +91,7 @@ class UIConstants:
     CO_PILOTS = "Co-Pilots"
     FLIGHT_ATTENDTANTS = "Flight Attendants"
     HEADS_OF_SERVICE = "Heads of Service"
-    REGISTER_VOYAGE_INFO = "Destination, Departure (YYYY-MM-DDTHH:MM:SS), Arrival (YYYY-MM-DDTHH:MM:SS), Captain (Name), Co-Pilot (Name), Flight Service Manager (Name), Flight Attendant (Name)"
+    REGISTER_VOYAGE_INFO = "Destination, Departure (YYYY-MM-DD HH:MM:SS), Arrival (YYYY-MM-DD HH:MM:SS), Captain (Name), Co-Pilot (Name), Flight Service Manager (Name), Flight Attendant (Name)"
     SHIFT_START_DATE = "Shift Start Date (YYYY-MM-DD)"
     SHIFT_START_TIME = "Shift Start Time (HH-MM)"
     SHIFT_END_DATE = "Shift End Date (YYYY-MM-DD)"
@@ -89,9 +101,17 @@ class UIConstants:
     NOT_WORKING_ON_A_SPECIFIC_DAY = "Not working on a specific day"
     EMPLOYEES_WORKING_MESSAGE = "These employees here above are working on "
     EMPLOYEES_NOT_WORKING = "These employees here above are not working on "
+    CHANGES_SAVED = "Changes saved"
 
     REGISTER_NEW_VOYAGE = "Register New Voyage"
     EDIT_VOYAGE = "Edit Voyage"
+    NEW_VOYAGE_REGISTERED = "New Voyage Registered"
+    ENTER_VOYAGE_ID = "Enter Voyage ID: "
+    ENTER_NEW_DATE = "Enter new date (YYYY-MM-DD): "
+    ENTER_END_DATE = "Enter end date (YYYY-MM-DD): "
+    INTERVAL_DAYS = "Enter interval in days: "
+    VOYAGE_COPIED = "Voyage copied."
+    VOYAGE_MADE_RECURRING = "Voyage made recurring."
     POPULATE_VOYAGE = "Populate Voyage"
     DISPLAY_VOYAGES = "Display Voyages"
     CHECK_VOYAGE_STATUS = "Check Voyage Status"
@@ -104,6 +124,8 @@ class UIConstants:
     CHECK_VOYAGES_AN_EMP_IS_WORKING = "Check Voyages an Employee is Working"
     LIST_MANNED_VOYAGES = "List Manned Voyages"
     LIST_UNMANNED_VOYAGES = "List Unmanned Voyages"
+    NO_VOYAGES = "No voyages found."
+    USER_INPUT = "User Input: "
 
     INVALID_INPUT = "Invalid input! Please try again."
     QUIT_MESSAGE = "Bye Bye!"
@@ -111,6 +133,7 @@ class UIConstants:
     LENGTH_SYMBOL = 43
     QUIT = "Quit"
     BACK = "Back"
+    SAVE = "Save"
     SEARCH = "Search by:"
     SORT_BY = "Sort by:"
     SORT_BY_MENU_OUTPUT = (
@@ -204,6 +227,29 @@ class UIConstants:
         + "\n"
         + "q. {}"
     )
+    
+    EIGHT_MENU_OPTION = (
+        "1. {}"
+        + "\n"
+        + "2. {}"
+        + "\n"
+        + "3. {}"
+        + "\n"
+        + "4. {}"
+        + "\n"
+        + "5. {}"
+        + "\n"
+        + "6. {}"
+        + "\n"
+        + "7. {}"
+        + "\n"
+        + "b. {}"
+        + "\n"
+        + "s {}"
+        + "\n"
+        + "q. {}"
+    )
+
 
     # Destination Error Messages
 
