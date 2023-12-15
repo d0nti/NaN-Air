@@ -67,7 +67,7 @@ class Voyages:
             print(UIConstants.SEVEN_MENU_OPTION.format(UIConstants.DISPLAY_VOYAGES,UIConstants.REGISTER_NEW_VOYAGE,UIConstants.COPY_EXISTING_VOYAGE,UIConstants.MAKE_RECURRING_VOYAGE,UIConstants.CHOOSE_STAFF,UIConstants.CHECK_VOYAGE_STATUS,UIConstants.CHECK_VOYAGES_AN_EMP_IS_WORKING,UIConstants.BACK,UIConstants.QUIT))
             command = input("User Input: ").lower()
 
-            if "q" in command:
+            if "q" == command:
                 self.save_and_quit()
 
             elif "b" in command:
@@ -210,7 +210,7 @@ class Voyages:
                 print(
                     f"Successfully set flight attendant {nid} to voyage {voyage.id}"
                 )
-            elif "q" in command:
+            elif "q" == command:
                 self.save_and_quit()
             else:
                 print("Invalid input, try again...")
@@ -257,7 +257,7 @@ class Voyages:
 
                 continue
 
-            elif "q" in command:
+            elif "q" == command:
                 self.save_and_quit()
 
     def choose_staff_prompt(self, voyage):
