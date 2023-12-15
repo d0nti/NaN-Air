@@ -5,18 +5,6 @@ class EmployeeLogic:
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
 
-    def register_pilot(self, employee_info):
-        validate_pilot = VerifyPilot(employee_info, self.get_all_employees())
-        validate_pilot.validatepilot()
-        if validate_pilot:
-            self.data_wrapper.register_pilot(employee_info)
-
-    def register_flight_attendant(self, employee_info):
-        validate_flight_attendant = VerifyFlightAttendant(employee_info, self.get_all_employees())
-        validate_flight_attendant.validateflightattendant()
-        if validate_flight_attendant:
-            self.data_wrapper.register_flight_attendant(employee_info)
-
     def get_all_employees(self):
         return self.data_wrapper.get_all_employees()
     
@@ -26,10 +14,10 @@ class EmployeeLogic:
     def sort_by_co_pilots(self):
         return self.data_wrapper.sort_by_co_pilots()
     
-    def search_by_day(self, filter):
+    def search_by_day(self, filter: str):
         return self.data_wrapper.search_by_day(filter)
     
-    def search_by_not_day(self, filter):
+    def search_by_not_day(self, filter: str):
         return self.data_wrapper.search_by_not_day(filter)
     
     def sort_by_flight_attendants(self):
@@ -38,7 +26,19 @@ class EmployeeLogic:
     def sort_by_heads_of_service(self):
         return self.data_wrapper.sort_by_heads_of_service()
     
-    def search_employee(self, filter):
+    def register_pilot(self, employee_info: Pilot):
+        validate_pilot = VerifyPilot(employee_info, self.get_all_employees())
+        validate_pilot.validatepilot()
+        if validate_pilot:
+            self.data_wrapper.register_pilot(employee_info)
+
+    def register_flight_attendant(self, employee_info: FlightAttendant):
+        validate_flight_attendant = VerifyFlightAttendant(employee_info, self.get_all_employees())
+        validate_flight_attendant.validateflightattendant()
+        if validate_flight_attendant:
+            self.data_wrapper.register_flight_attendant(employee_info)
+
+    def search_employee(self, filter: str):
         return self.data_wrapper.search_employee(filter)
     
     def update_pilot(self, employee_info: Pilot, new_employee_info: list[str]):
