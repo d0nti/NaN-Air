@@ -191,6 +191,18 @@ class UIConstants:
         + "\n"
         + "q. {}"
     )
+    MAIN_MENU_OPTION = (
+        "1. {}"
+        + "\n"
+        + "2. {}"
+        + "\n"
+        + "3. {}"
+        + "\n"
+        + "4. {}"
+        + "\n"
+        + "q. {}"
+    )
+
 
     FIVE_MENU_OPTION = (
         "1. {}"
