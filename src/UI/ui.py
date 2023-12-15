@@ -7,7 +7,7 @@ import sys
 
 
 DASH_SYMBOL = "-"
-LENGTH_SYMBOL = 30 
+LENGTH_SYMBOL = 30
 INVALID_INPUT = "Invalid input! Please try again."
 QUIT_MESSAGE = "Bye Bye!"
 
@@ -30,7 +30,6 @@ HEADER = (
 
 
 MAIN_MENU = (
-
     "1. Manage Voyages"
     + "\n"
     + "2. Manage Employees"
@@ -41,6 +40,7 @@ MAIN_MENU = (
     + "\n"
     + "q. Quit"
 )
+
 
 class MainMenu:
     def __init__(self):
@@ -53,26 +53,25 @@ class MainMenu:
     def menu_output(self):
         print(HEADER.format("Booking System"))
         print(MAIN_MENU)
-        
+
     def dostuff(self):
         self.menu_output()
         return input("User Input: ").lower()
 
     def input_prompt_mainmenu(self):
-            
-        while  (command := self.dostuff()) not in ("q", "q."):
-            if command == "1" or command == "1.": 
+        while (command := self.dostuff()) not in ("q", "q."):
+            if command == "1" or command == "1.":
                 self.voyages.input_prompt_voyages()
             elif command == "2" or command == "2.":
-                # self.employees.input_prompt_employees() # LES INPUT
-                #self.employees.employees_menu_output() # PRENTAR MENU
-                self.employees.input_prompt_employees() # LES INPUT. SETT Í BREYTU TIL ÞESS AÐ GETA KALLAÐ Á HANA RÉTT TIL AÐ FARA TILBAKA 
-            elif command == "3" or command == "3.":                    
-                self.destinations.input_prompt_destinations() # LES INPUT
-            elif command == "4" or command == "4.":                  
+                # self.employees.control_employee_menu() # LES INPUT
+                # self.employees.employees_menu_output() # PRENTAR MENU
+                self.employees.control_employee_menu()  # LES INPUT. SETT Í BREYTU TIL ÞESS AÐ GETA KALLAÐ Á HANA RÉTT TIL AÐ FARA TILBAKA
+            elif command == "3" or command == "3.":
+                self.destinations.input_prompt_destinations()  # LES INPUT
+            elif command == "4" or command == "4.":
                 self.airplanes.airplanes_menu_output()
                 self.airplanes.input_prompt_airplanes()
-            else:                   
-                print("Invalid input! Please try again") 
-                input("press enter to continue") 
+            else:
+                print("Invalid input! Please try again")
+                input("press enter to continue")
         # end while command
