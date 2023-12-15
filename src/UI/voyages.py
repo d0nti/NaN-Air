@@ -74,7 +74,6 @@ class Voyages:
                 self.check_voyage_employee_is_working()
             else:
                 print(UIConstants.INVALID_INPUT)
-                input(UIConstants.CONTINUE_MESSAGE)
 
     # sub menu sort_by_man voyages
     def man_voyages_output(self, voyage):
