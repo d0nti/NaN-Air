@@ -48,6 +48,8 @@ class UIConstants:
     REGISTER_EMPLOYEE_INFO = (
         "SSID, Name, Rank, Address, Phonenumber, Home Phone Number(optional), License"
     )
+    UPDATE_EMPLOYEE_INFO_MESSAGE = "If you don't wish to change a given detail, leave it empty. \n"
+    WRONG_SSID_INPUTTED_MESSAGE = "You have entered the wrong ssid, please try again "
     UPDATE_PILOT_INPUT = "Role, Rank, License, Address, Phone number, Home Phone Number"
     UPDATE_FLIGHT_ATTENDANT_INPUT = "Role, Rank, Address, Phone number, Home Phone Number"
     NAME = "Name"
@@ -70,6 +72,10 @@ class UIConstants:
     SHIFT_END_DATE = "Shift End Date (YYYY-MM-DD)"
     SHIFT_END_TIME = "Shift End Time (HH-MM)"
     DISPLAY_SHIFT_PLAN = "Display Shift Plan"
+    WORKING_ON_A_SPECIFIC_DAY = "Working on a specific day"
+    NOT_WORKING_ON_A_SPECIFIC_DAY = "Not working on a specific day"
+    EMPLOYEES_WORKING_MESSAGE = "These employees here above are working on"
+    EMPLOYEES_NOT_WORKING = "These employees here above are not working on"
 
     REGISTER_NEW_VOYAGE = "Register New Voyage"
     EDIT_VOYAGE = "Edit Voyage"

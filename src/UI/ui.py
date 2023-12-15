@@ -67,8 +67,7 @@ class MainMenu:
                 # self.employees.input_prompt_employees() # LES INPUT
                 #self.employees.employees_menu_output() # PRENTAR MENU
                 self.employees.input_prompt_employees() # LES INPUT. SETT Í BREYTU TIL ÞESS AÐ GETA KALLAÐ Á HANA RÉTT TIL AÐ FARA TILBAKA 
-            elif command == "3" or command == "3.":                   
-                self.destinations.destinations_menu_output() # PRENTAR MENU
+            elif command == "3" or command == "3.":                    
                 self.destinations.input_prompt_destinations() # LES INPUT
             elif command == "4" or command == "4.":                  
                 self.airplanes.airplanes_menu_output()
