@@ -1,7 +1,10 @@
 from UI.Utils.Constants import UIConstants
 from Model.AirplaneModel import Airplane
-import sys
+from Logic.Verifications.verifyairplane import(
+InsigniaExistsError, InsigniaFormatError, InvalidInsigniaCharacterError
+)
 from prettytable import PrettyTable
+import sys
 
 
 class Airplanes:
@@ -67,20 +70,33 @@ class Airplanes:
         self.control_airplane_menu()
 
     def register_new_airplane(self):
-        new_airplane = Airplane()
-        new_airplane.insignia = input(
-            "Please input the new airplanes insignia(XX-XXX). "
-        )
-        plane_type = input(
-            "Choose an airplane type for the new aircraft.\n1. BAE146 \n2. FokkerF28 \n3. FokkerF100\n"
-        )
-        if plane_type == "1" or plane_type == "1.":
-            new_airplane.plane_type = "NABAE146"
-        if plane_type == "2" or plane_type == "2.":
-            new_airplane.plane_type = "NAFokkerF28"
-        if plane_type == "3" or plane_type == "3.":
-            new_airplane.plane_type = "NAFokkerF100"
-        self.logic_wrapper.register_airplane(new_airplane)
+        try:
+            new_airplane = Airplane()
+            new_airplane.insignia = input(
+                "Please input the new airplanes insignia(XX-XXX). "
+            )
+            plane_type = input(
+                "Choose an airplane type for the new aircraft.\n1. BAE146 \n2. FokkerF28 \n3. FokkerF100\n"
+            )
+            if plane_type == "1" or plane_type == "1.":
+                new_airplane.plane_type = "NABAE146"
+            if plane_type == "2" or plane_type == "2.":
+                new_airplane.plane_type = "NAFokkerF28"
+            if plane_type == "3" or plane_type == "3.":
+                new_airplane.plane_type = "NAFokkerF100"
+            self.logic_wrapper.register_airplane(new_airplane)
+
+        except InvalidInsigniaCharacterError:
+            print(UIConstants.AIRPLANE_INVALID_INSIGNIA_CHARACTER_ERROR)
+
+        except InsigniaFormatError:
+            print(UIConstants.AIRPLANE_INSIGNIA_FORMAT_ERROR)
+
+        except InsigniaExistsError:
+            print(UIConstants.AIRPLANE_INSIGNIA_EXISTS_ERROR)
+
+        else:
+            print(UIConstants.SUCCESSFULL_REGISTRATION_FOR_AIRPLANE)
 
     def find_airplane(self):
         filter = input(UIConstants.PLANE_SEARCH_PARAM)
