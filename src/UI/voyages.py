@@ -64,15 +64,7 @@ class Voyages:
     def input_prompt_voyages(self):
         while True:
             print(UIConstants.HEADER.format(UIConstants.MANAGE_VOYAGES))
-            print("1. Display Voyages")
-            print("2. Register New Voyage")
-            print("3. Copy Existing Voyage")
-            print("4. Make Recurring Voyage")
-            print("5. Choose Staff")
-            print("6. Check Voyage Status")
-            print("7. Check Voyages an Employee is Working")
-            print("b. back")
-            print("q. Quit")
+            print(UIConstants.SEVEN_MENU_OPTION.format(UIConstants.DISPLAY_VOYAGES,UIConstants.REGISTER_NEW_VOYAGE,UIConstants.COPY_EXISTING_VOYAGE,UIConstants.MAKE_RECURRING_VOYAGE,UIConstants.CHOOSE_STAFF,UIConstants.CHECK_VOYAGE_STATUS,UIConstants.CHECK_VOYAGES_AN_EMP_IS_WORKING,UIConstants.BACK,UIConstants.QUIT))
             command = input("User Input: ").lower()
 
             if "q" in command:
@@ -241,10 +233,7 @@ class Voyages:
 
     def input_prompt_display_voyages(self):
         while True:
-            print("1. List Manned Voyages" )
-            print("2. List Unmanned Voyages" )
-            print("b. back")
-            print("q. Quit")
+            print(UIConstants.TWO_MENU_OPTION.format(UIConstants.LIST_MANNED_VOYAGES,UIConstants.LIST_UNMANNED_VOYAGES,UIConstants.BACK,UIConstants.QUIT))
 
             command = input("User Input: ")
             if command == "b":
