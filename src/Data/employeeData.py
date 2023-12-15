@@ -6,8 +6,8 @@ import io
 
 class EmployeeData:
     def __init__(self):
-        self.file_name = "src/Files/crew.csv"
-        self.shift_file = "src/Files/shift_plan.csv"
+        self.file_name = "Files/crew.csv"
+        self.shift_file = "Files/shift_plan.csv"
 
     # frá fyrirlestri
     def get_all_employees(self):
