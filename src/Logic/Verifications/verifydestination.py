@@ -48,6 +48,7 @@ class DestinationContactNumberLenghtError(Exception):
 class VerifyDestination:
     def __init__(self, destination_info: Destination, data: list):
         self.data = data
+        print(destination_info)
         self.dest_to_validate = destination_info
 
         # self.name = destination_info.name
@@ -112,8 +113,10 @@ class VerifyDestination:
             return True
 
     def Contact(self):
+        print(self.dest_to_validate)
+        print(self.dest_to_validate.contact_name)
         for character in self.dest_to_validate.contact_name:
-            if not (character == " " or character.isalpha()):
+            if not character == " " and not character.isalpha():
                 raise DestinationContactError
 
         else:
@@ -150,7 +153,8 @@ class VerifyDestination:
         self.Contact_number()
 
     def ValidateDestinationUpdate(self, new_contact_name, new_contact_phonen_nr):
-        self.dest_to_validate.contact_name = new_contact_name
-        self.dest_to_validate.contact_phone_nr = new_contact_phonen_nr
-        check = self.Contact() and self.Contact_number()
-        return check
+        for character in self.dest_to_validate:
+            character.contact_name = new_contact_name
+            character.contact_phone_nr = new_contact_phonen_nr
+
+        return self.Contact(), self.Contact_number()

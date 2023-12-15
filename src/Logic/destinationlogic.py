@@ -40,7 +40,9 @@ class DestinationLogic:
     def update_destination(self, destination: Destination, contact_name: str, contact_phone_nr: str):
         all_destinations = self.get_all_destinations()
         verifier = VerifyDestination(destination, all_destinations)
-
+        if len(destination) == 1:
+            pass
+            #destination.pop
         if verifier.ValidateDestinationUpdate(contact_name, contact_phone_nr):
             destination.contact_name = contact_name
             destination.contact_phone_nr = contact_phone_nr
