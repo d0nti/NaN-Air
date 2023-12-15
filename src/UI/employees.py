@@ -44,6 +44,7 @@ class Employees:
         # self.employees_menu_output()
         while (command := self.show_employee_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
+                print(UIConstants.QUIT_MESSAGE)
                 sys.exit()
             elif command == "1" or command == "1.":
                 print(UIConstants.HEADER.format(UIConstants.DISPLAY_EMPLOYEES)) #Má ég alexander????????
@@ -60,7 +61,6 @@ class Employees:
                 self.control_employee_sort_by_menu()
             else:
                 print(UIConstants.INVALID_INPUT)
-                print("command was:", command)
                 input(UIConstants.CONTINUE_MESSAGE)
  
 
@@ -161,6 +161,7 @@ class Employees:
     def control_employee_shift_plan_search_by_menu(self):
         while (command := self.show_sort_sort_shift_plan_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
+                print(UIConstants.QUIT_MESSAGE)
                 sys.exit()
             elif command == "1" or command == "1.":
                 filter = input(
@@ -201,6 +202,7 @@ class Employees:
     def control_update_employee_menu(self):
         while (command := self.show_update_employees_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
+                print(UIConstants.QUIT_MESSAGE)
                 sys.exit()
             elif command == "1" or command == "1.":
                 print(UIConstants.UPDATE_EMPLOYEE_INFO_MESSAGE)
@@ -212,6 +214,7 @@ class Employees:
                 print(UIConstants.INVALID_INPUT)
                 print("command was:", command)
                 input(UIConstants.CONTINUE_MESSAGE)
+
 
     def list_employees(self):
         employees = self.logic_wrapper.get_all_employees()
@@ -601,9 +604,3 @@ class Employees:
                 ]
             )
         print(table)
-
-    def get_shift_plan_not_working(self):
-        return self.logic_wrapper.get_shift_plan_not_working()
-
-    def get_shift_plan_working(self):
-        return self.logic_wrapper.get_shift_plan_working()

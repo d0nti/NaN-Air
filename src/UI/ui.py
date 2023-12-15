@@ -4,21 +4,7 @@ from UI.destinations import Destinations
 from UI.airplanes import Airplanes
 from UI.Utils.Constants import UIConstants
 from Logic.UILogicWrapper import UI_Logic_Wrapper
-
-
-DASH_SYMBOL = "-"
-LENGTH_SYMBOL = 30
-INVALID_INPUT = "Invalid input! Please try again."
-QUIT_MESSAGE = "Bye Bye!"
-
-
-HEADER = (
-    f"{DASH_SYMBOL * LENGTH_SYMBOL}"
-    + "\n"
-    + "  NaN Air - {}"
-    + "\n"
-    + f"{DASH_SYMBOL * LENGTH_SYMBOL}"
-)
+from UI.Utils.Constants import UIConstants
 
 
 class MainMenu:
@@ -29,28 +15,34 @@ class MainMenu:
         self.destinations = Destinations(self.logic_wrapper)
         self.airplanes = Airplanes(self.logic_wrapper)
 
-    def menu_output(self):
-        print(HEADER.format("Booking System"))
-        print(UIConstants.MAIN_MENU)
+    def main_menu_output(self):
+        print(UIConstants.HEADER.format(UIConstants.BOOKING_SYSTEM))
+        print(
+            UIConstants.FOUR_MENU_OPTION.format(
+                UIConstants.MANAGE_VOYAGES,
+                UIConstants.MANAGE_EMPLOYEES,
+                UIConstants.MANAGE_DESTINATIONS,
+                UIConstants.MANAGE_AIRPLANES,
+                UIConstants.QUIT,
+            )
+        )
 
-    def dostuff(self):
-        self.menu_output()
+    def show_main_menu(self):
+        self.main_menu_output()
         return input("User Input: ").lower()
 
-    def input_prompt_mainmenu(self):
-        while (command := self.dostuff()) not in ("q", "q."):
+    def control_main_menu(self):
+        while (command := self.show_main_menu()) not in ("q", "q."):
             if command == "1" or command == "1.":
                 self.voyages.input_prompt_voyages()
             elif command == "2" or command == "2.":
-                # self.employees.control_employee_menu() # LES INPUT
-                # self.employees.employees_menu_output() # PRENTAR MENU
-                self.employees.control_employee_menu()  # LES INPUT. SETT Í BREYTU TIL ÞESS AÐ GETA KALLAÐ Á HANA RÉTT TIL AÐ FARA TILBAKA
+                self.employees.control_employee_menu() 
             elif command == "3" or command == "3.":
-                self.destinations.input_prompt_destinations()  # LES INPUT
+                self.destinations.control_destination_menu()
             elif command == "4" or command == "4.":
-                self.airplanes.airplanes_menu_output()
-                self.airplanes.input_prompt_airplanes()
+                self.airplanes.control_airplane_menu()
             else:
-                print("Invalid input! Please try again")
-                input("press enter to continue")
+                print(UIConstants.INVALID_INPUT)
+                input(UIConstants.CONTINUE_MESSAGE)
+        print(UIConstants.QUIT_MESSAGE)
         # end while command

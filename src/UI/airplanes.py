@@ -10,47 +10,40 @@ class Airplanes:
 
     def airplanes_menu_output(self):
         print(UIConstants.HEADER.format(UIConstants.MANAGE_AIRPLANES))
-        print(UIConstants.FOUR_MENU_OPTION.format(UIConstants.DISPLAY_AIRPLANES, UIConstants.REGISTER_NEW_AIRPLANE, UIConstants.FIND_AIRPLANE, UIConstants.PRINT_AIRPLANE_EFFICIENCY, UIConstants.BACK, UIConstants.QUIT))
-        
-        # print("1. Display Airplane")
-        # print("2. Register New Airplane")
-        # print("3. Find Airplane")
-        # print("4. Print Airplane Efficiency")
-        # print("b. Back")
-        # print("q. Quit")
+        print(
+            UIConstants.THREE_MENU_OPTION.format(
+                UIConstants.DISPLAY_AIRPLANES,
+                UIConstants.REGISTER_NEW_AIRPLANE,
+                UIConstants.FIND_AIRPLANE,
+                UIConstants.BACK,
+                UIConstants.QUIT,
+            )
+        )
 
-    def input_prompt_airplanes(self):
-        while True:
-            command = input("User Input: ")
-            command = command.lower()
+    def show_airplane_menu(self):
+        self.airplanes_menu_output()
+        return input("User Input: ").lower()
 
+    def control_airplane_menu(self):
+        # self.employees_menu_output()
+        while (command := self.show_airplane_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
                 sys.exit()
-
-            elif command == "b" or command == "b.":
-                return "b"
-                
-
             elif command == "1" or command == "1.":
+                print(UIConstants.HEADER.format(UIConstants.DISPLAY_AIRPLANES))
                 self.list_airplanes()
-
-            
             elif command == "2" or command == "2.":
+                print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_AIRPLANE))
                 self.register_new_airplane()
-
             elif command == "3" or command == "3.":
+                print(UIConstants.HEADER.format(UIConstants.FIND_AIRPLANE))
                 self.find_airplane()
-
-            elif command == "4" or command == "4.":
-                self.print_airplane_efficiency()
-
             else:
                 print(UIConstants.INVALID_INPUT)
-                
+                input(UIConstants.CONTINUE_MESSAGE)
 
-    def list_airplanes(self): ### <=== 1. Display Airplanes
-        print(UIConstants.HEADER.format(UIConstants.DISPLAY_AIRPLANES))
+    def list_airplanes(self):  ### <=== 1. Display Airplanes
         airplanes = self.logic_wrapper.get_all_airplanes()
 
         if airplanes:
@@ -60,32 +53,31 @@ class Airplanes:
                 UIConstants.TYPE,
                 UIConstants.SUPPLIER,
                 UIConstants.SEATS,
-
             ]
-        
+
             for airplane in airplanes:
                 table.add_row(
                     [
-                      airplane.insignia,
-                      airplane.plane_type,
-                      airplane.supplier,
-                      airplane.seats, 
-
+                        airplane.insignia,
+                        airplane.plane_type,
+                        airplane.supplier,
+                        airplane.seats,
                     ]
-
                 )
 
             print(table)
 
-
         self.airplanes_menu_output()
         self.input_prompt_airplanes()
-    
+
     def register_new_airplane(self):
-        print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_AIRPLANE))
         new_airplane = Airplane()
-        new_airplane.insignia = input("Please input the new airplanes insignia(XX-XXX). ")
-        plane_type = input("Choose an airplane type for the new aircraft.\n1. BAE146 \n2. FokkerF28 \n3. FokkerF100\n")
+        new_airplane.insignia = input(
+            "Please input the new airplanes insignia(XX-XXX). "
+        )
+        plane_type = input(
+            "Choose an airplane type for the new aircraft.\n1. BAE146 \n2. FokkerF28 \n3. FokkerF100\n"
+        )
         if plane_type == "1" or plane_type == "1.":
             new_airplane.plane_type = "NABAE146"
         if plane_type == "2" or plane_type == "2.":
@@ -95,12 +87,12 @@ class Airplanes:
         self.logic_wrapper.register_airplane(new_airplane)
 
     def find_airplane(self):
-        print(UIConstants.HEADER.format(UIConstants.FIND_AIRPLANE))
-        pass
         filter = input(UIConstants.PLANE_SEARCH_PARAM)
         filtered_airplane = self.logic_wrapper.search_airplane(filter)
-        table = PrettyTable()
+        self.__print_airplane(filtered_airplane)
 
+    def __print_airplane(self, filtered_airplane):
+        table = PrettyTable()
         table.field_names = [
             UIConstants.PLANE_INSIGNIA,
             UIConstants.PLANE_TYPE_ID,
@@ -114,8 +106,3 @@ class Airplanes:
                 ]
             )
         print(table)
-
-
-    def print_airplane_efficiency(self):
-        print(UIConstants.HEADER.format(UIConstants.PRINT_AIRPLANE_EFFICIENCY))
-        pass
