@@ -35,7 +35,7 @@ class UIConstants:
     UPDATE_DESTINATION_INFO = "Contact Name, Contact Phone Number"
     SUCCESSFULL_UPDATE_FOR_DESTINATION = "Information has been sucessfully updated"
 
-    EMPLOYEE_SEARCH_PARAM = "Enter search filter (SSID, Name, license or Job Title): "
+    EMPLOYEE_SEARCH_PARAM = "Enter search filter or enter b to go back (SSID, Name, license or Job Title): "
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
     REGISTER_NEW_FLIGHT_ATTENDANT = "Register New Flight Attendant"
