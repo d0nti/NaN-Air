@@ -238,7 +238,7 @@ class EmployeeData:
 
         return shift_plan
     
-    def search_by_working_on_day(self, filter: str):
+    def search_by_day(self, filter: str):
         employees_working = []
         with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
@@ -247,7 +247,7 @@ class EmployeeData:
                     employees_working.append(row)
         return employees_working
     
-    def search_by_not_working_on_day(self, filter_date: str):
+    def search_by_not_day(self, filter_date: str):
         employees_not_working = []
         with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)

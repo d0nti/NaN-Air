@@ -56,7 +56,7 @@ class Employees:
             elif command == "4" or command == "4.":
                 self.display_shift_plan()
                 print(UIConstants.HEADER.format(UIConstants.SHIFT_PLAN))
-                self.show_sort_sort_shift_plan_menu()
+                self.control_employee_shift_plan_search_by_menu()
             elif command == "5" or command == "5.":
                 self.control_employee_sort_by_menu()
             else:
