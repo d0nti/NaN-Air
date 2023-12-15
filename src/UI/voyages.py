@@ -185,35 +185,35 @@ class Voyages:
             if "1" == command:
                 captains = self.logic_wrapper.sort_by_captains()
                 print_employees_table(captains)
-                nid = input("Select nid (National ID) of captain: ")
-                self.logic_wrapper.set_staff(voyage_id, captain=nid)
-                print(f"Successfully set captain {nid} to voyage {voyage.id}")
+                name = input("Input name of captain: ")
+                self.logic_wrapper.set_staff(voyage_id, captain=name)
+                print(f"Successfully set captain {name} to voyage {voyage.id}")
             elif "2" == command:
                 copilots = self.logic_wrapper.sort_by_co_pilots()
                 print_employees_table(copilots)
-                nid = input("Select nid (National ID) of copilot: ")
-                self.logic_wrapper.set_staff(voyage_id, copilot=nid)
-                print(f"Successfully set copilot {nid} to voyage {voyage.id}")
+                name = input("Input name of copilot: ")
+                self.logic_wrapper.set_staff(voyage_id, copilot=name)
+                print(f"Successfully set copilot {name} to voyage {voyage.id}")
             elif "3" == command:
                 managers = self.logic_wrapper.sort_by_heads_of_service()
                 print_employees_table(managers)
-                nid = input("Select nid (National ID) of flight service manager: ")
-                self.logic_wrapper.set_staff(voyage_id, flight_service_manager=nid)
+                name = input("Input name of flight service manager: ")
+                self.logic_wrapper.set_staff(voyage_id, flight_service_manager=name)
                 print(
-                    f"Successfully set flight service manager {nid} to voyage {voyage.id}"
+                    f"Successfully set flight service manager {name} to voyage {voyage.id}"
                 )
             elif "4" == command:
                 attendants = self.logic_wrapper.sort_by_flight_attendants()
                 print_employees_table(attendants)
-                nid = input("Select nid (National ID) of flight attendants: ")
-                self.logic_wrapper.set_staff(voyage_id, flight_attendant=nid)
+                name = input("Input name of flight attendants: ")
+                self.logic_wrapper.set_staff(voyage_id, flight_attendant=name)
                 print(
-                    f"Successfully set flight attendant {nid} to voyage {voyage.id}"
+                    f"Successfully set flight attendant {name} to voyage {voyage.id}"
                 )
             elif "q" == command:
                 self.save_and_quit()
             else:
-                print("Invalid input, try again...")
+                print(UIConstants.INVALID_INPUT)
 
     def check_if_voyage_manned(self, voyage):
         manned_voyages = self.logic_wrapper.get_manned_voyages()
