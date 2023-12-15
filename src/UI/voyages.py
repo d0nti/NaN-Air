@@ -273,4 +273,4 @@ class Voyages:
             print("4. Add Flight Attendant")
         else:
             print("Voyage is fully staffed.")
-        print(UIConstants.format(UIConstants.QUIT))
+        print(UIConstants.QUIT)
