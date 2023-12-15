@@ -105,6 +105,10 @@ class UIConstants:
     EMPLOYEES_WORKING_MESSAGE = "These employees here above are working on "
     EMPLOYEES_NOT_WORKING = "These employees here above are not working on "
     CHANGES_SAVED = "Changes saved"
+    ADD_CAPTAIN = "Add Captain"
+    ADD_CO_PILOTS = "Add Co-Pilot"
+    ADD_HEADS_OF_SERVICE = "Add Head of Service"
+    ADD_FLIGHT_ATTENDTANTS = "Add Flight Attendant"
 
     REGISTER_NEW_VOYAGE = "Register New Voyage"
     EDIT_VOYAGE = "Edit Voyage"

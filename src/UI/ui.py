@@ -34,7 +34,7 @@ class MainMenu:
     def control_main_menu(self):
         while (command := self.show_main_menu()) not in ("q", "q."):
             if command == "1" or command == "1.":
-                self.voyages.input_prompt_voyages()
+                self.voyages.control_voyage_menu()
             elif command == "2" or command == "2.":
                 self.employees.control_employee_menu() 
             elif command == "3" or command == "3.":
