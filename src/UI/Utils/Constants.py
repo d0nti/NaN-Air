@@ -321,3 +321,9 @@ class UIConstants:
     SUCCESSFULL_REGISTRATION_FOR_FLIGHT_ATTENDANT = (
         "Congratulations! You've successfully registered a flight attendant."
     )
+
+    AIRPLANE_INVALID_INSIGNIA_CHARACTER_ERROR = "Note: The insignia you entered contains invalid characters"
+    AIRPLANE_INSIGNIA_FORMAT_ERROR = "Note: The insignia you entered does not adhere to the correct format"
+    AIRPLANE_INSIGNIA_EXISTS_ERROR = "Note: The insignia you entered already exists"
+
+    SUCCESSFULL_REGISTRATION_FOR_AIRPLANE = "Congratulations! You've successfully registered an airplane."
