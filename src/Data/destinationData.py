@@ -86,9 +86,9 @@ class DestinationData:
                 return searched_destination
 
     def update_destination(self, destination: Destination):
-        """ This function takes in uppdated instance of Destination.
-            In order to do this it must read all, write all back with one istance changed
-            For safety a temp file is created so no file can be lost
+        """This function takes in uppdated instance of Destination.
+        In order to do this it must read all, write all back with one istance changed
+        For safety a temp file is created so no file can be lost
         """
         # We need to:
         #  a)  read all

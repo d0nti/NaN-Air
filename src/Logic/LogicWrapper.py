@@ -33,7 +33,7 @@ class UI_Logic_Wrapper:
 
     def search_by_day(self, filter):
         return self.employee_logic.search_by_day(filter)
-    
+
     def search_by_not_day(self, filter):
         return self.employee_logic.search_by_not_day(filter)
 
@@ -53,7 +53,9 @@ class UI_Logic_Wrapper:
         return self.employee_logic.update_pilot(employee_info, new_employee_info)
 
     def update_flight_attendant(self, employee_info, new_employee_info):
-        return self.employee_logic.update_flight_attendant(employee_info, new_employee_info)
+        return self.employee_logic.update_flight_attendant(
+            employee_info, new_employee_info
+        )
 
     def get_shift_plan(self):
         return self.employee_logic.get_shift_plan()
@@ -67,9 +69,9 @@ class UI_Logic_Wrapper:
 
     def register_airplane(self, airplane_info):
         return self.airplane_logic.register_airplane(airplane_info)
-    
+
     def search_airplane(self, filter):
-            return self.airplane_logic.search_airplane(filter)
+        return self.airplane_logic.search_airplane(filter)
 
     #
     #       DESTINATION CALLS
@@ -83,9 +85,13 @@ class UI_Logic_Wrapper:
 
     def search_destination(self, filter):
         return self.destination_logic.search_destination(filter)
-    
-    def update_destination(self, destination: Destination, contact_name, contact_phone_nr):
-        return self.destination_logic.update_destination(destination, contact_name, contact_phone_nr)
+
+    def update_destination(
+        self, destination: Destination, contact_name, contact_phone_nr
+    ):
+        return self.destination_logic.update_destination(
+            destination, contact_name, contact_phone_nr
+        )
 
     #
     #       VOYAGE CALLS
@@ -121,7 +127,8 @@ class UI_Logic_Wrapper:
 
     def get_unmanned_voyages(self):
         return self.voyages_logic.get_unmanned_voyages()
-    
-    def voyages_an_employee_is_working(self, filter_date, employee_name):
-        return self.voyages_logic.voyages_an_employee_is_working(filter_date, employee_name)
 
+    def voyages_an_employee_is_working(self, filter_date, employee_name):
+        return self.voyages_logic.voyages_an_employee_is_working(
+            filter_date, employee_name
+        )

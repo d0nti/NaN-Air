@@ -58,10 +58,10 @@ class Logic_Data_Wrapper:
 
     def register_airplane(self, airplane_info):
         return self.airplane_data.register_airplane(airplane_info)
-    
+
     def search_airplane(self, filter):
         return self.airplane_data.search_airplane(filter)
-    
+
     #
     #       VOYAGES DATA FUNCTIONS
     #
@@ -85,7 +85,9 @@ class Logic_Data_Wrapper:
         return self.voyagedata.copy_to_new_date(voyage_id, new_date)
 
     def voyages_an_employee_is_working(self, filter_date, employee_name):
-        return self.voyagedata.voyages_an_employee_is_working(filter_date, employee_name)
+        return self.voyagedata.voyages_an_employee_is_working(
+            filter_date, employee_name
+        )
 
     def make_recurring_voyage(
         self, voyage_id, interval_in_days: int, end_date: datetime
@@ -125,4 +127,3 @@ class Logic_Data_Wrapper:
     def update_destination(self, destination: Destination):
         """Updates a given destination's contact with new information"""
         return self.destination_data.update_destination(destination)
-    

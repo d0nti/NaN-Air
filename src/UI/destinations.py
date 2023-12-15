@@ -173,9 +173,7 @@ class Destinations:
             f"{UIConstants.SEARCH_DESTINATION_MESSAGE} \n {UIConstants.SEARCH_DESTINATION_MESSAGE_CONTINUE}"
         )
 
-        while (
-            command := input("\nUser Input (press enter to go back): ")
-        ).lower() != "":
+        while (command := input("\nUser Input (press enter to go back): ")).lower():
             try:
                 destinations = self.logic_wrapper.search_destination(command)
                 self.__print_destination(destinations)
@@ -214,50 +212,95 @@ class Destinations:
     def update_destination(self):
         print(UIConstants.UPDATE_DESTINATION_MESSAGE)
 
-        invalid_input = True
-        while invalid_input:
-            destination_name = input("User Input: ")
+        while (
+            destination_name := input("\nUser Input (press enter to go back): ")
+        ).lower():
+            # destination_name = input("User Input: ")
             try:
                 destination = self.logic_wrapper.search_destination(destination_name)
                 self.__print_destination(destination)
                 print(UIConstants.INFORMATION_MESSAGE)
-                invalid_input = False
             except DestinationSearchFilterNotFoundError:
                 print(UIConstants.INVALID_INPUT)
                 print(UIConstants.DESTINATION_SEARCH_FILTER_NOT_FOUND_ERROR_MESSAGE)
+            else:
 
-        all_info_to_change = []
-        valid_input = True
-        for change_info in UIConstants.UPDATE_DESTINATION_INFO.split(", "):
-            print(f"{change_info}", end=" ")
-            while valid_input:
-                changed_info = input()
+                all_info_to_change = []
+                destination_info = UIConstants.UPDATE_DESTINATION_INFO.split(", ")
+                
+                """for change_info in destination_info:
+                
+                if destination_info[change_info] == -1:
+                    print(f"{change_info}")
+                else:
+                    print(f"{change_info}", end=" ")
+
+                while valid_input:
+                    changed_info = input()
+                    if changed_info != "":
+                        all_info_to_change.append(changed_info)
+                    else:
+                        return"""
+
+                for change_info in destination_info:
+                    if destination_info.index(change_info) != -1:
+                        print(f"{change_info}", end=" ")
+                        changed_info = input()
+                        if changed_info != "":
+                            all_info_to_change.append(changed_info)
+                    else:
+                        print(f"{change_info}")
+                        changed_info = input()
+                        if changed_info != "":
+                            all_info_to_change.append(changed_info)
+
+                
+                """print(f"{destination_info[0]}", end=" ")
                 if changed_info != "":
                     all_info_to_change.append(changed_info)
                 else:
                     return
 
-        if len(all_info_to_change) == 2:
-            contact_name, contact_phone_nr = all_info_to_change
-
-            is_update_valid = False
-            while not is_update_valid:
-                try:
-                    self.logic_wrapper.update_destination(
-                        destination, contact_name, contact_phone_nr
-                    )
-                except DestinationContactError:
-                    print(UIConstants.DESTINATION_CONTACT_ERROR_MESSAGE)
-
-                except DestinationContactNumberError:
-                    print(UIConstants.DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE)
-
-                except DestinationContactNumberLenghtError:
-                    print(UIConstants.DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE)
-
-                except DestinationContactNumberExistsError:
-                    print(UIConstants.DESTINATION_CONTACT_NUMBER_EXISTS_ERROR_MESSAGE)
-
+                changed_info = input()
+                if changed_info != "":
+                    print(f"{destination_info[1]}", end=" ")
+                    if changed_info != "":
+                        all_info_to_change.append(changed_info)
                 else:
-                    print(UIConstants.SUCCESSFULL_UPDATE_FOR_DESTINATION)
-                    is_update_valid = True
+                    print(f"{destination_info[1]}")
+                    return"""
+
+            
+                """ while valid_input:
+                    changed_info = input()
+                    if changed_info != "":
+                        all_info_to_change.append(changed_info)
+                    else:
+                        return"""
+
+                if len(all_info_to_change) == 2:
+                    contact_name, contact_phone_nr = all_info_to_change
+
+                    is_update_valid = False
+                    while not is_update_valid:
+                        try:
+                            self.logic_wrapper.update_destination(
+                                destination, contact_name, contact_phone_nr
+                            )
+                        except DestinationContactError:
+                            print(UIConstants.DESTINATION_CONTACT_ERROR_MESSAGE)
+
+                        except DestinationContactNumberError:
+                            print(UIConstants.DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE)
+
+                        except DestinationContactNumberLenghtError:
+                            print(UIConstants.DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE)
+
+                        except DestinationContactNumberExistsError:
+                            print(
+                                UIConstants.DESTINATION_CONTACT_NUMBER_EXISTS_ERROR_MESSAGE
+                            )
+
+                        else:
+                            print(UIConstants.SUCCESSFULL_UPDATE_FOR_DESTINATION)
+                            is_update_valid = True
