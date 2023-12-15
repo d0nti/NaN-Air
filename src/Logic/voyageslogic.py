@@ -6,7 +6,7 @@ class VoyagesLogic:
     def __init__(self, data_wrapper):
         self.data_wrapper = data_wrapper
 
-    def register_new_voyage(self, voyage_info):
+    def register_new_voyage(self, voyage_info: Voyage):
         self.data_wrapper.register_new_voyage(voyage_info)
 
     def write_voyages_to_disk(self):
@@ -40,5 +40,5 @@ class VoyagesLogic:
     def set_staff(self, voyage_id: str, **kwarg):
         return self.data_wrapper.set_staff(voyage_id, **kwarg)
     
-    def voyages_an_employee_is_working(self, filter_date, employee_name):
+    def voyages_an_employee_is_working(self, filter_date: str, employee_name: str):
         return self.data_wrapper.voyages_an_employee_is_working(filter_date, employee_name)

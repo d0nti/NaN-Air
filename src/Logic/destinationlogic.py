@@ -1,7 +1,6 @@
 from Logic.Verifications.verifydestination import VerifyDestination
 from Model.DestinationModel import Destination
 
-
 class DestinationSearchFilterNotFoundError(Exception):
     pass
 
@@ -10,7 +9,7 @@ class DestinationLogic:
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
 
-    def register_destination(self, destination_info):
+    def register_destination(self, destination_info: Destination):
         verifier = VerifyDestination(destination_info, self.get_all_destinations())
         verifier.ValidateDestination()
         if verifier:
@@ -19,7 +18,7 @@ class DestinationLogic:
     def get_all_destinations(self):
         return self.data_wrapper.get_all_destinations()
 
-    def search_destination(self, filter):
+    def search_destination(self, filter: str):
         all_destinations = self.get_all_destinations()
         found_destination = None
         for destination in all_destinations:
@@ -38,9 +37,7 @@ class DestinationLogic:
         else:
             raise DestinationSearchFilterNotFoundError
 
-    def update_destination(
-        self, destination: Destination, contact_name, contact_phone_nr
-    ):
+    def update_destination(self, destination: Destination, contact_name: str, contact_phone_nr: str):
         all_destinations = self.get_all_destinations()
         verifier = VerifyDestination(destination, all_destinations)
 

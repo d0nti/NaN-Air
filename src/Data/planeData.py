@@ -23,15 +23,14 @@ class AirplaneData:
             file_reader = csv.DictReader(file)
             for item in file_reader:
                 ret_list.append(Airplane(item["plane_insignia"], item["plane_type_id"]))
-            self.get_all_airplanes_helper(ret_list)
+            self.__get_all_airplanes_helper(ret_list)
             return ret_list
 
 
-    def get_all_airplanes_helper(self, ret_list):
+    def __get_all_airplanes_helper(self, ret_list):
         """ 'splices' information needed to complete the ret_list from the function above,
             should not be called outside of get_all_airplanes.
         """
-
         with open(self.legal_plane_file_name, newline = "", encoding = "utf-8") as csv_file:
             csv_reader = csv.DictReader(csv_file)
             rows = list(csv_reader)

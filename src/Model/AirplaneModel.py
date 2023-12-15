@@ -1,5 +1,5 @@
 class Airplane:
-    def __init__(self, insignia = None, plane_type = None, supplier = None, seats = None):
+    def __init__(self, insignia: str = None, plane_type: str = None, supplier: str = None, seats: int = None):
         self.insignia = insignia
         self.plane_type = plane_type
         self.supplier = supplier

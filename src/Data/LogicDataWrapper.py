@@ -61,7 +61,6 @@ class Logic_Data_Wrapper:
     
     def search_airplane(self, filter):
         return self.airplane_data.search_airplane(filter)
-
     
     #
     #       VOYAGES DATA FUNCTIONS
