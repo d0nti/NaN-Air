@@ -122,7 +122,6 @@ class VoyageData:
             if voyage_id == voyage.id:
                 self.voyages[i] = replace(voyage, **kwarg)
 
-#Kerfið skal geta birt prentvænt yfirlit sem sýnir allar vinnuferðir starfsmanns í ákveðinni viku
     def voyages_an_employee_is_working(self, employee_name: str, date_filter: str):
         matching_voyages = []
         date_format = "%Y-%m-%d"
