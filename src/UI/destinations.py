@@ -172,7 +172,7 @@ class Destinations:
             f"{UIConstants.SEARCH_DESTINATION_MESSAGE} \n {UIConstants.SEARCH_DESTINATION_MESSAGE_CONTINUE}"
         )
 
-        while (command := input("\nUser Input ('' to quit): ")).lower() != "":
+        while (command := input("\nUser Input (press enter to go back): ")).lower() != "":
             try:
                 destinations = self.logic_wrapper.search_destination(command)
                 self.__print_destination(destinations)
