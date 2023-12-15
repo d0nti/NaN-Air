@@ -1,7 +1,6 @@
 from Data.voyagesdata import VoyageData
 from Model.VoyageModel import Voyage
 from datetime import datetime
-from dataclasses import fields
 
 
 def unique_ids(objects):
@@ -27,6 +26,15 @@ def test_register_new_voyage():
     new_voyage = Voyage("KEF", "2020-11-11", "2020-11-12")
     voyages.register_new_voyage(new_voyage)
     assert len(voyages.get_all_voyages()) == 10 + 1
+
+def test_register_new_voyage():
+    voyages = VoyageData()
+    voyage_list = ['Keflavik', '2024-12-14T20:00:00', '2024-12-14T23:00:00' ]
+    voyages.register_new_voyage(voyage_list)
+    assert len(voyages.get_all_voyages()) == 1
+    assert isinstance(voyages.get_all_voyages()[0], Voyage)
+    assert voyages.get_all_voyages()[0].destination == 'Keflavik'
+    assert voyages.get_all_voyages()[0].departure == datetime(2024, 12, 14, 20)
 
 
 def test_find_voyage_by_id():

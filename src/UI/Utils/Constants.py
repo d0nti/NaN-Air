@@ -40,7 +40,9 @@ class UIConstants:
     UPDATE_DESTINATION_INFO = "Contact Name, Contact Phone Number"
     SUCCESSFULL_UPDATE_FOR_DESTINATION = "Information has been sucessfully updated"
 
-    EMPLOYEE_SEARCH_PARAM = "Enter search filter or enter b to go back (SSID, Name, license or Job Title): "
+    EMPLOYEE_SEARCH_PARAM = (
+        "Enter search filter or enter b to go back (SSID, Name, license or Job Title): "
+    )
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
     REGISTER_NEW_FLIGHT_ATTENDANT = "Register New Flight Attendant"
@@ -54,10 +56,14 @@ class UIConstants:
     REGISTER_EMPLOYEE_INFO = (
         "SSID, Name, Rank, Address, Phonenumber, Home Phone Number(optional), License"
     )
-    UPDATE_EMPLOYEE_INFO_MESSAGE = "If you don't wish to change a given detail, leave it empty. \n"
+    UPDATE_EMPLOYEE_INFO_MESSAGE = (
+        "If you don't wish to change a given detail, leave it empty. \n"
+    )
     WRONG_SSID_INPUTTED_MESSAGE = "You have entered the wrong ssid, please try again "
     UPDATE_PILOT_INPUT = "Role, Rank, License, Address, Phone number, Home Phone Number"
-    UPDATE_FLIGHT_ATTENDANT_INPUT = "Role, Rank, Address, Phone number, Home Phone Number"
+    UPDATE_FLIGHT_ATTENDANT_INPUT = (
+        "Role, Rank, Address, Phone number, Home Phone Number"
+    )
     NAME = "Name"
     SSID = "SSID"
     JOB_TITLE = "Job Title"
@@ -72,7 +78,7 @@ class UIConstants:
     CO_PILOTS = "Co-Pilots"
     FLIGHT_ATTENDTANTS = "Flight Attendants"
     HEADS_OF_SERVICE = "Heads of Service"
-    REGISTER_VOYAGE_INFO = "UUID, Destination, Departure Time (HH:MM), Departure Date (YYYY-MM-DD), Arrival Time (HH:MM), Arrival Date (YYYY-MM-DD), Captain (Name), Co-Pilot (Name), Flight Service Manager (Name), Flight Attendant (Name)"
+    REGISTER_VOYAGE_INFO = "Destination, Departure (YYYY-MM-DDTHH:MM:SS), Arrival (YYYY-MM-DDTHH:MM:SS), Captain (Name), Co-Pilot (Name), Flight Service Manager (Name), Flight Attendant (Name)"
     SHIFT_START_DATE = "Shift Start Date (YYYY-MM-DD)"
     SHIFT_START_TIME = "Shift Start Time (HH-MM)"
     SHIFT_END_DATE = "Shift End Date (YYYY-MM-DD)"
@@ -106,7 +112,16 @@ class UIConstants:
     BACK = "Back"
     SEARCH = "Search by:"
     SORT_BY = "Sort by:"
-    SORT_BY_MENU_OUTPUT = "1. Captains" + "\n" + "2. Co-Pilots" + "\n" + "3. Flight Attendants" + "\n" + "4. Heads of Service" + "\n"
+    SORT_BY_MENU_OUTPUT = (
+        "1. Captains"
+        + "\n"
+        + "2. Co-Pilots"
+        + "\n"
+        + "3. Flight Attendants"
+        + "\n"
+        + "4. Heads of Service"
+        + "\n"
+    )
     USER_NOT_FOUND = "User Not Found!"
     CONTINUE_MESSAGE = "Press enter to continue"
     GO_BACK_INSTRUCTION = "Press Q and enter to go back"
@@ -137,9 +152,7 @@ class UIConstants:
 
     TWO_MENU_OPTION = "1. {}" + "\n" + "2. {}" + "\n" + "b. {}" + "\n" + "q. {}"
 
-    ONE_MENU_OPTION = (
-        "1. {}" + "\n" + "b. {}" + "\n" + "q. {}"
-    )
+    ONE_MENU_OPTION = "1. {}" + "\n" + "b. {}" + "\n" + "q. {}"
 
     FOUR_MENU_OPTION = (
         "1. {}"
@@ -217,18 +230,31 @@ class UIConstants:
 
     # Employee Error Messages
 
-    EMPLOYEE_SSID_LENGTH_ERROR = "Note: The SSID you entered is either too short or too long"
-    EMPLOYEE_SSID_EXISTS_ERROR = "Note: The SSID you entered is already assigned to an employee"
-    EMPLOYEE_SSID_FORMAT_ERROR = "Note: The SSID you entered contains non-numerical characters"
-    EMPLOYEE_PILOT_AGE_ERROR = "Note: The pilot you tried to register is either too old or too young"
+    EMPLOYEE_SSID_LENGTH_ERROR = (
+        "Note: The SSID you entered is either too short or too long"
+    )
+    EMPLOYEE_SSID_EXISTS_ERROR = (
+        "Note: The SSID you entered is already assigned to an employee"
+    )
+    EMPLOYEE_SSID_FORMAT_ERROR = (
+        "Note: The SSID you entered contains non-numerical characters"
+    )
+    EMPLOYEE_PILOT_AGE_ERROR = (
+        "Note: The pilot you tried to register is either too old or too young"
+    )
     EMPLOYEE_NAME_LONG_ERROR = "Note: The name you tried to enter is too long"
     EMPLOYEE_NAME_SHORT_ERROR = "Note: The name you tried to enter is too short"
     EMPLOYEE_ROLE_ERROR = "Note: The role you tried to assign does not exist"
     EMPLOYEE_RANK_ERROR = "Note: The rank you tried to assign does not exist"
-    EMPLOYEE_ADDRESS_FORMAT_ERROR = "Note: The address you tried to enter is of an invalid format"
+    EMPLOYEE_ADDRESS_FORMAT_ERROR = (
+        "Note: The address you tried to enter is of an invalid format"
+    )
     EMPLOYEE_PHONE_NUMBER_ERROR = "Note: The phone number you tried to assign to that employee is of an invalid format"
     EMPLOYEE_HOME_PHONE_NUMBER_ERROR = "Note: The home phone number you tried to assign to that employee is of an invalid format"
     PILOT_LICENSE_ERROR = "Note: The license you tried to enter is invalid"
-    SUCCESSFULL_REGISTRATION_FOR_PILOT = "Congratulations! You've successfully registered a pilot."
-    SUCCESSFULL_REGISTRATION_FOR_FLIGHT_ATTENDANT = "Congratulations! You've successfully registered a flight attendant."
-
+    SUCCESSFULL_REGISTRATION_FOR_PILOT = (
+        "Congratulations! You've successfully registered a pilot."
+    )
+    SUCCESSFULL_REGISTRATION_FOR_FLIGHT_ATTENDANT = (
+        "Congratulations! You've successfully registered a flight attendant."
+    )

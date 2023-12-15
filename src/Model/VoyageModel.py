@@ -10,8 +10,8 @@ class Voyage:
     destination: Destination
     departure: datetime
     arrival: datetime
-    captain: Employee = None
-    copilot: Employee = None
-    flight_service_manager: Employee = None
-    flight_attendant: Employee = None
+    captain: str = None
+    copilot: str = None
+    flight_service_manager: str = None
+    flight_attendant: str = None
     id: uuid.UUID = field(default_factory=uuid.uuid4)
