@@ -148,44 +148,47 @@ class Voyages:
 
             # destination,departure,arrival,captain,copilot,flight_service_manager,flight_attendant,id
             elif "7" == command:
-                employee_name = input("Enter employee name: ")
-                filter_date = input("Enter start date to search (YYYY-MM-DD): ")
+                try:
+                    employee_name = input("Enter employee name: ")
+                    filter_date = input("Enter start date to search (YYYY-MM-DD): ")
 
-                voyages_that_an_employee_is_working = (
-                    self.logic_wrapper.voyages_an_employee_is_working(
-                        employee_name, filter_date
+                    voyages_that_an_employee_is_working = (
+                        self.logic_wrapper.voyages_an_employee_is_working(
+                            employee_name, filter_date
+                        )
                     )
-                )
-                table = PrettyTable()
+                    table = PrettyTable()
 
-                table.field_names = [
-                    "Destination",
-                    "Departure",
-                    "Arrival",
-                    "Captain",
-                    "Co Pilot",
-                    "Flight Service Manager",
-                    "Flight Attendant",
-                ]
+                    table.field_names = [
+                        "Destination",
+                        "Departure",
+                        "Arrival",
+                        "Captain",
+                        "Co Pilot",
+                        "Flight Service Manager",
+                        "Flight Attendant",
+                    ]
 
-                # Add data rows to the table
-                for row in voyages_that_an_employee_is_working:
-                    table.add_row(
-                        [
-                            row["destination"],
-                            row["departure"],
-                            row["arrival"],
-                            row["captain"],
-                            row["copilot"],
-                            row["flight_service_manager"],
-                            row["flight_attendant"],
-                        ]
+                    # Add data rows to the table
+                    for row in voyages_that_an_employee_is_working:
+                        table.add_row(
+                            [
+                                row["destination"],
+                                row["departure"],
+                                row["arrival"],
+                                row["captain"],
+                                row["copilot"],
+                                row["flight_service_manager"],
+                                row["flight_attendant"],
+                            ]
+                        )
+
+                    print(table)
+                    print(
+                        f"Employee {employee_name} is working on the above voyages in the week starting on {filter_date}"
                     )
-
-                print(table)
-                print(
-                    f"Employee {employee_name} is working on the above voyages in the week starting on {filter_date}"
-                )
+                except ValueError:
+                    print(UIConstants.INVALID_INPUT)
             else:
                 print(UIConstants.INVALID_INPUT)
 
