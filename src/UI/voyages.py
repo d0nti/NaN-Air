@@ -2,8 +2,7 @@ from UI.Utils.Constants import UIConstants
 import sys
 from prettytable import PrettyTable
 from Model.VoyageModel import Voyage
-from Model.EmployeeModel import Employee, Pilot, FlightAttendant
-from dataclasses import fields, asdict, replace
+from dataclasses import asdict
 from Logic.UILogicWrapper import UI_Logic_Wrapper
 from datetime import datetime
 from collections.abc import Iterable
@@ -64,8 +63,20 @@ class Voyages:
     def input_prompt_voyages(self):
         while True:
             print(UIConstants.HEADER.format(UIConstants.MANAGE_VOYAGES))
-            print(UIConstants.SEVEN_MENU_OPTION.format(UIConstants.DISPLAY_VOYAGES,UIConstants.REGISTER_NEW_VOYAGE,UIConstants.COPY_EXISTING_VOYAGE,UIConstants.MAKE_RECURRING_VOYAGE,UIConstants.CHOOSE_STAFF,UIConstants.CHECK_VOYAGE_STATUS,UIConstants.CHECK_VOYAGES_AN_EMP_IS_WORKING,UIConstants.BACK,UIConstants.QUIT))
-            command = input("User Input: ").lower()
+            print(
+                UIConstants.SEVEN_MENU_OPTION.format(
+                    UIConstants.DISPLAY_VOYAGES,
+                    UIConstants.REGISTER_NEW_VOYAGE,
+                    UIConstants.COPY_EXISTING_VOYAGE,
+                    UIConstants.MAKE_RECURRING_VOYAGE,
+                    UIConstants.CHOOSE_STAFF,
+                    UIConstants.CHECK_VOYAGE_STATUS,
+                    UIConstants.CHECK_VOYAGES_AN_EMP_IS_WORKING,
+                    UIConstants.BACK,
+                    UIConstants.QUIT,
+                )
+            )
+            command = input(UIConstants.USER_INPUT).lower()
 
             if "q" == command:
                 self.save_and_quit()
@@ -85,52 +96,60 @@ class Voyages:
                     print(f"{voyage_field}: ", end=" ")
                     voyage_information = input()
                     all_voyage_information.append(voyage_information)
-                    
+
                 # Converting list to dataclass by using '*' operator that converts list to fields in dataclass
-                all_voyage_information[1] = datetime.fromisoformat(all_voyage_information[1])
-                all_voyage_information[2] = datetime.fromisoformat(all_voyage_information[2])
+                all_voyage_information[1] = datetime.fromisoformat(
+                    all_voyage_information[1]
+                )
+                all_voyage_information[2] = datetime.fromisoformat(
+                    all_voyage_information[2]
+                )
                 new_voyage = Voyage(*all_voyage_information)
 
                 print_dataclass_as_table(new_voyage, Voyage)
 
                 self.logic_wrapper.register_new_voyage(new_voyage)
-                print("New Voyage Registered.")
+                print(UIConstants.NEW_VOYAGE_REGISTERED)
 
             elif "3" == command:
-                voyage_id = input("Enter Voyage ID: ")
-                new_date = input("Enter new date (YYYY-MM-DD): ")
+                voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
+                new_date = input(UIConstants.ENTER_NEW_DATE)
 
                 self.logic_wrapper.copy_to_new_date(
                     voyage_id, datetime.fromisoformat(new_date)
                 )
-                print("Voyage copied.")
+                print(UIConstants.VOYAGE_COPIED)
                 print_dataclass_as_table(self.logic_wrapper.get_all_voyages(), Voyage)
 
             elif "4" == command:
-                voyage_id = input("Enter Voyage ID: ")
-                interval_in_days = int(input("Enter interval in days: "))
-                end_date = input("Enter end date (YYYY-MM-DD): ")
+                voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
+                interval_in_days = int(input(UIConstants.INTERVAL_DAYS))
+                end_date = input(UIConstants.ENTER_END_DATE)
 
                 self.logic_wrapper.make_recurring_voyage(
                     voyage_id, interval_in_days, datetime.fromisoformat(end_date)
                 )
-                print("Voyage made recurring.")
+                print(UIConstants.VOYAGE_MADE_RECURRING)
                 print_dataclass_as_table(self.logic_wrapper.get_all_voyages(), Voyage)
 
             elif "5" == command:
                 self.populate_voyage()
 
             elif "6" == command:
-                voyage_id = input("Enter Voyage ID: ")
+                voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
                 voyage = self.logic_wrapper.find_voyage(voyage_id)
                 print_dataclass_as_table(voyage, Voyage)
-            
-            #destination,departure,arrival,captain,copilot,flight_service_manager,flight_attendant,id
+
+            # destination,departure,arrival,captain,copilot,flight_service_manager,flight_attendant,id
             elif "7" == command:
                 employee_name = input("Enter employee name: ")
                 filter_date = input("Enter start date to search (YYYY-MM-DD): ")
 
-                voyages_that_an_employee_is_working = self.logic_wrapper.voyages_an_employee_is_working(employee_name, filter_date)
+                voyages_that_an_employee_is_working = (
+                    self.logic_wrapper.voyages_an_employee_is_working(
+                        employee_name, filter_date
+                    )
+                )
                 table = PrettyTable()
 
                 table.field_names = [
@@ -145,37 +164,40 @@ class Voyages:
 
                 # Add data rows to the table
                 for row in voyages_that_an_employee_is_working:
-                    table.add_row([
-                        row['destination'],
-                        row['departure'],
-                        row['arrival'],
-                        row['captain'],
-                        row['copilot'],
-                        row['flight_service_manager'],
-                        row['flight_attendant']
-                    ])
+                    table.add_row(
+                        [
+                            row["destination"],
+                            row["departure"],
+                            row["arrival"],
+                            row["captain"],
+                            row["copilot"],
+                            row["flight_service_manager"],
+                            row["flight_attendant"],
+                        ]
+                    )
 
-                # Print the table
                 print(table)
-                print(f"Employee {employee_name} is working on the above voyages in the week starting on {filter_date}")
+                print(
+                    f"Employee {employee_name} is working on the above voyages in the week starting on {filter_date}"
+                )
             else:
                 print(UIConstants.INVALID_INPUT)
-        
+
     def list_all_voyages(self):
         """Lists all voyages from a file."""
         voyages = self.logic_wrapper.get_all_voyages()
         if voyages:
             print_dataclass_as_table(voyages, Voyage)
         else:
-            print("No voyages found.")
+            print(UIConstants.N0_VOYAGES)
 
     def populate_voyage(self):
-        voyage_id = input("Enter Voyage ID: ").strip()
+        voyage_id = input(UIConstants.ENTER_VOYAGE_ID).strip()
         while True:
             voyage = self.logic_wrapper.find_voyage(voyage_id)
 
             if not voyage:
-                print("Voyage not found")
+                print(UIConstants.VOYAGE_NOT_FOUND)
                 return
 
             if self.check_if_voyage_manned(voyage):
@@ -184,7 +206,7 @@ class Voyages:
 
             self.choose_staff_prompt(voyage)
 
-            command = input("User Input: ")
+            command = input(UIConstants.USER_INPUT)
             if "1" == command:
                 captains = self.logic_wrapper.sort_by_captains()
                 print_employees_table(captains)
@@ -210,9 +232,7 @@ class Voyages:
                 print_employees_table(attendants)
                 name = input("Input name of flight attendants: ")
                 self.logic_wrapper.set_staff(voyage_id, flight_attendant=name)
-                print(
-                    f"Successfully set flight attendant {name} to voyage {voyage.id}"
-                )
+                print(f"Successfully set flight attendant {name} to voyage {voyage.id}")
             elif "q" == command:
                 self.save_and_quit()
             else:
@@ -236,9 +256,16 @@ class Voyages:
 
     def input_prompt_display_voyages(self):
         while True:
-            print(UIConstants.TWO_MENU_OPTION.format(UIConstants.LIST_MANNED_VOYAGES,UIConstants.LIST_UNMANNED_VOYAGES,UIConstants.BACK,UIConstants.QUIT))
+            print(
+                UIConstants.TWO_MENU_OPTION.format(
+                    UIConstants.LIST_MANNED_VOYAGES,
+                    UIConstants.LIST_UNMANNED_VOYAGES,
+                    UIConstants.BACK,
+                    UIConstants.QUIT,
+                )
+            )
 
-            command = input("User Input: ")
+            command = input(UIConstants.USER_INPUT)
             if command == "b":
                 return "b"
             elif "1" == command:
@@ -247,7 +274,7 @@ class Voyages:
                 if manned_voyages:
                     print_dataclass_as_table(manned_voyages, Voyage)
                 else:
-                    print("No voyages found.")
+                    print(UIConstants.N0_VOYAGES)
                 continue
 
             elif "2" == command:
@@ -256,7 +283,7 @@ class Voyages:
                 if unmanned_voyages:
                     print_dataclass_as_table(unmanned_voyages, Voyage)
                 else:
-                    print("No voyages found.")
+                    print(UIConstants.N0_VOYAGES)
 
                 continue
 
