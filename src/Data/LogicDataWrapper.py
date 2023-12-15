@@ -19,14 +19,11 @@ class Logic_Data_Wrapper:
     def register_flight_attendant(self, employee_info):
         return self.employee_data.register_flight_attendant(employee_info)
 
-    def set_staff(self, voyage_id: str, **kwarg):
-        return self.voyagedata.set_staff(voyage_id, **kwarg)
-
     def get_all_employees(self):
         return self.employee_data.get_all_employees()
 
-    def get_all_destinations(self):
-        return self.destination_data.get_all_destinations()
+    def search_employee(self, filter):
+        return self.employee_data.search_employee(filter)
 
     def sort_by_captains(self):
         return self.employee_data.sort_by_captains()
@@ -39,9 +36,6 @@ class Logic_Data_Wrapper:
 
     def sort_by_heads_of_service(self):
         return self.employee_data.sort_by_heads_of_service()
-
-    def search_employee(self, filter):
-        return self.employee_data.search_employee(filter)
 
     def search_by_day(self, filter):
         return self.employee_data.search_by_working_on_day(filter)
@@ -67,11 +61,14 @@ class Logic_Data_Wrapper:
     
     def search_airplane(self, filter):
         return self.airplane_data.search_airplane(filter)
-    
 
+    
     #
     #       VOYAGES DATA FUNCTIONS
     #
+
+    def set_staff(self, voyage_id: str, **kwarg):
+        return self.voyagedata.set_staff(voyage_id, **kwarg)
 
     def write_voyages_to_disk(self):
         VoyageData.write_voyages_to_disk(self.voyagedata.get_all_voyages())
@@ -87,6 +84,9 @@ class Logic_Data_Wrapper:
 
     def copy_to_new_date(self, voyage_id: str, new_date: datetime):
         return self.voyagedata.copy_to_new_date(voyage_id, new_date)
+
+    def voyages_an_employee_is_working(self, filter_date, employee_name):
+        return self.voyagedata.voyages_an_employee_is_working(filter_date, employee_name)
 
     def make_recurring_voyage(
         self, voyage_id, interval_in_days: int, end_date: datetime
@@ -117,6 +117,9 @@ class Logic_Data_Wrapper:
     def get_all_destinations(self):
         return self.destination_data.get_all_destinations()
 
+    def get_all_destinations(self):
+        return self.destination_data.get_all_destinations()
+
     def register_destination(self, destination_info):
         return self.destination_data.register_destination(destination_info)
 
@@ -124,8 +127,6 @@ class Logic_Data_Wrapper:
         return self.destination_data.search_destination(filter)
 
     def update_destination(self, destination: Destination):
-        """Updates the given instance of the destination in the storage layer"""
+        """Updates a given destination's contact with new information"""
         return self.destination_data.update_destination(destination)
     
-    def voyages_an_employee_is_working(self, filter_date, employee_name):
-        return self.voyagedata.voyages_an_employee_is_working(filter_date, employee_name)
