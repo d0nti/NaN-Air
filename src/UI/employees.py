@@ -107,7 +107,7 @@ class Employees:
             return "b"
 
         elif command == "1" or command == "1.":
-            filter = input("Enter search filter (SSID, Name, license or Job Title): ")
+            filter = input(UIConstants.EMPLOYEE_SEARCH_PARAM)
             filtered_employees = self.logic_wrapper.search_employee(filter)
             table = PrettyTable()
 
