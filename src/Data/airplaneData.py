@@ -10,8 +10,8 @@ class AirplaneData:
             used to assign NaN-Air planes the correct details, mainly the number of seats
             they contain and the manufacturer of the airplane.
         """
-        self.plane_file_name = "src/Files/aircraft.csv"
-        self.legal_plane_file_name = "src/Files/aircraft_type.csv"
+        self.plane_file_name = "Files/aircraft.csv"
+        self.legal_plane_file_name = "Files/aircraft_type.csv"
 
 
     def get_all_airplanes(self):

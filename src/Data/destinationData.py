@@ -6,7 +6,7 @@ import os
 
 class DestinationData:
     def __init__(self):
-        self.file_name = "src/Files/Destinations.csv"
+        self.file_name = "Files/Destinations.csv"
 
     # frá fyrirlestri
     def get_all_destinations(self):
