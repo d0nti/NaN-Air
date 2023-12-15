@@ -123,8 +123,11 @@ class VoyageData:
                 self.voyages[i] = replace(voyage, **kwarg)
 
 #Kerfið skal geta birt prentvænt yfirlit sem sýnir allar vinnuferðir starfsmanns í ákveðinni viku
-    def voyages_an_employee_is_working(self, employee_name: str, date_filter):
+    def voyages_an_employee_is_working(self, employee_name: str, date_filter: str):
         matching_voyages = []
+        date_format = "%Y-%m-%d"
+        start_date = datetime.strptime(date_filter, date_format)
+        end_date = start_date + timedelta(days=7)
 
         with open(self.FILE_NAME) as csvfile:
             reader = csv.DictReader(csvfile)
@@ -135,8 +138,9 @@ class VoyageData:
                     or row["flight_service_manager"] == employee_name
                     or row["flight_attendant"] == employee_name
                 ):
-                    if row["departure"] == date_filter or row["arrival"] == date_filter:
+                    departure_date = datetime.strptime(row["departure"].split(' ')[0], date_format)
+                    if start_date <= departure_date < end_date:
                         matching_voyages.append(row)
-                    matching_voyages.append(row)
 
         return matching_voyages
+
