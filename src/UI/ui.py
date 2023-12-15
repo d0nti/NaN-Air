@@ -18,11 +18,12 @@ class MainMenu:
     def main_menu_output(self):
         print(UIConstants.HEADER.format(UIConstants.BOOKING_SYSTEM))
         print(
-            UIConstants.FOUR_MENU_OPTION.format(
+                UIConstants.FOUR_MENU_OPTION.format(
                 UIConstants.MANAGE_VOYAGES,
                 UIConstants.MANAGE_EMPLOYEES,
                 UIConstants.MANAGE_DESTINATIONS,
                 UIConstants.MANAGE_AIRPLANES,
+                UIConstants.BACK,
                 UIConstants.QUIT,
             )
         )
