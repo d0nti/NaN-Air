@@ -68,27 +68,30 @@ class VerifyDestination:
         return in_use_info
 
     def Name(self):
-        if not self.dest_to_validate.name.isalpha():
-            raise DestinationNameError
+        for character in self.dest_to_validate.name:
+            if not (character == " " or character.isalpha()):
+                raise DestinationNameError
 
-        elif self.dest_to_validate.name in self.Verify_Destination_Helper("name"):
+        if self.dest_to_validate.name in self.Verify_Destination_Helper("name"):
             raise DestinationNameExistsError
 
         else:
             return True
 
     def Country(self):
-        if not self.dest_to_validate.country.isalpha():
-            raise DestinationCountryError
+        for character in self.dest_to_validate.country:
+            if not (character == " " or character.isalpha()):
+                raise DestinationCountryError
 
         else:
             return True
 
     def Airport(self):
-        if not self.dest_to_validate.airport.lower().strip("_Airport").isalpha():
-            raise DestinationAirportError
+        for character in self.dest_to_validate.airport:
+            if not (character == " " or character.isalpha()):
+                raise DestinationAirportError
 
-        elif self.dest_to_validate.airport in self.Verify_Destination_Helper("airport"):
+        if self.dest_to_validate.airport in self.Verify_Destination_Helper("airport"):
             raise DestinationAirportExistsError
 
         else:
@@ -109,8 +112,9 @@ class VerifyDestination:
             return True
 
     def Contact(self):
-        if not self.dest_to_validate.contact_name.isalpha():
-            raise DestinationContactError
+        for character in self.dest_to_validate.contact_name:
+            if not (character == " " or character.isalpha()):
+                raise DestinationContactError
 
         else:
             return True

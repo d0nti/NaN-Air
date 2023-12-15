@@ -272,20 +272,20 @@ class UIConstants:
 
     # Destination Error Messages
 
-    DESTINATION_NAME_ERROR_MESSAGE = "Note: All characters must be in the alphabet"
+    DESTINATION_NAME_ERROR_MESSAGE = "Note: All characters in destination name must be in the alphabet"
     DESTINATION_NAME_EXISTS_ERROR_MESSAGE = (
         "Note: The name for the destination already exists"
     )
 
-    DESTINATION_COUNTRY_ERROR_MESSAGE = "Note: All character must be in the alphabet"
-    DESTINATION_AIRPORT_ERROR_MESSAGE = "Note: All character must be in the alphabet"
+    DESTINATION_COUNTRY_ERROR_MESSAGE = "Note: All characters in country name must be in the alphabet"
+    DESTINATION_AIRPORT_ERROR_MESSAGE = "Note: All characters in airport name must be  the alphabet"
     DESTINATION_AIRPORT_EXISTS_ERROR_MESSAGE = (
         "Note: The name for the airport already exists"
     )
 
-    DESTINATION_DISTANCE_ERROR_MESSAGE = "Note: All characters must be digit"
-    DESTINATION_FLIGHT_TIME_ERROR_MESSAGE = "Note: All character mus be digit"
-    DESTINATION_CONTACT_ERROR_MESSAGE = "Note: All characters must be in the alphabet"
+    DESTINATION_DISTANCE_ERROR_MESSAGE = "Note: All characters for distance to Iceland must be digit"
+    DESTINATION_FLIGHT_TIME_ERROR_MESSAGE = "Note: All character for flight time must be digit"
+    DESTINATION_CONTACT_ERROR_MESSAGE = "Note: All characters in contact name must be in the alphabet"
     DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE = (
         "Note: the phone number must include + and a 10 digit number"
     )

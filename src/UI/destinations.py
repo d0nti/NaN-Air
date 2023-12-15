@@ -103,9 +103,10 @@ class Destinations:
 
         is_destination_valid = False
         while not is_destination_valid:
+            all_destination_info = []
             try:
                 for i in destination_info_print:
-                    all_destination_info = []
+                    # all_destination_info = []
                     print(f"{i}", end=" ")
                     destination_infomation = input()
                     all_destination_info.append(destination_infomation)
