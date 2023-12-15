@@ -7,6 +7,25 @@ from dataclasses import asdict
 from Logic.LogicWrapper import UI_Logic_Wrapper
 from datetime import datetime
 
+
+def print_dataclass_as_table_out(self, instances):
+    """Prints a dataclass as a table."""
+
+    if not isinstance(instances, Iterable):
+        instances = [instances]
+    elif not instances:
+        return
+
+    table = PrettyTable(
+        field_names=[field for field in Voyage.__dataclass_fields__.keys()]
+    )
+    for instance in instances:
+        table.add_row([v for _, v in asdict(instance).items()])
+
+
+    print(table)
+
+
 class Voyages:
     def __init__(self, logic_wrapper):
         self.logic_wrapper = logic_wrapper
@@ -59,7 +78,9 @@ class Voyages:
 
     # sub menu sort_by_man voyages
     def man_voyages_output(self, voyage):
-        print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_EMPLOYEE))
+        print(UIConstants.HEADER.format(UIConstants.CHOOSE_STAFF))
+        if not voyage.captain or not voyage.copilot or not voyage.flight_service_manager or not voyage.flight_attendant:
+            print(f"Voyage {voyage.id} is not fully staffed.")
         if not voyage.captain:
             print(f"1. {UIConstants.ADD_CAPTAIN}")
         if not voyage.copilot:
@@ -68,7 +89,7 @@ class Voyages:
             print(f"3. {UIConstants.ADD_HEADS_OF_SERVICE}")
         if not voyage.flight_attendant:
             print(f"4. {UIConstants.ADD_FLIGHT_ATTENDTANTS}")
-        print(f"b. {UIConstants.BACK} \n q. {UIConstants.QUIT}")
+        print(f"b. {UIConstants.BACK} \nq. {UIConstants.QUIT}")
 
     def show_man_voyages_menu(self, voyage):
         self.man_voyages_output(voyage)
