@@ -238,7 +238,7 @@ class EmployeeData:
 
     def get_shift_plan(self):
         shift_plan = []
-        with open("/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+        with open("Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 shift_plan.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
@@ -246,7 +246,7 @@ class EmployeeData:
     
     def search_by_day(self, filter: str):
         employees_working = []
-        with open("/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+        with open("Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if str(filter) == row["shift_start_date"]:
@@ -255,7 +255,7 @@ class EmployeeData:
     
     def search_by_not_day(self, filter_date: str):
         employees_not_working = []
-        with open("/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+        with open("Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
 
             working_employees = {row["name"] for row in reader if str(filter_date) == row["shift_start_date"]}
