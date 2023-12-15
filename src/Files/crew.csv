@@ -1,7 +1,7 @@
 nid,name,role,rank,license,address,phone_nr,home_phone_nr
 3009907461,William Carillo,Pilot,Captain,NAFokkerF100,Fellsmúli 1,8998801,
 2910858778,Virginia Ho,Pilot,Captain,NABAE146,Fellsmúli 2,8998802,
-2706838569,Gerard Norris,Pilot,Captain,NAFokkerF100,Fellsmúli 3,8998803,
+2706838569,Gerard Norris,Pilot,Captain,NABAE146,Fellsmúli 5,8998805,
 2209955782,Franko Sinatra,Pilot,Captain,NABAE146,Fellsmúli 4,8998804,
 2907675667,Felecia Moye,Pilot,Captain,NABAE146,Fellsmúli 5,8998805,
 1309797899,Tyler Anderson,Pilot,Captain,NAFokkerF28,Fellsmúli 6,8998806,
@@ -36,3 +36,4 @@ nid,name,role,rank,license,address,phone_nr,home_phone_nr
 1107951952,Elizabeth Mcfadden,Cabincrew,Flight Attendant,N/A,Fellsmúli 35,8998835,
 1234567890,Test Man :),Cabincrew,Flight Attendant,N/A,MyNuts 1,1223334,
 4545808080,Pilot Johnson,Pilot,Captain,NAFokkerF100,Síðumúli 69,7774878,
+1234569874,Testy Johnsson,Pilot,Captain,To kill,My Nuts 2,5673699,
