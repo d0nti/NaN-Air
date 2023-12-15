@@ -165,7 +165,7 @@ class Employees:
                 sys.exit()
             elif command == "1" or command == "1.":
                 filter = input(
-                    "Enter the day to search for: "
+                    "Enter the day to search for (YYYY-MM-DD): "
                 )  # get the day to search for
                 results = self.logic_wrapper.search_by_day(filter)
                 self.__print_shift_plan(results)
@@ -173,7 +173,7 @@ class Employees:
 
             elif command == "2" or command == "2.":
                 filter = input(
-                    "Enter the day to search for: "
+                    "Enter the day to search for (YYYY-MM-DD): "
                 )  # get the day to search for
                 results = self.logic_wrapper.search_by_not_day(filter)
                 self.__print_shift_plan(results)
