@@ -64,6 +64,10 @@ class Logic_Data_Wrapper:
 
     def register_airplane(self, airplane_info):
         return self.airplane_data.register_airplane(airplane_info)
+    
+    def search_airplane(self, filter):
+        return self.airplane_data.search_airplane(filter)
+    
 
     #
     #       VOYAGES DATA FUNCTIONS

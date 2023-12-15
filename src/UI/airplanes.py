@@ -97,6 +97,24 @@ class Airplanes:
     def find_airplane(self):
         print(UIConstants.HEADER.format(UIConstants.FIND_AIRPLANE))
         pass
+        filter = input(UIConstants.PLANE_SEARCH_PARAM)
+        filtered_airplane = self.logic_wrapper.search_airplane(filter)
+        table = PrettyTable()
+
+        table.field_names = [
+            UIConstants.PLANE_INSIGNIA,
+            UIConstants.PLANE_TYPE_ID,
+        ]
+
+        for airplane in filtered_airplane:
+            table.add_row(
+                [
+                    airplane.insignia,
+                    airplane.plane_type,
+                ]
+            )
+        print(table)
+
 
     def print_airplane_efficiency(self):
         print(UIConstants.HEADER.format(UIConstants.PRINT_AIRPLANE_EFFICIENCY))
