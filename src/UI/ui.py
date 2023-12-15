@@ -43,6 +43,5 @@ class MainMenu:
                 self.airplanes.control_airplane_menu()
             else:
                 print(UIConstants.INVALID_INPUT)
-                input(UIConstants.CONTINUE_MESSAGE)
         print(UIConstants.QUIT_MESSAGE)
         # end while command
