@@ -184,3 +184,13 @@ Viggó: klára update employee
 
 samantekt:
 erum mjög nálægt því að klára, ætlum að setja finishing touches á morgun
+
+15. des
+KLÁRA VERKEFNI
+
+Verkefnaskipting
+Hera: Laga stack overflow í UI
+Andrea: Laga að registera voyage
+Anton: fara yfir error messages
+Marvin: Gera use cases aftur fyrir nýju skýrsluna
+Viggó: vinna í nýju skýrslunni.
