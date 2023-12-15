@@ -1,6 +1,6 @@
 from Data.employeeData import EmployeeData
 from Data.destinationData import DestinationData
-from Data.planeData import AirplaneData
+from Data.airplaneData import AirplaneData
 from Data.voyagesdata import VoyageData
 from datetime import datetime
 from Model.DestinationModel import Destination
