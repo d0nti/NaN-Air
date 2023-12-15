@@ -238,6 +238,9 @@ class Employees:
         command = input("User Input: ")
         if command == "b" or command == "b.":
             return "b"
+        elif command == "q" or command == "q.":
+            print(UIConstants.QUIT_MESSAGE)
+            sys.exit()
 
         elif command == "1" or command == "1.":
             self.search_employee()
@@ -246,7 +249,7 @@ class Employees:
         self.command = command
 
         if command == "q" or command == "q.":
-            pass
+            sys.exit()
 
         elif command == "b" or command == "b.":
             #self.employees_menu_output()
