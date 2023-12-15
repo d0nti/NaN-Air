@@ -12,6 +12,11 @@ class UIConstants:
     TYPE = "Type"
     SEATS = "Seats"
     SUPPLIER = "Supplier"
+    PLANE_INSIGNIA = "Plane Insignia"
+    PLANE_TYPE_ID = "Plane ID"
+    PLANE_DATE_OF_MANUFACTURE = "Date Of Manufacture"
+    PLANE_LAST_MAINTENANCE = "Last Maintenance"
+    PLANE_SEARCH_PARAM = "Search for plane"
 
     DISPLAY_DESTINATIONS = "Display Destinations"
     REGISTER_NEW_DESTINATION = "Register New Destination"
