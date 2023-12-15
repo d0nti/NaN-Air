@@ -61,12 +61,8 @@ class Employees:
                 self.control_employee_sort_by_menu()
             else:
                 print(UIConstants.INVALID_INPUT)
-<<<<<<< Updated upstream
                 # input(UIConstants.CONTINUE_MESSAGE)
  
-=======
-                input(UIConstants.CONTINUE_MESSAGE)
->>>>>>> Stashed changes
 
     def employee_register_output(self):
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_EMPLOYEE))
@@ -163,26 +159,16 @@ class Employees:
                 sys.exit()
             elif command == "1" or command == "1.":
                 filter = input(
-<<<<<<< Updated upstream
                     "Enter the day to search for (YYYY-MM-DD): "
                 )  # get the day to search for
-=======
-                    "Enter the day to search for: "
-                )
->>>>>>> Stashed changes
                 results = self.logic_wrapper.search_by_day(filter)
                 self.__print_shift_plan(results)
                 print(f"{UIConstants.EMPLOYEES_WORKING_MESSAGE}{filter}")
 
             elif command == "2" or command == "2.":
                 filter = input(
-<<<<<<< Updated upstream
                     "Enter the day to search for (YYYY-MM-DD): "
                 )  # get the day to search for
-=======
-                    "Enter the day to search for: "
-                )
->>>>>>> Stashed changes
                 results = self.logic_wrapper.search_by_not_day(filter)
                 self.__print_shift_plan(results)
                 print(f"{UIConstants.EMPLOYEES_NOT_WORKING} {filter}")
