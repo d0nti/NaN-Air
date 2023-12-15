@@ -117,9 +117,6 @@ class Logic_Data_Wrapper:
     def get_all_destinations(self):
         return self.destination_data.get_all_destinations()
 
-    def get_all_destinations(self):
-        return self.destination_data.get_all_destinations()
-
     def register_destination(self, destination_info):
         return self.destination_data.register_destination(destination_info)
 

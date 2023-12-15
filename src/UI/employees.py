@@ -101,17 +101,15 @@ class Employees:
                 print("command was:", command)
                 input(UIConstants.CONTINUE_MESSAGE)
 
-    
     # Submenu sort employees
     def employee_sort_by_output(self):
-
         print(
             UIConstants.FIVE_MENU_OPTION.format(
                 UIConstants.CAPTAINS,
                 UIConstants.CO_PILOTS,
                 UIConstants.FLIGHT_ATTENDTANTS,
                 UIConstants.HEADS_OF_SERVICE,
-                UIConstants.SSID,
+                UIConstants.EMPLOYEE_SEARCH_PARAM,
                 UIConstants.BACK,
                 UIConstants.QUIT,
             )
@@ -139,14 +137,13 @@ class Employees:
                 heads_of_services = self.logic_wrapper.sort_by_heads_of_service()
                 self.__print_flight_attendants(heads_of_services)
             elif command == "5" or command == "5.":
-                self.searc_employee(command)  # Búa til Viggo
+                self.search_employee()  # Búa til Viggo
             else:
                 print(UIConstants.INVALID_INPUT)
                 print("command was: ", command)
                 input(UIConstants.CONTINUE_MESSAGE)
 
     # submenu search shift plan
-
     def employee_shift_plan_search_by_output(self):
         print(
             UIConstants.TWO_MENU_OPTION.format(
@@ -186,7 +183,6 @@ class Employees:
                 input(UIConstants.CONTINUE_MESSAGE)
 
     #submenu update employee
-
     def employee_update_output(self):
         print(UIConstants.HEADER.format(UIConstants.UPDATE_EMPLOYEE))
         print(
@@ -199,7 +195,7 @@ class Employees:
         )
     
     def show_update_employees_menu(self):
-        self.mployee_update_output()
+        self.employee_update_output()
         return input("User Input: ").lower()
 
     def control_update_employee_menu(self):
@@ -216,8 +212,6 @@ class Employees:
                 print(UIConstants.INVALID_INPUT)
                 print("command was:", command)
                 input(UIConstants.CONTINUE_MESSAGE)
-
-        #AAAAAAAAAAAAAAAAAAAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
 
     def list_employees(self):
         employees = self.logic_wrapper.get_all_employees()
@@ -246,7 +240,6 @@ class Employees:
                 )
             # nid,name,role,rank,licence,address,phone_nr,
             print(table)
-
 
     # Leið til þess að brjóta niður athuga allt á íslensku er bara fyrir mig (Hera)
     def __print_captains(self, captains):
@@ -300,7 +293,6 @@ class Employees:
                 ]
             )
         print(table)
-
 
     def display_shift_plan(self):
         # get the shift plan from employeeData.py
@@ -531,10 +523,8 @@ class Employees:
             if (
                 len(ssid) == 10
             ):  # Hér er hægt að skrifa hvaða ssid sem er og fá error ef það er ekki til
-                if self.logic_wrapper.search_employee(ssid)[0]:  # IDK    THIS
-                    pilot_to_change = self.logic_wrapper.search_employee(ssid)[
-                        0
-                    ]  #     IF      WORKS
+                if self.logic_wrapper.search_employee(ssid)[0]:
+                    pilot_to_change = self.logic_wrapper.search_employee(ssid)[0]
                 if pilot_to_change:
                     correct_ssid = True
                 else:
@@ -611,7 +601,6 @@ class Employees:
                 ]
             )
         print(table)
-        self.employee_submenu_output()  # Athuga hvort má gera!
 
     def get_shift_plan_not_working(self):
         return self.logic_wrapper.get_shift_plan_not_working()

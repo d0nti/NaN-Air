@@ -1,5 +1,4 @@
 from Model.DestinationModel import Destination
-
 import csv
 import io
 import os
@@ -29,7 +28,7 @@ class DestinationData:
 
         return ret_list
 
-    def register_destination(self, destination):
+    def register_destination(self, destination: Destination):
         with open(self.file_name, "a", encoding="utf-8") as csvfile:
             fieldnames = [
                 "name",
@@ -58,7 +57,7 @@ class DestinationData:
                 }
             )
 
-    def search_destination(self, filter):
+    def search_destination(self, filter: str):
         searched_destination = []
 
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
@@ -87,9 +86,9 @@ class DestinationData:
                 return searched_destination
 
     def update_destination(self, destination: Destination):
-        """This function takes in uppdated instance of Destination.
-        In order to do this it must read all, write all back with one istance changed
-        For safety a temp file is created so no file can be lost
+        """ This function takes in uppdated instance of Destination.
+            In order to do this it must read all, write all back with one istance changed
+            For safety a temp file is created so no file can be lost
         """
         # We need to:
         #  a)  read all

@@ -2,8 +2,8 @@ from UI.voyages import Voyages
 from UI.employees import Employees
 from UI.destinations import Destinations
 from UI.airplanes import Airplanes
+from UI.Utils.Constants import UIConstants
 from Logic.UILogicWrapper import UI_Logic_Wrapper
-import sys
 
 
 DASH_SYMBOL = "-"
@@ -20,27 +20,6 @@ HEADER = (
     + f"{DASH_SYMBOL * LENGTH_SYMBOL}"
 )
 
-# HEADER_MAIN_MENU = (
-#     "------------------------------"
-#     + "\n"
-#     + "  NaN Air - Booking System"
-#     + "\n"
-#     + "------------------------------
-# )
-
-
-MAIN_MENU = (
-    "1. Manage Voyages"
-    + "\n"
-    + "2. Manage Employees"
-    + "\n"
-    + "3. Manage Destinations"
-    + "\n"
-    + "4. Manage Aircrafts"
-    + "\n"
-    + "q. Quit"
-)
-
 
 class MainMenu:
     def __init__(self):
@@ -52,7 +31,7 @@ class MainMenu:
 
     def menu_output(self):
         print(HEADER.format("Booking System"))
-        print(MAIN_MENU)
+        print(UIConstants.MAIN_MENU)
 
     def dostuff(self):
         self.menu_output()

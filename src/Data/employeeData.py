@@ -70,7 +70,6 @@ class EmployeeData:
                     )
         return co_pilots
 
-
     def sort_by_flight_attendants(self):
         flight_attendants = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
@@ -109,16 +108,7 @@ class EmployeeData:
                     )
         return heads_of_service
 
-        # extra_sort = self.get_all_employees()
-        # pilot_list = []
-
-        # for employee in extra_sort:
-        #     if employee.get('rank') == "Pilot":
-        #         pilot_list.append(employee)
-
-        # return pilot_list
-
-    def register_pilot(self, employee):
+    def register_pilot(self, employee: Pilot):
         """Recieves a list containing information needed for registering a new pilot
         and uses list indexing to assign each value to the correct place
         """
@@ -151,7 +141,7 @@ class EmployeeData:
                 }
             )
 
-    def register_flight_attendant(self, employee):
+    def register_flight_attendant(self, employee: FlightAttendant):
         with open(self.file_name, "a", encoding="utf-8") as csvfile:
             fieldnames = [
                 "nid",
@@ -182,24 +172,7 @@ class EmployeeData:
                 }
             )
 
-    # def search_employee(self, filter):
-    #     # takes a input from ui and searches for it in the csv file
-    #     ret_list = []
-    #     with open(self.file_name, newline="", encoding="utf-8") as csvfile:
-    #         reader = csv.DictReader(csvfile)
-    #         for row in reader:
-    #             if (
-    #                 filter in row["name"]
-    #                 or filter in row["nid"]
-    #                 or filter in row["role"]
-    #                 or filter in row["rank"]
-    #                 or filter in row["license"]
-    #             ):  # can use these param to search
-    #                 ret_list.append(row)
-    #     # returns the list of employees that match the search
-    #     return ret_list
-
-    def search_employee(self, filter):
+    def search_employee(self, filter: str):
         # takes a input from ui and searches for it in the csv file
         matching_employee_list = []
         all_employees = self.get_all_employees()
@@ -214,7 +187,7 @@ class EmployeeData:
         # returns a list of employee objects that match the search
         return matching_employee_list
 
-    def update_pilot(self, employee_info: object):
+    def update_pilot(self, employee_info: Pilot):
         """ Does not replace data yet, 
         """
         allemployees = self.get_all_employees()
@@ -235,7 +208,7 @@ class EmployeeData:
         os.rename(self.file_name, original_file_name)
         self.file_name = original_file_name
 
-    def update_flight_attendant(self, employee_info: object):
+    def update_flight_attendant(self, employee_info: FlightAttendant):
         """ Does not replace data yet, 
         """
         allemployees = self.get_all_employees()
@@ -265,7 +238,7 @@ class EmployeeData:
 
         return shift_plan
     
-    def search_by_working_on_day(self, filter):
+    def search_by_working_on_day(self, filter: str):
         employees_working = []
         with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
@@ -274,7 +247,7 @@ class EmployeeData:
                     employees_working.append(row)
         return employees_working
     
-    def search_by_not_working_on_day(self, filter_date):
+    def search_by_not_working_on_day(self, filter_date: str):
         employees_not_working = []
         with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
