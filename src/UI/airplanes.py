@@ -67,8 +67,8 @@ class Airplanes:
 
             print(table)
 
-        self.airplanes_menu_output()
-        self.input_prompt_airplanes()
+        # self.airplanes_menu_output()
+        self.control_airplane_menu()
 
     def register_new_airplane(self):
         new_airplane = Airplane()

@@ -61,7 +61,7 @@ class Employees:
                 self.control_employee_sort_by_menu()
             else:
                 print(UIConstants.INVALID_INPUT)
-                input(UIConstants.CONTINUE_MESSAGE)
+                # input(UIConstants.CONTINUE_MESSAGE)
  
 
     # end func
@@ -98,8 +98,8 @@ class Employees:
                 self.register_new_flight_attendant()
             else:
                 print(UIConstants.INVALID_INPUT)
-                print("command was:", command)
-                input(UIConstants.CONTINUE_MESSAGE)
+                # print("command was:", command)
+                # input(UIConstants.CONTINUE_MESSAGE)
 
     # Submenu sort employees
     def employee_sort_by_output(self):
@@ -140,8 +140,8 @@ class Employees:
                 self.search_employee()  # Búa til Viggo
             else:
                 print(UIConstants.INVALID_INPUT)
-                print("command was: ", command)
-                input(UIConstants.CONTINUE_MESSAGE)
+                # print("command was: ", command)
+                # input(UIConstants.CONTINUE_MESSAGE)
 
     # submenu search shift plan
     def employee_shift_plan_search_by_output(self):
@@ -180,8 +180,8 @@ class Employees:
                 print(f"{UIConstants.EMPLOYEES_NOT_WORKING} {filter}")
             else:
                 print(UIConstants.INVALID_INPUT)
-                print("command was:", command)
-                input(UIConstants.CONTINUE_MESSAGE)
+                # print("command was:", command)
+                # input(UIConstants.CONTINUE_MESSAGE)
 
     #submenu update employee
     def employee_update_output(self):
@@ -212,8 +212,8 @@ class Employees:
                 self.update_flight_attendant()
             else:
                 print(UIConstants.INVALID_INPUT)
-                print("command was:", command)
-                input(UIConstants.CONTINUE_MESSAGE)
+                # print("command was:", command)
+                # input(UIConstants.CONTINUE_MESSAGE)
 
 
     def list_employees(self):
