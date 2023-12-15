@@ -3,7 +3,7 @@ import sys
 from prettytable import PrettyTable
 from Model.VoyageModel import Voyage
 from dataclasses import asdict
-from Logic.UILogicWrapper import UI_Logic_Wrapper
+from Logic.LogicWrapper import UI_Logic_Wrapper
 from datetime import datetime
 from collections.abc import Iterable
 
