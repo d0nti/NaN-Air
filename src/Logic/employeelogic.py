@@ -57,18 +57,21 @@ class EmployeeLogic:
         if new_employee_info[4] != "": # 4 == phone number
             employee_info.phone_nr = new_employee_info[4]
 
-        if new_employee_info[5] != "": # 5 == home phone number
-            employee_info.home_phone_nr = new_employee_info[5]
+        if new_employee_info[5] != "": # 5 == e mail address
+            employee_info.email_address = new_employee_info[5]
+
+        if new_employee_info[6] != "": # 6 == home phone number
+            employee_info.home_phone_nr = new_employee_info[6]
 
         validate_pilot = VerifyPilot(employee_info, self.get_all_employees())
-        validate_pilot.Name()
-        validate_pilot.Role()
-        validate_pilot.Rank()
-        validate_pilot.Address()
-        validate_pilot.PhoneNumber()
-        if new_employee_info[5] != "" and employee_info.home_phone_nr != "":
-            validate_pilot.HomePhoneNumber()
-        validate_pilot.License()
+        validate_pilot.validate_name()
+        validate_pilot.validate_role()
+        validate_pilot.validate_rank()
+        validate_pilot.validate_address()
+        validate_pilot.validate_phone_number()
+        if new_employee_info[6] != "" and employee_info.home_phone_nr != "":
+            validate_pilot.validate_home_phone_number()
+        validate_pilot.validate_license()
         if validate_pilot:
             return self.data_wrapper.update_pilot(employee_info)
 
@@ -85,17 +88,20 @@ class EmployeeLogic:
         if new_employee_info[3] != "": # 3 == phone number
             employee_info.phone_nr = new_employee_info[3]
 
-        if new_employee_info[4] != "": # 4 == home phone number
-            employee_info.home_phone_nr = new_employee_info[4]
+        if new_employee_info[4] != "": # 4 == phone number
+            employee_info.email_address = new_employee_info[4]
+
+        if new_employee_info[5] != "": # 5 == home phone number
+            employee_info.home_phone_nr = new_employee_info[5]
         
         validate_flight_attendant = VerifyFlightAttendant(employee_info, self.get_all_employees())
-        validate_flight_attendant.Name()
-        validate_flight_attendant.Role()
-        validate_flight_attendant.Rank()
-        validate_flight_attendant.Address()
-        validate_flight_attendant.PhoneNumber()
-        if new_employee_info[4] != "" and employee_info.home_phone_nr != "":
-            validate_flight_attendant.HomePhoneNumber()
+        validate_flight_attendant.validate_name()
+        validate_flight_attendant.validate_role()
+        validate_flight_attendant.validate_rank()
+        validate_flight_attendant.validate_address()
+        validate_flight_attendant.validate_phone_number()
+        if new_employee_info[5] != "" and employee_info.home_phone_nr != "":
+            validate_flight_attendant.validate_home_phone_number()
         if validate_flight_attendant:
             return self.data_wrapper.update_flight_attendant(employee_info)
     

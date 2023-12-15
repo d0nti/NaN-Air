@@ -14,6 +14,7 @@ from Logic.Verifications.verifyemployee import (
     EmployeePhoneNumberError,
     EmployeeHomePhoneNumberError,
     PilotLicenseError,
+    EmployeeEmailAddressError
 )
 import sys
 
@@ -41,13 +42,12 @@ class Employees:
         return input("User Input: ").lower()
 
     def control_employee_menu(self):
-        # self.employees_menu_output()
         while (command := self.show_employee_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
                 sys.exit()
             elif command == "1" or command == "1.":
-                print(UIConstants.HEADER.format(UIConstants.DISPLAY_EMPLOYEES)) #Má ég alexander????????
+                print(UIConstants.HEADER.format(UIConstants.DISPLAY_EMPLOYEES))
                 self.list_employees()
             elif command == "2" or command == "2.":
                 self.control_register_menu()
@@ -61,13 +61,13 @@ class Employees:
                 self.control_employee_sort_by_menu()
             else:
                 print(UIConstants.INVALID_INPUT)
+<<<<<<< Updated upstream
                 # input(UIConstants.CONTINUE_MESSAGE)
  
+=======
+                input(UIConstants.CONTINUE_MESSAGE)
+>>>>>>> Stashed changes
 
-    # end func
-
-
-    # Submenu register employee
     def employee_register_output(self):
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_EMPLOYEE))
         print(
@@ -101,7 +101,6 @@ class Employees:
                 # print("command was:", command)
                 # input(UIConstants.CONTINUE_MESSAGE)
 
-    # Submenu sort employees
     def employee_sort_by_output(self):
         print(
             UIConstants.FIVE_MENU_OPTION.format(
@@ -109,7 +108,7 @@ class Employees:
                 UIConstants.CO_PILOTS,
                 UIConstants.FLIGHT_ATTENDTANTS,
                 UIConstants.HEADS_OF_SERVICE,
-                UIConstants.EMPLOYEE_SEARCH_PARAM,
+                UIConstants.EMPLOYEE_SEARCH,
                 UIConstants.BACK,
                 UIConstants.QUIT,
             )
@@ -126,7 +125,7 @@ class Employees:
                 sys.exit()
             elif command == "1" or command == "1.":
                 captains = self.logic_wrapper.sort_by_captains()
-                self.__print_captains(captains)  # Hvernig myndi virka
+                self.__print_captains(captains)
             elif command == "2" or command == "2.":
                 copilots = self.logic_wrapper.sort_by_co_pilots()
                 self.__print_captains(copilots)
@@ -137,13 +136,12 @@ class Employees:
                 heads_of_services = self.logic_wrapper.sort_by_heads_of_service()
                 self.__print_flight_attendants(heads_of_services)
             elif command == "5" or command == "5.":
-                self.search_employee()  # Búa til Viggo
+                self.search_employee()
             else:
                 print(UIConstants.INVALID_INPUT)
                 # print("command was: ", command)
                 # input(UIConstants.CONTINUE_MESSAGE)
 
-    # submenu search shift plan
     def employee_shift_plan_search_by_output(self):
         print(
             UIConstants.TWO_MENU_OPTION.format(
@@ -165,16 +163,26 @@ class Employees:
                 sys.exit()
             elif command == "1" or command == "1.":
                 filter = input(
+<<<<<<< Updated upstream
                     "Enter the day to search for (YYYY-MM-DD): "
                 )  # get the day to search for
+=======
+                    "Enter the day to search for: "
+                )
+>>>>>>> Stashed changes
                 results = self.logic_wrapper.search_by_day(filter)
                 self.__print_shift_plan(results)
                 print(f"{UIConstants.EMPLOYEES_WORKING_MESSAGE}{filter}")
 
             elif command == "2" or command == "2.":
                 filter = input(
+<<<<<<< Updated upstream
                     "Enter the day to search for (YYYY-MM-DD): "
                 )  # get the day to search for
+=======
+                    "Enter the day to search for: "
+                )
+>>>>>>> Stashed changes
                 results = self.logic_wrapper.search_by_not_day(filter)
                 self.__print_shift_plan(results)
                 print(f"{UIConstants.EMPLOYEES_NOT_WORKING} {filter}")
@@ -361,17 +369,17 @@ class Employees:
                     pilot_information = input()
                     all_pilot_information.append(pilot_information)
 
-                if len(all_pilot_information) == 6:
-                    ssid, name, rank, address, phone_nr, license = [
+                if len(all_pilot_information) == 7:
+                    ssid, name, rank, address, phone_nr, email_address, license = [
                         all_pilot_information[i]
                         for i in range(0, (len(all_pilot_information)))
                     ]
                     self.logic_wrapper.register_pilot(
-                        Pilot(ssid, name, "Pilot", rank, address, phone_nr, license)
+                        Pilot(ssid, name, "Pilot", rank, address, phone_nr, email_address, license)
                     )
 
-                elif len(all_pilot_information) == 7:
-                    ssid, name, rank, address, phone_nr, home_phone_nr, license = [
+                elif len(all_pilot_information) == 8:
+                    ssid, name, rank, address, phone_nr, email_address, home_phone_nr, license = [
                         all_pilot_information[i]
                         for i in range(0, (len(all_pilot_information)))
                     ]
@@ -383,6 +391,7 @@ class Employees:
                             rank,
                             address,
                             phone_nr,
+                            email_address,
                             home_phone_nr,
                             license,
                         )
@@ -424,6 +433,9 @@ class Employees:
             except PilotLicenseError:
                 print(UIConstants.PILOT_LICENSE_ERROR)
 
+            except EmployeeEmailAddressError:
+                print(UIConstants.EMPLOYEE_EMAIL_ADDRESS_ERROR)
+
             else:
                 print(UIConstants.SUCCESSFULL_REGISTRATION_FOR_PILOT)
                 is_new_pilot_valid = True
@@ -447,19 +459,19 @@ class Employees:
                         flight_attendant_information
                     )
 
-                if len(all_flight_attendant_information) == 5:
-                    ssid, name, rank, address, phone_nr = [
+                if len(all_flight_attendant_information) == 6:
+                    ssid, name, rank, address, phone_nr, email_address = [
                         all_flight_attendant_information[i]
                         for i in range(0, (len(all_flight_attendant_information)))
                     ]
                     self.logic_wrapper.register_flight_attendant(
                         FlightAttendant(
-                            ssid, name, "Cabincrew", rank, address, phone_nr
+                            ssid, name, "Cabincrew", rank, address, phone_nr, email_address
                         )
                     )
 
-                elif len(all_flight_attendant_information) == 6:
-                    ssid, name, rank, address, phone_nr, home_phone_nr = [
+                elif len(all_flight_attendant_information) == 7:
+                    ssid, name, rank, address, phone_nr, email_address, home_phone_nr = [
                         all_flight_attendant_information[i]
                         for i in range(0, (len(all_flight_attendant_information)))
                     ]
@@ -471,7 +483,8 @@ class Employees:
                             rank,
                             address,
                             phone_nr,
-                            home_phone_nr,
+                            email_address,
+                            home_phone_nr
                         )
                     )
 
@@ -511,8 +524,11 @@ class Employees:
             except PilotLicenseError:
                 print(UIConstants.PILOT_LICENSE_ERROR)
 
+            except EmployeeEmailAddressError:
+                print(UIConstants.EMPLOYEE_EMAIL_ADDRESS_ERROR)
+
             else:
-                print(UIConstants.SUCCESSFULL_REGISTRATION_FOR_PILOT)
+                print(UIConstants.SUCCESSFULL_REGISTRATION_FOR_FLIGHT_ATTENDANT)
                 is_new_flight_attendant_valid = True
 
     def update_pilot(self):
@@ -589,6 +605,8 @@ class Employees:
             UIConstants.LICENSE,
             UIConstants.ADDRESS,
             UIConstants.PHONE_NUMBER,
+            UIConstants.E_MAIL_ADDRESS,
+            UIConstants.HOME_PHONE_NUMBER
         ]
 
         for employee in filtered_employees:
@@ -601,6 +619,8 @@ class Employees:
                     employee.license,
                     employee.address,
                     employee.phone_nr,
+                    employee.email_address,
+                    employee.home_phone_nr
                 ]
             )
         print(table)
