@@ -60,3 +60,11 @@ class AirplaneData:
             writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
             writer.writerow({"plane_insignia": airplane_info.insignia, "plane_type_id": airplane_info.plane_type, "date_of_manufacture":"", "last_maintainance":""})
 
+
+    def search_airplane(self, filter):
+    # takes a input from ui and searches for it in the csv file
+        matching_airplane_list = []
+        all_airplanes = self.get_all_airplanes()
+        for airplane in all_airplanes:
+                if filter in airplane.insignia or filter in airplane.plane_type:
+                    matching_airplane_list.append(airplane)

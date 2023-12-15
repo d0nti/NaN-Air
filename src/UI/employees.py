@@ -62,8 +62,7 @@ class Employees:
                 print(UIConstants.INVALID_INPUT)
                 print("command was:", command)
                 input(UIConstants.CONTINUE_MESSAGE)
-        # return "b"
-        # end while
+ 
 
     # end func
 
@@ -87,6 +86,7 @@ class Employees:
     def control_register_menu(self):
         while (command := self.show_register_employee_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
+                print(UIConstants.QUIT_MESSAGE)
                 sys.exit()
 
             elif command == "1" or command == "1.":
@@ -124,6 +124,7 @@ class Employees:
     def control_employee_sort_by_menu(self):
         while (command := self.show_sort_employee_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
+                print(UIConstants.QUIT_MESSAGE)
                 sys.exit()
             elif command == "1" or command == "1.":
                 captains = self.logic_wrapper.sort_by_captains()
@@ -141,7 +142,7 @@ class Employees:
                 self.searc_employee(command)  # Búa til Viggo
             else:
                 print(UIConstants.INVALID_INPUT)
-                print("command was:", command)
+                print("command was: ", command)
                 input(UIConstants.CONTINUE_MESSAGE)
 
     # submenu search shift plan
@@ -519,14 +520,49 @@ class Employees:
                 print(UIConstants.SUCCESSFULL_REGISTRATION_FOR_PILOT)
                 is_new_flight_attendant_valid = True
 
+    def update_pilot(self):
+        print(UIConstants.HEADER.format(UIConstants.UPDATE_PILOT))
+        print(UIConstants.UPDATE_EMPLOYEE_INFO_MESSAGE)
+
+        correct_ssid = False
+        pilot_to_change = ""
+        while correct_ssid == False:
+            ssid = input("Enter the SSID of the pilot to update: ")
+            if (
+                len(ssid) == 10
+            ):  # Hér er hægt að skrifa hvaða ssid sem er og fá error ef það er ekki til
+                if self.logic_wrapper.search_employee(ssid)[0]:  # IDK    THIS
+                    pilot_to_change = self.logic_wrapper.search_employee(ssid)[
+                        0
+                    ]  #     IF      WORKS
+                if pilot_to_change:
+                    correct_ssid = True
+                else:
+                    print(UIConstants.WRONG_SSID_INPUTTED_MESSAGE)
+                    pass
+
+        print(UIConstants.UPDATE_PILOT_INPUT)
+        pilot_info_print = UIConstants.UPDATE_PILOT_INPUT.split(", ")
+
+        all_pilot_information = []
+        for i in pilot_info_print:
+            print(f"{i}", end=" ")
+            new_information = input()
+            all_pilot_information.append(new_information)
+
+        self.logic_wrapper.update_pilot(pilot_to_change, all_pilot_information)
+
     def update_flight_attendant(self):
         print(UIConstants.UPDATE_EMPLOYEE_INFO_MESSAGE)
-        while True:
+
+        correct_ssid = False
+        flight_attendant_to_change = ""
+        while correct_ssid == False:
             ssid = input("Enter the SSID of the flight attendant to update: ")
             if len(ssid) == 10:
                 flight_attendant_to_change = self.logic_wrapper.search_employee(ssid)[0]
                 if flight_attendant_to_change:
-                    break
+                    correct_ssid = True
             else:
                 print(UIConstants.WRONG_SSID_INPUTTED_MESSAGE)
                 pass
@@ -545,3 +581,40 @@ class Employees:
         self.logic_wrapper.update_flight_attendant(
             flight_attendant_to_change, all_flight_attendant_information
         )
+
+    def search_employee(self):
+
+        filter = input(UIConstants.EMPLOYEE_SEARCH_PARAM)
+        filtered_employees = self.logic_wrapper.search_employee(filter)
+        table = PrettyTable()
+
+        table.field_names = [
+            UIConstants.SSID,
+            UIConstants.NAME,
+            UIConstants.JOB_TITLE,
+            UIConstants.RANK,
+            UIConstants.LICENSE,
+            UIConstants.ADDRESS,
+            UIConstants.PHONE_NUMBER,
+        ]
+
+        for employee in filtered_employees:
+            table.add_row(
+                [
+                    employee.nid,
+                    employee.name,
+                    employee.role,
+                    employee.rank,
+                    employee.license,
+                    employee.address,
+                    employee.phone_nr,
+                ]
+            )
+        print(table)
+        self.employee_submenu_output()  # Athuga hvort má gera!
+
+    def get_shift_plan_not_working(self):
+        return self.logic_wrapper.get_shift_plan_not_working()
+
+    def get_shift_plan_working(self):
+        return self.logic_wrapper.get_shift_plan_working()

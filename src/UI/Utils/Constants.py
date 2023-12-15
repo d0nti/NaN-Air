@@ -12,6 +12,11 @@ class UIConstants:
     TYPE = "Type"
     SEATS = "Seats"
     SUPPLIER = "Supplier"
+    PLANE_INSIGNIA = "Plane Insignia"
+    PLANE_TYPE_ID = "Plane ID"
+    PLANE_DATE_OF_MANUFACTURE = "Date Of Manufacture"
+    PLANE_LAST_MAINTENANCE = "Last Maintenance"
+    PLANE_SEARCH_PARAM = "Search for plane"
 
     DISPLAY_DESTINATIONS = "Display Destinations"
     REGISTER_NEW_DESTINATION = "Register New Destination"
@@ -35,7 +40,9 @@ class UIConstants:
     UPDATE_DESTINATION_INFO = "Contact Name, Contact Phone Number"
     SUCCESSFULL_UPDATE_FOR_DESTINATION = "Information has been sucessfully updated"
 
-    EMPLOYEE_SEARCH_PARAM = "Enter search filter (SSID, Name, license or Job Title): "
+    EMPLOYEE_SEARCH_PARAM = (
+        "Enter search filter or enter b to go back (SSID, Name, license or Job Title): "
+    )
     DISPLAY_EMPLOYEES = "Display Employess"
     REGISTER_NEW_EMPLOYEE = "Register New Employee"
     REGISTER_NEW_FLIGHT_ATTENDANT = "Register New Flight Attendant"
@@ -72,7 +79,7 @@ class UIConstants:
     CO_PILOTS = "Co-Pilots"
     FLIGHT_ATTENDTANTS = "Flight Attendants"
     HEADS_OF_SERVICE = "Heads of Service"
-    REGISTER_VOYAGE_INFO = "UUID, Destination, Departure Time (HH:MM), Departure Date (YYYY-MM-DD), Arrival Time (HH:MM), Arrival Date (YYYY-MM-DD), Captain (Name), Co-Pilot (Name), Flight Service Manager (Name), Flight Attendant (Name)"
+    REGISTER_VOYAGE_INFO = "Destination, Departure (YYYY-MM-DDTHH:MM:SS), Arrival (YYYY-MM-DDTHH:MM:SS), Captain (Name), Co-Pilot (Name), Flight Service Manager (Name), Flight Attendant (Name)"
     SHIFT_START_DATE = "Shift Start Date (YYYY-MM-DD)"
     SHIFT_START_TIME = "Shift Start Time (HH-MM)"
     SHIFT_END_DATE = "Shift End Date (YYYY-MM-DD)"
@@ -80,8 +87,8 @@ class UIConstants:
     DISPLAY_SHIFT_PLAN = "Display Shift Plan"
     WORKING_ON_A_SPECIFIC_DAY = "Working on a specific day"
     NOT_WORKING_ON_A_SPECIFIC_DAY = "Not working on a specific day"
-    EMPLOYEES_WORKING_MESSAGE = "These employees here above are working on"
-    EMPLOYEES_NOT_WORKING = "These employees here above are not working on"
+    EMPLOYEES_WORKING_MESSAGE = "These employees here above are working on "
+    EMPLOYEES_NOT_WORKING = "These employees here above are not working on "
 
     REGISTER_NEW_VOYAGE = "Register New Voyage"
     EDIT_VOYAGE = "Edit Voyage"

@@ -81,16 +81,19 @@ class Voyages:
                 voyage_info_print = UIConstants.REGISTER_VOYAGE_INFO.split(", ")
 
                 all_voyage_information = []
-                for voyage in voyage_info_print:
-                    print(f"{voyage}: ", end=" ")
+                for voyage_field in voyage_info_print:
+                    print(f"{voyage_field}: ", end=" ")
                     voyage_information = input()
                     all_voyage_information.append(voyage_information)
+                    
+                # Converting list to dataclass by using '*' operator that converts list to fields in dataclass
+                all_voyage_information[1] = datetime.fromisoformat(all_voyage_information[1])
+                all_voyage_information[2] = datetime.fromisoformat(all_voyage_information[2])
+                new_voyage = Voyage(*all_voyage_information)
 
-                table = PrettyTable(UIConstants.REGISTER_VOYAGE_INFO.split(", "))
-                table.add_row(all_voyage_information)
-                print(table)
+                print_dataclass_as_table(new_voyage, Voyage)
 
-                self.logic_wrapper.register_new_voyage(all_voyage_information)
+                self.logic_wrapper.register_new_voyage(new_voyage)
                 print("New Voyage Registered.")
 
             elif "3" == command:
@@ -273,4 +276,4 @@ class Voyages:
             print("4. Add Flight Attendant")
         else:
             print("Voyage is fully staffed.")
-        print(UIConstants.format(UIConstants.QUIT))
+        print(UIConstants.QUIT)
