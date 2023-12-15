@@ -8,7 +8,6 @@ class EmployeeData:
     def __init__(self):
         self.file_name = "src/Files/crew.csv"
         self.shift_file = "src/Files/shift_plan.csv"
-        self.number_of_employees = 0
 
     # frá fyrirlestri
     def get_all_employees(self):
@@ -24,8 +23,9 @@ class EmployeeData:
                         row["rank"],
                         row["address"],
                         row["phone_nr"],
+                        row["email_address"],
                         row["home_phone_nr"],
-                        row["license"],
+                        row["license"]
                     )
                 )
         return all_employees
@@ -44,8 +44,9 @@ class EmployeeData:
                             row["rank"],
                             row["address"],
                             row["phone_nr"],
+                            row["email_address"],
                             row["home_phone_nr"],
-                            row["license"],
+                            row["license"]
                         )
                     )
         return captains
@@ -64,6 +65,7 @@ class EmployeeData:
                             row["rank"],
                             row["address"],
                             row["phone_nr"],
+                            row["email_address"],
                             row["home_phone_nr"],
                             row["license"]
                         )
@@ -84,6 +86,7 @@ class EmployeeData:
                             row["rank"],
                             row["address"],
                             row["phone_nr"],
+                            row["email_address"],
                             row["home_phone_nr"]
                         )
                     )
@@ -103,6 +106,7 @@ class EmployeeData:
                             row["rank"],
                             row["address"],
                             row["phone_nr"],
+                            row["email_address"],
                             row["home_phone_nr"]
                         )
                     )
@@ -121,6 +125,7 @@ class EmployeeData:
                 "license",
                 "address",
                 "phone_nr",
+                "email_address",
                 "home_phone_nr"
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -137,7 +142,8 @@ class EmployeeData:
                     "license": employee.license,
                     "address": employee.address,
                     "phone_nr": employee.phone_nr,
-                    "home_phone_nr": employee.home_phone_nr,
+                    "email_address": employee.email_address,
+                    "home_phone_nr": employee.home_phone_nr
                 }
             )
 
@@ -151,7 +157,8 @@ class EmployeeData:
                 "license",
                 "address",
                 "phone_nr",
-                "home_phone_nr",
+                "email_address",
+                "home_phone_nr"
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             csvfile.seek(0, io.SEEK_END)
@@ -168,7 +175,8 @@ class EmployeeData:
                     "license": "N/A",
                     "address": employee.address,
                     "phone_nr": employee.phone_nr,
-                    "home_phone_nr": employee.home_phone_nr,
+                    "email_address": employee.email_address,
+                    "home_phone_nr": employee.home_phone_nr
                 }
             )
 
@@ -183,7 +191,6 @@ class EmployeeData:
             else:
                 if filter in employee.name or filter in employee.nid or filter in employee.role or filter in employee.rank:
                     matching_employee_list.append(employee)
-
         # returns a list of employee objects that match the search
         return matching_employee_list
 
@@ -235,7 +242,6 @@ class EmployeeData:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 shift_plan.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
-
         return shift_plan
     
     def search_by_day(self, filter: str):
@@ -258,6 +264,5 @@ class EmployeeData:
             next(reader)
 
             employees_not_working = [row for row in reader if row["name"] not in working_employees]
-
         return employees_not_working
     

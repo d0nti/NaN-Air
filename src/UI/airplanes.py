@@ -11,10 +11,9 @@ class Airplanes:
     def airplanes_menu_output(self):
         print(UIConstants.HEADER.format(UIConstants.MANAGE_AIRPLANES))
         print(
-            UIConstants.THREE_MENU_OPTION.format(
+            UIConstants.TWO_MENU_OPTION.format(
                 UIConstants.DISPLAY_AIRPLANES,
                 UIConstants.REGISTER_NEW_AIRPLANE,
-                UIConstants.FIND_AIRPLANE,
                 UIConstants.BACK,
                 UIConstants.QUIT,
             )
@@ -36,12 +35,9 @@ class Airplanes:
             elif command == "2" or command == "2.":
                 print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_AIRPLANE))
                 self.register_new_airplane()
-            elif command == "3" or command == "3.":
-                print(UIConstants.HEADER.format(UIConstants.FIND_AIRPLANE))
-                self.find_airplane()
             else:
                 print(UIConstants.INVALID_INPUT)
-                input(UIConstants.CONTINUE_MESSAGE)
+
 
     def list_airplanes(self):  ### <=== 1. Display Airplanes
         airplanes = self.logic_wrapper.get_all_airplanes()
@@ -67,7 +63,7 @@ class Airplanes:
 
             print(table)
 
-        # self.airplanes_menu_output()
+
         self.control_airplane_menu()
 
     def register_new_airplane(self):
