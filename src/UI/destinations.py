@@ -23,6 +23,12 @@ class Destinations:
         self.logic_wrapper = logic_wrapper
 
     def destinations_menu_output(self):
+        """ This function prints the main menu of the destination management environment,
+            showing that the user can acces a list of all destinations,
+            register a new destination, find a certain destination through
+            a search filter, and change an existing destinations emergency
+            contact information from this point in the program
+        """
         print(UIConstants.HEADER.format(UIConstants.MANAGE_DESTINATIONS))
         print(
             UIConstants.FOUR_MENU_OPTION.format(
@@ -36,10 +42,12 @@ class Destinations:
         )
 
     def show_destination_menu(self):
+        """This function calls the main menu for the destination management environment"""
         self.destinations_menu_output()
         return input("User Input: ").lower()
 
     def control_destination_menu(self):
+        """This function controls the main menu for the destination management environment"""
         while (command := self.show_destination_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
@@ -64,6 +72,7 @@ class Destinations:
                 input(UIConstants.CONTINUE_MESSAGE)
 
     def list_destinations(self):
+        """This function gets and prints all destinatons"""
         destinations = self.logic_wrapper.get_all_destinations()
 
         if destinations:
@@ -97,6 +106,7 @@ class Destinations:
             print(UIConstants.NO_DESTINATIONS_REGISTERED)
 
     def register_new_destination(self):
+        """This function registers new destination"""
         print(UIConstants.INFORMATION_MESSAGE)
 
         destination_info_print = UIConstants.DESTINATION_INFO.split(", ")
@@ -169,6 +179,7 @@ class Destinations:
                 is_destination_valid = True
 
     def find_destination(self):
+        """This function finds destination matching the filter the user inputss and prints all matching destinations"""
         print(
             f"{UIConstants.SEARCH_DESTINATION_MESSAGE} \n {UIConstants.SEARCH_DESTINATION_MESSAGE_CONTINUE}"
         )
@@ -210,6 +221,7 @@ class Destinations:
         print(table)
 
     def update_destination(self):
+        """This function asks the user to input the destination he would like to update. Finds the destination and prints information about the destination. Then the function asks the user to input new contact name and new contact phone number. Finally, it uppdates the file destination file"""
         print(UIConstants.UPDATE_DESTINATION_MESSAGE)
 
         correct_destination_name = False

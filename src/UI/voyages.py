@@ -49,7 +49,6 @@ class Voyages:
         return input("User Input: ").lower()
 
     def control_voyage_menu(self):
-        # self.employees_menu_output()
         while (command := self.show_voyage_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
@@ -87,6 +86,7 @@ class Voyages:
         print(f"b. {UIConstants.BACK} \n q. {UIConstants.QUIT}")
 
     def show_man_voyages_menu(self, voyage):
+
         self.man_voyages_output(voyage)
         return input("User Input: ").lower()
 
@@ -142,6 +142,7 @@ class Voyages:
 
         while True:
             voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
+<<<<<<< Updated upstream
 
             voyage = self.logic_wrapper.find_voyage(voyage_id)
 
@@ -164,6 +165,19 @@ class Voyages:
         # return voyage
 
     # submenu display_voyages
+=======
+            if voyage_id != "":
+                voyage = self.logic_wrapper.find_voyage(voyage_id)
+            
+                if voyage is None:
+                    return UIConstants.NO_VOYAGES
+                
+                return voyage
+            else:
+                print(UIConstants.INVALID_INPUT)
+                return
+            
+>>>>>>> Stashed changes
 
     def display_voyages_output(self):
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_VOYAGES))
@@ -252,7 +266,11 @@ class Voyages:
         for voyage_field in voyage_info_print:
             print(f"{voyage_field}: ", end=" ")
             voyage_information = input()
-            all_voyage_information.append(voyage_information)
+            if voyage_information != "":
+                all_voyage_information.append(voyage_information)
+            else:
+                print(UIConstants.INVALID_INPUT)
+                return
 
         # Converting list to dataclass by using '*' operator that converts list to fields in dataclass
         all_voyage_information[1] = datetime.fromisoformat(all_voyage_information[1])
@@ -272,66 +290,88 @@ class Voyages:
         voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
         new_date = input(UIConstants.ENTER_NEW_DATE)
 
-        self.logic_wrapper.copy_to_new_date(voyage_id, datetime.fromisoformat(new_date))
-        print(UIConstants.VOYAGE_COPIED)
-        self.print_dataclass_as_table(self.logic_wrapper.get_all_voyages())
+        if new_date != "" and voyage_id != "":
+            self.logic_wrapper.copy_to_new_date(voyage_id, datetime.fromisoformat(new_date))
+            print(UIConstants.VOYAGE_COPIED)
+            self.print_dataclass_as_table(self.logic_wrapper.get_all_voyages())
+        else:
+            print(UIConstants.INVALID_INPUT)
+            return
 
     def make_reacurring_voyage(self):
         voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
-        interval_in_days = int(input(UIConstants.INTERVAL_DAYS))
+        interval_in_days = input(UIConstants.INTERVAL_DAYS)
         end_date = input(UIConstants.ENTER_END_DATE)
 
-        self.logic_wrapper.make_recurring_voyage(
-            voyage_id, interval_in_days, datetime.fromisoformat(end_date)
-        )
-        print(UIConstants.VOYAGE_MADE_RECURRING)
-        self.print_dataclass_as_table(self.logic_wrapper.get_all_voyages())
+        if voyage_id != "" and interval_in_days != "" and end_date != "":
+
+            self.logic_wrapper.make_recurring_voyage(
+                voyage_id, int(interval_in_days), datetime.fromisoformat(end_date)
+            )
+            print(UIConstants.VOYAGE_MADE_RECURRING)
+            self.print_dataclass_as_table(self.logic_wrapper.get_all_voyages())
+        else:
+            print(UIConstants.INVALID_INPUT)
+            return
 
     def check_voyage_status(self):
         voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
+<<<<<<< Updated upstream
         voyage = self.logic_wrapper.find_voyage(voyage_id)
 
         self.print_dataclass_as_table(voyage)
+=======
+        if voyage_id != "":
+            voyage = self.logic_wrapper.find_voyage(voyage_id)   
+            self.print_dataclass_as_table(voyage)
+        else:
+            print(UIConstants.INVALID_INPUT)
+            return 
+>>>>>>> Stashed changes
 
     def check_voyage_employee_is_working(self):
         employee_name = input("Enter employee name: ")
         filter_date = input("Enter start date to search (YYYY-MM-DD): ")
 
-        voyages_that_an_employee_is_working = (
-            self.logic_wrapper.voyages_an_employee_is_working(
-                employee_name, filter_date
+        if employee_name != "" and filter_date != "":
+            voyages_that_an_employee_is_working = (
+                self.logic_wrapper.voyages_an_employee_is_working(
+                    employee_name, filter_date
+                )
             )
-        )
-        table = PrettyTable()
+            table = PrettyTable()
 
-        table.field_names = [
-            "Destination",
-            "Departure",
-            "Arrival",
-            "Captain",
-            "Co Pilot",
-            "Flight Service Manager",
-            "Flight Attendant",
-        ]
+            table.field_names = [
+                "Destination",
+                "Departure",
+                "Arrival",
+                "Captain",
+                "Co Pilot",
+                "Flight Service Manager",
+                "Flight Attendant",
+            ]
 
-        # Add data rows to the table
-        for row in voyages_that_an_employee_is_working:
-            table.add_row(
-                [
-                    row["destination"],
-                    row["departure"],
-                    row["arrival"],
-                    row["captain"],
-                    row["copilot"],
-                    row["flight_service_manager"],
-                    row["flight_attendant"],
-                ]
+            # Add data rows to the table
+            for row in voyages_that_an_employee_is_working:
+                table.add_row(
+                    [
+                        row["destination"],
+                        row["departure"],
+                        row["arrival"],
+                        row["captain"],
+                        row["copilot"],
+                        row["flight_service_manager"],
+                        row["flight_attendant"],
+                    ]
+                )
+
+            print(table)
+            print(
+                f"Employee {employee_name} is working on the above voyages in the week starting on {filter_date}"
             )
-
-        print(table)
-        print(
-            f"Employee {employee_name} is working on the above voyages in the week starting on {filter_date}"
-        )
+        else:
+            print(UIConstants.INVALID_INPUT)
+            return
 
     def list_all_voyages(self):
         """Lists all voyages from a file."""
