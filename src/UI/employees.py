@@ -24,6 +24,15 @@ class Employees:
         self.logic_wrapper = logic_wrapper
 
     def employees_menu_output(self):
+<<<<<<< Updated upstream
+=======
+        """ Prints the main menu of the employee management environment,
+            showing that the user can access a list of all Employees,
+            register a new employee, change an existing employees information,
+            display a multitude of differingly expansive shiftplans, and search
+            for specific employees from this point in the program
+        """
+>>>>>>> Stashed changes
         print(UIConstants.HEADER.format(UIConstants.MANAGE_EMPLOYEES))
         print(
             UIConstants.FIVE_MENU_OPTION.format(
@@ -578,7 +587,13 @@ class Employees:
         )
 
     def search_employee(self):
+<<<<<<< Updated upstream
 
+=======
+        """ Takes in and passes on the user's filter to the
+            logic layer and prints the filtered list of employees
+        """
+>>>>>>> Stashed changes
         filter = input(UIConstants.EMPLOYEE_SEARCH_PARAM)
         filtered_employees = self.logic_wrapper.search_employee(filter)
         table = PrettyTable()
