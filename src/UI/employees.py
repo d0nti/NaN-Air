@@ -14,7 +14,7 @@ from Logic.Verifications.verifyemployee import (
     EmployeePhoneNumberError,
     EmployeeHomePhoneNumberError,
     PilotLicenseError,
-    EmployeeEmailAddressError
+    EmployeeEmailAddressError,
 )
 import sys
 
@@ -24,11 +24,11 @@ class Employees:
         self.logic_wrapper = logic_wrapper
 
     def employees_menu_output(self):
-        """ Prints the main menu of the employee management environment,
-            showing that the user can access a list of all Employees,
-            register a new employee, change an existing employees information,
-            display a multitude of differingly expansive shiftplans, and search
-            for specific employees from this point in the program
+        """Prints the main menu of the employee management environment,
+        showing that the user can access a list of all Employees,
+        register a new employee, change an existing employees information,
+        display a multitude of differingly expansive shiftplans, and search
+        for specific employees from this point in the program
         """
         print(UIConstants.HEADER.format(UIConstants.MANAGE_EMPLOYEES))
         print(
@@ -68,7 +68,6 @@ class Employees:
             else:
                 print(UIConstants.INVALID_INPUT)
                 # input(UIConstants.CONTINUE_MESSAGE)
- 
 
     def employee_register_output(self):
         print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_EMPLOYEE))
@@ -96,7 +95,9 @@ class Employees:
                 self.register_new_pilot()
 
             elif command == "2" or command == "2.":
-                print(UIConstants.HEADER.format(UIConstants.REGISTER_NEW_FLIGHT_ATTENDANT))
+                print(
+                    UIConstants.HEADER.format(UIConstants.REGISTER_NEW_FLIGHT_ATTENDANT)
+                )
                 self.register_new_flight_attendant()
             else:
                 print(UIConstants.INVALID_INPUT)
@@ -104,6 +105,7 @@ class Employees:
                 # input(UIConstants.CONTINUE_MESSAGE)
 
     def employee_sort_by_output(self):
+        print(UIConstants.HEADER.format(UIConstants.FILTER_EMPLOYEES))
         print(
             UIConstants.FIVE_MENU_OPTION.format(
                 UIConstants.CAPTAINS,
@@ -183,7 +185,7 @@ class Employees:
                 # print("command was:", command)
                 # input(UIConstants.CONTINUE_MESSAGE)
 
-    #submenu update employee
+    # submenu update employee
     def employee_update_output(self):
         print(UIConstants.HEADER.format(UIConstants.UPDATE_EMPLOYEE))
         print(
@@ -194,7 +196,7 @@ class Employees:
                 UIConstants.QUIT,
             )
         )
-    
+
     def show_update_employees_menu(self):
         self.employee_update_output()
         return input("User Input: ").lower()
@@ -214,7 +216,6 @@ class Employees:
                 print(UIConstants.INVALID_INPUT)
                 # print("command was:", command)
                 # input(UIConstants.CONTINUE_MESSAGE)
-
 
     def list_employees(self):
         employees = self.logic_wrapper.get_all_employees()
@@ -319,7 +320,6 @@ class Employees:
         # Print the table
         print(table)
 
-        
     def __print_shift_plan(self, results):
         table = PrettyTable()
 
@@ -344,14 +344,13 @@ class Employees:
                     row["shift_end_time"],
                 ]
             )
-        # Print the table    
+        # Print the table
         print(table)
 
     def register_new_pilot(self):
         print("Press enter if you wish to cancel.")
         print(UIConstants.INFORMATION_MESSAGE)
         pilot_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
-
 
         all_pilot_information = []
 
@@ -372,11 +371,29 @@ class Employees:
                         for i in range(0, (len(all_pilot_information)))
                     ]
                     self.logic_wrapper.register_pilot(
-                        Pilot(ssid, name, "Pilot", rank, address, phone_nr, email_address, license)
+                        Pilot(
+                            ssid,
+                            name,
+                            "Pilot",
+                            rank,
+                            address,
+                            phone_nr,
+                            email_address,
+                            license,
+                        )
                     )
 
                 elif len(all_pilot_information) == 8:
-                    ssid, name, rank, address, phone_nr, email_address, home_phone_nr, license = [
+                    (
+                        ssid,
+                        name,
+                        rank,
+                        address,
+                        phone_nr,
+                        email_address,
+                        home_phone_nr,
+                        license,
+                    ) = [
                         all_pilot_information[i]
                         for i in range(0, (len(all_pilot_information)))
                     ]
@@ -466,12 +483,26 @@ class Employees:
                     ]
                     self.logic_wrapper.register_flight_attendant(
                         FlightAttendant(
-                            ssid, name, "Cabincrew", rank, address, phone_nr, email_address
+                            ssid,
+                            name,
+                            "Cabincrew",
+                            rank,
+                            address,
+                            phone_nr,
+                            email_address,
                         )
                     )
 
                 elif len(all_flight_attendant_information) == 7:
-                    ssid, name, rank, address, phone_nr, email_address, home_phone_nr = [
+                    (
+                        ssid,
+                        name,
+                        rank,
+                        address,
+                        phone_nr,
+                        email_address,
+                        home_phone_nr,
+                    ) = [
                         all_flight_attendant_information[i]
                         for i in range(0, (len(all_flight_attendant_information)))
                     ]
@@ -484,7 +515,7 @@ class Employees:
                             address,
                             phone_nr,
                             email_address,
-                            home_phone_nr
+                            home_phone_nr,
                         )
                     )
 
@@ -539,7 +570,10 @@ class Employees:
         pilot_to_change = ""
         while correct_ssid == False:
             ssid = input("Enter the SSID of the pilot to update: ")
-            if (
+            if ssid == "":
+                print(UIConstants.INVALID_INPUT)
+                return
+            elif (
                 len(ssid) == 10
             ):  # Hér er hægt að skrifa hvaða ssid sem er og fá error ef það er ekki til
                 if self.logic_wrapper.search_employee(ssid)[0]:
@@ -568,7 +602,10 @@ class Employees:
         flight_attendant_to_change = ""
         while correct_ssid == False:
             ssid = input("Enter the SSID of the flight attendant to update: ")
-            if len(ssid) == 10:
+            if ssid == "":
+                print(UIConstants.INVALID_INPUT)
+                return
+            elif len(ssid) == 10:
                 flight_attendant_to_change = self.logic_wrapper.search_employee(ssid)[0]
                 if flight_attendant_to_change:
                     correct_ssid = True
@@ -592,8 +629,8 @@ class Employees:
         )
 
     def search_employee(self):
-        """ Takes in and passes on the user's filter to the
-            logic layer and prints the filtered list of employees
+        """Takes in and passes on the user's filter to the
+        logic layer and prints the filtered list of employees
         """
         filter = input(UIConstants.EMPLOYEE_SEARCH_PARAM)
         filtered_employees = self.logic_wrapper.search_employee(filter)
@@ -608,7 +645,7 @@ class Employees:
             UIConstants.ADDRESS,
             UIConstants.PHONE_NUMBER,
             UIConstants.E_MAIL_ADDRESS,
-            UIConstants.HOME_PHONE_NUMBER
+            UIConstants.HOME_PHONE_NUMBER,
         ]
 
         for employee in filtered_employees:
@@ -622,7 +659,7 @@ class Employees:
                     employee.address,
                     employee.phone_nr,
                     employee.email_address,
-                    employee.home_phone_nr
+                    employee.home_phone_nr,
                 ]
             )
         print(table)
