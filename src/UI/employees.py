@@ -348,8 +348,10 @@ class Employees:
         print(table)
 
     def register_new_pilot(self):
+        print("Press enter if you wish to cancel.")
         print(UIConstants.INFORMATION_MESSAGE)
         pilot_info_print = UIConstants.REGISTER_EMPLOYEE_INFO.split(", ")
+
 
         all_pilot_information = []
 
@@ -442,17 +444,20 @@ class Employees:
 
         all_flight_attendant_information = []
 
-        is_new_flight_attendant_valid = False
-        while not is_new_flight_attendant_valid:
+        is_new_flight_attendant_valid = ""
+        while is_new_flight_attendant_valid == "":
             try:
                 for i in flight_attendant_info_print[
                     0 : len(flight_attendant_info_print)
                 ]:
                     print(f"{i}", end=" ")
                     flight_attendant_information = input()
-                    all_flight_attendant_information.append(
-                        flight_attendant_information
-                    )
+                    if is_new_flight_attendant_valid == "":
+                        break
+                    else:
+                        all_flight_attendant_information.append(
+                            flight_attendant_information
+                        )
 
                 if len(all_flight_attendant_information) == 6:
                     ssid, name, rank, address, phone_nr, email_address = [
@@ -524,7 +529,7 @@ class Employees:
 
             else:
                 print(UIConstants.SUCCESSFULL_REGISTRATION_FOR_FLIGHT_ATTENDANT)
-                is_new_flight_attendant_valid = True
+                is_new_flight_attendant_valid = "a"
 
     def update_pilot(self):
         print(UIConstants.HEADER.format(UIConstants.UPDATE_PILOT))

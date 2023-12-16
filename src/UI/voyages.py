@@ -173,7 +173,7 @@ class Voyages:
         manned_voyages = self.get_manned_voyages()
 
         if manned_voyages:
-            self.print_dataclass_as_table(manned_voyages)
+            self.print_dataclass_as_table_out(manned_voyages)
         else:
             print(UIConstants.NO_VOYAGES)
 
@@ -181,7 +181,7 @@ class Voyages:
         unmanned_voyages = self.get_unmanned_voyages()
 
         if unmanned_voyages:
-            self.print_dataclass_as_table(unmanned_voyages)
+            self.print_dataclass_as_table_out(unmanned_voyages)
         else:
             print(UIConstants.NO_VOYAGES)
 
@@ -233,7 +233,7 @@ class Voyages:
         all_voyage_information[2] = datetime.fromisoformat(all_voyage_information[2])
         new_voyage = Voyage(*all_voyage_information)
 
-        self.print_dataclass_as_table(new_voyage)
+        self.print_dataclass_as_table_out(new_voyage)
 
         self.logic_wrapper.register_new_voyage(new_voyage)
         print(UIConstants.NEW_VOYAGE_REGISTERED)
@@ -251,7 +251,7 @@ class Voyages:
                 voyage_id, datetime.fromisoformat(new_date)
             )
             print(UIConstants.VOYAGE_COPIED)
-            self.print_dataclass_as_table(self.logic_wrapper.get_all_voyages())
+            self.print_dataclass_as_table_out(self.logic_wrapper.get_all_voyages())
         else:
             print(UIConstants.INVALID_INPUT)
             return
@@ -266,7 +266,7 @@ class Voyages:
                 voyage_id, int(interval_in_days), datetime.fromisoformat(end_date)
             )
             print(UIConstants.VOYAGE_MADE_RECURRING)
-            self.print_dataclass_as_table(self.logic_wrapper.get_all_voyages())
+            self.print_dataclass_as_table_out(self.logic_wrapper.get_all_voyages())
         else:
             print(UIConstants.INVALID_INPUT)
             return
@@ -274,8 +274,8 @@ class Voyages:
     def check_voyage_status(self):
         voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
         if voyage_id != "":
-            voyage = self.logic_wrapper.find_voyage(voyage_id)
-            self.print_dataclass_as_table(voyage)
+            voyage = self.logic_wrapper.find_voyage(voyage_id)   
+            self.print_dataclass_as_table_out(voyage)
         else:
             print(UIConstants.INVALID_INPUT)
             return
