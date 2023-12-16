@@ -125,30 +125,6 @@ class Voyages:
 
         while True:
             voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
-<<<<<<< Updated upstream
-
-            voyage = self.logic_wrapper.find_voyage(voyage_id)
-
-            if voyage is None:
-                return UIConstants.NO_VOYAGES
-
-            return voyage
-
-        # while not (voyage_id := input(UIConstants.ENTER_VOYAGE_ID)):
-        #     print("Error")
-
-        # voyage = self.logic_wrapper.get_single_voyage_given_uuidge(voyage_id)
-
-        # if voyage is None:
-        #     return print(UIConstants.NO_VOYAGES)
-
-        # if self.check_if_voyage_manned(voyage):
-        #     return print("Voyage is fully staffed.")
-
-        # return voyage
-
-    # submenu display_voyages
-=======
             if voyage_id != "":
                 voyage = self.logic_wrapper.find_voyage(voyage_id)
             
@@ -160,7 +136,6 @@ class Voyages:
                 print(UIConstants.INVALID_INPUT)
                 return
             
->>>>>>> Stashed changes
 
     def display_voyages_output(self):
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_VOYAGES))
@@ -299,18 +274,12 @@ class Voyages:
 
     def check_voyage_status(self):
         voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
-<<<<<<< Updated upstream
-        voyage = self.logic_wrapper.find_voyage(voyage_id)
-
-        self.print_dataclass_as_table(voyage)
-=======
         if voyage_id != "":
             voyage = self.logic_wrapper.find_voyage(voyage_id)   
             self.print_dataclass_as_table(voyage)
         else:
             print(UIConstants.INVALID_INPUT)
             return 
->>>>>>> Stashed changes
 
     def check_voyage_employee_is_working(self):
         employee_name = input("Enter employee name: ")
