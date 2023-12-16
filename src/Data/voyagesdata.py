@@ -6,7 +6,7 @@ import csv
 
 
 class VoyageData:
-    FILE_NAME = "src/Files/voyages.csv"
+    FILE_NAME = "Files/voyages.csv"
 
     def __init__(self, voyages: [Voyage] = []):
         self.voyages = voyages
