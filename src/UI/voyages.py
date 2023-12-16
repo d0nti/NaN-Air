@@ -1,27 +1,10 @@
 from UI.Utils.Constants import UIConstants
-import sys
 from prettytable import PrettyTable
 from Model.VoyageModel import Voyage
 from dataclasses import asdict
-from Logic.LogicWrapper import UI_Logic_Wrapper
 from datetime import datetime
-
-
-def print_dataclass_as_table_out(self, instances):
-    """Prints a dataclass as a table."""
-
-    if not isinstance(instances, Iterable):
-        instances = [instances]
-    elif not instances:
-        return
-
-    table = PrettyTable(
-        field_names=[field for field in Voyage.__dataclass_fields__.keys()]
-    )
-    for instance in instances:
-        table.add_row([v for _, v in asdict(instance).items()])
-
-    print(table)
+from typing import Iterable
+import sys
 
 
 class Voyages:
@@ -125,7 +108,7 @@ class Voyages:
                 name = input("Input name of flight attendants: ")
                 self.logic_wrapper.set_staff(voyage.id, flight_attendant=name)
                 print(f"Successfully set flight attendant {name} to voyage {voyage.id}")
-                
+
             elif command.lower() == "s":
                 self.save_changes()
 
@@ -355,3 +338,19 @@ class Voyages:
                 return
 
             self.choose_staff_prompt(voyage)
+
+    def print_dataclass_as_table_out(self, instances):
+        """Prints a dataclass as a table."""
+
+        if not isinstance(instances, Iterable):
+            instances = [instances]
+        elif not instances:
+            return
+
+        table = PrettyTable(
+            field_names=[field for field in Voyage.__dataclass_fields__.keys()]
+        )
+        for instance in instances:
+            table.add_row([v for _, v in asdict(instance).items()])
+
+        print(table)
