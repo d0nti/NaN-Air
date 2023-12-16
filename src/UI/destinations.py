@@ -23,11 +23,11 @@ class Destinations:
         self.logic_wrapper = logic_wrapper
 
     def destinations_menu_output(self):
-        """ This function prints the main menu of the destination management environment,
-            showing that the user can acces a list of all destinations,
-            register a new destination, find a certain destination through
-            a search filter, and change an existing destinations emergency
-            contact information from this point in the program
+        """This function prints the main menu of the destination management environment,
+        showing that the user can acces a list of all destinations,
+        register a new destination, find a certain destination through
+        a search filter, and change an existing destinations emergency
+        contact information from this point in the program
         """
         print(UIConstants.HEADER.format(UIConstants.MANAGE_DESTINATIONS))
         print(
@@ -116,10 +116,13 @@ class Destinations:
             all_destination_info = []
             try:
                 for i in destination_info_print:
-                    # all_destination_info = []
                     print(f"{i}", end=" ")
                     destination_infomation = input()
-                    all_destination_info.append(destination_infomation)
+                    if destination_infomation != "":
+                        all_destination_info.append(destination_infomation)
+                    else:
+                        print(UIConstants.INVALID_INPUT)
+                        return
 
                 (
                     name,
@@ -248,6 +251,9 @@ class Destinations:
             for info in destination_info_prints:
                 print(f"{info}", end=" ")
                 new_information = input()
+                if new_information =="":
+                    print(UIConstants.INVALID_INPUT)
+                    return
                 all_destination_information.append(new_information)
 
             contact_name, contact_phone_nr = all_destination_information
@@ -255,30 +261,3 @@ class Destinations:
             self.logic_wrapper.update_destination(
                 Destination(destination_to_change), all_destination_information
             )
-
-
-"""                is_update_valid = False
-
-                while not is_update_valid:
-                    try:
-                        self.logic_wrapper.update_destination(
-                            destination_to_change, 
-                        )
-                    except DestinationContactError:
-                        print(UIConstants.DESTINATION_CONTACT_ERROR_MESSAGE)
-
-                    except DestinationContactNumberError:
-                        print(UIConstants.DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE)
-
-                    except DestinationContactNumberLenghtError:
-                        print(UIConstants.DESTINATION_CONTACT_NUMBER_ERROR_MESSAGE)
-
-                    except DestinationContactNumberExistsError:
-                        print(
-                            UIConstants.DESTINATION_CONTACT_NUMBER_EXISTS_ERROR_MESSAGE
-                        )
-
-                    else:
-                        print(UIConstants.SUCCESSFULL_UPDATE_FOR_DESTINATION)
-                        is_update_valid = True
-"""

@@ -69,7 +69,6 @@ class Voyages:
         print(f"b. {UIConstants.BACK} \n q. {UIConstants.QUIT}")
 
     def show_man_voyages_menu(self, voyage):
-
         self.man_voyages_output(voyage)
         return input("User Input: ").lower()
 
@@ -109,8 +108,8 @@ class Voyages:
                 self.logic_wrapper.set_staff(voyage.id, flight_attendant=name)
                 print(f"Successfully set flight attendant {name} to voyage {voyage.id}")
 
-            elif command.lower() == "s":
-                self.save_changes()
+                """elif command.lower() == "s":
+                self.save_changes()"""
 
             else:
                 print(UIConstants.INVALID_INPUT)
@@ -127,15 +126,14 @@ class Voyages:
             voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
             if voyage_id != "":
                 voyage = self.logic_wrapper.find_voyage(voyage_id)
-            
+
                 if voyage is None:
                     return UIConstants.NO_VOYAGES
-                
+
                 return voyage
             else:
                 print(UIConstants.INVALID_INPUT)
                 return
-            
 
     def display_voyages_output(self):
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_VOYAGES))
@@ -249,7 +247,9 @@ class Voyages:
         new_date = input(UIConstants.ENTER_NEW_DATE)
 
         if new_date != "" and voyage_id != "":
-            self.logic_wrapper.copy_to_new_date(voyage_id, datetime.fromisoformat(new_date))
+            self.logic_wrapper.copy_to_new_date(
+                voyage_id, datetime.fromisoformat(new_date)
+            )
             print(UIConstants.VOYAGE_COPIED)
             self.print_dataclass_as_table(self.logic_wrapper.get_all_voyages())
         else:
@@ -262,7 +262,6 @@ class Voyages:
         end_date = input(UIConstants.ENTER_END_DATE)
 
         if voyage_id != "" and interval_in_days != "" and end_date != "":
-
             self.logic_wrapper.make_recurring_voyage(
                 voyage_id, int(interval_in_days), datetime.fromisoformat(end_date)
             )
@@ -275,11 +274,11 @@ class Voyages:
     def check_voyage_status(self):
         voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
         if voyage_id != "":
-            voyage = self.logic_wrapper.find_voyage(voyage_id)   
+            voyage = self.logic_wrapper.find_voyage(voyage_id)
             self.print_dataclass_as_table(voyage)
         else:
             print(UIConstants.INVALID_INPUT)
-            return 
+            return
 
     def check_voyage_employee_is_working(self):
         employee_name = input("Enter employee name: ")
@@ -329,7 +328,7 @@ class Voyages:
         """Lists all voyages from a file."""
         voyages = self.logic_wrapper.get_all_voyages()
         if voyages:
-            self.print_dataclass_as_table(voyages)
+            self.print_dataclass_as_table_out(voyages)
         else:
             print(UIConstants.NO_VOYAGES)
 
