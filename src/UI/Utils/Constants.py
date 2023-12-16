@@ -33,7 +33,7 @@ class UIConstants:
     DISPLAY_DESTINATIONS = "Display Destinations"
     REGISTER_NEW_DESTINATION = "Register New Destination"
     FIND_DESTINATION = "Find Destination"
-    DESTINATION_INFO = "Name, Country, Airport, Flight Time in hours, Distance from Iceland in km, Contact Name, Contact Phone Number"
+    DESTINATION_INFO = "Name, Country, Airport, Flight Time, Distance from Iceland, Contact Name, Contact Phone Number"
     REGISTER_DESTINATION_MESSAGE = "A new destination has been added to the system"
     COUNTRY = "Country"
     AIRPORT = "Airport"
