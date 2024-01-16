@@ -48,10 +48,9 @@ class DestinationContactNumberLenghtError(Exception):
 class VerifyDestination:
     def __init__(self, destination_info: Destination, data: list):
         self.data = data
-        print(destination_info)
         self.dest_to_validate = destination_info
 
-        # self.name = destination_info.name
+        # xself.name = destination_info.name
         # self.country = destination_info.country
         # self.airport = destination_info.airport
         # self.distance = destination_info.distance_from_Iceland
@@ -113,16 +112,13 @@ class VerifyDestination:
             return True
 
     def Contact(self):
-        print(self.dest_to_validate)
-        print(self.dest_to_validate.contact_name)
-        for character in self.dest_to_validate.contact_name:
-            if not character == " " and not character.isalpha():
-                raise DestinationContactError
+        if self.dest_to_validate.contact_name.isdigit():
+            raise DestinationContactError
 
         else:
             return True
 
-    def Contact_number(self):
+    def Contact_number(self): 
         temp = list(self.dest_to_validate.contact_phone_nr)
 
         if not temp[0] == "+":
@@ -134,10 +130,10 @@ class VerifyDestination:
         elif len(temp[1:]) != 10:
             raise DestinationContactNumberLenghtError
 
-        elif self.dest_to_validate.contact_phone_nr in self.Verify_Destination_Helper(
-            "contact_phone_nr"
-        ):
-            raise DestinationContactNumberExistsError
+        #elif self.dest_to_validate.contact_phone_nr in self.Verify_Destination_Helper(
+        #    "contact_phone_nr"
+        #):
+        #    raise DestinationContactNumberExistsError
 
         else:
             return True
@@ -151,10 +147,3 @@ class VerifyDestination:
         self.Distance()
         self.Contact()
         self.Contact_number()
-
-    def ValidateDestinationUpdate(self, new_contact_name, new_contact_phonen_nr):
-        for character in self.dest_to_validate:
-            character.contact_name = new_contact_name
-            character.contact_phone_nr = new_contact_phonen_nr
-
-        return self.Contact(), self.Contact_number()

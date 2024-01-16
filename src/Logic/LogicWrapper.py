@@ -86,12 +86,8 @@ class UI_Logic_Wrapper:
     def search_destination(self, filter):
         return self.destination_logic.search_destination(filter)
 
-    def update_destination(
-        self, destination: Destination, contact_name, contact_phone_nr
-    ):
-        return self.destination_logic.update_destination(
-            destination, contact_name, contact_phone_nr
-        )
+    def update_destination(self, destination: Destination, new_destination_information: list[str]):
+        return self.destination_logic.update_destination(destination, new_destination_information)
 
     #
     #       VOYAGE CALLS

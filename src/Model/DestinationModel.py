@@ -1,13 +1,13 @@
 class Destination:
     def __init__(
         self,
-        name: str = None,
-        country: str = None,
-        airport: str = None,
-        flight_time: int = None,
-        distance_from_Iceland: int = None,
-        contact_name: str = None,
-        contact_phone_nr: int = None,
+        name: str = "",
+        country: str = "",
+        airport: str = "",
+        flight_time: int = "",
+        distance_from_Iceland: int = "",
+        contact_name: str = "",
+        contact_phone_nr: int = "",
     ):
         # self.destination_number = destination_number
         self.name = name

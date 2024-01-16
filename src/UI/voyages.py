@@ -1,28 +1,10 @@
-from typing import Iterable
 from UI.Utils.Constants import UIConstants
-import sys
 from prettytable import PrettyTable
 from Model.VoyageModel import Voyage
 from dataclasses import asdict
-from Logic.LogicWrapper import UI_Logic_Wrapper
 from datetime import datetime
-
-
-def print_dataclass_as_table_out(self, instances):
-    """Prints a dataclass as a table."""
-
-    if not isinstance(instances, Iterable):
-        instances = [instances]
-    elif not instances:
-        return
-
-    table = PrettyTable(
-        field_names=[field for field in Voyage.__dataclass_fields__.keys()]
-    )
-    for instance in instances:
-        table.add_row([v for _, v in asdict(instance).items()])
-
-    print(table)
+from typing import Iterable
+import sys
 
 
 class Voyages:
@@ -50,7 +32,6 @@ class Voyages:
         return input("User Input: ").lower()
 
     def control_voyage_menu(self):
-        # self.employees_menu_output()
         while (command := self.show_voyage_menu()) not in ("b", "b."):
             if command == "q" or command == "q.":
                 print(UIConstants.QUIT_MESSAGE)
@@ -85,8 +66,7 @@ class Voyages:
             print(f"3. {UIConstants.ADD_HEADS_OF_SERVICE}")
         if not voyage.flight_attendant:
             print(f"4. {UIConstants.ADD_FLIGHT_ATTENDTANTS}")
-        print(f"s. Save changes")
-        print(f"b. {UIConstants.BACK} \nq. {UIConstants.QUIT}")
+        print(f"b. {UIConstants.BACK} \n q. {UIConstants.QUIT}")
 
     def show_man_voyages_menu(self, voyage):
         self.man_voyages_output(voyage)
@@ -127,9 +107,9 @@ class Voyages:
                 name = input("Input name of flight attendants: ")
                 self.logic_wrapper.set_staff(voyage.id, flight_attendant=name)
                 print(f"Successfully set flight attendant {name} to voyage {voyage.id}")
-                
-            elif command.lower() == "s":
-                self.save_changes()
+
+                """elif command.lower() == "s":
+                self.save_changes()"""
 
             else:
                 print(UIConstants.INVALID_INPUT)
@@ -144,28 +124,16 @@ class Voyages:
 
         while True:
             voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
+            if voyage_id != "":
+                voyage = self.logic_wrapper.find_voyage(voyage_id)
 
-            voyage = self.logic_wrapper.find_voyage(voyage_id)
+                if voyage is None:
+                    return UIConstants.NO_VOYAGES
 
-            if voyage is None:
-                return UIConstants.NO_VOYAGES
-
-            return voyage
-
-        # while not (voyage_id := input(UIConstants.ENTER_VOYAGE_ID)):
-        #     print("Error")
-
-        # voyage = self.logic_wrapper.get_single_voyage_given_uuidge(voyage_id)
-
-        # if voyage is None:
-        #     return print(UIConstants.NO_VOYAGES)
-
-        # if self.check_if_voyage_manned(voyage):
-        #     return print("Voyage is fully staffed.")
-
-        # return voyage
-
-    # submenu display_voyages
+                return voyage
+            else:
+                print(UIConstants.INVALID_INPUT)
+                return
 
     def display_voyages_output(self):
         print(UIConstants.HEADER.format(UIConstants.DISPLAY_VOYAGES))
@@ -205,15 +173,15 @@ class Voyages:
         manned_voyages = self.get_manned_voyages()
 
         if manned_voyages:
-            self.print_dataclass_as_table(manned_voyages)
+            self.print_dataclass_as_table_out(manned_voyages)
         else:
-            self.print(UIConstants.NO_VOYAGES)
+            print(UIConstants.NO_VOYAGES)
 
     def print_unmanned_voyages(self):
         unmanned_voyages = self.get_unmanned_voyages()
 
         if unmanned_voyages:
-            self.print_dataclass_as_table(unmanned_voyages)
+            self.print_dataclass_as_table_out(unmanned_voyages)
         else:
             print(UIConstants.NO_VOYAGES)
 
@@ -254,14 +222,18 @@ class Voyages:
         for voyage_field in voyage_info_print:
             print(f"{voyage_field}: ", end=" ")
             voyage_information = input()
-            all_voyage_information.append(voyage_information)
+            if voyage_information != "":
+                all_voyage_information.append(voyage_information)
+            else:
+                print(UIConstants.INVALID_INPUT)
+                return
 
         # Converting list to dataclass by using '*' operator that converts list to fields in dataclass
         all_voyage_information[1] = datetime.fromisoformat(all_voyage_information[1])
         all_voyage_information[2] = datetime.fromisoformat(all_voyage_information[2])
         new_voyage = Voyage(*all_voyage_information)
 
-        self.print_dataclass_as_table(new_voyage)
+        self.print_dataclass_as_table_out(new_voyage)
 
         self.logic_wrapper.register_new_voyage(new_voyage)
         print(UIConstants.NEW_VOYAGE_REGISTERED)
@@ -274,72 +246,89 @@ class Voyages:
         voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
         new_date = input(UIConstants.ENTER_NEW_DATE)
 
-        self.logic_wrapper.copy_to_new_date(voyage_id, datetime.fromisoformat(new_date))
-        print(UIConstants.VOYAGE_COPIED)
-        self.print_dataclass_as_table(self.logic_wrapper.get_all_voyages())
+        if new_date != "" and voyage_id != "":
+            self.logic_wrapper.copy_to_new_date(
+                voyage_id, datetime.fromisoformat(new_date)
+            )
+            print(UIConstants.VOYAGE_COPIED)
+            self.print_dataclass_as_table_out(self.logic_wrapper.get_all_voyages())
+        else:
+            print(UIConstants.INVALID_INPUT)
+            return
 
     def make_reacurring_voyage(self):
         voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
-        interval_in_days = int(input(UIConstants.INTERVAL_DAYS))
+        interval_in_days = input(UIConstants.INTERVAL_DAYS)
         end_date = input(UIConstants.ENTER_END_DATE)
 
-        self.logic_wrapper.make_recurring_voyage(
-            voyage_id, interval_in_days, datetime.fromisoformat(end_date)
-        )
-        print(UIConstants.VOYAGE_MADE_RECURRING)
-        self.print_dataclass_as_table(self.logic_wrapper.get_all_voyages())
+        if voyage_id != "" and interval_in_days != "" and end_date != "":
+            self.logic_wrapper.make_recurring_voyage(
+                voyage_id, int(interval_in_days), datetime.fromisoformat(end_date)
+            )
+            print(UIConstants.VOYAGE_MADE_RECURRING)
+            self.print_dataclass_as_table_out(self.logic_wrapper.get_all_voyages())
+        else:
+            print(UIConstants.INVALID_INPUT)
+            return
 
     def check_voyage_status(self):
         voyage_id = input(UIConstants.ENTER_VOYAGE_ID)
-        voyage = self.logic_wrapper.find_voyage(voyage_id)
-
-        self.print_dataclass_as_table(voyage)
+        if voyage_id != "":
+            voyage = self.logic_wrapper.find_voyage(voyage_id)   
+            self.print_dataclass_as_table_out(voyage)
+        else:
+            print(UIConstants.INVALID_INPUT)
+            return
 
     def check_voyage_employee_is_working(self):
         employee_name = input("Enter employee name: ")
         filter_date = input("Enter start date to search (YYYY-MM-DD): ")
 
-        voyages_that_an_employee_is_working = (
-            self.logic_wrapper.voyages_an_employee_is_working(
-                employee_name, filter_date
+        if employee_name != "" and filter_date != "":
+            voyages_that_an_employee_is_working = (
+                self.logic_wrapper.voyages_an_employee_is_working(
+                    employee_name, filter_date
+                )
             )
-        )
-        table = PrettyTable()
+            table = PrettyTable()
 
-        table.field_names = [
-            "Destination",
-            "Departure",
-            "Arrival",
-            "Captain",
-            "Co Pilot",
-            "Flight Service Manager",
-            "Flight Attendant",
-        ]
+            table.field_names = [
+                "Destination",
+                "Departure",
+                "Arrival",
+                "Captain",
+                "Co Pilot",
+                "Flight Service Manager",
+                "Flight Attendant",
+            ]
 
-        # Add data rows to the table
-        for row in voyages_that_an_employee_is_working:
-            table.add_row(
-                [
-                    row["destination"],
-                    row["departure"],
-                    row["arrival"],
-                    row["captain"],
-                    row["copilot"],
-                    row["flight_service_manager"],
-                    row["flight_attendant"],
-                ]
+            # Add data rows to the table
+            for row in voyages_that_an_employee_is_working:
+                table.add_row(
+                    [
+                        row["destination"],
+                        row["departure"],
+                        row["arrival"],
+                        row["captain"],
+                        row["copilot"],
+                        row["flight_service_manager"],
+                        row["flight_attendant"],
+                    ]
+                )
+
+            print(table)
+            print(
+                f"Employee {employee_name} is working on the above voyages in the week starting on {filter_date}"
             )
-
-        print(table)
-        print(
-            f"Employee {employee_name} is working on the above voyages in the week starting on {filter_date}"
-        )
+        else:
+            print(UIConstants.INVALID_INPUT)
+            return
 
     def list_all_voyages(self):
         """Lists all voyages from a file."""
         voyages = self.logic_wrapper.get_all_voyages()
         if voyages:
-            self.print_dataclass_as_table(voyages)
+            self.print_dataclass_as_table_out(voyages)
         else:
             print(UIConstants.NO_VOYAGES)
 
@@ -355,10 +344,10 @@ class Voyages:
             if self.check_if_voyage_manned(voyage):
                 print("Voyage is fully staffed.")
                 return
-            else:
-                self.show_man_voyages_menu()
 
-    def print_dataclass_as_table(self, instances):
+            self.choose_staff_prompt(voyage)
+
+    def print_dataclass_as_table_out(self, instances):
         """Prints a dataclass as a table."""
 
         if not isinstance(instances, Iterable):

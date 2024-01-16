@@ -6,8 +6,8 @@ import io
 
 class EmployeeData:
     def __init__(self):
-        self.file_name = "Files/crew.csv"
-        self.shift_file = "Files/shift_plan.csv"
+        self.file_name = "src/Files/crew.csv"
+        self.shift_file = "src/Files/shift_plan.csv"
 
     # frá fyrirlestri
     def get_all_employees(self):
@@ -25,7 +25,7 @@ class EmployeeData:
                         row["phone_nr"],
                         row["email_address"],
                         row["home_phone_nr"],
-                        row["license"]
+                        row["license"],
                     )
                 )
         return all_employees
@@ -46,7 +46,7 @@ class EmployeeData:
                             row["phone_nr"],
                             row["email_address"],
                             row["home_phone_nr"],
-                            row["license"]
+                            row["license"],
                         )
                     )
         return captains
@@ -67,7 +67,7 @@ class EmployeeData:
                             row["phone_nr"],
                             row["email_address"],
                             row["home_phone_nr"],
-                            row["license"]
+                            row["license"],
                         )
                     )
         return co_pilots
@@ -87,7 +87,7 @@ class EmployeeData:
                             row["address"],
                             row["phone_nr"],
                             row["email_address"],
-                            row["home_phone_nr"]
+                            row["home_phone_nr"],
                         )
                     )
         return flight_attendants
@@ -107,7 +107,7 @@ class EmployeeData:
                             row["address"],
                             row["phone_nr"],
                             row["email_address"],
-                            row["home_phone_nr"]
+                            row["home_phone_nr"],
                         )
                     )
         return heads_of_service
@@ -126,7 +126,7 @@ class EmployeeData:
                 "address",
                 "phone_nr",
                 "email_address",
-                "home_phone_nr"
+                "home_phone_nr",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             csvfile.seek(0, io.SEEK_END)
@@ -143,7 +143,7 @@ class EmployeeData:
                     "address": employee.address,
                     "phone_nr": employee.phone_nr,
                     "email_address": employee.email_address,
-                    "home_phone_nr": employee.home_phone_nr
+                    "home_phone_nr": employee.home_phone_nr,
                 }
             )
 
@@ -158,7 +158,7 @@ class EmployeeData:
                 "address",
                 "phone_nr",
                 "email_address",
-                "home_phone_nr"
+                "home_phone_nr",
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             csvfile.seek(0, io.SEEK_END)
@@ -176,7 +176,7 @@ class EmployeeData:
                     "address": employee.address,
                     "phone_nr": employee.phone_nr,
                     "email_address": employee.email_address,
-                    "home_phone_nr": employee.home_phone_nr
+                    "home_phone_nr": employee.home_phone_nr,
                 }
             )
 
@@ -186,27 +186,37 @@ class EmployeeData:
         all_employees = self.get_all_employees()
         for employee in all_employees:
             if employee.license != None and employee.license != "":
-                if filter in employee.name or filter in employee.nid or filter in employee.role or filter in employee.rank or filter in employee.license:
+                if (
+                    filter in employee.name
+                    or filter in employee.nid
+                    or filter in employee.role
+                    or filter in employee.rank
+                    or filter in employee.license
+                ):
                     matching_employee_list.append(employee)
             else:
-                if filter in employee.name or filter in employee.nid or filter in employee.role or filter in employee.rank:
+                if (
+                    filter in employee.name
+                    or filter in employee.nid
+                    or filter in employee.role
+                    or filter in employee.rank
+                ):
                     matching_employee_list.append(employee)
         # returns a list of employee objects that match the search
         return matching_employee_list
 
     def update_pilot(self, employee_info: Pilot):
-        """ Does not replace data yet, 
-        """
+        """Does not replace data yet,"""
         allemployees = self.get_all_employees()
         original_file_name = self.file_name
         self.file_name += ".tmp"
         for employee in allemployees:
             if employee.nid == employee_info.nid:
-            # Updates new data if edited employee was a pilot
+                # Updates new data if edited employee was a pilot
                 self.register_pilot(employee_info)
             else:
-            # Copies old data to new file
-                if employee.license == "N/A": # If employee == FlightAttendant
+                # Copies old data to new file
+                if employee.license == "N/A":  # If employee == FlightAttendant
                     self.register_flight_attendant(employee)
                 else:
                     self.register_pilot(employee)
@@ -216,18 +226,17 @@ class EmployeeData:
         self.file_name = original_file_name
 
     def update_flight_attendant(self, employee_info: FlightAttendant):
-        """ Does not replace data yet, 
-        """
+        """Does not replace data yet,"""
         allemployees = self.get_all_employees()
         original_file_name = self.file_name
         self.file_name += ".tmp"
         for employee in allemployees:
             if employee.nid == employee_info.nid:
-            # Updates new data if edited employee was a flight attendant
+                # Updates new data if edited employee was a flight attendant
                 self.register_flight_attendant(employee_info)
             else:
-            # Copies old data to new file
-                if employee.license == "N/A": # If employee == FlightAttendant
+                # Copies old data to new file
+                if employee.license == "N/A":  # If employee == FlightAttendant
                     self.register_flight_attendant(employee)
                 else:
                     self.register_pilot(employee)
@@ -238,31 +247,45 @@ class EmployeeData:
 
     def get_shift_plan(self):
         shift_plan = []
-        with open("Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+        with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                shift_plan.append((row["nid"], row["name"], row["shift_start_date"], row["shift_start_time"], row["shift_end_date"], row["shift_end_time"]))
+                shift_plan.append(
+                    (
+                        row["nid"],
+                        row["name"],
+                        row["shift_start_date"],
+                        row["shift_start_time"],
+                        row["shift_end_date"],
+                        row["shift_end_time"],
+                    )
+                )
         return shift_plan
-    
+
     def search_by_day(self, filter: str):
         employees_working = []
-        with open("Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+        with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if str(filter) == row["shift_start_date"]:
                     employees_working.append(row)
         return employees_working
-    
+
     def search_by_not_day(self, filter_date: str):
         employees_not_working = []
-        with open("Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
+        with open("src/Files/shift_plan.csv", newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
 
-            working_employees = {row["name"] for row in reader if str(filter_date) == row["shift_start_date"]}
+            working_employees = {
+                row["name"]
+                for row in reader
+                if str(filter_date) == row["shift_start_date"]
+            }
 
             csvfile.seek(0)
             next(reader)
 
-            employees_not_working = [row for row in reader if row["name"] not in working_employees]
+            employees_not_working = [
+                row for row in reader if row["name"] not in working_employees
+            ]
         return employees_not_working
-    
